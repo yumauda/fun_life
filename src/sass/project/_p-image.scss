@@ -1,0 +1,41 @@
+@use "../global" as *;
+
+.p-image {
+  padding-top: rem(300);
+  padding-bottom: rem(200);
+}
+
+
+.p-image__content {}
+
+.p-image__img1 {
+  overflow: hidden;
+  aspect-ratio: 705 / 752;
+  margin-left: auto;
+  width: rem(528);
+
+}
+
+
+.p-image__img2 {
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  width: rem(303);
+}
+
+.p-image__img3 {
+  margin-top: rem(160);
+  overflow: hidden;
+  aspect-ratio: 954 / 686;
+  margin-left: auto;
+  margin-right: auto;
+  width: rem(715);
+}
+
+.p-image__img1 img,
+.p-image__img2 img,
+.p-image__img3 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

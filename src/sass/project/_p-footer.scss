@@ -1,0 +1,52 @@
+@use "../global" as *;
+
+.p-footer {
+  color: #231815;
+  padding-top: rem(28);
+  padding-bottom: rem(28);
+}
+
+
+.p-footer__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: rem(20);
+  padding-bottom: rem(13);
+  border-bottom: 1px solid #231815;
+}
+
+.p-footer__info {
+  padding-top: rem(20);
+}
+
+.p-footer__address,
+.p-footer__contact,
+.p-footer__copyright {
+  color: #231815;
+  font-size: rem(10);
+  font-weight: $bold;
+  line-height: 1.5;
+  letter-spacing: 0.1em;
+}
+
+.p-footer__contact {
+  margin-top: rem(6);
+}
+
+.p-footer__brand {
+  display: block;
+  width: rem(240);
+}
+.p-footer__brand img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center center;
+}
+
+
+.p-footer__copyright {
+  margin-top: rem(12);
+}
+

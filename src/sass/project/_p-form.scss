@@ -1,0 +1,287 @@
+@use "../global" as *;
+
+.p-form__row-wrapper {
+  position: relative;
+  padding-top: rem(24);
+  padding-bottom: rem(24);
+  border-top: 1px dotted #222;
+  @include mq(md) {
+    padding-top: rem(40);
+    padding-bottom: rem(40);
+  }
+}
+.p-form__row-wrapper:first-child {
+  border-top: none;
+}
+.p-form__row {
+  @include mq(md) {
+    display: flex;
+    align-items: flex-start;
+  }
+}
+.p-form__row + .p-form__row {
+  margin-top: rem(12);
+}
+
+.p-form__dt-wrapper {
+  display: flex;
+  align-items: center;
+  gap: rem(10);
+  @include mq(md) {
+    padding-top: rem(8);
+    width: rem(230);
+  }
+}
+
+.p-form__dt {
+  color: #222;
+  font-size: rem(14);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  @include mq(md) {
+    font-size: rem(18);
+  }
+}
+.p-form__dt span {
+  color: $black;
+  font-size: rem(14);
+}
+.p-form__need {
+  color: #fff;
+  background: #ed1c24;
+  font-size: rem(10);
+  line-height: 1.3;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  border-radius: rem(4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: rem(55);
+  height: rem(22);
+  @include mq(md) {
+    font-size: rem(14);
+  }
+}
+.p-form__need--black {
+  color: $black;
+}
+.wpcf7-spinner {
+  display: none;
+}
+.p-form__description--radio {
+  .wpcf7-list-item-label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: #222;
+    font-size: rem(12);
+    letter-spacing: 0.05em;
+    font-weight: 700;
+    @include mq(md) {
+      font-size: rem(18);
+    }
+  }
+  /* デフォルトのボタン */
+  input[type="radio"] {
+    opacity: 0; /* デフォルトのボタンを非表示 */
+    position: absolute;
+  }
+  /* チェック前のボタン */
+  .wpcf7-list-item-label::before {
+    background: #fff;
+    border: 1px solid #222;
+    border-radius: 9999px; /* ラジオボタンっぽく丸くする */
+    content: "";
+    margin-bottom: auto;
+    margin-right: 0.5em;
+    margin-top: auto;
+    transition: background-color 0.5s;
+    width: rem(18);
+    height: rem(18);
+    @include mq(md) {
+      width: rem(20);
+      height: rem(20);
+    }
+  }
+  /* チェック後のボタン */
+  input[type="radio"]:checked + .wpcf7-list-item-label::before {
+    background-color: #ed1c24; /* チェック後の中心の色 */
+    box-shadow: inset 0 0 0 5px #fff; /* 中心の色のスタイル */
+  }
+  .custom-radio {
+    display: flex;
+    row-gap: rem(18);
+    flex-direction: column;
+    @include mq(md) {
+      flex-wrap: wrap;
+      flex-direction: row;
+    }
+  }
+}
+.wpcf7-list-item {
+  margin-left: initial;
+  @include mq(md) {
+    margin-right: initial;
+  }
+}
+.p-form__description {
+  font-size: rem(14);
+  word-wrap: break-word;
+  color: $black;
+  padding-top: initial;
+  margin-top: rem(12);
+  @include mq(md) {
+    margin-top: initial;
+    font-size: rem(16);
+    line-height: 1.2;
+    width: calc(100% - rem(230));
+    margin-left: rem(61);
+  }
+}
+.p-form input[type="text"],
+.p-form input[type="tel"],
+.p-form input[type="email"] {
+  width: 100%;
+  border: 1px solid #909090;
+  font-size: rem(14);
+  line-height: 1.2;
+  padding: rem(10) rem(12);
+  border-radius: rem(6);
+  background: #fff;
+  @include mq(md) {
+    font-size: rem(18);
+    padding-top: rem(13);
+    padding-bottom: rem(13);
+    padding-left: rem(24);
+    padding-right: rem(24);
+  }
+}
+.p-form textarea {
+  border: 1px solid #909090;
+  width: 100%;
+  height: rem(200);
+  font-size: rem(12);
+  padding: rem(10) rem(12);
+  resize: none;
+  border-radius: rem(6);
+  background: #fff;
+  @include mq(md) {
+    padding-top: rem(8);
+    padding-bottom: rem(8);
+    padding-left: rem(24);
+    padding-right: rem(24);
+    font-size: rem(18);
+    height: rem(200);
+  }
+}
+.p-form__btn-wrapper {
+  margin-top: rem(28);
+  display: flex;
+  justify-content: center;
+  gap: rem(10);
+  @include mq(md) {
+    gap: rem(20);
+    margin-top: rem(40);
+  }
+}
+.p-form__btn-outside {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  transition: 0.3s ease-in-out;
+  @include mq(md) {
+    width: rem(240);
+  }
+}
+.p-form__btn-outside::before {
+  position: absolute;
+  content: "";
+  background: url(../images/common/btn_icon_white.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  top: 50%;
+  transform: translateY(-50%);
+  left: rem(6);
+  transition: 0.3s ease-in-out;
+  aspect-ratio: 12 / 24;
+  object-fit: cover;
+  height: auto;
+  z-index: 1;
+  @include mq(md) {
+    width: rem(24);
+  }
+}
+.p-form__btn-outside::after {
+  position: absolute;
+  content: "";
+  background: url(../images/common/btn_icon_white_right.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  top: 50%;
+  transform: translateY(-50%);
+  aspect-ratio: 12 / 24;
+  object-fit: cover;
+  height: auto;
+  right: rem(6);
+  transition: 0.3s ease-in-out;
+  z-index: 1;
+  @include mq(md) {
+    width: rem(24);
+  }
+}
+
+.p-form__btn input[type="submit"] {
+  transition: 0.3s ease-in-out;
+  border-radius: 9999px;
+  position: relative;
+  border: 1px solid #222;
+  background: #222;
+  font-size: rem(18);
+  width: rem(240);
+  height: rem(60);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+.p-form__btn input[type="submit"]:hover,
+.p-form__btn input[type="button"]:hover {
+  background: rgba($color: $black, $alpha: 0.3);
+  color: $white;
+  cursor: pointer;
+  border: 1px solid $white;
+}
+
+input::placeholder {
+  color: rgba($color: $black, $alpha: 0.3);
+  line-height: 1.2;
+  @include mq(md) {
+    font-size: rem(18);
+  }
+}
+.p-form__privacy-wrapper {
+  text-align: center;
+}
+
+.p-form__privacy-text {
+  color: #222;
+  letter-spacing: 0.1em;
+  font-weight: 400;
+  font-size: rem(14);
+  @include mq(md) {
+    font-size: rem(18);
+  }
+}
+.p-form__privacy-text a {
+  text-decoration: underline;
+}
+.wpcf7-list-item {
+  @include mq(md) {
+    width: rem(280);
+  }
+}

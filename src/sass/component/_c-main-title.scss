@@ -1,0 +1,56 @@
+@use "../global" as *;
+
+.c-main-title {
+  display: flex;
+  flex-direction: column;
+}
+
+.c-main-title__ja {
+  color: $black;
+  line-height: 1.2;
+  font-size: rem(20);
+  font-family: $second-font-family;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  @include mq(md) {
+    letter-spacing: 0.15em;
+    font-size: rem(28);
+  }
+}
+.c-main-title__ja--child {
+  font-family: $base-font-family;
+  font-size: rem(18);
+  @include mq(md) {
+    font-size: rem(28);
+  }
+}
+.c-main-title__ja--child span {
+  display: none;
+  @include mq(md) {
+    font-size: rem(22);
+    display: block;
+  }
+}
+.c-main-title__ja--small {
+  font-size: rem(14);
+  letter-spacing: 0.1em;
+  @include mq(md) {
+    font-size: rem(20);
+    letter-spacing: 0.15em;
+  }
+}
+.c-main-title__en {
+  text-transform: uppercase;
+  color: rgba($color: $black, $alpha: 0.5);
+  letter-spacing: 0.1em;
+  line-height: 1.2;
+  margin-top: rem(4);
+  font-size: rem(13);
+  font-family: $second-font-family;
+  font-weight: 600;
+  @include mq(md) {
+    margin-top: rem(14);
+    font-size: rem(16);
+    letter-spacing: 0.2em;
+  }
+}

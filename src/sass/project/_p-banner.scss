@@ -1,0 +1,14 @@
+@use "../global" as *;
+
+.p-banner {
+  margin-top: rem(240);
+}
+.p-banner__link {
+  display: block;
+}
+.p-banner__link img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center center;
+}
