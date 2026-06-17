@@ -1,0 +1,164 @@
+@use "../global" as *;
+
+@property --contact-circle-progress {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.p-top-contact {
+  overflow-x: clip;
+}
+
+
+.p-top-contact__content {}
+
+.p-top-contact__inner {
+  max-width: rem(1100);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $padding-sp;
+  padding-right: $padding-sp;
+
+  @include mq(md) {
+    padding-left: $padding-pc;
+    padding-right: $padding-pc;
+  }
+}
+
+.p-top-contact__btn {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  display: block;
+  position: relative;
+  transition: 0.3s ease-in-out;
+  filter: brightness(1);
+
+}
+
+.p-top-contact__btn:hover {
+  opacity: 1;
+}
+
+.p-top-contact__btn:hover .p-top-contact__img {
+  filter: brightness(0.5);
+  opacity: 1;
+}
+
+.p-top-contact__img {
+  transition: 0.3s ease-in-out;
+}
+
+.p-top-contact__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.p-top-contact__detail {
+  max-width: rem(1100);
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+}
+
+.p-top-contact__request {
+  font-size: rem(40);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-family: $second-font-family;
+  color: #fff;
+}
+
+.p-top-contact__title {
+  font-size: rem(72);
+  margin-top: rem(16);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-family: $second-font-family;
+  color: #fff;
+}
+
+.p-top-contact__text {
+  margin-top: rem(16);
+  font-size: rem(24);
+  color: #fff;
+  font-weight: 700;
+
+}
+
+.p-top-contact__arrow {
+  width: rem(150);
+  height: rem(150);
+  position: relative;
+  margin-left: auto;
+}
+
+.p-top-contact__arrow::before {
+  position: absolute;
+  content: "";
+  inset: 0;
+  border-radius: 9999px;
+  --contact-circle-progress: 0deg;
+  background: conic-gradient(from -90deg, #fff 0deg var(--contact-circle-progress), transparent var(--contact-circle-progress) 360deg);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 2px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 2px));
+  transition: --contact-circle-progress 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.p-top-contact__arrow::after {
+  position: absolute;
+  content: "";
+  inset: 0;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 9999px;
+}
+
+.p-top-contact__arrow-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: rem(54);
+  height: rem(20);
+  transform: translate(-50%, -50%);
+}
+
+.p-top-contact__arrow-icon::before,
+.p-top-contact__arrow-icon::after {
+  position: absolute;
+  content: "";
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.p-top-contact__arrow-icon::before {
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #fff;
+}
+
+.p-top-contact__arrow-icon::after {
+  right: 0;
+  width: 0;
+  height: 0;
+  border-top: rem(6) solid transparent;
+  border-bottom: rem(6) solid transparent;
+  border-left: rem(10) solid #fff;
+}
+
+.p-top-contact__btn:hover .p-top-contact__arrow::before,
+.p-top-contact__btn:focus-visible .p-top-contact__arrow::before {
+  --contact-circle-progress: 360deg;
+}
