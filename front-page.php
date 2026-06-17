@@ -131,6 +131,50 @@
       </div>
     </div>
   </section>
+  <section class="p-top-project">
+    <div class="l-inner">
+      <div class="p-top-project__content">
+        <div class="p-top-project__detail">
+          <h3 class="p-top-project__title">施工事例</h3>
+          <p class="p-top-project__en">PROJECT EXAMPLES</p>
+        </div>
+        <div class="p-top-project__slider">
+          <!-- Slider main container -->
+          <div class="swiper slider1">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+              <!-- Slides -->
+              <div class="swiper-slide">
+                <figure class="p-top-project__img">
+                  <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/top_slider1.webp" alt="金属の未来をリファイン" width="431" height="38">
+                </figure>
+                <p class="p-top-project__text">HOUSE 新築</p>
+              </div>
+              <div class="swiper-slide">
+                <figure class="p-top-project__img">
+                  <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/top_slider1.webp" alt="金属の未来をリファイン" width="431" height="38">
+                </figure>
+                <p class="p-top-project__text">HOUSE 新築</p>
+
+              </div>
+              <div class="swiper-slide">
+                <figure class="p-top-project__img">
+                  <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/top_slider1.webp" alt="金属の未来をリファイン" width="431" height="38">
+                </figure>
+                <p class="p-top-project__text">HOUSE 新築</p>
+
+              </div>
+            </div>
+
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
   <div class="p-banner">
     <div class="l-inner">
       <a href="#" class="p-banner__link">
@@ -157,7 +201,7 @@
     <div class="l-inner">
       <div class="p-top-contact__content">
         <a href="#" class="p-top-contact__btn">
-          
+
           <figure class="p-top-contact__img">
             <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/contact_bg.webp" alt="お問い合わせ・資料請求" width="431" height="38">
           </figure>
