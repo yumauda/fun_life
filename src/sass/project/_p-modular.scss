@@ -111,8 +111,10 @@
   position: relative;
   display: flex;
   align-items: center;
+  width: 100%;
   min-height: rem(28);
   text-align: left;
+  white-space: nowrap;
 }
 
 .p-modular__menu-row.is-active .p-modular__menu-button::after,
@@ -121,7 +123,9 @@
   content: "";
   width: rem(78);
   height: 1px;
-  margin-left: auto;
+  flex-shrink: 1;
+  margin-left: rem(12);
+  min-width: rem(24);
   background: #000;
 }
 
