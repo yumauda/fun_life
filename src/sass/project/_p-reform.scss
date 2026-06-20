@@ -4,7 +4,7 @@
   color: #000;
   background: #fff;
   padding-bottom: rem(72);
-  padding-top: rem(40);
+  padding-top: rem(58);
 
   @include mq(md) {
     padding-top: rem(96);
@@ -13,10 +13,16 @@
 }
 
 .p-reform__content {
-  
+  display: flex;
+  flex-direction: column;
+
+  @include mq(md) {
+    display: block;
+  }
 }
 
 .p-reform__heading {
+  order: 1;
 }
 
 .p-reform__title {
@@ -27,32 +33,33 @@
 .p-reform__title-ja {
   font-size: rem(20);
   display: block;
-  text-align: right;
+  text-align: left;
+  font-weight: 700;
 
   @include mq(md) {
-    font-weight: 700;
     font-size: rem(32);
+    text-align: right;
   }
 }
 
 .p-reform__title-en {
+  display: block;
   font-family: $second-font-family;
-  font-size: rem(14);
+  font-size: rem(10);
   font-weight: 700;
+  line-height: 1.4;
 
   @include mq(md) {
-    display: block;
     font-size: rem(32);
     text-align: right;
   }
 }
 
 .p-reform__body {
-  display: flex;
-  gap: rem(38);
-  margin-top: rem(48);
+  display: contents;
 
   @include mq(md) {
+    display: flex;
     justify-content: space-between;
     align-items: start;
     gap: rem(56);
@@ -61,13 +68,17 @@
 }
 
 .p-reform__item {
+  display: contents;
+
   @include mq(md) {
+    display: block;
     flex: 0 1 calc((100% - rem(56)) * 6 / 13);
   }
 }
 
 .p-reform__item--after {
   @include mq(md) {
+    display: block;
     flex-basis: calc((100% - rem(56)) * 7 / 13);
     margin-top: rem(148);
   }
@@ -75,9 +86,35 @@
 
 .p-reform__image {
   position: relative;
-  width: 100%;
+  width: calc(222 / 375) * 100vw;
   aspect-ratio: 600 / 600;
   overflow: hidden;
+
+  @include mq(md) {
+    width: 100%;
+  }
+}
+
+.p-reform__item--before .p-reform__image {
+  order: 3;
+  margin-top: rem(28);
+
+  @include mq(md) {
+    margin-top: 0;
+  }
+}
+
+.p-reform__item--after .p-reform__image {
+  order: 4;
+  width: calc(272 / 375) * 100vw;
+  margin-top: rem(40);
+  margin-left: auto;
+
+  @include mq(md) {
+    width: 100%;
+    margin-top: 0;
+    margin-left: 0;
+  }
 }
 
 .p-reform__image img {
@@ -87,10 +124,10 @@
 }
 
 .p-reform__text {
-  margin-top: rem(24);
+  margin-top: 0;
   font-size: rem(11);
   font-weight: $bold;
-  line-height: 2.35;
+  line-height: 2.05;
   letter-spacing: 0.04em;
 
   @include mq(md) {
@@ -100,12 +137,36 @@
   }
 }
 
-.p-reform__bottom {
+.p-reform__item--before .p-reform__text {
+  order: 2;
+  margin-top: rem(36);
 
+  @include mq(md) {
+    margin-top: rem(28);
+  }
+}
+
+.p-reform__item--after .p-reform__text {
+  order: 5;
+  margin-top: rem(28);
+
+  @include mq(md) {
+    margin-top: rem(28);
+  }
+}
+
+.p-reform__bottom {
+  display: block;
+  width: 100%;
+  margin-top: rem(40);
+  margin-left: auto;
+  aspect-ratio: 890 / 450;
+  order: 6;
 
   @include mq(md) {
     width: rem(667);
     margin-top: rem(200);
+    margin-left: 0;
     aspect-ratio: 890 / 450;
   }
 }

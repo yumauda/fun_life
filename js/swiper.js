@@ -2,10 +2,10 @@
 
 if (document.querySelector(".slider1")) {
   const slider2 = new Swiper(".slider1", {
-    slidesPerView: 1.6,
+    slidesPerView: 1.2,
     centeredSlides: true,
     loop: true,
-    spaceBetween: 52,
+    spaceBetween: 12,
     initialSlide: 0,
     breakpoints: {
       768: {
@@ -35,16 +35,13 @@ const modularRoot = document.querySelector(".p-modular");
 if (modularRoot) {
   const modularSwipers = Array.from(modularRoot.querySelectorAll(".p-modular__slider")).map((slider) => {
     const swiper = new Swiper(slider, {
-      slidesPerView: 1.5,
+      slidesPerView: 1.7,
       loop: true,
       speed: 700,
       spaceBetween: 40,
       observer: true,
       observeParents: true,
-      // autoplay: {
-      //   delay: 3200,
-      //   disableOnInteraction: false,
-      // },
+
     });
 
     return {

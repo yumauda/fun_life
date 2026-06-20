@@ -79,6 +79,46 @@
 <body <?php body_class(); ?>>
     <header class="l-header p-header">
         <div class="l-inner">
-            header.php
+            <div class="p-header__inner">
+                <a class="p-header__logo" href="<?php echo esc_url(home_url('/')); ?>" aria-label="ファンライフ株式会社 ホーム">
+                    <img decoding="async" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/footer_logo.png" alt="Fun life. ファンライフ株式会社" width="431" height="118">
+                </a>
+                <div class="p-header__actions">
+                    <a class="p-header__button" href="<?php echo esc_url(home_url('/#contact')); ?>">CONTACT</a>
+                    <button class="p-header__button p-header__menu p-drawer-icon" type="button" aria-label="メニューを開く">
+                        <span class="p-header__menu-text">MENU</span>
+                        <span class="p-drawer-icon__bars" aria-hidden="true">
+                            <span class="p-drawer-icon__bar1"></span>
+                            <span class="p-drawer-icon__bar3"></span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <div class="p-header__drawer-content p-drawer-content" id="drawer">
+                <div class="p-drawer-content__items">
+                    <ul class="p-drawer-content__lists">
+                        <li class="p-drawer-content__list">
+                            <a href="<?php echo esc_url(home_url('/')); ?>" class="p-drawer-content__link">トップ</a>
+                        </li>
+                        <li class="p-drawer-content__list">
+                            <a href="<?php echo esc_url(home_url('/#concept')); ?>" class="p-drawer-content__link">コンセプト</a>
+                        </li>
+                        <li class="p-drawer-content__list">
+                            <a href="<?php echo esc_url(home_url('/#works')); ?>" class="p-drawer-content__link">施工事例</a>
+                        </li>
+                        <li class="p-drawer-content__list">
+                            <a href="<?php echo esc_url(home_url('/#reform')); ?>" class="p-drawer-content__link">リフォーム / リノベーション</a>
+                        </li>
+                        <li class="p-drawer-content__list">
+                            <a href="<?php echo esc_url(home_url('/#modular')); ?>" class="p-drawer-content__link">規格住宅</a>
+                        </li>
+                    </ul>
+                    <div class="p-drawer-content__contact-wrapper">
+                        <a href="<?php echo esc_url(home_url('/#contact')); ?>" class="p-drawer-content__contact">
+                            <span class="p-drawer-content__contact-text">お問い合わせ</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </header>

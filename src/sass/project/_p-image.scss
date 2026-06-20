@@ -1,8 +1,12 @@
 @use "../global" as *;
 
 .p-image {
-  padding-top: rem(300);
-  padding-bottom: rem(200);
+  padding-top: rem(128);
+
+  @include mq(md) {
+    padding-top: rem(300);
+    padding-bottom: rem(200);
+  }
 }
 
 
@@ -12,7 +16,13 @@
   overflow: hidden;
   aspect-ratio: 705 / 752;
   margin-left: auto;
-  width: rem(528);
+  // width: rem(150);
+  width: calc(150 / 375) * 100vw;
+
+
+  @include mq(md) {
+    width: rem(528);
+  }
 
 }
 
@@ -20,16 +30,29 @@
 .p-image__img2 {
   overflow: hidden;
   aspect-ratio: 1 / 1;
-  width: rem(303);
+  // width: rem(96);
+  width: calc(96 / 375) * 100vw;
+  margin-top: rem(64);
+
+  @include mq(md) {
+    width: rem(303);
+    margin-top: 0;
+  }
 }
 
 .p-image__img3 {
-  margin-top: rem(160);
+  margin-top: rem(84);
   overflow: hidden;
   aspect-ratio: 954 / 686;
   margin-left: auto;
   margin-right: auto;
-  width: rem(715);
+  // width: rem(258);
+  width: calc(258 / 375) * 100vw;
+
+  @include mq(md) {
+    margin-top: rem(160);
+    width: rem(715);
+  }
 }
 
 .p-image__img1 img,

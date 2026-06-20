@@ -6,9 +6,9 @@
         <h2 class="p-no__title">No Fun No Life</h2>
         <div class="p-no__top-row">
           <div class="p-no__top-detail">
-            <p class="p-no__lead">好きも、暮らしも、全部こだわる。</p>
+            <p class="p-no__lead">好きも、暮らしも、<br class="u-mobile">全部こだわる。</p>
             <p class="p-no__text p-no__text--main">
-              家って、ただ住む箱じゃない。毎日帰って、笑って、落ち着いて、人生のほとんどを過ごす場所。だからファンライフは、むやみに棟数を増やさない。性能は、本当にいいと思えるものを。でも、間取りもデザイン性能も、「こうじゃないとダメ」とは言いません。
+              家って、ただ住む箱じゃない。<br class="u-mobile">毎日帰って、笑って、落ち着いて、人生のほとんどを過ごす場所。だからファンライフは、むやみに棟数を増やさない。性能は、本当にいいと思えるものを。でも、間取りもデザイン性能も、「こうじゃないとダメ」とは言いません。
             </p>
           </div>
           <figure class="p-no__top-img">
@@ -28,7 +28,7 @@
 
         </div>
 
-        <div class="p-no__concept">
+        <div class="p-no__concept" id="concept">
           <div class="p-no__concept-detail">
             <p class="p-no__concept-title">concept</p>
             <a href="#" class="p-no__concept-button">view more</a>
@@ -45,7 +45,7 @@
       </div>
     </div>
   </section>
-  <section class="p-no-works">
+  <section class="p-no-works" id="works">
 
     <div class="l-inner">
       <h2 class="p-no-works__title">WORKS</h2>
@@ -98,7 +98,7 @@
       </figure>
     </div>
   </section>
-  <section class="p-reform">
+  <section class="p-reform" id="reform">
     <div class="l-inner">
       <div class="p-reform__content">
         <div class="p-reform__heading">
@@ -315,7 +315,7 @@
       </div>
     </div>
   </div>
-  <section class="p-top-contact">
+  <section class="p-top-contact" id="contact">
     <div class="l-inner">
       <div class="p-top-contact__content">
         <a href="#" class="p-top-contact__btn">

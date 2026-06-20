@@ -10,6 +10,7 @@
             </a>
         </div>
         <p class="p-footer__copyright">© ファンライフ株式会社.All Rights Reserved</p>
+        <a class="p-footer__to-top" href="#" aria-label="ページ上部へ戻る"></a>
     </div>
 </footer>
 <?php wp_footer(); ?>

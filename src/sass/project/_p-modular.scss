@@ -47,7 +47,7 @@
 .p-modular__lead {
   max-width: rem(335);
   margin-top: rem(28);
-  font-size: rem(11);
+  font-size: rem(15);
   font-weight: $bold;
   line-height: 1.85;
   letter-spacing: 0.04em;
@@ -74,6 +74,7 @@
 
 .p-modular__menu-title {
   margin-top: rem(24);
+  font-size: rem(16);
 }
 
 .p-modular__menu-title:first-child {
@@ -93,6 +94,7 @@
 
   @include mq(md) {
     grid-template-columns: rem(142) rem(96);
+    margin-top: rem(26);
   }
 }
 
@@ -115,17 +117,18 @@
   min-height: rem(28);
   text-align: left;
   white-space: nowrap;
+  font-size: rem(16);
 }
 
 .p-modular__menu-row.is-active .p-modular__menu-button::after,
 .p-modular__menu-row:focus-within .p-modular__menu-button::after,
 .p-modular__menu-row:hover .p-modular__menu-button::after {
   content: "";
-  width: rem(78);
-  height: 1px;
   flex-shrink: 1;
-  margin-left: rem(12);
+  width: rem(78);
   min-width: rem(24);
+  height: 1px;
+  margin-left: rem(12);
   background: #000;
 }
 
@@ -164,6 +167,7 @@
   padding-right: rem(12);
   padding-left: rem(12);
   border: 2px solid transparent;
+  font-size: rem(16);
 }
 
 .p-modular__sub-button + .p-modular__sub-button {
@@ -178,7 +182,7 @@
   margin-top: rem(40);
 
   @include mq(md) {
-    margin-top: rem(-104);
+    margin-top: rem(-168);
     margin-right: calc(50% - 50vw);
   }
 }
