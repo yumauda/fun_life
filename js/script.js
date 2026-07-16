@@ -27,43 +27,7 @@ jQuery(function ($) {
     return false;
   });
 
-  // スムーススクロール (絶対パスのリンク先が現在のページであった場合でも作動)
 
-  /* $(document).on("click", 'a[href*="#"]', function () {
-    let time = 400;
-    let header = $("header").innerHeight();
-    let target = $(this.hash);
-    if (!target.length) return;
-    let targetY = target.offset().top - header;
-    $("html,body").animate({ scrollTop: targetY }, time, "swing");
-    return false;
-  }); */
-  $(function () {
-    $(".p-tab__btn").on("click", function () {
-      activateTab($(this));
-    });
-  });
-
-  // 初期ロード時にURLパラメータをチェックし、該当するタブを開く
-  const urlParams = new URLSearchParams(window.location.search);
-  const tabParam = urlParams.get("tab");
-  if (tabParam) {
-    const targetTabButton = $(`#tabParam`);
-    if (targetTabButton.length) {
-      activateTab(targetTabButton);
-    }
-  }
-
-  function activateTab(tabButton) {
-    const tab_btn = $(".p-tab__btn");
-    const tab_panel = $(".p-tab__panel");
-    const tabID = "#" + tabButton.attr("aria-controls");
-
-    tab_btn.attr("aria-selected", false).attr("aria-expanded", false);
-    tabButton.attr("aria-selected", true).attr("aria-expanded", true);
-    tab_panel.attr("aria-hidden", true);
-    $(tabID).attr("aria-hidden", false);
-  }
   $("#drawer a[href]").on("click", function (event) {
     $(".p-drawer-icon").trigger("click");
   });
@@ -180,19 +144,7 @@ jQuery(".p-drawer-icon").on("click", function (e) {
   jQuery(".p-drawer-background").toggleClass("is-active");
   return false;
 });
-window.addEventListener("scroll", function () {
-  var scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-  var element = document.querySelector(".p-footer__floating");
 
-  if (window.innerWidth <= 768) {
-    // 768px以下のデバイスでのみ動作
-    if (scrollPosition > 700) {
-      element.style.opacity = "1";
-    } else {
-      element.style.opacity = "0";
-    }
-  }
-});
 window.onload = function () {
   document.body.classList.add("fade-in");
 };
@@ -203,56 +155,4 @@ jQuery(document).ready(function ($) {
   $(".p-drawer-icon, .p-drawer-icon--barge").on("click", function () {
     $("body").toggleClass("drawer-open");
   });
-});
-
-jQuery(document).ready(function ($) {
-  $(".js-btn").on("click", function () {
-    $(".js-news-wrapper1").slideDown();
-    $(this).hide();
-  });
-});
-jQuery(document).ready(function ($) {
-  $(".js-btn2").on("click", function () {
-    $(".js-news-wrapper2").slideDown();
-    $(this).hide();
-  });
-});
-jQuery(document).ready(function ($) {
-  $(".js-btn3").on("click", function () {
-    $(".js-news-wrapper3").slideDown();
-    $(this).hide();
-  });
-});
-
-jQuery(document).ready(function ($) {
-  $(".p-tabNews__btn").each(function () {
-    var postCount = parseInt($(this).data("post-count"), 1);
-    // 表示する投稿の数を設定（例: 4）
-    var displayCount = 4;
-
-    // 投稿数が表示数以下の場合、ボタンを非表示にする
-    if (postCount <= displayCount) {
-      $(this).hide();
-    }
-  });
-});
-jQuery(".js-modal-btn").on("click", function (e) {
-  e.preventDefault();
-  jQuery(".p-modal").toggleClass("is-active");
-  return false;
-});
-jQuery(".p-modal__close").on("click", function (e) {
-  e.preventDefault();
-  jQuery(".p-modal").removeClass("is-active");
-  return false;
-});
-jQuery(".js-view").on("click", function (e) {
-  e.preventDefault();
-  jQuery(".p-digital-modal").toggleClass("is-active");
-  return false;
-});
-jQuery(".p-digital-modal__close").on("click", function (e) {
-  e.preventDefault();
-  jQuery(".p-digital-modal").removeClass("is-active");
-  return false;
 });
