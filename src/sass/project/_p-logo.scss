@@ -1,0 +1,21 @@
+@use "../global" as *;
+
+.p-logo {
+  padding-top: rem(360);
+  padding-bottom: rem(360);
+}
+
+
+.p-logo__img {
+  max-width: rem(660);
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.p-logo__img img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center center;
+}

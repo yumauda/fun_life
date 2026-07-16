@@ -5,7 +5,7 @@
   padding-bottom: rem(64);
 
   @include mq("md") {
-    padding-top: rem(80);
+    padding-top: rem(320);
     padding-bottom: rem(80);
   }
 }
@@ -16,75 +16,6 @@
   }
 }
 
-
-.p-message__heading {
-  display: flex;
-  align-items: flex-start;
-}
-
-.p-message__index {
-  flex-shrink: 0;
-  width: rem(44);
-  border-top: 2px solid #000;
-}
-
-.p-message__index-label {
-  display: block;
-  margin-top: rem(16);
-  margin-left: rem(14);
-  color: #000;
-  font-family: $second-font-family;
-  font-size: rem(9);
-  font-weight: $bold;
-  line-height: 1;
-  writing-mode: vertical-rl;
-}
-
-.p-message__index-number {
-  display: block;
-  margin-top: rem(16);
-  margin-left: rem(10);
-  color: #000;
-  font-family: $second-font-family;
-  font-size: rem(23);
-  font-weight: $bold;
-  line-height: 1;
-}
-
-.p-message__heading-body {
-  margin-left: rem(36);
-
-  @include mq("md") {
-    margin-left: rem(44);
-  }
-}
-
-.p-message__heading-en,
-.p-message__heading-ja {
-  color: #000;
-  font-weight: $bold;
-  letter-spacing: 0.02em;
-}
-
-.p-message__heading-en {
-  font-family: $second-font-family;
-  font-size: rem(16);
-  line-height: 1.35;
-
-  @include mq("md") {
-    font-size: rem(25);
-  }
-}
-
-.p-message__heading-ja {
-  margin-top: rem(8);
-  font-size: rem(20);
-  line-height: 1.4;
-
-  @include mq("md") {
-    font-size: rem(28);
-  }
-}
 
 .p-message__row {
   margin-top: rem(80);

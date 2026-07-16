@@ -1,0 +1,21 @@
+@use "../global" as *;
+
+.p-about-mv {
+  overflow-x: clip;
+}
+
+.p-about-mv__content {
+}
+
+.p-about-mv__img {
+  aspect-ratio: 1920 / 2877;
+  overflow: hidden;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  width: 100vw;
+}
+.p-about-mv__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

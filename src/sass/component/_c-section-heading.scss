@@ -1,0 +1,71 @@
+@use "../global" as *;
+
+.c-section-heading {
+  display: flex;
+  align-items: flex-start;
+  white-space: nowrap;
+}
+
+.c-section-heading__index {
+  flex-shrink: 0;
+  width: rem(44);
+  border-top: 2px solid #000;
+}
+
+.c-section-heading__label {
+  display: block;
+  margin-top: rem(16);
+  margin-left: rem(14);
+  color: #000;
+  font-family: $second-font-family;
+  font-size: rem(9);
+  font-weight: $bold;
+  line-height: 1;
+  writing-mode: vertical-rl;
+}
+
+.c-section-heading__number {
+  display: block;
+  margin-top: rem(16);
+  margin-left: rem(10);
+  color: #000;
+  font-family: $second-font-family;
+  font-size: rem(23);
+  font-weight: $bold;
+  line-height: 1;
+}
+
+.c-section-heading__body {
+  margin-left: rem(36);
+
+  @include mq("md") {
+    margin-left: rem(44);
+  }
+}
+
+.c-section-heading__en,
+.c-section-heading__ja {
+  color: #000;
+  font-weight: $bold;
+  letter-spacing: 0.02em;
+}
+
+.c-section-heading__en {
+  font-family: $second-font-family;
+  font-size: rem(16);
+  line-height: 1.35;
+
+  @include mq("md") {
+    font-size: rem(25);
+  }
+}
+
+.c-section-heading__ja {
+  margin-top: rem(8);
+  font-size: rem(20);
+  line-height: 1.4;
+
+  @include mq("md") {
+    font-size: rem(28);
+  }
+}
