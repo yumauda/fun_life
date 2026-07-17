@@ -3663,6 +3663,109 @@ input::placeholder {
   object-fit: cover;
 }
 
+.p-works-feature {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+@media screen and (min-width: 768px) {
+  .p-works-feature {
+    padding-top: 7.5rem;
+    padding-bottom: 7.5rem;
+  }
+}
+
+.p-works-feature__body {
+  margin-top: 4.5rem;
+}
+@media screen and (min-width: 768px) {
+  .p-works-feature__body {
+    display: flex;
+    align-items: flex-end;
+    gap: 4.5rem;
+  }
+}
+
+.p-works-feature__body + .p-works-feature__body {
+  margin-top: 6rem;
+}
+@media screen and (min-width: 768px) {
+  .p-works-feature__body + .p-works-feature__body {
+    margin-top: 8.75rem;
+  }
+}
+
+.p-works-feature__image {
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  max-width: 28.125rem;
+  width: 100%;
+}
+
+.p-works-feature__image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.p-works-feature__image img {
+  object-fit: cover;
+  object-position: center;
+}
+
+.p-works-feature__detail {
+  margin-top: 2.5rem;
+}
+@media screen and (min-width: 768px) {
+  .p-works-feature__detail {
+    margin-top: initial;
+    max-width: 32.5rem;
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .p-works-feature--reverse .p-works-feature__body {
+    flex-direction: row-reverse;
+  }
+}
+
+.p-works-feature__title,
+.p-works-feature__label,
+.p-works-feature__text {
+  color: #000;
+  font-weight: 700;
+}
+
+.p-works-feature__title {
+  font-size: 1.1875rem;
+  line-height: 1.55;
+  letter-spacing: 0.06em;
+}
+@media screen and (min-width: 768px) {
+  .p-works-feature__title {
+    font-size: 1.5625rem;
+  }
+}
+
+.p-works-feature__label {
+  margin-top: 0.125rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.5625rem;
+  line-height: 1.4;
+}
+
+.p-works-feature__text {
+  margin-top: 1.875rem;
+  font-size: 0.6875rem;
+  line-height: 2.35;
+}
+@media screen and (min-width: 768px) {
+  .p-works-feature__text {
+    font-size: 0.875rem;
+  }
+}
+
 .c-main-text {
   font-size: 0.8125rem;
   line-height: 1.6;
@@ -3804,6 +3907,20 @@ input::placeholder {
   .c-section-heading__en {
     font-size: 1.5625rem;
   }
+}
+
+.c-section-heading--ja-first .c-section-heading__body {
+  display: flex;
+  flex-direction: column;
+}
+
+.c-section-heading--ja-first .c-section-heading__ja {
+  order: -1;
+  margin-top: 0;
+}
+
+.c-section-heading--ja-first .c-section-heading__en {
+  margin-top: 0.125rem;
 }
 
 .c-section-heading__ja {

@@ -37,12 +37,12 @@
             </div>
             <div class="c-section-heading__body">
               <p class="c-section-heading__en">MESSAGE FROM THE PRESIDENT</p>
-              <h1 class="c-section-heading__ja">代表挨拶</h1>
+              <h2 class="c-section-heading__ja">代表挨拶</h2>
             </div>
           </div>
           <div class="p-message__row">
             <div class="p-message__body">
-              <h2 class="p-message__title">自分は人生を楽しんでいるか？<br>楽しんで仕事をしているか？</h2>
+              <h3 class="p-message__title">自分は人生を楽しんでいるか？<br>楽しんで仕事をしているか？</h3>
               <p class="p-message__text">ある時、ふと頭に浮かんだ「自分は人生を楽しんでいるか？」という問い。<br class="u-desktop">それが、ファンライフ創業のきっかけでした。私たちは、家づくりを通して<br class="u-desktop">お客様はもちろん、関わる職人や協力業者、そして自分たち自身も楽しみ<br class="u-desktop">ながら仕事ができる会社でありたいと考えています。だからこそ、数を追う<br class="u-desktop">家づくりはしません。一人ひとりのお客様と真剣に向き合い、信頼関係を<br class="u-desktop">築きながら、その人にとって本当に良い住まいを一緒につくっていきます。<br class="u-desktop">人と人との信頼の上に家を建てる。それが、ファンライフの家づくりです。</p>
             </div>
             <figure class="p-message__image">
@@ -58,7 +58,7 @@
             </div>
             <div class="c-section-heading__body">
               <p class="c-section-heading__en">CONVICTION</p>
-              <h1 class="c-section-heading__ja">人と人との信頼の上に家を建てる。</h1>
+              <h2 class="c-section-heading__ja">人と人との信頼の上に家を建てる。</h2>
             </div>
           </div>
           <div class="p-message__row">
@@ -84,7 +84,7 @@
           </div>
           <div class="c-section-heading__body">
             <p class="c-section-heading__en">MESSAGE FROM THE PRESIDENT</p>
-            <h1 class="c-section-heading__ja">代表挨拶</h1>
+            <h2 class="c-section-heading__ja">代表挨拶</h2>
           </div>
         </div>
         <div class="p-company__detail">
@@ -146,7 +146,7 @@
             </div>
             <div class="c-section-heading__body">
               <p class="c-section-heading__en">MAP</p>
-              <h1 class="c-section-heading__ja">アクセス</h1>
+              <h2 class="c-section-heading__ja">アクセス</h2>
             </div>
           </div>
           <figure class="p-map__img">
@@ -157,7 +157,7 @@
         <div class="p-map__access">
           <div class="p-map__office">
             <p class="p-map__office-en">MAIN OFFICE</p>
-            <h2 class="p-map__office-ja">本社</h2>
+            <h3 class="p-map__office-ja">本社</h3>
             <p class="p-map__address">〒861-3204 熊本県上益城郡御船町大字木倉222</p>
           </div>
           <div class="p-map__access-body">
@@ -166,12 +166,12 @@
             </div>
             <div class="p-map__routes">
               <div class="p-map__route">
-                <h3 class="p-map__route-title">御船 IC から約 5 分</h3>
+                <h4 class="p-map__route-title">御船 IC から約 5 分</h4>
                 <p class="p-map__route-en">CAR ACCESS</p>
                 <p class="p-map__route-text">九州自動車道「御船インターチェンジ」より車で約5分。<br>敷地内に駐車場をご用意しておりますので、お車でもお気軽にお越しください。</p>
               </div>
               <div class="p-map__route">
-                <h3 class="p-map__route-title">バスを降りたら、徒歩 1 分</h3>
+                <h4 class="p-map__route-title">バスを降りたら、徒歩 1 分</h4>
                 <p class="p-map__route-en">BUS ACCESS</p>
                 <p class="p-map__route-text">熊本バス「御船警察署前」停留所から徒歩約1分。<br>初めての方でも迷わずお越しいただけます。</p>
               </div>

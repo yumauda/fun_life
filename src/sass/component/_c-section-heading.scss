@@ -60,6 +60,20 @@
   }
 }
 
+.c-section-heading--ja-first .c-section-heading__body {
+  display: flex;
+  flex-direction: column;
+}
+
+.c-section-heading--ja-first .c-section-heading__ja {
+  order: -1;
+  margin-top: 0;
+}
+
+.c-section-heading--ja-first .c-section-heading__en {
+  margin-top: rem(2);
+}
+
 .c-section-heading__ja {
   margin-top: rem(8);
   font-size: rem(20);
