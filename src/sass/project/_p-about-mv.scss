@@ -2,9 +2,39 @@
 
 .p-about-mv {
   overflow-x: clip;
+  position: relative;
+}
+
+.p-about-mv::before {
+  position: absolute;
+  content: '';
+  background: url(../images/about/about_mv_bg.webp);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: auto;
+  bottom: 0;
+  left: 0;
+  aspect-ratio: 1920 / 1903;
+  z-index: 1;
 }
 
 .p-about-mv__content {
+  position: relative;
+}
+
+.p-about-mv__title {
+  position: absolute;
+  top: rem(470);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: rem(146);
+  font-weight: 700;
+  color: $white;
+  z-index: 1;
+  text-transform: uppercase;
+  z-index: 2;
 }
 
 .p-about-mv__img {
@@ -14,8 +44,37 @@
   margin-right: calc(50% - 50vw);
   width: 100vw;
 }
+
 .p-about-mv__img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.p-about-mv__detail {
+  position: absolute;
+  bottom: rem(440);
+  z-index: 3;
+}
+
+.p-about-mv__text-img {
+  max-width: rem(1000);
+  margin-left: auto;
+  margin-right: auto;
+}
+.p-about-mv__text-img img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.p-about-mv__text {
+  margin-top: rem(160);
+  color: #fff;
+  font-size: rem(18);
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 0.1em;
+  line-height: 1.5;
 }

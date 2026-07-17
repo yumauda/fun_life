@@ -3,6 +3,23 @@
   <section class="p-about-mv">
     <div class="l-inner">
       <div class="p-about-mv__content">
+        <h1 class="p-about-mv__title">about</h1>
+        <div class="p-about-mv__detail">
+          <div class="p-about-mv__text-img">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/about/about_mv_text.webp" alt="no fun, no life" width="1000" height="240">
+          </div>
+          <p class="p-about-mv__text">家は、ただ住むための場所ではありません。<br>
+            家族と笑い合い、好きなことを楽しみ、人生を重ねていく場所です。<br><br>
+
+            私たちは、性能やデザインだけでなく、<br>
+            その先にある「楽しい暮らし」を大切にしています。<br><br>
+
+            一人ひとりの理想に寄り添いながら、<br>
+            帰るのが楽しみになる住まいをつくる。<br><br>
+
+            NO Fun No Life<br>
+            人生を楽しむための家づくりを、これからも。</p>
+        </div>
         <figure class="p-about-mv__img">
           <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/about/about_mv.webp" alt="no fun, no life" width="1920" height="2877">
         </figure>
