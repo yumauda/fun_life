@@ -30,6 +30,27 @@ if (document.querySelector(".slider1")) {
   });
 }
 
+if (document.querySelector(".p-free__slider")) {
+  new Swiper(".p-free__slider", {
+    slidesPerView: "auto",
+    spaceBetween: 24,
+    loop: true,
+    speed: 5000,
+    allowTouchMove: true,
+    freeMode: true,
+    autoplay: {
+      delay: 0,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+    },
+    breakpoints: {
+      768: {
+        spaceBetween: 44,
+      },
+    },
+  });
+}
+
 const modularRoot = document.querySelector(".p-modular");
 
 if (modularRoot) {

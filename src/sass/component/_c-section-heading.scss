@@ -3,7 +3,11 @@
 .c-section-heading {
   display: flex;
   align-items: flex-start;
-  white-space: nowrap;
+  white-space: normal;
+
+  @include mq("md") {
+    white-space: nowrap;
+  }
 }
 
 .c-section-heading__index {

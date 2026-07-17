@@ -35,7 +35,171 @@ jQuery(function ($) {
 
 document.addEventListener("DOMContentLoaded", () => {
   setUpAccordion();
+  setUpWorksModal();
+  setUpStyleSelector();
 });
+
+const setUpStyleSelector = () => {
+  const sections = document.querySelectorAll(".js-style");
+  if (!sections.length) return;
+
+  sections.forEach((section) => {
+
+  const items = Array.from(section.querySelectorAll(".js-style-item"));
+  const detail = section.querySelector(".p-style__detail");
+  const title = section.querySelector(".js-style-title");
+  const text = section.querySelector(".js-style-text");
+  const cursor = section.querySelector(".js-style-cursor");
+  const gallery = section.querySelector(".js-style-gallery");
+  let changeTimer = null;
+  let resizeTimer = null;
+  let activeItem = items.find((item) => item.classList.contains("is-active"));
+
+  const setDetailMinHeight = () => {
+    const detailWidth = detail.getBoundingClientRect().width;
+    if (!detailWidth) return;
+
+    const clone = detail.cloneNode(true);
+    const cloneTitle = clone.querySelector(".js-style-title");
+    const cloneText = clone.querySelector(".js-style-text");
+    clone.classList.remove("is-changing");
+    clone.removeAttribute("aria-live");
+    clone.setAttribute("aria-hidden", "true");
+    clone.style.position = "fixed";
+    clone.style.visibility = "hidden";
+    clone.style.pointerEvents = "none";
+    clone.style.width = `${detailWidth}px`;
+    clone.style.minHeight = "0";
+    document.body.appendChild(clone);
+
+    const maxHeight = items.reduce((height, item) => {
+      cloneTitle.innerHTML = item.dataset.styleTitle;
+      cloneText.textContent = item.dataset.styleText;
+      return Math.max(height, clone.scrollHeight);
+    }, 0);
+
+    clone.remove();
+    detail.style.minHeight = `${Math.ceil(maxHeight)}px`;
+  };
+
+  const updateStyle = (item) => {
+    if (item === activeItem) return;
+    activeItem = item;
+    items.forEach((button) => {
+      const isActive = button === item;
+      button.classList.toggle("is-active", isActive);
+      button.setAttribute("aria-pressed", String(isActive));
+    });
+
+    window.clearTimeout(changeTimer);
+    detail.classList.add("is-changing");
+    changeTimer = window.setTimeout(() => {
+      title.innerHTML = item.dataset.styleTitle;
+      text.textContent = item.dataset.styleText;
+      detail.classList.remove("is-changing");
+    }, 220);
+  };
+
+  items.forEach((item) => {
+    item.addEventListener("mouseenter", () => updateStyle(item));
+    item.addEventListener("focus", () => updateStyle(item));
+    item.addEventListener("click", () => updateStyle(item));
+  });
+
+  setDetailMinHeight();
+  document.fonts?.ready.then(setDetailMinHeight);
+  window.addEventListener("resize", () => {
+    window.clearTimeout(resizeTimer);
+    resizeTimer = window.setTimeout(setDetailMinHeight, 150);
+  });
+
+  if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+
+  let mouseX = 0;
+  let mouseY = 0;
+  let frameId = null;
+  const renderCursor = () => {
+    cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
+    frameId = null;
+  };
+
+  gallery.addEventListener("pointermove", (event) => {
+    mouseX = event.clientX;
+    mouseY = event.clientY;
+    if (!frameId) frameId = window.requestAnimationFrame(renderCursor);
+  });
+  gallery.addEventListener("pointerenter", () => cursor.classList.add("is-visible"));
+  gallery.addEventListener("pointerleave", () => cursor.classList.remove("is-visible"));
+  });
+};
+
+const setUpWorksModal = () => {
+  const modals = document.querySelectorAll(".js-works-modal");
+  if (!modals.length) return;
+
+  let activeModal = null;
+  let lastFocusedElement = null;
+
+  const getFocusableElements = (modal) => Array.from(
+    modal.querySelectorAll('button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])')
+  );
+
+  const closeModal = () => {
+    if (!activeModal) return;
+    activeModal.classList.remove("is-open");
+    activeModal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("is-works-modal-open");
+    const focusTarget = lastFocusedElement;
+    activeModal = null;
+    window.setTimeout(() => {
+      if (!activeModal) focusTarget?.focus();
+    }, 350);
+  };
+
+  const openModal = (modal, trigger) => {
+    if (!modal) return;
+    activeModal = modal;
+    lastFocusedElement = trigger;
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("is-works-modal-open");
+    window.setTimeout(() => modal.querySelector(".p-works-modal__close")?.focus(), 50);
+  };
+
+  document.addEventListener("click", (event) => {
+    const openButton = event.target.closest(".js-works-modal-open");
+    if (openButton) {
+      openModal(document.getElementById(openButton.dataset.modalTarget), openButton);
+      return;
+    }
+
+    if (activeModal && event.target.closest(".js-works-modal-close")) {
+      closeModal();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (!activeModal) return;
+    if (event.key === "Escape") {
+      closeModal();
+      return;
+    }
+    if (event.key !== "Tab") return;
+
+    const focusableElements = getFocusableElements(activeModal);
+    if (!focusableElements.length) return;
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+
+    if (event.shiftKey && document.activeElement === firstElement) {
+      event.preventDefault();
+      lastElement.focus();
+    } else if (!event.shiftKey && document.activeElement === lastElement) {
+      event.preventDefault();
+      firstElement.focus();
+    }
+  });
+};
 
 const setUpAccordion = () => {
   const details = document.querySelectorAll(".js-details");

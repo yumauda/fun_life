@@ -1,0 +1,175 @@
+@use "../global" as *;
+
+.p-style {
+  padding-top: rem(100);
+  padding-bottom: rem(100);
+
+  @include mq("md") {
+    padding-top: rem(180);
+    padding-bottom: rem(180);
+  }
+}
+
+.p-style__content {
+  margin-inline: auto;
+
+  @include mq("md") {
+    display: flex;
+    align-items: center;
+    gap: rem(36);
+  }
+}
+
+.p-style__detail {
+  max-width: rem(410);
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.22s ease, transform 0.22s ease;
+}
+
+.p-style__detail.is-changing {
+  opacity: 0;
+  transform: translateY(rem(10));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .p-style__detail {
+    transition-duration: 0.01ms;
+  }
+}
+
+.p-style__detail-title {
+  color: #000;
+  font-size: rem(20);
+  font-weight: $bold;
+  letter-spacing: 0.08em;
+  line-height: 1.55;
+
+  @include mq("md") {
+    font-size: rem(27);
+  }
+}
+
+.p-style__detail-text {
+  margin-top: rem(24);
+  color: #000;
+  font-size: rem(11);
+  font-weight: $bold;
+  line-height: 2.25;
+
+  @include mq("md") {
+    font-size: rem(14);
+  }
+}
+
+.p-style__main {
+  margin-top: rem(58);
+
+  @include mq("md") {
+    margin-top: 0;
+  }
+}
+
+.p-style__heading {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.p-style__heading-text {
+  color: #000;
+  font-family: $second-font-family;
+  font-size: rem(25);
+  font-weight: $bold;
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+
+.p-style__heading-line {
+  width: rem(160);
+  height: 1px;
+  margin-left: rem(28);
+  background: #000;
+}
+
+.p-style__gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: rem(54);
+}
+
+.p-style__item {
+  padding: rem(20);
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.p-style__item:nth-child(even) {
+  border-left: 1px solid #b9b9b9;
+}
+
+.p-style__item:nth-child(n + 3) {
+  border-top: 1px solid #b9b9b9;
+}
+
+.p-style__item:not(.is-active) {
+  opacity: 0.72;
+}
+
+.p-style__item:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: rem(-4);
+}
+
+.p-style__image {
+  width: 100%;
+  aspect-ratio: 900 / 811;
+  overflow: hidden;
+}
+
+.p-style__image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.p-style__cursor {
+  display: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .p-style__gallery,
+  .p-style__item {
+    cursor: none;
+  }
+
+  .p-style__cursor {
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    display: grid;
+    place-items: center;
+    width: rem(62);
+    height: rem(62);
+    border-radius: 50%;
+    background: #231815;
+    color: #fff;
+    font-family: $second-font-family;
+    font-size: rem(9);
+    font-weight: $bold;
+    pointer-events: none;
+    visibility: hidden;
+    opacity: 0;
+    transform: translate3d(-50%, -50%, 0);
+    transition: visibility 0.2s, opacity 0.2s;
+  }
+
+  .p-style__cursor.is-visible {
+    visibility: visible;
+    opacity: 1;
+  }
+}
