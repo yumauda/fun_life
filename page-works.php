@@ -175,6 +175,125 @@
       </div>
     </div>
   </section>
+  <section class="p-performance">
+    <div class="l-inner">
+      <h2 class="p-performance__title">住宅性能基準</h2>
+      <div class="p-performance__content">
+        <div class="p-performance__accordions">
+          <details class="p-performance__item js-details" open>
+            <summary class="p-performance__summary js-summary">
+              <span><strong>断熱</strong> HEAT20評価基準 G2／UA値 0.46以下</span>
+              <span class="p-performance__icon" aria-hidden="true"></span>
+            </summary>
+            <div class="p-performance__body js-content">
+              <div class="p-performance__body-inner">
+                <h3 class="p-performance__heading">HEAT20評価基準 G2</h3>
+                <p class="p-performance__text">冬季の室内温度を保ちやすく、夏の暑さも抑える断熱性能です。冷暖房に頼りすぎず、一年を通して快適な室内環境を目指します。</p>
+                <h3 class="p-performance__heading">UA値 0.46以下</h3>
+                <p class="p-performance__text">UA値とは、住宅の断熱性能を表す数値です。数値が小さいほど熱が逃げにくく、省エネルギーで快適な住まいにつながります。</p>
+              </div>
+            </div>
+          </details>
+          <details class="p-performance__item js-details">
+            <summary class="p-performance__summary js-summary">
+              <span><strong>気密</strong> C値 0.1〜0.5㎠/㎡</span>
+              <span class="p-performance__icon" aria-hidden="true"></span>
+            </summary>
+            <div class="p-performance__body js-content">
+              <div class="p-performance__body-inner">
+                <p class="p-performance__text">建物のすき間を抑え、外気の影響を受けにくい安定した室内環境をつくります。</p>
+              </div>
+            </div>
+          </details>
+          <details class="p-performance__item js-details">
+            <summary class="p-performance__summary js-summary">
+              <span><strong>換気</strong> ダクトレス</span>
+              <span class="p-performance__icon" aria-hidden="true"></span>
+            </summary>
+            <div class="p-performance__body js-content">
+              <div class="p-performance__body-inner">
+                <p class="p-performance__text">ダクトレス換気で空気を効率よく入れ替え、室内を心地よく清潔に保ちます。</p>
+              </div>
+            </div>
+          </details>
+          <details class="p-performance__item js-details">
+            <summary class="p-performance__summary js-summary">
+              <span><strong>耐震</strong> 耐震等級3取得</span>
+              <span class="p-performance__icon" aria-hidden="true"></span>
+            </summary>
+            <div class="p-performance__body js-content">
+              <div class="p-performance__body-inner">
+                <p class="p-performance__text">住宅性能表示制度における最高等級の耐震等級3を取得し、地震に備えます。</p>
+              </div>
+            </div>
+          </details>
+        </div>
+        <figure class="p-performance__image">
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/performance_img.webp" alt="明るい木目のキッチン" width="648" height="824" loading="lazy" decoding="async">
+        </figure>
+      </div>
+    </div>
+  </section>
+  <section class="p-all">
+    <div class="l-inner">
+      <div class="p-all__content">
+        <figure class="p-all__image">
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/all_img.webp" alt="バイクを整備するスタッフの手元" width="1000" height="1000" loading="lazy" decoding="async">
+        </figure>
+        <p class="p-all__text">全て最高クラスの設備が<br>必要ではありません。</p>
+      </div>
+    </div>
+  </section>
+  <section class="p-cad">
+    <div class="l-inner">
+      <div class="p-cad__content">
+        <div class="p-cad__body">
+          <h2 class="p-cad__title">3DCADでわかりやすく</h2>
+          <p class="p-cad__text">平面図だけでは分かりにくい空間の広さや家具の配置、窓から入る光のイメージまで立体的に確認することができます。「思っていたのと違った」を減らしながら、理想の住まいを具体的に形にしていけるのも3DCADの魅力です。完成後の暮らしを想像しながら、納得のいく家づくりを進めていきましょう。</p>
+        </div>
+        <figure class="p-cad__image">
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/cad_img.webp" alt="3DCADの画面を使って住宅プランを説明するスタッフ" width="1712" height="1025" loading="lazy" decoding="async">
+        </figure>
+      </div>
+      <div class="p-cad__content p-cad__content--plan">
+        <figure class="p-cad__image p-cad__image--plan">
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/cad_img2.webp" alt="太陽光パネルを備えた住宅の3DCADイメージ" width="2000" height="1267" loading="lazy" decoding="async">
+        </figure>
+        <div class="p-cad__body p-cad__body--plan">
+          <p class="p-cad__lead">予算内でのベストな組み合わせを<br class="u-desktop">一緒に探しましょう。</p>
+          <p class="p-cad__lead">お客様の価値観に合う最適な<br class="u-desktop">プランをご提案します。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="p-renovation">
+    <div class="l-inner">
+      <div class="p-renovation__heading">
+        <div class="p-renovation__number" aria-label="WORKS 03">
+          <span class="p-renovation__label">WORKS</span>
+          <span class="p-renovation__count">03</span>
+        </div>
+        <h2 class="p-renovation__title">
+          <span class="p-renovation__title-ja">思い出はそのままに。</span>
+          <span class="p-renovation__title-en">REFORM / RENOVATION</span>
+        </h2>
+      </div>
+      <div class="p-renovation__content">
+        <div class="p-renovation__copy">
+          <h3 class="p-renovation__lead">住み慣れた家を、<br>これからの暮らしにフィットさせる。</h3>
+          <p class="p-renovation__text">新築時の良さやライフスタイルの変化によって、住まいに求めるものも少しずつ変わっていきます。リフォームやリノベーションは、住み慣れた家の良さを残しながら、今の暮らしに合わせて住まいを見直す選択肢のひとつです。水まわりの更新や間取りの見直しはもちろん、断熱向上や耐震性の改善など、これからも長く快適に暮らしていくための住まいづくりをお手伝いします。</p>
+        </div>
+        <figure class="p-renovation__image">
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/reform_img.webp" alt="夕日の中に停められたバイク" width="1396" height="1137" loading="lazy" decoding="async">
+        </figure>
+      </div>
+      <div class="p-renovation__bottom">
+        <h3 class="p-renovation__subtitle">国産木材が生み出す、心地よい空間。</h3>
+        <p class="p-renovation__text">ファンライフでは、リフォームやリノベーションに国産木材を取り入れています。木を活かすやさしい内装や新たな間取り、空間に広がりを持たせる意匠も大切にしています。価値観や好みを丁寧に伺い、自然素材の魅力を感じられる住まいをご提案します。</p>
+      </div>
+    </div>
+  </section>
+
   <?php
   $lineup_items = array(
     array(
