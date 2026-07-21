@@ -1,0 +1,97 @@
+@use "../global" as *;
+
+.p-thanks {
+  min-height: 100vh;
+  padding-top: rem(65);
+  padding-bottom: rem(110);
+  color: #000;
+
+  @include mq(md) {
+    padding-top: rem(115);
+    padding-bottom: rem(170);
+  }
+}
+.p-thanks__content {
+  max-width: rem(800);
+  margin-inline: auto;
+}
+
+.p-thanks__title {
+  font-family: $second-font-family;
+  font-size: clamp(rem(58), 9vw, rem(92));
+  font-weight: $bold;
+  letter-spacing: -0.055em;
+  line-height: 0.78;
+}
+
+.p-thanks__subtitle {
+  margin-top: rem(20);
+  font-size: rem(18);
+  font-weight: $bold;
+  line-height: 1.5;
+
+  @include mq(md) {
+    font-size: rem(22);
+  }
+}
+
+.p-thanks__message {
+  margin-top: rem(37);
+  padding-top: rem(38);
+  border-top: 1px solid #999;
+
+  @include mq(md) {
+    margin-top: rem(46);
+    padding-top: rem(46);
+  }
+}
+
+.p-thanks__lead,
+.p-thanks__text,
+.p-thanks__notice {
+  font-size: rem(11);
+  font-weight: $bold;
+  line-height: 1.9;
+}
+
+.p-thanks__text {
+  margin-top: rem(24);
+}
+
+.p-thanks__notice {
+  margin-top: rem(24);
+  font-size: rem(9);
+  font-weight: $normal;
+  line-height: 1.8;
+}
+
+.p-thanks__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: rem(150);
+  min-height: rem(42);
+  margin-top: rem(45);
+  margin-inline: auto;
+  color: #fff;
+  font-size: rem(10);
+  font-weight: $bold;
+  background: #000;
+  border: 1px solid #000;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .p-thanks__button {
+    transition: color 0.3s ease, background-color 0.3s ease;
+  }
+
+  .p-thanks__button:hover {
+    color: #000;
+    background: #fff;
+  }
+}
+
+.p-thanks__button:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: rem(4);
+}
