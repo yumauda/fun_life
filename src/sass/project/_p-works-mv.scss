@@ -1,0 +1,127 @@
+@use "../global" as *;
+
+.p-works-mv {
+  padding-bottom: rem(90);
+  overflow-x: clip;
+
+  @include mq(md) {
+    padding-bottom: rem(32);
+  }
+}
+
+.p-works-mv__image {
+  aspect-ratio: 3321 / 1200;
+  overflow: hidden;
+  position: relative;
+  margin-left: calc(50% - 50vw);
+}
+
+.p-works-mv__image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.p-works-mv__image::before {
+  position: absolute;
+  content: '';
+  background: url(../images/works/mv_bottom.webp);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: auto;
+  aspect-ratio: 1660 / 117;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.p-works-mv__title {
+  position: relative;
+  z-index: 1;
+  margin-top: rem(-38);
+  color: #000;
+  font-family: $second-font-family;
+  font-size: clamp(rem(48), 11vw, rem(112));
+  font-weight: $bold;
+  letter-spacing: 0.05em;
+  line-height: 1;
+
+  @include mq(md) {
+    margin-top: rem(-68);
+  }
+}
+
+.p-works-mv__nav {
+  margin-top: rem(28);
+
+  @include mq(md) {
+    margin-top: rem(44);
+  }
+}
+
+.p-works-mv__item+.p-works-mv__item {
+  margin-top: rem(14);
+
+  @include mq(md) {
+    margin-top: rem(18);
+  }
+}
+
+.p-works-mv__link {
+  display: inline-flex;
+  flex-direction: column;
+  color: #c8c8c8;
+  font-family: $second-font-family;
+  font-weight: $bold;
+  transition: color 0.3s ease;
+}
+
+.p-works-mv__link.is-current {
+  color: #000;
+}
+
+.p-works-mv__link-en,
+.p-works-mv__link-ja {
+  display: block;
+}
+
+.p-works-mv__link-en {
+  font-size: rem(14);
+  line-height: 1;
+
+  @include mq(md) {
+    font-size: rem(20);
+  }
+}
+
+.p-works-mv__link-ja {
+  margin-top: rem(2);
+  font-family: $base-font-family;
+  font-size: rem(6);
+  line-height: 1;
+
+  @include mq(md) {
+    font-size: rem(8);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .p-works-mv__link:hover {
+    color: #000;
+  }
+}
+
+.p-works-mv__link:focus-visible {
+  color: #000;
+  outline: 2px solid #000;
+  outline-offset: rem(5);
+}
+
+#concept,
+#designed-for-living,
+#reform-renovation,
+#modular-home {
+  scroll-margin-top: rem(24);
+}

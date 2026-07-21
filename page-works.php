@@ -1,6 +1,44 @@
 <?php get_header(); ?>
 <main>
-  <section class="p-works-feature">
+  <section class="p-works-mv">
+    <div class="l-inner">
+      <figure class="p-works-mv__image">
+        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/mv.webp" alt="リビングでゲームを楽しむ仲間たち" width="3321" height="1200" decoding="async">
+      </figure>
+
+      <h1 class="p-works-mv__title">WORKS</h1>
+      <nav class="p-works-mv__nav" aria-label="WORKS ページ内メニュー">
+        <ul class="p-works-mv__list">
+          <li class="p-works-mv__item">
+            <a class="p-works-mv__link is-current" href="#concept">
+              <span class="p-works-mv__link-en">CONCEPT</span>
+              <span class="p-works-mv__link-ja">コンセプト</span>
+            </a>
+          </li>
+          <li class="p-works-mv__item">
+            <a class="p-works-mv__link" href="#designed-for-living">
+              <span class="p-works-mv__link-en">DESIGNED FOR LIVING</span>
+              <span class="p-works-mv__link-ja">設計</span>
+            </a>
+          </li>
+          <li class="p-works-mv__item">
+            <a class="p-works-mv__link" href="#reform-renovation">
+              <span class="p-works-mv__link-en">REFORM / RENOVATION</span>
+              <span class="p-works-mv__link-ja">リフォーム／リノベーション</span>
+            </a>
+          </li>
+          <li class="p-works-mv__item">
+            <a class="p-works-mv__link" href="#modular-home">
+              <span class="p-works-mv__link-en">MODULAR HOME</span>
+              <span class="p-works-mv__link-ja">規格住宅</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </section>
+
+  <section class="p-works-feature" id="concept">
     <div class="l-inner">
       <div class="p-works-feature__content">
         <div class="c-section-heading c-section-heading--ja-first">
@@ -10,7 +48,7 @@
           </div>
           <div class="c-section-heading__body">
             <p class="c-section-heading__en">CONCEPT</p>
-            <h1 class="c-section-heading__ja">ずっと、となりで。</h1>
+            <h2 class="c-section-heading__ja">ずっと、となりで。</h2>
           </div>
         </div>
         <div class="p-works-feature__body">
@@ -26,7 +64,7 @@
       </div>
     </div>
   </section>
-  <section class="p-works-feature p-works-feature--reverse">
+  <section class="p-works-feature p-works-feature--reverse" id="designed-for-living">
     <div class="l-inner">
       <div class="p-works-feature__content">
         <div class="c-section-heading">
@@ -266,7 +304,7 @@
       </div>
     </div>
   </section>
-  <section class="p-renovation">
+  <section class="p-renovation" id="reform-renovation">
     <div class="l-inner">
       <div class="p-renovation__heading">
         <div class="p-renovation__number" aria-label="WORKS 03">
@@ -293,6 +331,88 @@
       </div>
     </div>
   </section>
+  <section class="p-before-after">
+    <div class="l-inner">
+      <h2 class="p-before-after__title">帰るたび、好きになる。</h2>
+      <div class="p-before-after__list">
+        <article class="p-before-after__item">
+          <div class="p-before-after__images">
+            <figure class="p-before-after__image">
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/before_after01.webp" alt="リフォーム前の住まい" width="1398" height="1398" loading="lazy" decoding="async">
+            </figure>
+            <figure class="p-before-after__image">
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/before_after02.webp" alt="リフォーム後の明るい住まい" width="1398" height="1398" loading="lazy" decoding="async">
+            </figure>
+          </div>
+          <div class="p-before-after__body">
+            <h3 class="p-before-after__heading">住まいを変える。暮らしが変わる。</h3>
+            <p class="p-before-after__category">REFORM</p>
+            <p class="p-before-after__text">住み慣れた家にも、まだまだ可能性があります。間取りの見直しや内装の刷新、設備の入れ替えによって、毎日の暮らしはもっと快適に。ビフォーアフターで、その変化をご覧ください。今だけでなく、将来を見据えた住まいとしても人気を集めています。</p>
+          </div>
+        </article>
+        <article class="p-before-after__item">
+          <div class="p-before-after__images">
+            <figure class="p-before-after__image">
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/before_after03.webp" alt="改装前の店舗外観" width="1401" height="1401" loading="lazy" decoding="async">
+            </figure>
+            <figure class="p-before-after__image">
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/before_after04.webp" alt="改装後の店舗外観" width="1401" height="1401" loading="lazy" decoding="async">
+            </figure>
+          </div>
+          <div class="p-before-after__body">
+            <h3 class="p-before-after__heading">お店の魅力を引き出す店舗づくり。</h3>
+            <p class="p-before-after__category">RENOVATION</p>
+            <p class="p-before-after__text">店舗は、商品やサービスの魅力を伝える大切な場所です。デザインや動線、空間の雰囲気を見直すことで、お客さまに与える印象も大きく変わります。ビフォーアフターで、その違いをご体感ください。今だけでなく、将来を見据えた住まいとしても人気を集めています。</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-reform-link">
+    <div class="l-inner">
+      <div class="p-reform-link__content">
+        <figure class="p-reform-link__image p-reform-link__image--large">
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/reform_link1.webp" alt="木の梁を活かしてリフォームしたキッチン" width="1594" height="1160" loading="lazy" decoding="async">
+        </figure>
+        <div class="p-reform-link__side">
+          <figure class="p-reform-link__image p-reform-link__image--small">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/reform_link2.webp" alt="木の温もりを感じるリフォーム後のリビング" width="1215" height="884" loading="lazy" decoding="async">
+          </figure>
+          <div class="p-reform-link__body">
+            <h2 class="p-reform-link__title">REFORM / RENOVATION</h2>
+            <a class="p-reform-link__button" href="<?php echo esc_url(home_url('/#reform')); ?>">View More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-modular-home" id="modular-home">
+    <div class="l-inner">
+      <div class="p-modular-home__heading">
+        <div class="p-modular-home__number" aria-label="WORKS 04">
+          <span class="p-modular-home__label">WORKS</span>
+          <span class="p-modular-home__count">04</span>
+        </div>
+        <h2 class="p-modular-home__title">
+          <span class="p-modular-home__title-en">MODULAR HOME</span>
+          <span class="p-modular-home__title-ja">いい家を、もっと身近に。</span>
+        </h2>
+      </div>
+      <div class="p-modular-home__content">
+        <div class="p-modular-home__copy">
+          <h3 class="p-modular-home__lead">デザイン・性能・価格の<br>バランスを考えた規格住宅。</h3>
+          <p class="p-modular-home__text">標準仕様は、これまで培ってきたプロの経験とノウハウをもとに、暮らしやすさを考えた設備を採用。間取りやデザインも一から考える必要をなくしながら、家族の暮らしに必要な空間や使いやすさをしっかりと確保。建物コストとのバランスを大切にした住まいをご提案します。</p>
+        </div>
+        <figure class="p-modular-home__image">
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/modular_img.webp" alt="夕暮れの海辺で会話を楽しむ仲間たち" width="1401" height="1401" loading="lazy" decoding="async">
+        </figure>
+      </div>
+    </div>
+  </section>
+
+
 
   <?php
   $lineup_items = array(
