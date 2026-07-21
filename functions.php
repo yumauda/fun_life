@@ -255,7 +255,7 @@ function Change_menulabel()
 {
 	global $menu;
 	global $submenu;
-	$name = 'お知らせ';
+	$name = 'ブログ';
 	$menu[5][0] = $name;
 	$submenu['edit.php'][5][0] = $name . '一覧';
 	$submenu['edit.php'][10][0] = '新しい' . $name;
@@ -263,7 +263,7 @@ function Change_menulabel()
 function Change_objectlabel()
 {
 	global $wp_post_types;
-	$name = 'お知らせ';
+	$name = 'ブログ';
 	$labels = &$wp_post_types['post']->labels;
 	$labels->name = $name;
 	$labels->singular_name = $name;
@@ -349,41 +349,41 @@ function custom_hiragana_validation_filter($result, $tag)
 }
 
 //投稿タイプの作成(カスタム投稿)
-register_post_type(
-	'allcolumn',
-	array(
-		'labels' => array(
-			'name' => __('コラム'),
-			'singular_name' => __('コラム')
-		),
-		'supports' => array(
-			'title',
-			'editor',
-			'author',
-			'thumbnail',
-			'excerpt',
-			'custom-fields',
-			'comments',
-			'categories'
-		),
-		'public' => true,
-		'has_archive' => true,
-		'show_in_rest' => true,
-	)
-);
-register_taxonomy('allcolumn_category', array('allcolumn'), array(
-	'hierarchical' => true,
-	'label' => 'カテゴリー',
-	'show_ui' => true,
-	'public' => true
-));
-register_taxonomy('allcolumn_tag', 'allcolumn', array(
-	'hierarchical' => false,
-	'label' => 'タグ',
-	'show_ui' => true,
-	'public' => true,
-	'show_in_rest' => true,
-));
+// register_post_type(
+// 	'allcolumn',
+// 	array(
+// 		'labels' => array(
+// 			'name' => __('コラム'),
+// 			'singular_name' => __('コラム')
+// 		),
+// 		'supports' => array(
+// 			'title',
+// 			'editor',
+// 			'author',
+// 			'thumbnail',
+// 			'excerpt',
+// 			'custom-fields',
+// 			'comments',
+// 			'categories'
+// 		),
+// 		'public' => true,
+// 		'has_archive' => true,
+// 		'show_in_rest' => true,
+// 	)
+// );
+// register_taxonomy('allcolumn_category', array('allcolumn'), array(
+// 	'hierarchical' => true,
+// 	'label' => 'カテゴリー',
+// 	'show_ui' => true,
+// 	'public' => true
+// ));
+// register_taxonomy('allcolumn_tag', 'allcolumn', array(
+// 	'hierarchical' => false,
+// 	'label' => 'タグ',
+// 	'show_ui' => true,
+// 	'public' => true,
+// 	'show_in_rest' => true,
+// ));
 
 add_filter('body_class', function ($classes) {
 	if (is_front_page()) {

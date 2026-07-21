@@ -1,0 +1,270 @@
+@use "../global" as *;
+
+.p-blog {
+  color: #000;
+}
+
+.p-blog__heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-top: rem(52);
+  padding-bottom: rem(62);
+
+  @include mq(md) {
+    padding-top: rem(90);
+    padding-bottom: rem(86);
+  }
+}
+
+.p-blog__title-en,
+.p-blog__title-ja {
+  display: block;
+}
+
+.p-blog__title-en {
+  font-family: $second-font-family;
+  font-size: rem(37);
+  font-weight: $bold;
+  letter-spacing: -0.04em;
+  line-height: 1;
+
+  @include mq(md) {
+    font-size: rem(64);
+  }
+}
+
+.p-blog__title-ja {
+  margin-top: rem(4);
+  font-size: rem(14);
+  font-weight: $bold;
+  line-height: 1;
+
+  @include mq(md) {
+    font-size: rem(20);
+  }
+}
+
+.p-blog__pages {
+  text-align: center;
+}
+
+.p-blog__pages-title {
+  font-family: $second-font-family;
+  font-size: rem(15);
+  font-weight: $bold;
+  line-height: 1;
+
+  @include mq(md) {
+    font-size: rem(23);
+  }
+}
+
+.p-blog__pages-links {
+  display: flex;
+  margin-top: rem(9);
+  column-gap: rem(7);
+}
+
+.p-blog__pages-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: rem(16);
+  padding-right: rem(8);
+  padding-left: rem(8);
+  color: #fff;
+  font-family: $second-font-family;
+  font-size: rem(8);
+  font-weight: $bold;
+  line-height: 1;
+  background: #000;
+
+  @include mq(md) {
+    min-height: rem(22);
+    padding-right: rem(13);
+    padding-left: rem(13);
+    font-size: rem(10);
+  }
+}
+
+.p-blog__archive {
+  padding-top: rem(70);
+  padding-bottom: rem(100);
+  background: #f7f7f7;
+
+  @include mq(md) {
+    padding-top: rem(115);
+    padding-bottom: rem(150);
+  }
+}
+
+
+
+.p-blog__grid {
+  width: 100%;
+
+  @include mq(md) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: rem(50);
+    row-gap: rem(105);
+  }
+}
+
+.p-blog__card + .p-blog__card {
+  margin-top: rem(70);
+
+  @include mq(md) {
+    margin-top: 0;
+  }
+}
+
+.p-blog__card-link {
+  display: block;
+  color: #000;
+}
+
+.p-blog__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.p-blog__category {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: rem(48);
+  min-height: rem(16);
+  padding-right: rem(7);
+  padding-left: rem(7);
+  font-size: rem(9);
+  font-weight: $bold;
+  line-height: 1;
+  border: 1px solid #000;
+
+  @include mq(md) {
+    min-width: rem(64);
+    min-height: rem(20);
+    font-size: rem(11);
+  }
+}
+
+.p-blog__date {
+  font-family: $second-font-family;
+  font-size: rem(9);
+  font-weight: $bold;
+  line-height: 1;
+
+  @include mq(md) {
+    font-size: rem(11);
+  }
+}
+
+.p-blog__image {
+  width: 100%;
+  aspect-ratio: 1.72 / 1;
+  margin-top: rem(16);
+  overflow: hidden;
+
+  @include mq(md) {
+    margin-top: rem(22);
+  }
+}
+
+.p-blog__image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.p-blog__card-meta {
+  margin-top: rem(17);
+  font-size: rem(9);
+  font-weight: $bold;
+  line-height: 1.7;
+
+  @include mq(md) {
+    font-size: rem(11);
+  }
+}
+
+.p-blog__card-title {
+  margin-top: rem(14);
+  font-size: rem(14);
+  font-weight: $bold;
+  line-height: 1.65;
+
+  @include mq(md) {
+    font-size: rem(17);
+  }
+}
+
+.p-blog__pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: rem(90);
+  column-gap: rem(18);
+
+  @include mq(md) {
+    margin-top: rem(130);
+    column-gap: rem(22);
+  }
+}
+
+.p-blog__pagination-link,
+.p-blog__pagination-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: rem(18);
+  height: rem(18);
+  color: #000;
+  font-family: $second-font-family;
+  font-size: rem(10);
+  font-weight: $bold;
+  line-height: 1;
+}
+
+.p-blog__pagination-link.is-current {
+  border: 1px solid #000;
+}
+
+.p-blog__pagination-next {
+  width: rem(12);
+  height: rem(12);
+  margin-left: rem(42);
+  border-top: 2px solid #000;
+  border-right: 2px solid #000;
+  transform: rotate(45deg);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .p-blog__card:hover .p-blog__image img {
+    transform: scale(1.055);
+  }
+
+  .p-blog__pages-link,
+  .p-blog__pagination-link {
+    transition: opacity 0.3s ease;
+  }
+
+  .p-blog__pages-link:hover,
+  .p-blog__pagination-link:hover {
+    opacity: 0.55;
+    cursor: pointer;
+  }
+}
+
+.p-blog__card-link:focus-visible .p-blog__image img {
+  transform: scale(1.055);
+}
+
+.p-blog a:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: rem(4);
+}
