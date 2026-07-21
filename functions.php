@@ -53,6 +53,9 @@ function my_script_init()
 	if (is_page('office')) {
 		wp_enqueue_script('js-office-agreement', get_template_directory_uri() . '/js/office-agreement.js', array('jquery'), filemtime(get_theme_file_path('/js/office-agreement.js')), true);
 	}
+	if (is_page('contact')) {
+		wp_enqueue_script('js-contact-form', get_template_directory_uri() . '/js/contact-form.js', array(), filemtime(get_theme_file_path('/js/contact-form.js')), true);
+	}
 	wp_enqueue_script('script', get_template_directory_uri() . '/js/script.js', array('jquery'), filemtime(get_theme_file_path('/js/script.js')), true);
 }
 add_action('wp_enqueue_scripts', 'my_script_init');

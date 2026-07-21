@@ -1,0 +1,60 @@
+<!-- Contact Form 7「お問い合わせ」のフォーム欄へ貼り付け -->
+<div class="p-contact-form__input js-contact-input">
+  <fieldset class="p-contact-form__group p-contact-form__group--type">
+    <legend class="p-contact-form__label">お問い合わせ種別</legend>
+    <div data-confirm-key="contact-type">[checkbox contact-type id:contact-type use_label_element "新しくお家を建てたい" "リフォーム・リノベーション" "モデルハウス見学" "土地について相談したい"]</div>
+  </fieldset>
+
+  <div class="p-contact-form__field"><label class="p-contact-form__label" for="your-name">お名前<span>＊</span></label>[text* your-name id:your-name placeholder "お名前"]</div>
+  <div class="p-contact-form__field"><label class="p-contact-form__label" for="your-kana">ふりがな<span>＊</span></label>[text* your-kana id:your-kana placeholder "ふりがな"]</div>
+  <div class="p-contact-form__field"><label class="p-contact-form__label" for="your-tel">電話番号<span>＊</span></label>[tel* your-tel id:your-tel placeholder "電話番号（半角数字）"]</div>
+  <div class="p-contact-form__field"><label class="p-contact-form__label" for="your-email">メールアドレス<span>＊</span></label>[email* your-email id:your-email placeholder "メールアドレス（半角英数字）"]</div>
+  <div class="p-contact-form__field"><label class="p-contact-form__label" for="postal-code">郵便番号<span>＊</span></label>[text* postal-code id:postal-code placeholder "郵便番号（半角英数字）"]</div>
+  <div class="p-contact-form__field"><label class="p-contact-form__label" for="address">ご住所<span>＊</span></label>[text* address id:address placeholder "ご住所"]</div>
+
+  <fieldset class="p-contact-form__group p-contact-form__group--questions">
+    <legend class="p-contact-form__section-title">家の間取り<span>＊</span></legend>
+    <div class="p-contact-form__field"><label class="p-contact-form__question" for="question-1">1．必ず個室を確保しておきたいというものはありますか？</label>[text* question-1 id:question-1]</div>
+    <div class="p-contact-form__field"><label class="p-contact-form__question" for="question-2">2．どんな家をご希望ですか？（2階建て、3階建て、平屋のお家など）</label>[text* question-2 id:question-2]</div>
+    <div class="p-contact-form__field"><label class="p-contact-form__question" for="question-3">3．現在、不満に思っていることや疑問点がありますか？</label>[text* question-3 id:question-3]</div>
+    <div class="p-contact-form__field"><label class="p-contact-form__question" for="question-4">4．特に紹介したいことを教えてください。</label>[text* question-4 id:question-4]</div>
+    <div class="p-contact-form__field"><label class="p-contact-form__question" for="question-5">5．土地はお決まりですか？希望のエリアはございますか？</label>[text* question-5 id:question-5]</div>
+    <div class="p-contact-form__field"><label class="p-contact-form__question" for="question-6">6．他にもご検討中のハウスメーカーはありますか？</label>[text* question-6 id:question-6]</div>
+  </fieldset>
+
+  <div class="p-contact-form__schedule">
+    <div class="p-contact-form__field"><label class="p-contact-form__label" for="visit-date-1">来店希望日（第一希望）</label>[date visit-date-1 id:visit-date-1]</div>
+    <div class="p-contact-form__field"><label class="p-contact-form__label" for="visit-time-1">来店時間（第一希望）</label>[text visit-time-1 id:visit-time-1]</div>
+    <div class="p-contact-form__field"><label class="p-contact-form__label" for="visit-date-2">来店希望日（第二希望）</label>[date visit-date-2 id:visit-date-2]</div>
+    <div class="p-contact-form__field"><label class="p-contact-form__label" for="visit-time-2">来店時間（第二希望）</label>[text visit-time-2 id:visit-time-2]</div>
+  </div>
+  <div class="p-contact-form__field"><label class="p-contact-form__label" for="message">その他ご自由にお書きください</label>[textarea message id:message]</div>
+  <div class="p-contact-form__buttons"><button class="p-contact-form__button js-contact-confirm-button" type="button">確認する</button></div>
+</div>
+
+<div class="p-contact-form__confirm js-contact-confirm" hidden>
+  <dl class="p-contact-form__confirm-list">
+    <div><dt>お問い合わせ種別</dt><dd data-confirm-output="contact-type"></dd></div>
+    <div><dt>お名前</dt><dd data-confirm-output="your-name"></dd></div>
+    <div><dt>ふりがな</dt><dd data-confirm-output="your-kana"></dd></div>
+    <div><dt>電話番号</dt><dd data-confirm-output="your-tel"></dd></div>
+    <div><dt>メールアドレス</dt><dd data-confirm-output="your-email"></dd></div>
+    <div><dt>郵便番号</dt><dd data-confirm-output="postal-code"></dd></div>
+    <div><dt>住所</dt><dd data-confirm-output="address"></dd></div>
+  </dl>
+  <h2 class="p-contact-form__section-title">家の間取り<span>＊</span></h2>
+  <dl class="p-contact-form__confirm-questions">
+    <div><dt>1．必ず個室を確保しておきたいというものはありますか？</dt><dd data-confirm-output="question-1"></dd></div>
+    <div><dt>2．どんな家をご希望ですか？</dt><dd data-confirm-output="question-2"></dd></div>
+    <div><dt>3．現在、不満に思っていることや疑問点がありますか？</dt><dd data-confirm-output="question-3"></dd></div>
+    <div><dt>4．特に紹介したいことを教えてください。</dt><dd data-confirm-output="question-4"></dd></div>
+    <div><dt>5．土地はお決まりですか？希望のエリアはございますか？</dt><dd data-confirm-output="question-5"></dd></div>
+    <div><dt>6．他にもご検討中のハウスメーカーはありますか？</dt><dd data-confirm-output="question-6"></dd></div>
+  </dl>
+  <dl class="p-contact-form__confirm-schedule">
+    <div><dt>来店希望日（第一希望）</dt><dd data-confirm-output="visit-date-1"></dd></div><div><dt>来店時間（第一希望）</dt><dd data-confirm-output="visit-time-1"></dd></div>
+    <div><dt>来店希望日（第二希望）</dt><dd data-confirm-output="visit-date-2"></dd></div><div><dt>来店時間（第二希望）</dt><dd data-confirm-output="visit-time-2"></dd></div>
+  </dl>
+  <dl class="p-contact-form__confirm-message"><div><dt>その他ご自由にお書きください</dt><dd data-confirm-output="message"></dd></div></dl>
+  <div class="p-contact-form__buttons p-contact-form__buttons--confirm">[submit class:p-contact-form__button "送信する"]<button class="p-contact-form__button p-contact-form__button--back js-contact-back-button" type="button">戻る</button></div>
+</div>

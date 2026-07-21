@@ -1,0 +1,315 @@
+@use "../global" as *;
+
+.p-contact {
+  padding-top: rem(70);
+  padding-bottom: rem(120);
+  color: #000;
+
+  @include mq(md) {
+    padding-top: rem(110);
+    padding-bottom: rem(180);
+  }
+}
+
+.p-contact__content {
+  max-width: rem(800);
+  margin-inline: auto;
+}
+
+.p-contact__title {
+  font-family: $second-font-family;
+  font-size: clamp(rem(48), 8vw, rem(78));
+  font-weight: $bold;
+  letter-spacing: -0.055em;
+  line-height: 0.9;
+}
+
+.p-contact__subtitle {
+  margin-top: rem(18);
+  font-size: rem(22);
+  font-weight: $bold;
+  line-height: 1.4;
+
+  @include mq(md) {
+    font-size: rem(29);
+  }
+}
+
+.p-contact__lead {
+  margin-top: rem(8);
+  font-size: rem(10);
+  font-weight: $bold;
+  line-height: 1.65;
+}
+
+.p-contact__form {
+  margin-top: rem(80);
+
+  @include mq(md) {
+    margin-top: rem(115);
+  }
+}
+
+.p-contact-form__group {
+  min-width: 0;
+  padding: 0;
+  border: 0;
+}
+
+.p-contact-form__field + .p-contact-form__field {
+  margin-top: rem(34);
+
+  @include mq(md) {
+    margin-top: rem(48);
+  }
+}
+
+.p-contact-form__group--type .wpcf7-form-control {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: rem(15);
+  column-gap: rem(24);
+  row-gap: rem(12);
+}
+
+.p-contact-form__group--type .wpcf7-list-item {
+  width: auto;
+  margin: 0;
+}
+
+.p-contact-form__group--type label {
+  display: flex;
+  align-items: center;
+  font-size: rem(10);
+  font-weight: $bold;
+  cursor: pointer;
+}
+
+.p-contact-form__group--type input {
+  width: rem(11);
+  height: rem(11);
+  margin: 0 rem(6) 0 0;
+  accent-color: #000;
+}
+
+.p-contact-form__label,
+.p-contact-form__question,
+.p-contact-form__section-title {
+  display: block;
+  font-size: rem(11);
+  font-weight: $bold;
+  line-height: 1.6;
+}
+
+.p-contact-form__section-title {
+  font-size: rem(18);
+
+  @include mq(md) {
+    font-size: rem(22);
+  }
+}
+
+.p-contact-form__field .wpcf7-form-control-wrap {
+  display: block;
+  margin-top: rem(10);
+}
+
+.p-contact-form input[type="text"],
+.p-contact-form input[type="tel"],
+.p-contact-form input[type="email"],
+.p-contact-form input[type="date"],
+.p-contact-form textarea {
+  display: block;
+  width: 100%;
+  min-height: rem(38);
+  padding: rem(9) rem(13);
+  color: #000;
+  font-family: inherit;
+  font-size: rem(12);
+  line-height: 1.5;
+  background: #fff;
+  border: 1px solid #aaa;
+  border-radius: 0;
+}
+
+.p-contact-form textarea {
+  min-height: rem(120);
+  resize: vertical;
+}
+
+.p-contact-form input::placeholder,
+.p-contact-form textarea::placeholder {
+  color: #aaa;
+  font-size: rem(11);
+}
+
+.p-contact-form__group--questions {
+  margin-top: rem(65);
+}
+
+.p-contact-form__group--questions .p-contact-form__field {
+  margin-top: rem(22);
+}
+
+.p-contact-form__question {
+  font-size: rem(10);
+}
+
+.p-contact-form__schedule {
+  margin-top: rem(55);
+
+  @include mq(md) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: rem(45);
+    row-gap: rem(30);
+  }
+}
+
+.p-contact-form__schedule .p-contact-form__field {
+  margin-top: rem(28);
+
+  @include mq(md) {
+    margin-top: 0;
+  }
+}
+
+.p-contact-form__schedule + .p-contact-form__field {
+  margin-top: rem(45);
+}
+
+.p-contact-form__buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: rem(65);
+}
+
+.p-contact-form__buttons--confirm {
+  flex-direction: column;
+  align-items: center;
+  margin-top: rem(75);
+}
+
+.p-contact-form__button,
+.p-contact-form input.p-contact-form__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: rem(150);
+  min-height: rem(42);
+  padding: rem(8) rem(14);
+  color: #fff;
+  font-family: inherit;
+  font-size: rem(11);
+  font-weight: $bold;
+  line-height: 1;
+  background: #000;
+  border: 1px solid #000;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.p-contact-form__button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.p-contact-form__button--back {
+  margin-top: rem(14);
+  color: #000;
+  background: #fff;
+}
+
+.p-contact-form__confirm {
+  padding-top: rem(28);
+  padding-bottom: rem(30);
+  border-top: 1px solid #aaa;
+  border-bottom: 1px solid #aaa;
+}
+
+.p-contact-form__confirm[hidden],
+.p-contact-form__input[hidden] {
+  display: none;
+}
+
+.p-contact-form__confirm dl {
+  margin: 0;
+}
+
+.p-contact-form__confirm-list > div + div,
+.p-contact-form__confirm-questions > div + div {
+  margin-top: rem(24);
+}
+
+.p-contact-form__confirm dt {
+  font-size: rem(10);
+  font-weight: $bold;
+  line-height: 1.6;
+}
+
+.p-contact-form__confirm dd {
+  margin-top: rem(5);
+  margin-left: 0;
+  font-size: rem(10);
+  font-weight: $bold;
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+.p-contact-form__confirm-list + .p-contact-form__section-title {
+  margin-top: rem(42);
+}
+
+.p-contact-form__confirm-questions {
+  margin-top: rem(20) !important;
+}
+
+.p-contact-form__confirm-schedule {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: rem(32);
+  row-gap: rem(24);
+  margin-top: rem(36) !important;
+}
+
+.p-contact-form__confirm-message {
+  margin-top: rem(38) !important;
+}
+
+.p-contact .wpcf7-not-valid-tip {
+  margin-top: rem(6);
+  color: #c00;
+  font-size: rem(10);
+}
+
+.p-contact .wpcf7-response-output {
+  margin: rem(20) 0 0;
+  padding: rem(10);
+  font-size: rem(12);
+}
+
+.p-contact__home-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: rem(180);
+  min-height: rem(44);
+  margin-top: rem(65);
+  color: #fff;
+  font-size: rem(12);
+  font-weight: $bold;
+  background: #000;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .p-contact-form__button,
+  .p-contact__home-link {
+    transition: color 0.3s ease, background-color 0.3s ease;
+  }
+
+  .p-contact-form__button:not(:disabled):hover,
+  .p-contact__home-link:hover {
+    color: #000;
+    background: #fff;
+  }
+}

@@ -84,7 +84,7 @@
                     <img decoding="async" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/footer_logo.png" alt="Fun life. ファンライフ株式会社" width="431" height="118">
                 </a>
                 <div class="p-header__actions">
-                    <a class="p-header__button" href="<?php echo esc_url(home_url('/#contact')); ?>">CONTACT</a>
+                    <a class="p-header__button" href="<?php echo esc_url(home_url('/contact/')); ?>">CONTACT</a>
                     <button class="p-header__button p-header__menu p-drawer-icon" type="button" aria-label="メニューを開く">
                         <span class="p-header__menu-text">MENU</span>
                         <span class="p-drawer-icon__bars" aria-hidden="true">
@@ -114,7 +114,7 @@
                         </li>
                     </ul>
                     <div class="p-drawer-content__contact-wrapper">
-                        <a href="<?php echo esc_url(home_url('/#contact')); ?>" class="p-drawer-content__contact">
+                        <a href="<?php echo esc_url(home_url('/contact/')); ?>" class="p-drawer-content__contact">
                             <span class="p-drawer-content__contact-text">お問い合わせ</span>
                         </a>
                     </div>
