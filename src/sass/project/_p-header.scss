@@ -1,8 +1,8 @@
 @use "../global" as *;
 
 .p-header {
-  padding-top: rem(24);
-  padding-bottom: rem(24);
+  padding-top: rem(40);
+  padding-bottom: rem(40);
   position: relative;
   z-index: 10000;
   background: #fff;
@@ -13,13 +13,15 @@
     padding-left: rem(20);
 
     @include mq(md) {
-      padding-right: rem(24);
-      padding-left: rem(24);
+      padding-right: rem(30);
+      padding-left: rem(30);
     }
   }
 }
 
 .p-header__inner {
+  position: relative;
+  z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -27,10 +29,10 @@
 
 .p-header__logo {
   display: block;
-  width: rem(132);
+  width: rem(88);
 
   @include mq(md) {
-    width: rem(170);
+    width: rem(100);
   }
 }
 
@@ -43,58 +45,58 @@
 .p-header__actions {
   display: flex;
   align-items: center;
+  column-gap: rem(4);
+}
+
+.p-header__icon-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: rem(45);
+  height: rem(45);
+  color: #000;
+  background: #fff;
+  border: 1px solid #000;
+  border-radius: rem(3);
+  padding-left: rem(8);
+  padding-right: rem(8);
+}
+
+.p-header__icon-link svg {
+  display: block;
 }
 
 .p-header__button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: rem(70);
-  width: rem(70);
-  height: rem(36);
-  padding-right: rem(14);
-  padding-left: rem(14);
-  font-family: $second-font-family;
-  font-size: rem(10);
+  min-width: rem(76);
+  width: rem(76);
+  height: rem(45);
+  padding-right: rem(9);
+  padding-left: rem(9);
   font-weight: $bold;
   line-height: 1;
   letter-spacing: 0.1em;
   color: #000;
   background: #fff;
-  border: 2px solid #000;
-
-  @include mq(md) {
-    min-width: rem(140);
-    width: rem(140);
-    height: rem(28);
-    padding-right: rem(12);
-    padding-left: rem(12);
-    font-size: rem(14);
-    border-width: 1px;
-  }
-}
-
-.p-header__button + .p-header__button {
-  margin-left: rem(16);
-
-  @include mq(md) {
-    margin-left: rem(10);
-  }
+  border: 1px solid #000;
 }
 
 .p-header__menu {
-  min-width: rem(70);
-  width: rem(70);
+  min-width: rem(130);
+  width: rem(130);
   cursor: pointer;
-
-  @include mq(md) {
-    min-width: rem(140);
-    width: rem(140);
-  }
 }
 
 .p-header__menu-text {
   display: block;
+  font-size: rem(16);
+  font-weight: $bold;
+  line-height: 1.5;
+  letter-spacing: 0.08em;
+  color: #000;
+  font-family: $second-font-family;
 }
 
 .p-drawer-icon__bars {
@@ -105,25 +107,20 @@
   width: rem(18);
   height: rem(10);
   margin-left: rem(10);
-
-  @include mq(md) {
-    width: rem(18);
-    height: rem(10);
-    margin-left: rem(9);
-  }
 }
 
 .p-drawer-icon__bar1,
 .p-drawer-icon__bar3 {
   display: block;
   width: rem(18);
-  height: 2px;
+  height: 1px;
+  margin-left: auto;
   background: #000;
-  transition: 0.3s ease;
+  transition: width 0.3s ease, transform 0.3s ease;
+}
 
-  @include mq(md) {
-    height: 1px;
-  }
+.p-drawer-icon__bar1 {
+  width: rem(10);
 }
 
 .p-drawer-icon__bar3 {
@@ -133,16 +130,34 @@
 .p-drawer-icon.is-active {
   position: relative;
   z-index: 10001;
-  color: #fff;
-  background: #000;
+  color: #000;
+  background: transparent;
 }
 
 .p-drawer-icon.is-active .p-drawer-icon__bar1,
 .p-drawer-icon.is-active .p-drawer-icon__bar3 {
-  background: #fff;
+  background: #000;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .p-header__icon-link {
+    transition: color 0.3s ease, background-color 0.3s ease;
+  }
+
+  .p-header__icon-link:hover {
+    color: #fff;
+    background: #000;
+  }
+}
+
+.p-header__icon-link:focus-visible,
+.p-header__button:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: rem(3);
 }
 
 .p-drawer-icon.is-active .p-drawer-icon__bar1 {
+  width: rem(18);
   transform: translateY(rem(3.5)) rotate(45deg);
 }
 
@@ -157,16 +172,24 @@
   z-index: 9998;
   visibility: hidden;
   opacity: 0;
-  padding: rem(128) rem(32) rem(48);
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(16px);
+  overflow-y: auto;
+  padding: rem(100) rem(26) rem(48);
+  background: #ddd;
   transition:
     opacity 0.3s ease,
     visibility 0.3s ease;
 
   @include mq(md) {
-    padding: rem(132) rem(48) rem(56);
+    padding: rem(114) rem(48) rem(56);
   }
+}
+
+.drawer-open .p-header {
+  background: #ddd;
+}
+
+.drawer-open .p-header__logo {
+  visibility: hidden;
 }
 
 .p-drawer-content.is-active {
@@ -178,7 +201,25 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: calc(100dvh - rem(176));
+  width: 100%;
+  max-width: rem(1180);
+  min-height: calc(100dvh - rem(148));
+  margin-inline: auto;
+
+  @include mq(md) {
+    flex-direction: row;
+    justify-content: space-between;
+    min-height: calc(100dvh - rem(170));
+  }
+}
+
+.p-drawer-content__body {
+  width: 100%;
+  text-align: center;
+
+  @include mq(md) {
+    width: 42%;
+  }
 }
 
 .p-drawer-content__list {
@@ -186,34 +227,68 @@
 }
 
 .p-drawer-content__list + .p-drawer-content__list {
-  margin-top: rem(26);
+  margin-top: rem(22);
+
+  @include mq(md) {
+    margin-top: rem(12);
+  }
 }
 
 .p-drawer-content__link {
   display: block;
-  font-size: rem(16);
+  font-family: $second-font-family;
+  font-size: rem(18);
   font-weight: $bold;
   line-height: 1.5;
   letter-spacing: 0.08em;
   color: #000;
 }
 
-.p-drawer-content__contact-wrapper {
-  margin-top: rem(56);
+.p-drawer-content__link--muted {
+  color: #777;
 }
 
-.p-drawer-content__contact {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: rem(220);
-  height: rem(52);
-  color: #fff;
-  background: #000;
-}
-
-.p-drawer-content__contact-text {
-  font-size: rem(14);
+.p-drawer-content__company {
+  padding-top: rem(36);
+  margin-top: rem(46);
+  font-size: rem(12);
   font-weight: $bold;
-  letter-spacing: 0.08em;
+  line-height: 1.6;
+  letter-spacing: 0.06em;
+  border-top: 1px solid #555;
+
+  @include mq(md) {
+    max-width: rem(355);
+    margin-top: rem(62);
+    margin-inline: auto;
+  }
+}
+
+.p-drawer-content__tel {
+  margin-top: rem(12);
+}
+
+.p-drawer-content__copyright {
+  margin-top: rem(30);
+  color: #777;
+  font-size: rem(10);
+}
+
+.p-drawer-content__image {
+  display: none;
+
+  @include mq(md) {
+    display: block;
+    width: 50%;
+    max-width: rem(470);
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+  }
+}
+
+.p-drawer-content__image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

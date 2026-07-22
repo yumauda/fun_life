@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const validateForm = () => {
-    const requiredFields = Array.from(new Set(inputArea.querySelectorAll("[aria-required='true'], [required], .wpcf7-validates-as-required input")));
+    const requiredFields = Array.from(new Set(inputArea.querySelectorAll("[aria-required='true'], [required], .wpcf7-validates-as-required input, input[name='privacy-consent']")));
     let firstInvalidField = null;
 
     requiredFields.forEach((field) => {

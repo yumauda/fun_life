@@ -20,7 +20,7 @@
 
 .p-contact__title {
   font-family: $second-font-family;
-  font-size: clamp(rem(48), 8vw, rem(86));
+  font-size: clamp(rem(62), 10.4vw, rem(101));
   font-weight: $bold;
   letter-spacing: -0.05em;
   line-height: 0.9;
@@ -28,19 +28,19 @@
 
 .p-contact__subtitle {
   margin-top: rem(14);
-  font-size: rem(24);
+  font-size: rem(31);
   font-weight: $bold;
   letter-spacing: 0.02em;
   line-height: 1.4;
 
   @include mq(md) {
-    font-size: rem(30);
+    font-size: rem(39);
   }
 }
 
 .p-contact__intro {
   margin-top: rem(7);
-  font-size: rem(10);
+  font-size: rem(13);
   font-weight: $bold;
   line-height: 1.8;
 }
