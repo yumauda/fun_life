@@ -1,8 +1,8 @@
 @use "../global" as *;
 
 .p-good {
-  padding-top: rem(80);
-  padding-bottom: rem(100);
+  padding-top: rem(160);
+  overflow-x: clip;
 
   @include mq("md") {
     padding-top: rem(120);
@@ -11,22 +11,32 @@
 }
 
 .p-good__content {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: start;
-  max-width: rem(1160);
-  margin-inline: auto;
-  column-gap: rem(14);
+  position: relative;
 
   @include mq("md") {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
+    max-width: rem(1160);
+    margin-inline: auto;
     column-gap: rem(28);
   }
 }
 
 .p-good__image {
   width: 100%;
-  aspect-ratio: 2733 / 1413;
   overflow: hidden;
+  margin-right: calc(50% - 50vw);
+  margin-left: calc(50% - 50vw);
+  width: 100vw;
+
+  @include mq(md) {
+    width: initial;
+    margin-right: initial;
+    margin-left: initial;
+    aspect-ratio: 2733 / 1413;
+
+  }
 }
 
 .p-good__image img {
@@ -37,14 +47,22 @@
 }
 
 .p-good__copy {
-  writing-mode: vertical-rl;
   color: #000;
-  font-size: rem(16);
+  font-size: rem(30);
   font-weight: $bold;
-  letter-spacing: 0.12em;
-  line-height: 1.7;
+  position: absolute;
+  top: rem(48);
+  left: rem(16);
+  letter-spacing: 0.2em;
+  line-height: calc(40 / 30);
 
   @include mq("md") {
+    line-height: 1.7;
+    letter-spacing: 0.12em;
+    position: static;
+    top: initial;
+    left: initial;
+    writing-mode: vertical-rl;
     font-size: rem(24);
     line-height: 1.55;
   }

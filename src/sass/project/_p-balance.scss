@@ -1,8 +1,7 @@
 @use "../global" as *;
 
 .p-balance {
-  padding-top: rem(80);
-  padding-bottom: rem(100);
+  padding-bottom: rem(48);
 
   @include mq("md") {
     padding-top: rem(120);
@@ -11,18 +10,29 @@
 }
 
 .p-balance__content {
+  display: flex;
+  flex-direction: column;
+
   @include mq("md") {
-    display: flex;
+    flex-direction: row;
     align-items: center;
     gap: rem(90);
   }
 }
 
 .p-balance__image {
-  width: 48vw;
+  order: 2;
+  width: 100%;
   aspect-ratio: 1719 / 1213;
   overflow: hidden;
-  margin-left: calc(50% - 50vw);
+  margin-top: rem(64);
+
+  @include mq("md") {
+    order: initial;
+    width: 48vw;
+    margin-top: 0;
+    margin-left: calc(50% - 50vw);
+  }
 }
 
 .p-balance__image img {
@@ -33,9 +43,10 @@
 }
 
 .p-balance__detail {
-  margin-top: rem(48);
+  order: 1;
 
   @include mq("md") {
+    order: initial;
     margin-top: initial;
     max-width: rem(550);
     flex: 1;
@@ -61,26 +72,30 @@
   border: 1px solid #202629;
   background: #fff;
   color: #000;
-  font-size: rem(18);
+  font-size: rem(24);
   font-weight: $bold;
-  letter-spacing: 0.18em;
   line-height: 1;
+  letter-spacing: 0.1em;
 
   @include mq("md") {
+    letter-spacing: 0.18em;
     min-height: rem(82);
     font-size: rem(23);
   }
 }
 
 .p-balance__text {
-  margin-top: rem(42);
+  margin-top: rem(72);
   color: #000;
-  font-size: rem(14);
+  font-size: rem(18);
   font-weight: $bold;
   line-height: 1.8;
+  text-align: center;
+  letter-spacing: 0.1em;
 
   @include mq("md") {
     margin-top: rem(54);
     font-size: rem(18);
+    text-align: left;
   }
 }

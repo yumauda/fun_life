@@ -1,49 +1,83 @@
 @use "../global" as *;
 
 .c-section-heading {
-  display: flex;
-  align-items: flex-start;
+  display: block;
   white-space: normal;
 
   @include mq("md") {
+    display: flex;
+    align-items: flex-start;
     white-space: nowrap;
   }
 }
 
 .c-section-heading__index {
   display: flex;
-  flex-direction: column;
   align-items: center;
   flex-shrink: 0;
-  width: rem(44);
-  border-top: 2px solid #000;
+  min-height: rem(32);
+  padding-left: rem(24);
+  position: relative;
+
+  @include mq("md") {
+    flex-direction: column;
+    width: rem(44);
+    min-height: 0;
+    padding-left: initial;
+    border-top: 2px solid #000;
+  }
+}
+
+.c-section-heading__index::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 2px;
+  content: "";
+  background: #000;
+
+  @include mq("md") {
+    display: none;
+  }
 }
 
 .c-section-heading__label {
   display: block;
-  margin-top: rem(16);
   color: #000;
   font-family: $second-font-family;
-  font-size: rem(9);
+  font-size: rem(21);
   font-weight: $bold;
   line-height: 1;
-  writing-mode: vertical-rl;
+
+  @include mq("md") {
+    margin-top: rem(16);
+    font-size: rem(9);
+    writing-mode: vertical-rl;
+  }
 }
 
 .c-section-heading__number {
   display: block;
-  margin-top: rem(16);
+  margin-left: rem(24);
   color: #000;
   font-family: $second-font-family;
-  font-size: rem(23);
+  font-size: rem(50);
   font-weight: $bold;
   line-height: 1;
+
+  @include mq("md") {
+    margin-top: rem(16);
+    margin-left: 0;
+    font-size: rem(23);
+  }
 }
 
 .c-section-heading__body {
-  margin-left: rem(36);
+  margin-top: rem(54);
 
   @include mq("md") {
+    margin-top: initial;
     margin-left: rem(44);
   }
 }
@@ -57,7 +91,7 @@
 
 .c-section-heading__en {
   font-family: $second-font-family;
-  font-size: rem(16);
+  font-size: rem(21);
   line-height: 1.35;
 
   @include mq("md") {
@@ -80,11 +114,13 @@
 }
 
 .c-section-heading__ja {
-  margin-top: rem(8);
-  font-size: rem(20);
-  line-height: 1.4;
+  margin-top: rem(1);
+  font-size: rem(18);
+  line-height: 1.3;
 
   @include mq("md") {
+    margin-top: rem(8);
     font-size: rem(28);
+    line-height: 1.4;
   }
 }

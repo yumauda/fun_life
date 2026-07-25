@@ -3,7 +3,10 @@
   <section class="p-works-mv">
     <div class="l-inner">
       <figure class="p-works-mv__image">
-        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/mv.webp" alt="リビングでゲームを楽しむ仲間たち" width="3321" height="1200" decoding="async">
+        <picture>
+          <source srcset="<?php echo get_template_directory_uri(); ?>/images/works/mv.webp" media="(min-width: 768px)" width="1238" height="570" />
+          <img src="<?php echo get_template_directory_uri(); ?>/images/works/mv_sp.webp" alt="リビングでゲームを楽しむ仲間たち" width="3321" height="1200" decoding="async">
+        </picture>
       </figure>
 
       <h1 class="p-works-mv__title">WORKS</h1>
@@ -41,7 +44,7 @@
   <section class="p-works-feature" id="concept">
     <div class="l-inner">
       <div class="p-works-feature__content">
-        <div class="c-section-heading c-section-heading--ja-first">
+        <div class="c-section-heading">
           <div class="c-section-heading__index" aria-hidden="true">
             <span class="c-section-heading__label">WORKS</span>
             <span class="c-section-heading__number">01</span>
@@ -85,7 +88,7 @@
             <div class="p-works-feature__detail">
               <h3 class="p-works-feature__title">ゆとりを愉しむ平屋</h3>
               <p class="p-works-feature__label">HIRAYA</p>
-              <p class="p-works-feature__text">ワンフロアで暮らしが完結する平屋は、動線のない快適な間取りと、家族の気配を感じやすい一体感が魅力です。天井を高くしたり、大きな窓を設けたりと、開放感のある空間づくりとの相性も抜群。庭やウッドデッキとのつながりを楽しめるのも平屋ならではです。</p>
+              <p class="p-works-feature__text">ワンフロアで暮らしが完結する平屋は、階段のない快適な動線と、家族の気配を感じやすい一体感が魅力です。天井を高くしたり、大きな窓を設けたりと、開放感のある空間づくりとの相性も抜群。庭やウッドデッキとのつながりを楽しめるのも平屋ならではです。</p>
             </div>
           </div>
           <div class="p-works-feature__body">
@@ -220,21 +223,21 @@
         <div class="p-performance__accordions">
           <details class="p-performance__item js-details" open>
             <summary class="p-performance__summary js-summary">
-              <span><strong>断熱</strong> HEAT20評価基準 G2／UA値 0.46以下</span>
+              <span><strong>断熱</strong><span class="p-performance__summary-detail"> HEAT20評価基準 G2／UA値 0.46以下</span></span>
               <span class="p-performance__icon" aria-hidden="true"></span>
             </summary>
             <div class="p-performance__body js-content">
               <div class="p-performance__body-inner">
                 <h3 class="p-performance__heading">HEAT20評価基準 G2</h3>
-                <p class="p-performance__text">冬季の室内温度を保ちやすく、夏の暑さも抑える断熱性能です。冷暖房に頼りすぎず、一年を通して快適な室内環境を目指します。</p>
+                <p class="p-performance__text">住宅の有識者の方々が集まって設立された研究会<br class="u-mobile">(2020年を見据えた住宅の高断熱技術開発委員会)<br class="u-mobile">のことです。<br class="u-mobile">室内での体感温度を10度～10度以上に保つために必要な断熱性能が基準となっています。ZEHより2ランク上、最高より１つ下を目指しています。</p>
                 <h3 class="p-performance__heading">UA値 0.46以下</h3>
-                <p class="p-performance__text">UA値とは、住宅の断熱性能を表す数値です。数値が小さいほど熱が逃げにくく、省エネルギーで快適な住まいにつながります。</p>
+                <p class="p-performance__text">UA値とは、家の中の熱がどれくらい外へ逃げにくいかを示す数値です。数値が小さいほど断熱性能が高く、夏は涼しく冬は暖かい住まいになります。<br class="u-mobile">標準仕様であるUA値0.46以下は、高い断熱性能を備えた住宅レベル。冷暖房効率が良く一年を通して快適な室内環境づくりに貢献します。</p>
               </div>
             </div>
           </details>
           <details class="p-performance__item js-details">
             <summary class="p-performance__summary js-summary">
-              <span><strong>気密</strong> C値 0.1〜0.5㎠/㎡</span>
+              <span><strong>気密</strong><span class="p-performance__summary-detail"> C値 0.1〜0.5㎠/㎡</span></span>
               <span class="p-performance__icon" aria-hidden="true"></span>
             </summary>
             <div class="p-performance__body js-content">
@@ -245,7 +248,7 @@
           </details>
           <details class="p-performance__item js-details">
             <summary class="p-performance__summary js-summary">
-              <span><strong>換気</strong> ダクトレス</span>
+              <span><strong>換気</strong><span class="p-performance__summary-detail"> ダクトレス</span></span>
               <span class="p-performance__icon" aria-hidden="true"></span>
             </summary>
             <div class="p-performance__body js-content">
@@ -256,7 +259,7 @@
           </details>
           <details class="p-performance__item js-details">
             <summary class="p-performance__summary js-summary">
-              <span><strong>耐震</strong> 耐震等級3取得</span>
+              <span><strong>耐震</strong><span class="p-performance__summary-detail"> 耐震等級3取得</span></span>
               <span class="p-performance__icon" aria-hidden="true"></span>
             </summary>
             <div class="p-performance__body js-content">
@@ -275,58 +278,58 @@
   <section class="p-all">
     <div class="l-inner">
       <div class="p-all__content">
+        <p class="p-all__text">全て最高クラスの設備が<br>必要ではありません。</p>
         <figure class="p-all__image">
           <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/all_img.webp" alt="バイクを整備するスタッフの手元" width="1000" height="1000" loading="lazy" decoding="async">
         </figure>
-        <p class="p-all__text">全て最高クラスの設備が<br>必要ではありません。</p>
       </div>
     </div>
   </section>
   <section class="p-cad">
     <div class="l-inner">
       <div class="p-cad__content">
+        <figure class="p-cad__image">
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/cad_img.webp" alt="3DCADの画面を使って住宅プランを説明するスタッフ" width="1712" height="1025" loading="lazy" decoding="async">
+        </figure>
         <div class="p-cad__body">
           <h2 class="p-cad__title">3DCADでわかりやすく</h2>
           <p class="p-cad__text">平面図だけでは分かりにくい空間の広さや家具の配置、窓から入る光のイメージまで立体的に確認することができます。「思っていたのと違った」を減らしながら、理想の住まいを具体的に形にしていけるのも3DCADの魅力です。完成後の暮らしを想像しながら、納得のいく家づくりを進めていきましょう。</p>
         </div>
-        <figure class="p-cad__image">
-          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/cad_img.webp" alt="3DCADの画面を使って住宅プランを説明するスタッフ" width="1712" height="1025" loading="lazy" decoding="async">
-        </figure>
       </div>
       <div class="p-cad__content p-cad__content--plan">
+        <div class="p-cad__body p-cad__body--plan">
+          <p class="p-cad__lead">予算内でのベストな組み合わせを<br>一緒に探しましょう。</p>
+          <p class="p-cad__lead">お客様の価値観に合う最適な<br>プランをご提案します。</p>
+        </div>
         <figure class="p-cad__image p-cad__image--plan">
           <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/cad_img2.webp" alt="太陽光パネルを備えた住宅の3DCADイメージ" width="2000" height="1267" loading="lazy" decoding="async">
         </figure>
-        <div class="p-cad__body p-cad__body--plan">
-          <p class="p-cad__lead">予算内でのベストな組み合わせを<br class="u-desktop">一緒に探しましょう。</p>
-          <p class="p-cad__lead">お客様の価値観に合う最適な<br class="u-desktop">プランをご提案します。</p>
-        </div>
       </div>
     </div>
   </section>
   <section class="p-renovation" id="reform-renovation">
     <div class="l-inner">
-      <div class="p-renovation__heading">
-        <div class="p-renovation__number" aria-label="WORKS 03">
-          <span class="p-renovation__label">WORKS</span>
-          <span class="p-renovation__count">03</span>
+      <div class="c-section-heading">
+        <div class="c-section-heading__index" aria-hidden="true">
+          <span class="c-section-heading__label">WORKS</span>
+          <span class="c-section-heading__number">03</span>
         </div>
-        <h2 class="p-renovation__title">
-          <span class="p-renovation__title-ja">思い出はそのままに。</span>
-          <span class="p-renovation__title-en">REFORM / RENOVATION</span>
-        </h2>
+        <div class="c-section-heading__body">
+          <p class="c-section-heading__en">REFORM / RENOVATION</p>
+          <h2 class="c-section-heading__ja">思い出はそのままに。</h2>
+        </div>
       </div>
       <div class="p-renovation__content">
         <div class="p-renovation__copy">
           <h3 class="p-renovation__lead">住み慣れた家を、<br>これからの暮らしにフィットさせる。</h3>
-          <p class="p-renovation__text">新築時の良さやライフスタイルの変化によって、住まいに求めるものも少しずつ変わっていきます。リフォームやリノベーションは、住み慣れた家の良さを残しながら、今の暮らしに合わせて住まいを見直す選択肢のひとつです。水まわりの更新や間取りの見直しはもちろん、断熱向上や耐震性の改善など、これからも長く快適に暮らしていくための住まいづくりをお手伝いします。</p>
+          <p class="p-renovation__text">新築時の良さやライフスタイルの変化によって、住まいに求めるものも少しずつ変わっていきます。リフォームやリノベーションは、住み慣れた家の良さを残しながら、今の暮らしに合わせて住まいを見直す選択肢のひとつです。<br class="u-mobile">水まわりの更新や間取りの見直しはもちろん、断熱向上や耐震性の改善など、これからも長く快適に暮らしていくための住まいづくりをお手伝いします。</p>
         </div>
         <figure class="p-renovation__image">
           <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/reform_img.webp" alt="夕日の中に停められたバイク" width="1396" height="1137" loading="lazy" decoding="async">
         </figure>
       </div>
       <div class="p-renovation__bottom">
-        <h3 class="p-renovation__subtitle">国産木材が生み出す、心地よい空間。</h3>
+        <h3 class="p-renovation__subtitle">国産木材が生み出す、<br class="u-mobile">心地よい空間。</h3>
         <p class="p-renovation__text">ファンライフでは、リフォームやリノベーションに国産木材を取り入れています。木を活かすやさしい内装や新たな間取り、空間に広がりを持たせる意匠も大切にしています。価値観や好みを丁寧に伺い、自然素材の魅力を感じられる住まいをご提案します。</p>
       </div>
     </div>
@@ -347,7 +350,7 @@
           <div class="p-before-after__body">
             <h3 class="p-before-after__heading">住まいを変える。暮らしが変わる。</h3>
             <p class="p-before-after__category">REFORM</p>
-            <p class="p-before-after__text">住み慣れた家にも、まだまだ可能性があります。間取りの見直しや内装の刷新、設備の入れ替えによって、毎日の暮らしはもっと快適に。ビフォーアフターで、その変化をご覧ください。今だけでなく、将来を見据えた住まいとしても人気を集めています。</p>
+            <p class="p-before-after__text">住み慣れた家にも、まだまだ可能性があります。<br class="u-mobile">間取りの見直しや内装の刷新、設備の入れ替えによって、毎日の暮らしはもっと快適に。<br class="u-mobile">ビフォーアフターで、その変化をご覧ください。<br class="u-mobile">今だけでなく、将来を見据えた住まいとしても人気を集めています。</p>
           </div>
         </article>
         <article class="p-before-after__item">
@@ -390,20 +393,20 @@
 
   <section class="p-modular-home" id="modular-home">
     <div class="l-inner">
-      <div class="p-modular-home__heading">
-        <div class="p-modular-home__number" aria-label="WORKS 04">
-          <span class="p-modular-home__label">WORKS</span>
-          <span class="p-modular-home__count">04</span>
+      <div class="c-section-heading">
+        <div class="c-section-heading__index" aria-hidden="true">
+          <span class="c-section-heading__label">WORKS</span>
+          <span class="c-section-heading__number">04</span>
         </div>
-        <h2 class="p-modular-home__title">
-          <span class="p-modular-home__title-en">MODULAR HOME</span>
-          <span class="p-modular-home__title-ja">いい家を、もっと身近に。</span>
-        </h2>
+        <div class="c-section-heading__body">
+          <p class="c-section-heading__en">MODULAR HOME</p>
+          <h2 class="c-section-heading__ja">いい家を、もっと身近に。</h2>
+        </div>
       </div>
       <div class="p-modular-home__content">
         <div class="p-modular-home__copy">
           <h3 class="p-modular-home__lead">デザイン・性能・価格の<br>バランスを考えた規格住宅。</h3>
-          <p class="p-modular-home__text">標準仕様は、これまで培ってきたプロの経験とノウハウをもとに、暮らしやすさを考えた設備を採用。間取りやデザインも一から考える必要をなくしながら、家族の暮らしに必要な空間や使いやすさをしっかりと確保。建物コストとのバランスを大切にした住まいをご提案します。</p>
+          <p class="p-modular-home__text">格住宅は、これまでの家づくりで培った経験やノウハウをもとに、暮らしやすさを追求した住まいです。<br class="u-mobile">間取りやデザインを一から考える負担を減らしながらも、快適な暮らしに必要な性能や使いやすさはしっかりと確保。<br class="u-mobile">理想とコストのバランスを大切にしたい方におすすめの住まいです。</p>
         </div>
         <figure class="p-modular-home__image">
           <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/modular_img.webp" alt="夕暮れの海辺で会話を楽しむ仲間たち" width="1401" height="1401" loading="lazy" decoding="async">
@@ -417,15 +420,17 @@
   <?php
   $lineup_items = array(
     array(
+      'name' => 'Koti',
       'kana' => 'リミニ コティ',
       'image' => 'line_01.webp',
       'width' => 879,
       'height' => 879,
       'alt' => '白い外壁のKoti住宅',
-      'title' => 'あなたに合う<br>暮らしのカタチを。',
-      'text' => 'まずは住まいのベースとなるプランをお選びください。暮らし方や家族構成、将来のライフスタイルをイメージしながら、自分たちに合った住まいを見つけてみましょう。',
+      'title' => '住むという空間を<br>とことん追求した家。',
+      'text' => '究極の平屋を目指し技術とアイデアを駆使したCONCEPTモデルです。<br>シンプルライフを中心にそして自由であることを望む方に最適な空間をお届けします。',
     ),
     array(
+      'name' => 'Ruutu',
       'kana' => 'リミニ ルートゥ',
       'image' => 'line_02.webp',
       'width' => 878,
@@ -435,6 +440,7 @@
       'text' => 'シンプルなフォルムの中に、暮らしやすさと遊び心を詰め込んだ住まい。家族の個性に合わせて、心地よい空間を組み立てていけます。',
     ),
     array(
+      'name' => 'Polku',
       'kana' => 'リミニ ポルク',
       'image' => 'line_03.webp',
       'width' => 876,
@@ -444,6 +450,7 @@
       'text' => '内と外が自然につながる、開放的な平屋スタイル。光や風、季節の移ろいを身近に感じながら、のびやかに暮らせるプランです。',
     ),
     array(
+      'name' => 'Perhe',
       'kana' => 'リミニ ペルヘ',
       'image' => 'line_04.webp',
       'width' => 884,
@@ -463,11 +470,23 @@
       <div class="p-lineup__content">
         <div class="p-lineup__gallery js-style-gallery">
           <?php foreach ($lineup_items as $index => $item) : ?>
-            <button class="p-lineup__item js-style-item<?php echo 0 === $index ? ' is-active' : ''; ?>" type="button" data-style-title="<?php echo esc_attr($item['title']); ?>" data-style-text="<?php echo esc_attr($item['text']); ?>" aria-pressed="<?php echo 0 === $index ? 'true' : 'false'; ?>">
-              <figure class="p-lineup__image">
-                <img src="<?php echo esc_url(get_template_directory_uri() . '/images/works/' . $item['image']); ?>" alt="<?php echo esc_attr($item['alt']); ?>" width="<?php echo esc_attr($item['width']); ?>" height="<?php echo esc_attr($item['height']); ?>" loading="lazy" decoding="async">
-              </figure>
-            </button>
+            <article class="p-lineup__item<?php echo 0 === $index ? ' is-opened' : ''; ?>">
+              <button class="p-lineup__trigger js-style-item js-lineup-trigger<?php echo 0 === $index ? ' is-active' : ''; ?>" type="button" data-style-title="<?php echo esc_attr($item['title']); ?>" data-style-text="<?php echo esc_attr($item['text']); ?>" aria-pressed="<?php echo 0 === $index ? 'true' : 'false'; ?>" aria-expanded="<?php echo 0 === $index ? 'true' : 'false'; ?>" aria-controls="lineup-panel-<?php echo esc_attr($index); ?>">
+
+                <div class="p-lineup__visual">
+                  <figure class="p-lineup__image">
+                    <img src="<?php echo esc_url(get_template_directory_uri() . '/images/works/' . $item['image']); ?>" alt="<?php echo esc_attr($item['alt']); ?>" width="<?php echo esc_attr($item['width']); ?>" height="<?php echo esc_attr($item['height']); ?>" loading="lazy" decoding="async">
+                  </figure>
+                  <span class="p-lineup__toggle" aria-hidden="true"><?php echo 0 === $index ? 'CLOSE' : 'MORE'; ?></span>
+                </div>
+              </button>
+              <div class="p-lineup__panel js-lineup-panel" id="lineup-panel-<?php echo esc_attr($index); ?>"<?php echo 0 === $index ? '' : ' hidden'; ?>>
+                <div class="p-lineup__panel-inner">
+                  <h3 class="p-lineup__panel-title"><?php echo wp_kses_post($item['title']); ?></h3>
+                  <p class="p-lineup__panel-text"><?php echo esc_html($item['text']); ?></p>
+                </div>
+              </div>
+            </article>
           <?php endforeach; ?>
         </div>
         <div class="p-lineup__detail p-style__detail" aria-live="polite">
@@ -517,6 +536,28 @@
       'text' => '木の表情とやわらかな色合いを活かしたデザイン。家族が自然と集まり、穏やかな時間を過ごせる住まいを考えます。',
     ),
   );
+  $style_mobile_items = array(
+    array(
+      'label' => 'Base Style',
+      'image' => $style_items[0],
+      'text' => 'LIMINIのベースとなる基本スタイル。直線的なデザインとシンプルな外観が特徴です。クロスや床材、サイディングを使用し、クロスのカラーが選択できます。',
+    ),
+    array(
+      'label' => 'Tool Style',
+      'image' => $style_items[1],
+      'text' => $style_items[1]['text'],
+    ),
+    array(
+      'label' => 'Industrial Style',
+      'image' => $style_items[2],
+      'text' => $style_items[2]['text'],
+    ),
+    array(
+      'label' => 'Natural Style',
+      'image' => $style_items[3],
+      'text' => $style_items[3]['text'],
+    ),
+  );
   ?>
   <section class="p-style js-style">
     <div class="l-inner">
@@ -526,9 +567,26 @@
           <p class="p-style__detail-text js-style-text"><?php echo esc_html($style_items[0]['text']); ?></p>
         </div>
         <div class="p-style__main">
-          <div class="p-style__heading">
-            <p class="p-style__heading-text">STYLE</p>
-            <span class="p-style__heading-line" aria-hidden="true"></span>
+          <div class="p-lineup__heading">
+            <span class="p-lineup__heading-line" aria-hidden="true"></span>
+            <h2 class="p-lineup__heading-text">STYLE</h2>
+          </div>
+          <div class="p-style__mobile">
+            <?php foreach ($style_mobile_items as $index => $item) : ?>
+              <article class="p-style__mobile-item<?php echo 0 === $index ? ' is-opened' : ''; ?>">
+                <button class="p-style__mobile-trigger js-style-mobile-trigger" type="button" aria-expanded="<?php echo 0 === $index ? 'true' : 'false'; ?>" aria-controls="style-mobile-panel-<?php echo esc_attr($index); ?>">
+                  <figure class="p-style__mobile-image">
+                    <img src="<?php echo esc_url(get_template_directory_uri() . '/images/works/' . $item['image']['image']); ?>" alt="<?php echo esc_attr($item['image']['alt']); ?>" width="<?php echo esc_attr($item['image']['width']); ?>" height="<?php echo esc_attr($item['image']['height']); ?>" loading="lazy" decoding="async">
+                  </figure>
+                  <span class="p-style__mobile-label"><?php echo esc_html($item['label']); ?></span>
+                </button>
+                <div class="p-style__mobile-panel js-style-mobile-panel" id="style-mobile-panel-<?php echo esc_attr($index); ?>"<?php echo 0 === $index ? '' : ' hidden'; ?>>
+                  <div class="p-style__mobile-panel-inner">
+                    <p class="p-style__mobile-text"><?php echo esc_html($item['text']); ?></p>
+                  </div>
+                </div>
+              </article>
+            <?php endforeach; ?>
           </div>
           <div class="p-style__gallery js-style-gallery">
             <?php foreach ($style_items as $index => $item) : ?>
@@ -558,7 +616,10 @@
     <div class="l-inner">
       <div class="p-good__content">
         <figure class="p-good__image">
-          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/good_img.webp" alt="リビングでゲームを楽しむ若者たち" width="2733" height="1413" loading="lazy" decoding="async">
+          <picture>
+            <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/good_img.webp" media="(min-width: 768px)" width="2733" height="1413" />
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/good_img_sp.webp" alt="リビングでゲームを楽しむ若者たち" width="1000" height="1000" loading="lazy" decoding="async">
+          </picture>
         </figure>
         <p class="p-good__copy">いい人生は、<br>いい住まいから。</p>
       </div>

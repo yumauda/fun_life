@@ -1,7 +1,7 @@
 @use "../global" as *;
 
 .p-your {
-  padding-top: rem(80);
+  padding-top: rem(88);
   padding-bottom: rem(100);
 
   @include mq("md") {
@@ -22,10 +22,16 @@
 }
 
 .p-your__image {
-  width: 48vw;
   aspect-ratio: 773 / 562;
   overflow: hidden;
-  margin-left: calc(50% - 50vw);
+  margin-inline: auto;
+  width: 100%;
+
+  @include mq("md") {
+    width: 48vw;
+    margin-right: 0;
+    margin-left: calc(50% - 50vw);
+  }
 }
 
 .p-your__image img {
@@ -36,7 +42,7 @@
 }
 
 .p-your__copy {
-  margin-top: rem(42);
+  margin-top: rem(64);
   color: #000;
   font-size: rem(17);
   font-weight: $bold;

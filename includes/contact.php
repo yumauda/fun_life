@@ -4,7 +4,10 @@
             <a href="<?php echo esc_url(home_url('/contact/')); ?>" class="p-top-contact__btn">
 
                 <figure class="p-top-contact__img">
-                    <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/contact_bg.webp" alt="お問い合わせ・資料請求" width="431" height="38">
+                    <picture>
+                        <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/contact_bg.webp" media="(min-width: 768px)" width="431" height="38" />
+                        <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/contact_bg_sp.webp" alt="お問い合わせ・資料請求" width="393" height="266">
+                    </picture>
                 </figure>
                 <div class="p-top-contact__inner">
                     <div class="p-top-contact__detail">

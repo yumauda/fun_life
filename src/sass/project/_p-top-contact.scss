@@ -8,7 +8,6 @@
 
 .p-top-contact {
   overflow-x: clip;
-  margin-top: rem(58);
 
   @include mq(md) {
     margin-top: 0;
@@ -90,7 +89,7 @@
 }
 
 .p-top-contact__request {
-  font-size: rem(24);
+  font-size: rem(18);
   font-weight: 700;
   line-height: 1;
   letter-spacing: 0.08em;
@@ -105,7 +104,7 @@
 }
 
 .p-top-contact__title {
-  font-size: rem(44);
+  font-size: rem(35);
   margin-top: rem(6);
   font-weight: 700;
   line-height: 1.25;
@@ -122,7 +121,7 @@
 
 .p-top-contact__text {
   margin-top: rem(2);
-  font-size: rem(16);
+  font-size: rem(12);
   color: #fff;
   font-weight: 700;
 
@@ -133,8 +132,8 @@
 }
 
 .p-top-contact__arrow {
-  width: rem(60);
-  height: rem(60);
+  width: rem(40);
+  height: rem(40);
   position: relative;
   margin-top: rem(24);
 
@@ -171,8 +170,8 @@
   top: 50%;
   left: 50%;
   display: block;
-  width: rem(28);
-  height: rem(12);
+  width: rem(21);
+  height: rem(9);
   transform: translate(-50%, -50%);
 
   @include mq(md) {
@@ -200,9 +199,9 @@
   right: 0;
   width: 0;
   height: 0;
-  border-top: rem(4) solid transparent;
-  border-bottom: rem(4) solid transparent;
-  border-left: rem(7) solid #fff;
+  border-top: rem(2) solid transparent;
+  border-bottom: rem(2) solid transparent;
+  border-left: rem(5) solid #fff;
 
   @include mq(md) {
     border-top-width: rem(6);

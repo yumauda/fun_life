@@ -28,16 +28,96 @@ jQuery(function ($) {
   });
 
 
-  $("#drawer a[href]").on("click", function (event) {
-    $(".p-drawer-icon").trigger("click");
+  $("#drawer a[href]").on("click", function () {
+    $(".js-drawer-trigger").trigger("click");
   });
 });
 
 document.addEventListener("DOMContentLoaded", () => {
   setUpAccordion();
   setUpWorksModal();
+  setUpLineupAccordion();
+  setUpStyleMobileAccordion();
   setUpStyleSelector();
 });
+
+const setUpStyleMobileAccordion = () => {
+  const items = Array.from(document.querySelectorAll(".p-style__mobile-item"));
+  if (!items.length) return;
+
+  const mobileQuery = window.matchMedia("(max-width: 767px)");
+
+  const setItemState = (item, shouldOpen) => {
+    const trigger = item.querySelector(".js-style-mobile-trigger");
+    const panel = item.querySelector(".js-style-mobile-panel");
+    if (!trigger || !panel) return;
+
+    item.classList.toggle("is-opened", shouldOpen);
+    trigger.setAttribute("aria-expanded", String(shouldOpen));
+    panel.setAttribute("aria-hidden", String(!shouldOpen));
+  };
+
+  items.forEach((item) => {
+    const trigger = item.querySelector(".js-style-mobile-trigger");
+    const panel = item.querySelector(".js-style-mobile-panel");
+    if (panel) {
+      panel.hidden = false;
+      panel.setAttribute("aria-hidden", String(!item.classList.contains("is-opened")));
+    }
+
+    trigger?.addEventListener("click", () => {
+      if (!mobileQuery.matches) return;
+
+      const shouldOpen = !item.classList.contains("is-opened");
+      items.forEach((otherItem) => {
+        if (otherItem !== item && otherItem.classList.contains("is-opened")) {
+          setItemState(otherItem, false);
+        }
+      });
+      setItemState(item, shouldOpen);
+    });
+  });
+};
+
+const setUpLineupAccordion = () => {
+  const items = Array.from(document.querySelectorAll(".p-lineup__item"));
+  if (!items.length) return;
+
+  const mobileQuery = window.matchMedia("(max-width: 767px)");
+
+  const setItemState = (item, shouldOpen) => {
+    const trigger = item.querySelector(".js-lineup-trigger");
+    const panel = item.querySelector(".js-lineup-panel");
+    const toggle = item.querySelector(".p-lineup__toggle");
+    if (!trigger || !panel || !toggle) return;
+
+    item.classList.toggle("is-opened", shouldOpen);
+    trigger.setAttribute("aria-expanded", String(shouldOpen));
+    panel.setAttribute("aria-hidden", String(!shouldOpen));
+    toggle.textContent = shouldOpen ? "CLOSE" : "MORE";
+  };
+
+  items.forEach((item) => {
+    const trigger = item.querySelector(".js-lineup-trigger");
+    const panel = item.querySelector(".js-lineup-panel");
+    if (panel) {
+      panel.hidden = false;
+      panel.setAttribute("aria-hidden", String(!item.classList.contains("is-opened")));
+    }
+
+    trigger?.addEventListener("click", () => {
+      if (!mobileQuery.matches) return;
+
+      const shouldOpen = !item.classList.contains("is-opened");
+      items.forEach((otherItem) => {
+        if (otherItem !== item && otherItem.classList.contains("is-opened")) {
+          setItemState(otherItem, false);
+        }
+      });
+      setItemState(item, shouldOpen);
+    });
+  });
+};
 
 const setUpStyleSelector = () => {
   const sections = document.querySelectorAll(".js-style");
@@ -301,22 +381,18 @@ const openingAnimKeyframes = (content) => [
     opacity: 1,
   },
 ];
-jQuery(".p-drawer-icon").on("click", function (e) {
+jQuery(".js-drawer-trigger").on("click", function (e) {
   e.preventDefault();
-  jQuery(".p-drawer-icon").toggleClass("is-active");
-  jQuery(".p-drawer-content").toggleClass("is-active");
-  jQuery(".p-drawer-background").toggleClass("is-active");
+  const trigger = jQuery(this);
+  const isOpen = !trigger.hasClass("is-active");
+
+  trigger.toggleClass("is-active", isOpen);
+  trigger.attr("aria-expanded", isOpen ? "true" : "false");
+  jQuery(".p-drawer-content").toggleClass("is-active", isOpen);
+  jQuery("body").toggleClass("drawer-open", isOpen);
   return false;
 });
 
 window.onload = function () {
   document.body.classList.add("fade-in");
 };
-
-let scrollPosition = 0; // スクロール位置を記録する変数
-
-jQuery(document).ready(function ($) {
-  $(".p-drawer-icon, .p-drawer-icon--barge").on("click", function () {
-    $("body").toggleClass("drawer-open");
-  });
-});

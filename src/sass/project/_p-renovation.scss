@@ -11,88 +11,6 @@
   }
 }
 
-.p-renovation__heading {
-  display: flex;
-  align-items: flex-start;
-}
-
-.p-renovation__number {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: rem(34);
-  flex: 0 0 auto;
-  padding-top: rem(6);
-  text-align: center;
-
-  @include mq(md) {
-    width: rem(54);
-  }
-}
-
-.p-renovation__number::before {
-  display: block;
-  width: rem(30);
-  height: 1px;
-  background: #000;
-  content: "";
-
-  @include mq(md) {
-    width: rem(48);
-  }
-}
-
-.p-renovation__label {
-  display: block;
-  margin-top: rem(8);
-  font-size: rem(8);
-  font-weight: $bold;
-  line-height: 1;
-  writing-mode: vertical-rl;
-}
-
-.p-renovation__count {
-  display: block;
-  margin-top: rem(7);
-  font-size: rem(15);
-  font-weight: $bold;
-  line-height: 1;
-}
-
-.p-renovation__title {
-  margin-left: rem(22);
-  line-height: 1.35;
-
-  @include mq(md) {
-    margin-left: rem(42);
-  }
-}
-
-.p-renovation__title-ja,
-.p-renovation__title-en {
-  display: block;
-  color: #000;
-  font-weight: $bold;
-}
-
-.p-renovation__title-ja {
-  font-size: rem(22);
-
-  @include mq(md) {
-    font-size: rem(34);
-  }
-}
-
-.p-renovation__title-en {
-  margin-top: rem(4);
-  font-family: $second-font-family;
-  font-size: rem(13);
-
-  @include mq(md) {
-    font-size: rem(23);
-  }
-}
-
 .p-renovation__content {
   margin-top: rem(70);
 
@@ -125,12 +43,14 @@
 .p-renovation__text {
   margin-top: rem(28);
   color: #000;
-  font-size: rem(11);
+  font-size: rem(14);
   font-weight: $bold;
-  line-height: 2.2;
+  letter-spacing: 0.1em;
+  line-height: calc(25 / 14);
 
   @include mq(md) {
     margin-top: rem(34);
+    line-height: 2.2;
     font-size: rem(13);
   }
 }
@@ -139,10 +59,15 @@
   width: 100%;
   aspect-ratio: 696 / 565;
   overflow: hidden;
-  margin-top: rem(45);
+  margin-top: rem(64);
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  width: 100vw;
 
   @include mq(md) {
     width: auto;
+    margin-right: initial;
+    margin-left: initial;
     flex: 1;
     margin-top: initial;
     margin-left: rem(80);

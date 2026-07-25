@@ -2,8 +2,9 @@
 
 .p-before-after {
   padding-top: rem(24);
-  padding-bottom: rem(110);
+  padding-bottom: rem(80);
   color: #000;
+  overflow-x: clip;
 
   @include mq(md) {
     padding-top: rem(32);
@@ -12,12 +13,14 @@
 }
 
 .p-before-after__title {
-  font-size: rem(19);
+  font-size: rem(18);
   font-weight: $bold;
-  letter-spacing: 0.06em;
   line-height: 1.6;
-  
+  text-align: center;
+  letter-spacing: 0.1em;
+
   @include mq(md) {
+    letter-spacing: 0.06em;
     text-align: right;
     font-size: rem(28);
   }
@@ -25,14 +28,14 @@
 
 .p-before-after__list {
   width: 100%;
-  margin-top: rem(58);
+  margin-top: rem(95);
 
   @include mq(md) {
     margin-top: rem(82);
   }
 }
 
-.p-before-after__item + .p-before-after__item {
+.p-before-after__item+.p-before-after__item {
   margin-top: rem(90);
 
   @include mq(md) {
@@ -42,6 +45,15 @@
 
 .p-before-after__images {
   display: flex;
+  margin-left: calc(50% - 50vw);
+  width: 100vw;
+  margin-right: calc(50% - 50vw);
+
+  @include mq(md) {
+    width: initial;
+    margin-right: initial;
+    margin-left: initial;
+  }
 }
 
 .p-before-after__image {
@@ -75,7 +87,7 @@
 }
 
 .p-before-after__body {
-  margin-top: rem(28);
+  margin-top: rem(95);
 
   @include mq(md) {
     margin-top: rem(38);
@@ -84,12 +96,13 @@
 }
 
 .p-before-after__heading {
-  font-size: rem(16);
+  font-size: rem(18);
   font-weight: $bold;
-  letter-spacing: 0.04em;
   line-height: 1.6;
+  letter-spacing: 0.1em;
 
   @include mq(md) {
+    letter-spacing: 0.04em;
     font-size: rem(22);
   }
 }
@@ -97,7 +110,7 @@
 .p-before-after__category {
   margin-top: rem(3);
   font-family: $second-font-family;
-  font-size: rem(8);
+  font-size: rem(18);
   font-weight: $bold;
   line-height: 1;
 
@@ -107,13 +120,15 @@
 }
 
 .p-before-after__text {
-  margin-top: rem(24);
-  font-size: rem(12);
+  margin-top: rem(48);
+  font-size: rem(14);
   font-weight: $bold;
-  line-height: 2.2;
+  letter-spacing: 0.06em;
+  line-height: calc(21 / 12);
 
   @include mq(md) {
     margin-top: rem(30);
+    line-height: 2.2;
     font-size: rem(12);
   }
 }

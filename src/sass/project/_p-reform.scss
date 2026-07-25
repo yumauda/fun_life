@@ -26,8 +26,13 @@
 }
 
 .p-reform__title {
-  line-height: 1.25;
-  letter-spacing: 0.08em;
+  display: none;
+
+  @include mq(md) {
+    line-height: 1.25;
+    letter-spacing: 0.08em;
+    display: block;
+  }
 }
 
 .p-reform__title-ja {

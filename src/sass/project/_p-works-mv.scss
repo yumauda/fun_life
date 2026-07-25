@@ -1,7 +1,6 @@
 @use "../global" as *;
 
 .p-works-mv {
-  padding-bottom: rem(90);
   overflow-x: clip;
 
   @include mq(md) {
@@ -10,10 +9,17 @@
 }
 
 .p-works-mv__image {
-  aspect-ratio: 3321 / 1200;
   overflow: hidden;
   position: relative;
   margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  aspect-ratio: 787 / 957;
+
+  @include mq(md) {
+    margin-right: initial;
+    aspect-ratio: 3321 / 1200;
+
+  }
 }
 
 .p-works-mv__image img {
@@ -26,27 +32,38 @@
 .p-works-mv__image::before {
   position: absolute;
   content: '';
-  background: url(../images/works/mv_bottom.webp);
+  background: url(../images/works/mv_sp_bottom.webp);
+  width: 100%;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   height: auto;
-  aspect-ratio: 1660 / 117;
-  bottom: 0;
   left: 0;
   z-index: 1;
+  aspect-ratio: 393 / 70;
+  bottom: 0;
+
+  @include mq(md){
+    bottom: 0;
+    aspect-ratio: 1660 / 117;
+    background: url(../images/works/mv_bottom.webp);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+  }
 }
 
 .p-works-mv__title {
   position: relative;
   z-index: 1;
-  margin-top: rem(-38);
   color: #000;
   font-family: $second-font-family;
   font-size: clamp(rem(48), 11vw, rem(112));
   font-weight: $bold;
   letter-spacing: 0.05em;
   line-height: 1;
+  margin-top: rem(-40);
 
   @include mq(md) {
     margin-top: rem(-68);
@@ -62,7 +79,7 @@
 }
 
 .p-works-mv__item+.p-works-mv__item {
-  margin-top: rem(14);
+  margin-top: rem(18);
 
   @include mq(md) {
     margin-top: rem(18);
@@ -72,10 +89,14 @@
 .p-works-mv__link {
   display: inline-flex;
   flex-direction: column;
-  color: #c8c8c8;
+  color: #000;
   font-family: $second-font-family;
   font-weight: $bold;
   transition: color 0.3s ease;
+
+  @include mq(md) {
+    color: #c8c8c8;
+  }
 }
 
 .p-works-mv__link.is-current {
@@ -88,7 +109,7 @@
 }
 
 .p-works-mv__link-en {
-  font-size: rem(14);
+  font-size: rem(20);
   line-height: 1;
 
   @include mq(md) {
@@ -97,13 +118,15 @@
 }
 
 .p-works-mv__link-ja {
-  margin-top: rem(2);
+  margin-top: rem(1);
   font-family: $base-font-family;
-  font-size: rem(6);
-  line-height: 1;
+  font-size: rem(16);
+  line-height: 1.1;
 
   @include mq(md) {
+    margin-top: rem(2);
     font-size: rem(8);
+    line-height: 1;
   }
 }
 

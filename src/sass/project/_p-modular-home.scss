@@ -1,7 +1,7 @@
 @use "../global" as *;
 
 .p-modular-home {
-  padding-top: rem(90);
+  padding-top: rem(58);
   padding-bottom: rem(110);
   overflow-x: clip;
 
@@ -11,90 +11,9 @@
   }
 }
 
-.p-modular-home__heading {
-  display: flex;
-  align-items: flex-start;
-}
-
-.p-modular-home__number {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: rem(34);
-  flex: 0 0 auto;
-  padding-top: rem(6);
-  text-align: center;
-
-  @include mq(md) {
-    width: rem(54);
-  }
-}
-
-.p-modular-home__number::before {
-  display: block;
-  width: rem(30);
-  height: 1px;
-  background: #000;
-  content: "";
-
-  @include mq(md) {
-    width: rem(48);
-  }
-}
-
-.p-modular-home__label {
-  display: block;
-  margin-top: rem(8);
-  font-size: rem(8);
-  font-weight: $bold;
-  line-height: 1;
-  writing-mode: vertical-rl;
-}
-
-.p-modular-home__count {
-  display: block;
-  margin-top: rem(7);
-  font-size: rem(15);
-  font-weight: $bold;
-  line-height: 1;
-}
-
-.p-modular-home__title {
-  margin-left: rem(22);
-  color: #000;
-  font-weight: $bold;
-  line-height: 1.35;
-
-  @include mq(md) {
-    margin-left: rem(42);
-  }
-}
-
-.p-modular-home__title-en,
-.p-modular-home__title-ja {
-  display: block;
-}
-
-.p-modular-home__title-en {
-  font-family: $second-font-family;
-  font-size: rem(13);
-
-  @include mq(md) {
-    font-size: rem(23);
-  }
-}
-
-.p-modular-home__title-ja {
-  margin-top: rem(4);
-  font-size: rem(22);
-
-  @include mq(md) {
-    font-size: rem(34);
-  }
-}
-
 .p-modular-home__content {
-  margin-top: rem(70);
+  display: grid;
+  margin-top: rem(32);
 
   @include mq(md) {
     display: flex;
@@ -104,7 +23,10 @@
 }
 
 .p-modular-home__copy {
+  display: contents;
+
   @include mq(md) {
+    display: block;
     width: rem(410);
     flex: 0 0 auto;
     padding-bottom: rem(4);
@@ -112,37 +34,46 @@
 }
 
 .p-modular-home__lead {
+  order: 2;
+  margin-top: rem(38);
   color: #000;
   font-size: rem(18);
   font-weight: $bold;
   line-height: 1.7;
 
   @include mq(md) {
+    margin-top: 0;
     font-size: rem(26);
   }
 }
 
 .p-modular-home__text {
-  margin-top: rem(28);
+  order: 3;
+  margin-top: rem(26);
   color: #000;
-  font-size: rem(11);
+  font-size: rem(14);
   font-weight: $bold;
-  line-height: 2.2;
+  line-height: calc(25 / 14);
+  letter-spacing: 0.1em;
 
   @include mq(md) {
+    line-height: 2.2;
+    order: initial;
     margin-top: rem(34);
     font-size: rem(13);
   }
 }
 
 .p-modular-home__image {
+  order: 1;
   width: 100%;
-  aspect-ratio: 696 / 565;
-  margin-top: rem(45);
+  aspect-ratio: 1 / 1;
   overflow: hidden;
 
   @include mq(md) {
+    order: initial;
     width: auto;
+    aspect-ratio: 696 / 565;
     flex: 1;
     margin-top: 0;
     margin-left: rem(80);
