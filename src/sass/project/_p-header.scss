@@ -9,12 +9,14 @@
   left: 0;
   width: 100%;
   height: rem(100);
+  background: transparent;
   z-index: 10000;
 
   .l-inner {
     max-width: none;
     padding-right: rem(20);
     padding-left: rem(20);
+    height: inherit;
 
     @include mq(md) {
       padding-right: rem(30);
@@ -29,6 +31,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: inherit;
 }
 
 .p-header__logo {
@@ -60,12 +63,14 @@
   background: #fff;
   border: 1px solid #000;
   border-radius: rem(3);
-  padding-left: rem(8);
-  padding-right: rem(8);
   width: rem(24);
   height: rem(24);
+  padding-left: rem(3);
+  padding-right: rem(3);
 
   @include mq(md) {
+    padding-left: rem(8);
+    padding-right: rem(8);
     width: rem(45);
     height: rem(45);
   }
