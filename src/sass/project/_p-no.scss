@@ -27,7 +27,7 @@
   order: 1;
 
   @include mq(md) {
-    font-size: min(rem(155), calc(155 / 1440) * 100vw);
+    font-size: min(rem(146), calc(146 / 1440) * 100vw);
     margin-left: initial;
     margin-right: initial;
     width: initial;
@@ -39,18 +39,20 @@
 
   @include mq(md) {
     display: flex;
-    gap: rem(110);
-    margin-top: rem(320);
+    gap: rem(83);
+    margin-top: rem(240);
 
   }
 }
 
 .p-no__top-detail {
   display: contents;
-  max-width: rem(785);
 
   @include mq(md) {
     display: block;
+    max-width: rem(588);
+    width: 100%;
+
   }
 }
 
@@ -65,8 +67,9 @@
   margin-top: rem(58);
 
   @include mq(md) {
+    white-space: initial;
     line-height: calc(60 / 48);
-    font-size: rem(36);
+    font-size: rem(32);
     margin-top: 0;
 
   }
@@ -104,7 +107,8 @@
 
   @include mq(md) {
     flex: 1;
-    width: rem(500);
+    max-width: rme(375);
+    width: 100%;
     margin-top: 0;
     margin-left: 0;
   }
@@ -160,7 +164,9 @@
 
 .p-no__concept {}
 
-.p-no__concept-title {}
+.p-no__concept-title {
+  text-align: center;
+}
 
 .p-no__button {}
 
@@ -207,7 +213,6 @@
 
   @include mq(md) {
     font-size: rem(45);
-    text-align: left;
   }
 }
 

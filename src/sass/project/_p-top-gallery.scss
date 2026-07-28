@@ -1,0 +1,30 @@
+@use "../global" as *;
+
+.p-top-gallery {
+  padding-top: rem(130);
+  overflow-x: clip;
+}
+
+.p-top-gallery__top-img {
+  margin-left: auto;
+  aspect-ratio: 530 / 530;
+  max-width: rem(360);
+}
+.p-top-gallery__top-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.p-top-gallery__top-img2 {
+  margin-left: calc(50% - 50vw);
+  width: 52vw;
+  position: relative;
+  z-index: 1;
+  aspect-ratio: 1080 / 530;
+}
+.p-top-gallery__top-img2 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

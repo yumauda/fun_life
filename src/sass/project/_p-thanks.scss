@@ -2,8 +2,8 @@
 
 .p-thanks {
   min-height: 100vh;
-  padding-top: rem(65);
-  padding-bottom: rem(110);
+  padding-top: rem(142);
+  padding-bottom: rem(100);
   color: #000;
 
   @include mq(md) {
@@ -18,19 +18,25 @@
 
 .p-thanks__title {
   font-family: $second-font-family;
-  font-size: clamp(rem(58), 9vw, rem(92));
   font-weight: $bold;
-  letter-spacing: -0.055em;
+  letter-spacing: 0.1em;
   line-height: 0.78;
+  font-size: rem(30);
+  @include mq(md){
+    font-size: clamp(rem(58), 9vw, rem(92));
+
+  }
 }
 
 .p-thanks__subtitle {
-  margin-top: rem(20);
-  font-size: rem(18);
   font-weight: $bold;
   line-height: 1.5;
-
+  margin-top: rem(12);
+  font-size: rem(21);
+  letter-spacing: 0.1em;
   @include mq(md) {
+    font-size: rem(18);
+    margin-top: rem(20);
     font-size: rem(22);
   }
 }
@@ -47,37 +53,45 @@
 }
 
 .p-thanks__lead,
-.p-thanks__text,
-.p-thanks__notice {
+.p-thanks__text{
   font-size: rem(11);
   font-weight: $bold;
   line-height: 1.9;
+  letter-spacing: 0.1em;
+}
+.p-thanks__notice {
+  font-size: rem(14);
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  margin-top: rem(24);
+  line-height: calc(25 / 14);
+
 }
 
 .p-thanks__text {
   margin-top: rem(24);
 }
 
-.p-thanks__notice {
-  margin-top: rem(24);
-  font-size: rem(9);
-  font-weight: $normal;
-  line-height: 1.8;
-}
 
 .p-thanks__button {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: rem(150);
-  min-height: rem(42);
   margin-top: rem(45);
   margin-inline: auto;
   color: #fff;
-  font-size: rem(10);
+  font-size: rem(17);
   font-weight: $bold;
   background: #000;
   border: 1px solid #000;
+  letter-spacing: 0.1em;
+  width: rem(178);
+  height: rem(60);
+  @include mq(md){
+    width: rem(150);
+    height: rem(42);
+
+  }
 }
 
 @media (hover: hover) and (pointer: fine) {

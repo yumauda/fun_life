@@ -1,58 +1,5 @@
 @use "../global" as *;
 
-.p-contact {
-  min-height: 100vh;
-  padding-top: rem(70);
-  padding-bottom: rem(120);
-  color: #000;
-
-  @include mq(md) {
-    padding-top: rem(120);
-    padding-bottom: rem(180);
-  }
-}
-
-.p-contact__inner {
-  @include mq(md) {
-    max-width: rem(850);
-  }
-}
-
-.p-contact__title {
-  font-family: $second-font-family;
-  font-size: clamp(rem(62), 10.4vw, rem(101));
-  font-weight: $bold;
-  letter-spacing: -0.05em;
-  line-height: 0.9;
-}
-
-.p-contact__subtitle {
-  margin-top: rem(14);
-  font-size: rem(31);
-  font-weight: $bold;
-  letter-spacing: 0.02em;
-  line-height: 1.4;
-
-  @include mq(md) {
-    font-size: rem(39);
-  }
-}
-
-.p-contact__intro {
-  margin-top: rem(7);
-  font-size: rem(13);
-  font-weight: $bold;
-  line-height: 1.8;
-}
-
-.p-contact__form {
-  margin-top: rem(75);
-
-  @include mq(md) {
-    margin-top: rem(120);
-  }
-}
-
 .p-form,
 .p-form__control,
 .p-form .wpcf7-form-control-wrap {

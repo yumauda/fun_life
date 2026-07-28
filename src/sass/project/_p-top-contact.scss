@@ -115,7 +115,6 @@
 
   @include mq(md) {
     font-size: rem(72);
-    margin-top: rem(16);
   }
 }
 
@@ -126,8 +125,7 @@
   font-weight: 700;
 
   @include mq(md) {
-    margin-top: rem(16);
-    font-size: rem(24);
+    font-size: rem(28);
   }
 }
 

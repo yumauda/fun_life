@@ -30,7 +30,7 @@
 
         <div class="p-no__concept" id="concept">
           <div class="p-no__concept-detail">
-            <p class="p-no__concept-title">concept</p>
+            <p class="p-no__concept-title">about</p>
             <a href="#" class="p-no__concept-button">view more</a>
           </div>
           <figure class="p-no__concept-img">
@@ -249,6 +249,19 @@
       </div>
     </div>
   </section>
+  <div class="p-top-gallery">
+    <div class="l-inner">
+      <div class="p-top-gallery__content">
+        <figure class="p-top-gallery__top-img">
+          <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/top_gallery1.webp" alt="猫ちゃん" width="360" height="360">
+        </figure>
+        <figure class="p-top-gallery__top-img2">
+          <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/top_gallery2.webp" alt="カップルの写真" width="1080" height="529">
+        </figure>
+      </div>
+    </div>
+
+  </div>
   <section class="p-top-project">
     <div class="l-inner">
       <div class="p-top-project__content">

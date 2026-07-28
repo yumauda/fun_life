@@ -7,7 +7,7 @@
         <header class="p-contact__heading">
           <h1 class="p-contact__title">CONTACT</h1>
           <p class="p-contact__subtitle js-contact-subtitle" data-input-title="お問い合わせ" data-confirm-title="お問い合わせ内容の確認">お問い合わせ</p>
-          <p class="p-contact__intro js-contact-intro">お家づくり・資料請求など、お気軽にお問い合わせください。<br>必要事項をご入力のうえ、内容確認へお進みください。</p>
+          <p class="p-contact__intro js-contact-intro">お急ぎの方は、お電話、もしくは公式LINEからのお問い合わせを。<br>*は必須項目です。必ず入力してください</p>
         </header>
 
         <div class="p-contact__form">
@@ -16,6 +16,23 @@
       </div>
     </div>
   </section>
+
+  <?php
+  get_template_part(
+    'includes/contact',
+    null,
+    array(
+      'id' => 'return-top',
+      'modifier' => 'p-top-contact--return',
+      'href' => home_url('/'),
+      'aria_label' => 'トップページへ戻る',
+      'request' => 'RETURN',
+      'title' => 'TOP',
+      'text' => 'トップに戻る',
+      'image_alt' => '',
+    )
+  );
+  ?>
 </main>
 
 <?php get_footer(); ?>

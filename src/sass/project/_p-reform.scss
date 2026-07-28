@@ -39,6 +39,7 @@
   font-size: rem(20);
   display: block;
   text-align: left;
+  letter-spacing: 0.1em;
   font-weight: 700;
 
   @include mq(md) {
@@ -52,11 +53,13 @@
   font-family: $second-font-family;
   font-size: rem(10);
   font-weight: 700;
+  letter-spacing: 0.1em;
   line-height: 1.4;
 
   @include mq(md) {
     font-size: rem(32);
     text-align: right;
+    margin-top: rem(8);
   }
 }
 
