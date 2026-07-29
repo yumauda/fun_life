@@ -48,11 +48,12 @@
   font-family: $second-font-family;
   font-size: rem(21);
   font-weight: $bold;
+  letter-spacing: 0.1em;
   line-height: 1;
 
   @include mq("md") {
     margin-top: rem(16);
-    font-size: rem(9);
+    font-size: rem(16);
     writing-mode: vertical-rl;
   }
 }
@@ -69,7 +70,7 @@
   @include mq("md") {
     margin-top: rem(16);
     margin-left: 0;
-    font-size: rem(23);
+    font-size: rem(38);
   }
 }
 
@@ -95,7 +96,7 @@
   line-height: 1.35;
 
   @include mq("md") {
-    font-size: rem(25);
+    font-size: rem(36);
   }
 }
 
@@ -117,10 +118,11 @@
   margin-top: rem(1);
   font-size: rem(18);
   line-height: 1.3;
+  letter-spacing: 0.1em;
 
   @include mq("md") {
     margin-top: rem(8);
-    font-size: rem(28);
+    font-size: rem(45);
     line-height: 1.4;
   }
 }

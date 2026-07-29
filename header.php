@@ -77,7 +77,7 @@
 </head>
 
 <body <?php body_class(); ?>>
-    <header class="l-header p-header">
+    <header class="l-header p-header<?php echo is_page('about') ? ' p-header--about' : ''; ?>">
         <div class="l-inner">
             <div class="p-header__inner">
                 <a class="p-header__logo" href="<?php echo esc_url(home_url('/')); ?>" aria-label="ファンライフ株式会社 ホーム">

@@ -26,23 +26,33 @@
 
 .p-about-mv__title {
   position: absolute;
-  top: rem(470);
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: rem(146);
   font-weight: 700;
   color: $white;
   z-index: 1;
   text-transform: uppercase;
   z-index: 2;
+  font-size: rem(60);
+  top: rem(313);
+  @include mq(md){
+    top: rem(470);
+    font-size: rem(146);
+
+  }
 }
 
 .p-about-mv__img {
-  aspect-ratio: 1920 / 2877;
   overflow: hidden;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
   width: 100vw;
+  aspect-ratio: 393 / 1258;
+
+  @include mq(md){
+    aspect-ratio: 1920 / 2877;
+
+  }
 }
 
 .p-about-mv__img img {
@@ -52,9 +62,13 @@
 }
 
 .p-about-mv__detail {
-  position: absolute;
-  bottom: rem(440);
   z-index: 3;
+  position: absolute;
+  top: rem(515);
+  @include mq(md){
+    top: rem(1360);
+    margin-top: initial;
+  }
 }
 
 .p-about-mv__text-img {
@@ -70,11 +84,18 @@
 }
 
 .p-about-mv__text {
-  margin-top: rem(160);
   color: #fff;
-  font-size: rem(18);
   font-weight: 700;
   text-align: center;
   letter-spacing: 0.1em;
-  line-height: 1.5;
+  font-size: rem(14);
+  line-height: calc(30 / 14);
+  margin-top: rem(95);
+
+  @include mq(md){
+    margin-top: rem(160);
+    line-height: 1.5;
+    font-size: rem(18);
+
+  }
 }

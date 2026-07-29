@@ -1,8 +1,13 @@
 @use "../global" as *;
 
 .p-logo {
-  padding-top: rem(360);
+  padding-top: rem(200);
   padding-bottom: rem(360);
+
+  @include mq(md){
+    padding-top: rem(360);
+
+  }
 }
 
 

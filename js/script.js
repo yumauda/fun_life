@@ -34,12 +34,36 @@ jQuery(function ($) {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
+  setUpAboutHeaderColor();
   setUpAccordion();
   setUpWorksModal();
   setUpLineupAccordion();
   setUpStyleMobileAccordion();
   setUpStyleSelector();
 });
+
+const setUpAboutHeaderColor = () => {
+  const header = document.querySelector(".p-header--about");
+  const aboutMv = document.querySelector(".p-about-mv");
+  if (!header || !aboutMv) return;
+
+  let frameId = null;
+
+  const updateHeaderColor = () => {
+    const isAfterAboutMv = aboutMv.getBoundingClientRect().bottom <= header.offsetHeight + 1;
+    header.classList.toggle("is-after-about-mv", isAfterAboutMv);
+    frameId = null;
+  };
+
+  const requestUpdate = () => {
+    if (frameId) return;
+    frameId = window.requestAnimationFrame(updateHeaderColor);
+  };
+
+  updateHeaderColor();
+  window.addEventListener("scroll", requestUpdate, { passive: true });
+  window.addEventListener("resize", requestUpdate);
+};
 
 const setUpStyleMobileAccordion = () => {
   const items = Array.from(document.querySelectorAll(".p-style__mobile-item"));

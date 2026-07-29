@@ -39,7 +39,7 @@
   width: rem(88);
 
   @include mq(md) {
-    width: rem(100);
+    width: rem(150);
   }
 }
 
@@ -47,6 +47,11 @@
   width: 100%;
   height: auto;
   display: block;
+}
+
+.p-header--about .p-header__logo img {
+  filter: brightness(0) invert(1);
+  transition: filter 0.5s ease;
 }
 
 .p-header__actions {
@@ -67,6 +72,10 @@
   height: rem(24);
   padding-left: rem(3);
   padding-right: rem(3);
+  transition:
+    color 0.5s ease,
+    background-color 0.5s ease,
+    border-color 0.5s ease;
 
   @include mq(md) {
     padding-left: rem(8);
@@ -74,10 +83,21 @@
     width: rem(45);
     height: rem(45);
   }
+
 }
 
 .p-header__icon-link svg {
   display: block;
+}
+
+.p-header--about .p-header__icon-link {
+  color: #fff;
+  background: transparent;
+  border-color: #fff;
+}
+
+.p-header--about .p-header__icon-link svg {
+  fill: currentColor;
 }
 
 .p-header__menu {
@@ -95,12 +115,23 @@
   cursor: pointer;
   width: rem(38);
   height: rem(24);
+  transition:
+    color 0.5s ease,
+    background-color 0.5s ease,
+    border-color 0.5s ease;
+
   @include mq(md){
     min-width: rem(130);
     width: rem(130);
     height: rem(45);
 
   }
+}
+
+.p-header--about .p-header__menu {
+  color: #fff;
+  background: transparent;
+  border-color: #fff;
 }
 
 .p-header__menu-text {
@@ -115,6 +146,11 @@
     font-family: $second-font-family;
     display: block;
   }
+}
+
+.p-header--about .p-header__menu-text {
+  color: #fff;
+  transition: color 0.5s ease;
 }
 
 .p-header__menu-bars {
@@ -133,7 +169,33 @@
   height: 1px;
   margin-left: auto;
   background: #000;
-  transition: width 0.3s ease, transform 0.3s ease;
+  transition:
+    width 0.3s ease,
+    transform 0.3s ease,
+    background-color 0.5s ease;
+}
+
+.p-header--about .p-header__menu-bar {
+  background: #fff;
+}
+
+.p-header--about.is-after-about-mv .p-header__logo img {
+  filter: none;
+}
+
+.p-header--about.is-after-about-mv .p-header__icon-link,
+.p-header--about.is-after-about-mv .p-header__menu {
+  color: #000;
+  background: #fff;
+  border-color: #000;
+}
+
+.p-header--about.is-after-about-mv .p-header__menu-text {
+  color: #000;
+}
+
+.p-header--about.is-after-about-mv .p-header__menu-bar {
+  background: #000;
 }
 
 .p-header__menu-bar--short {
@@ -155,12 +217,22 @@
   background: #000;
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .p-header__icon-link {
-    transition: color 0.3s ease, background-color 0.3s ease;
+.p-header__icon-link:hover {
+  @media (hover: hover) and (pointer: fine) {
+    color: #fff;
+    background: #000;
   }
+}
 
-  .p-header__icon-link:hover {
+.p-header--about .p-header__icon-link:hover {
+  @media (hover: hover) and (pointer: fine) {
+    color: #000;
+    background: #fff;
+  }
+}
+
+.p-header--about.is-after-about-mv .p-header__icon-link:hover {
+  @media (hover: hover) and (pointer: fine) {
     color: #fff;
     background: #000;
   }
@@ -170,6 +242,16 @@
 .p-header__menu:focus-visible {
   outline: 2px solid #000;
   outline-offset: rem(3);
+}
+
+.p-header--about .p-header__icon-link:focus-visible,
+.p-header--about .p-header__menu:focus-visible {
+  outline-color: #fff;
+}
+
+.p-header--about.is-after-about-mv .p-header__icon-link:focus-visible,
+.p-header--about.is-after-about-mv .p-header__menu:focus-visible {
+  outline-color: #000;
 }
 
 .p-header__menu.is-active .p-header__menu-bar--short {
@@ -206,6 +288,31 @@
 
 .drawer-open .p-header__logo {
   visibility: hidden;
+}
+
+.drawer-open .p-header--about .p-header__icon-link,
+.p-header--about .p-header__menu.is-active {
+  color: #000;
+  border-color: #000;
+}
+
+.p-header--about .p-header__menu.is-active .p-header__menu-text {
+  color: #000;
+}
+
+.drawer-open .p-header--about .p-header__icon-link:focus-visible,
+.p-header--about .p-header__menu.is-active:focus-visible {
+  outline-color: #000;
+}
+
+.p-header--about .p-header__logo img,
+.p-header--about .p-header__icon-link,
+.p-header--about .p-header__menu,
+.p-header--about .p-header__menu-text,
+.p-header--about .p-header__menu-bar {
+  @media (prefers-reduced-motion: reduce) {
+    transition-duration: 0.01ms;
+  }
 }
 
 .p-drawer-content.is-active {

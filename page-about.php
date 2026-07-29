@@ -8,20 +8,23 @@
           <div class="p-about-mv__text-img">
             <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/about/about_mv_text.webp" alt="no fun, no life" width="1000" height="240">
           </div>
-          <p class="p-about-mv__text">家は、ただ住むための場所ではありません。<br>
-            家族と笑い合い、好きなことを楽しみ、人生を重ねていく場所です。<br><br>
+          <p class="p-about-mv__text">家は、ただ住むための場所では<br class="u-mobile">ありません。<br>
+            家族と笑い合い、好きなことを楽しみ、<br class="u-mobile">人生を重ねていく場所です。<br><br>
 
             私たちは、性能やデザインだけでなく、<br>
-            その先にある「楽しい暮らし」を大切にしています。<br><br>
+            その先にある「楽しい暮らし」を<br class="u-mobile">大切にしています。<br><br>
 
             一人ひとりの理想に寄り添いながら、<br>
             帰るのが楽しみになる住まいをつくる。<br><br>
 
             NO Fun No Life<br>
-            人生を楽しむための家づくりを、これからも。</p>
+            人生を楽しむための家づくりを、<br class="u-mobile">これからも。</p>
         </div>
         <figure class="p-about-mv__img">
-          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/about/about_mv.webp" alt="no fun, no life" width="1920" height="2877">
+          <picture>
+            <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/images/about/about_mv.webp" media="(min-width: 768px)" width="1920" height="2877" />
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/about/about_mv_sp.webp" alt="no fun, no life" width="1920" height="2877">
+          </picture>
         </figure>
       </div>
     </div>
@@ -80,11 +83,11 @@
         <div class="c-section-heading">
           <div class="c-section-heading__index" aria-hidden="true">
             <span class="c-section-heading__label">ABOUT</span>
-            <span class="c-section-heading__number">01</span>
+            <span class="c-section-heading__number">03</span>
           </div>
           <div class="c-section-heading__body">
-            <p class="c-section-heading__en">MESSAGE FROM THE PRESIDENT</p>
-            <h2 class="c-section-heading__ja">代表挨拶</h2>
+            <p class="c-section-heading__en">COMPANY PROFILE</p>
+            <h2 class="c-section-heading__ja">会社概要</h2>
           </div>
         </div>
         <div class="p-company__detail">
@@ -149,8 +152,11 @@
               <h2 class="c-section-heading__ja">アクセス</h2>
             </div>
           </div>
-          <figure class="p-map__img">
+          <figure class="p-map__img u-desktop">
             <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/about/message_03.webp" alt="アクセス" width="431" height="384">
+          </figure>
+          <figure class="p-map__img u-mobile">
+            <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/about/map_img_sp.webp" alt="アクセス" width="431" height="384">
           </figure>
 
         </div>
@@ -168,12 +174,12 @@
               <div class="p-map__route">
                 <h4 class="p-map__route-title">御船 IC から約 5 分</h4>
                 <p class="p-map__route-en">CAR ACCESS</p>
-                <p class="p-map__route-text">九州自動車道「御船インターチェンジ」より車で約5分。<br>敷地内に駐車場をご用意しておりますので、お車でもお気軽にお越しください。</p>
+                <p class="p-map__route-text">九州自動車道「御船インターチェンジ」より車で約5分。<br class="u-desktop">敷地内に駐車場をご用意しておりますので、お車でもお気軽にお越しください。</p>
               </div>
               <div class="p-map__route">
-                <h4 class="p-map__route-title">バスを降りたら、徒歩 1 分</h4>
+                <h4 class="p-map__route-title">バスを降りたら、徒歩1分</h4>
                 <p class="p-map__route-en">BUS ACCESS</p>
-                <p class="p-map__route-text">熊本バス「御船警察署前」停留所から徒歩約1分。<br>初めての方でも迷わずお越しいただけます。</p>
+                <p class="p-map__route-text">熊本バス「御船警察署前」停留所から徒歩約1分。<br class="u-desktop">初めての方でも迷わずお越しいただけます。</p>
               </div>
             </div>
           </div>
@@ -186,7 +192,7 @@
       <div class="p-model-house__content">
         <div class="p-model-house__heading">
           <p class="p-model-house__heading-en">MODEL HOUSE</p>
-          <h2 class="p-model-house__heading-ja">宿泊体験型モデルハウス「そのうち」</h2>
+          <h2 class="p-model-house__heading-ja">宿泊体験型<br class="u-mobile">モデルハウス「そのうち」</h2>
           <p class="p-model-house__address">〒861-3202 熊本県上益城郡御船町小坂999-3</p>
         </div>
         <div class="p-model-house__body">
@@ -200,6 +206,23 @@
               <span class="p-model-house__button-icon" aria-hidden="true"></span>
               <span>ご予約はこちら</span>
             </a>
+          </div>
+        </div>
+        <div class="p-model-house__access">
+          <div class="p-model-house__map">
+            <iframe src="https://www.google.com/maps?q=熊本県上益城郡御船町小坂999-3&amp;output=embed" title="宿泊体験型モデルハウス「そのうち」周辺地図" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          <div class="p-model-house__routes">
+            <div class="p-model-house__route">
+              <h3 class="p-model-house__route-title">御船 IC を降りて、約 3 分。</h3>
+              <p class="p-model-house__route-en">CAR ACCESS</p>
+              <p class="p-model-house__route-text">九州自動車道「御船 IC」から車で約3分。<br>モデルハウス「そのうち」は、インターを降りてすぐの場所にあります。<br class="u-desktop">お車でお気軽にお越しください。</p>
+            </div>
+            <div class="p-model-house__route">
+              <h3 class="p-model-house__route-title">最寄りバス停から徒歩圏内。</h3>
+              <p class="p-model-house__route-en">BUS ACCESS</p>
+              <p class="p-model-house__route-text">熊本バスをご利用の場合は、「小坂」周辺のバス停をご利用ください。<br class="u-desktop">ご来場の際は、事前予約時に詳しいアクセス方法もご案内いたします。</p>
+            </div>
           </div>
         </div>
       </div>
