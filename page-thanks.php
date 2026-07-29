@@ -10,12 +10,16 @@
         </header>
 
         <div class="p-thanks__message">
-          <p class="p-thanks__lead">この度はお問い合わせいただき、誠にありがとうございます。送信いただいた内容は無事に受信いたしました。</p>
-          <p class="p-thanks__text">ご入力いただいたメールアドレス宛に、自動返信による確認メールをお送りしておりますのでご確認ください。<br>通常、 3営業日以内に担当者より改めてご連絡を差し上げます。今しばらくお待ちいただけますようお願い申し上げます。</p>
-          <p class="p-thanks__notice">※しばらく経ってもメールが届かない場合は、入力されたメールアドレスが間違っているか、迷惑メールフォルダに振り分けられている可能性がございます。お手数ですがメールの受信設定をご確認のうえ、再度お問い合わせください。</p>
+          <p class="p-thanks__lead">この度はお問い合わせいただき、誠にありがとうございます。<br class="u-desktop">送信いただいた内容は無事に受信いたしました。</p>
+          <p class="p-thanks__text">ご入力いただいたメールアドレス宛に、自動返信による確認メールをお送りしておりますのでご確認ください。<br>通常、 3営業日以内に担当者より改めてご連絡を差し上げます。<br class="u-desktop">今しばらくお待ちいただけますようお願い申し上げます。</p>
+          <div class="p-thanks__notice-wrapper">
+            <h2 class="p-thanks__notice-title">※メールが届かない場合</h2>
+
+            <p class="p-thanks__notice">弊社からの返信が迷惑メールフォルダに自動的に移動される場合があります。<br class="u-mobile">10分以上経っても自動延伸メールが届かない場合には、迷惑メールフォルダをご確認ください。<br class="u-desktop">また、受信できるように設定の変更をお願いします。迷惑メールフォルダにも返信が見当たらないようであれば、お手数ですが再度お問い合わせ下さいますようお願いいたします。</p>
+          </div>
         </div>
 
-        <a class="p-thanks__button" href="<?php echo esc_url(home_url('/')); ?>">TOPにもどる</a>
+        <a class="p-thanks__button" href="<?php echo esc_url(home_url('/')); ?>">TOPに戻る</a>
       </div>
     </div>
   </section>
