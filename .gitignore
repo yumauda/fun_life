@@ -9,3 +9,7 @@ xd-code/
 
 # 画像圧縮の差分キャッシュ
 .cache/
+
+# ブラウザ検証用の一時ファイル
+.playwright-mcp/
+/works-section03-heading.png
