@@ -1,6 +1,12 @@
 <?php
 get_header();
 
+$single_post_url = get_permalink(1);
+
+if (!$single_post_url) {
+  $single_post_url = home_url('/?p=1');
+}
+
 $blog_posts = array(
   array(
     'category' => '施工事例',
@@ -70,15 +76,17 @@ $blog_posts = array(
         <div class="p-blog__grid">
           <?php foreach ($blog_posts as $post) : ?>
             <article class="p-blog__card">
-              <div class="p-blog__meta">
-                <span class="p-blog__category"><?php echo esc_html($post['category']); ?></span>
-                <time class="p-blog__date" datetime="<?php echo esc_attr($post['datetime']); ?>"><?php echo esc_html($post['date']); ?></time>
-              </div>
-              <figure class="p-blog__image">
-                <img src="<?php echo esc_url(get_template_directory_uri() . '/images/works/' . $post['image']); ?>" alt="<?php echo esc_attr($post['alt']); ?>" width="<?php echo esc_attr($post['width']); ?>" height="<?php echo esc_attr($post['height']); ?>" loading="lazy" decoding="async">
-              </figure>
-              <p class="p-blog__card-meta"><?php echo esc_html($post['meta']); ?></p>
-              <h2 class="p-blog__card-title"><?php echo esc_html($post['title']); ?></h2>
+              <a class="p-blog__card-link" href="<?php echo esc_url($single_post_url); ?>">
+                <div class="p-blog__meta">
+                  <span class="p-blog__category"><?php echo esc_html($post['category']); ?></span>
+                  <time class="p-blog__date" datetime="<?php echo esc_attr($post['datetime']); ?>"><?php echo esc_html($post['date']); ?></time>
+                </div>
+                <figure class="p-blog__image">
+                  <img src="<?php echo esc_url(get_template_directory_uri() . '/images/works/' . $post['image']); ?>" alt="<?php echo esc_attr($post['alt']); ?>" width="<?php echo esc_attr($post['width']); ?>" height="<?php echo esc_attr($post['height']); ?>" loading="lazy" decoding="async">
+                </figure>
+                <p class="p-blog__card-meta"><?php echo esc_html($post['meta']); ?></p>
+                <h2 class="p-blog__card-title"><?php echo esc_html($post['title']); ?></h2>
+              </a>
             </article>
           <?php endforeach; ?>
         </div>

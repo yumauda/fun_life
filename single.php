@@ -18,9 +18,13 @@ $image_uri = get_template_directory_uri() . '/images/blog-single/';
         </div>
         <p class="p-single-blog__spec">熊本市中央区八王寺／32坪／3LDK吹き抜け／2階建て</p>
         <h1 class="p-single-blog__title">6人家族の会話が弾む<br>“繋がり”が深まるお家</h1>
+        <a class="p-single-blog__back" href="<?php echo esc_url(home_url('/blog/')); ?>">
+          <span>一覧へ</span>
+          <span class="p-single-blog__back-arrow" aria-hidden="true"></span>
+        </a>
       </div>
       <figure class="p-single-blog__hero-image">
-        <img src="<?php echo esc_url($image_uri . 'blog6.jpg'); ?>" alt="ネイビーと白のガルバリウム外壁が印象的な住宅" width="1000" height="1500">
+        <img src="<?php echo esc_url($image_uri . 'blog6.jpg'); ?>" alt="ネイビーと白のガルバリウム外壁が印象的な住宅" width="1000" height="1500" decoding="async">
       </figure>
     </header>
 
@@ -88,9 +92,18 @@ $image_uri = get_template_directory_uri() . '/images/blog-single/';
           </a>
         </div>
         <nav class="p-single-blog__other-nav" aria-label="記事ナビゲーション">
-          <a href="#">← 前へ</a>
-          <a href="<?php echo esc_url(home_url('/blog/')); ?>">イベント・ブログへ<br>↑</a>
-          <a href="#">施工事例へ<br>→</a>
+          <a href="<?php echo esc_url(home_url('/blog/')); ?>">
+            <span class="p-single-blog__other-nav-label">一覧へ</span>
+            <span class="p-single-blog__other-nav-arrow" aria-hidden="true"></span>
+          </a>
+          <a href="<?php echo esc_url(home_url('/blog/')); ?>">
+            <span class="p-single-blog__other-nav-label">イベント/コラムへ</span>
+            <span class="p-single-blog__other-nav-arrow" aria-hidden="true"></span>
+          </a>
+          <a href="<?php echo esc_url(home_url('/works/')); ?>">
+            <span class="p-single-blog__other-nav-label">施工事例へ</span>
+            <span class="p-single-blog__other-nav-arrow" aria-hidden="true"></span>
+          </a>
         </nav>
       </section>
     </div>

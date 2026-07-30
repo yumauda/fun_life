@@ -4,7 +4,7 @@
   color: #000;
   padding-top: rem(140);
   @include mq(md){
-    padding-top: rem(140);
+    padding-top: rem(235);
   }
 }
 
@@ -19,8 +19,7 @@
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
-    padding-top: rem(90);
-    padding-bottom: rem(86);
+    padding-bottom: rem(90);
   }
 }
 
@@ -37,11 +36,11 @@
   font-family: $second-font-family;
   font-size: rem(37);
   font-weight: $bold;
-  letter-spacing: -0.04em;
+  letter-spacing: 0.1em;
   line-height: 1;
 
   @include mq(md) {
-    font-size: rem(64);
+    font-size: rem(109);
   }
 }
 
@@ -50,9 +49,10 @@
   font-size: rem(14);
   font-weight: $bold;
   line-height: 1;
+  letter-spacing: 0.1em;
 
   @include mq(md) {
-    font-size: rem(20);
+    font-size: rem(45);
   }
 }
 
@@ -67,7 +67,7 @@
   line-height: 1;
 
   @include mq(md) {
-    font-size: rem(23);
+    font-size: rem(45);
   }
 }
 
@@ -78,8 +78,9 @@
   align-items: center;
   gap: rem(8);
   @include mq(md){
-    column-gap: rem(7);
+    column-gap: rem(12);
     flex-direction: row;
+    margin-top: rem(24);
 
   }
 }
@@ -104,11 +105,11 @@
 
   @include mq(md) {
     min-height: rem(22);
-    padding-right: rem(13);
-    padding-left: rem(13);
-    font-size: rem(10);
-    padding-top: initial;
-    padding-bottom: initial;
+    padding-right: rem(22);
+    padding-left: rem(22);
+    padding-top: rem(8);
+    padding-bottom: rem(8);
+    font-size: rem(15);
   }
 }
 
@@ -120,6 +121,7 @@
 
   @include mq(md) {
     margin-top: initial;
+    padding-top: rem(150);
     padding-bottom: rem(150);
   }
 }
@@ -132,8 +134,8 @@
   @include mq(md) {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: rem(50);
-    row-gap: rem(105);
+    column-gap: rem(42);
+    row-gap: rem(150);
   }
 }
 
@@ -166,6 +168,7 @@
   padding-right: rem(24);
   padding-left: rem(24);
   font-size: rem(14);
+  letter-spacing: 0.1em;
   font-weight: $bold;
   line-height: 1;
   border: 1px solid #000;
@@ -173,7 +176,6 @@
   @include mq(md) {
     min-width: rem(64);
     min-height: rem(20);
-    font-size: rem(11);
   }
 }
 
@@ -182,9 +184,10 @@
   font-size: rem(18);
   font-weight: $bold;
   line-height: 1;
+  letter-spacing: 0.1em;
 
   @include mq(md) {
-    font-size: rem(11);
+    font-size: rem(14);
   }
 }
 
@@ -210,13 +213,13 @@
 .p-blog__card-meta {
   margin-top: rem(17);
   font-size: rem(14);
-  letter-spacing: 0.2em;
+  letter-spacing: 0.1em;
   line-height: calc(24 / 14);
   font-weight: $bold;
 
   @include mq(md) {
     line-height: 1.7;
-    font-size: rem(11);
+    font-size: rem(14);
   }
 }
 
@@ -226,10 +229,11 @@
   letter-spacing: 0.1em;
   line-height: calc(32 / 18);
   font-weight: $bold;
+  letter-spacing: 0.1em;
 
   @include mq(md) {
     line-height: 1.65;
-    font-size: rem(17);
+    font-size: rem(16);
   }
 }
 
@@ -255,9 +259,12 @@
   height: rem(18);
   color: #000;
   font-family: $second-font-family;
-  font-size: rem(10);
   font-weight: $bold;
   line-height: 1;
+  font-size: rem(12);
+  @include mq(md){
+    font-size: rem(18);
+  }
 }
 
 .p-blog__pagination-link.is-current {
