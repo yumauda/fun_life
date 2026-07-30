@@ -6,7 +6,7 @@
   overflow-x: clip;
 
   @include mq("md") {
-    padding-top: rem(180);
+    padding-top: rem(90);
     padding-bottom: rem(180);
   }
 }
@@ -52,7 +52,7 @@
   font-size: rem(18);
 
   @include mq(md) {
-    font-size: rem(25);
+    font-size: rem(36);
   }
 }
 
@@ -291,11 +291,12 @@
   color: #000;
   font-size: rem(21);
   font-weight: $bold;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.1em;
   line-height: 1.5;
 
   @include mq("md") {
     font-size: rem(27);
+    line-height: calc(48 / 35);
   }
 }
 
@@ -305,8 +306,10 @@
   font-size: rem(11);
   font-weight: $bold;
   line-height: 2.35;
+  letter-spacing: 0.1em;
 
   @include mq("md") {
     font-size: rem(14);
+    line-height: calc(48 / 18);
   }
 }

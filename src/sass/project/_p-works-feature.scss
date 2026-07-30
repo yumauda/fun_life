@@ -10,6 +10,22 @@
   }
 }
 
+.p-works-feature--concept {
+  padding-bottom: rem(32);
+
+  @include mq("md") {
+    padding-bottom: rem(40);
+  }
+}
+
+.p-works-feature--designed {
+  padding-top: rem(48);
+
+  @include mq("md") {
+    padding-top: rem(72);
+  }
+}
+
 .p-works-feature__body {
   display: flex;
   flex-direction: column;
@@ -100,7 +116,7 @@
   line-height: 1.4;
   font-size: rem(18);
   @include mq(md){
-    font-size: rem(9);
+    font-size: rem(14);
   }
 }
 
@@ -111,22 +127,7 @@
   line-height: calc(25 / 14);
 
   @include mq("md") {
-    line-height: 2.15;
+    line-height:calc(50 / 18);
     font-size: rem(14);
-  }
-}
-
-#concept .c-section-heading--ja-first .c-section-heading__en {
-  order: initial;
-  margin-top: 0;
-}
-
-#concept .c-section-heading--ja-first .c-section-heading__ja {
-  order: initial;
-  margin-top: rem(2);
-
-  @include mq("md") {
-    order: -1;
-    margin-top: 0;
   }
 }

@@ -41,10 +41,10 @@
     </div>
   </section>
 
-  <section class="p-works-feature" id="concept">
+  <section class="p-works-feature p-works-feature--concept" id="concept">
     <div class="l-inner">
       <div class="p-works-feature__content">
-        <div class="c-section-heading">
+        <div class="c-section-heading c-section-heading--ja-first">
           <div class="c-section-heading__index" aria-hidden="true">
             <span class="c-section-heading__label">WORKS</span>
             <span class="c-section-heading__number">01</span>
@@ -67,7 +67,18 @@
       </div>
     </div>
   </section>
-  <section class="p-works-feature p-works-feature--reverse" id="designed-for-living">
+  <div class="p-works-marquee" role="img" aria-label="No Fun No Life">
+    <div class="p-works-marquee__track" aria-hidden="true">
+      <?php for ($loop = 0; $loop < 2; $loop++) : ?>
+        <div class="p-works-marquee__group">
+          <span>No Fun No Life</span>
+          <span>No Fun No Life</span>
+          <span>No Fun No Life</span>
+        </div>
+      <?php endfor; ?>
+    </div>
+  </div>
+  <section class="p-works-feature p-works-feature--reverse p-works-feature--designed" id="designed-for-living">
     <div class="l-inner">
       <div class="p-works-feature__content">
         <div class="c-section-heading">
@@ -152,7 +163,7 @@
       <div class="p-free__content">
         <div class="p-free__intro">
           <h2 class="p-free__title">決まった形ではなく、<br>理想の暮らしから考える自由設計。</h2>
-          <p class="p-free__text">どんな家に住みたいかではなく、どんな暮らしをしたいか。<br>家族が自然に集まるリビング、家事を楽しむための動線、趣味のクリエイティブスペース。暮らし方は家庭ごとに違い、一人ひとりの理想に合わせて間取りを考えていきます。決まったプランに当てはめるのではなく、あなたらしい暮らしを叶えるための住まいをご提案します。</p>
+          <p class="p-free__text">どんな家に住みたいかではなく、どんな暮らしをしたいか。<br class="u-desktop">家族が自然に集まるリビング、家事を楽しむための動線、趣味のクリエイティブスペース。暮らし方は家庭ごとに違い、一人ひとりの理想に合わせて間取りを考えていきます。<br class="u-mobile"><br class="u-mobile">決まったプランに当てはめるのではなく、あなたらしい暮らしを叶えるための住まいをご提案します。</p>
         </div>
         <div class="swiper p-free__slider">
           <div class="swiper-wrapper">
@@ -309,7 +320,7 @@
   </section>
   <section class="p-renovation" id="reform-renovation">
     <div class="l-inner">
-      <div class="c-section-heading">
+      <div class="c-section-heading c-section-heading--ja-first">
         <div class="c-section-heading__index" aria-hidden="true">
           <span class="c-section-heading__label">WORKS</span>
           <span class="c-section-heading__number">03</span>
@@ -365,7 +376,7 @@
           <div class="p-before-after__body">
             <h3 class="p-before-after__heading">お店の魅力を引き出す店舗づくり。</h3>
             <p class="p-before-after__category">RENOVATION</p>
-            <p class="p-before-after__text">店舗は、商品やサービスの魅力を伝える大切な場所です。デザインや動線、空間の雰囲気を見直すことで、お客さまに与える印象も大きく変わります。ビフォーアフターで、その違いをご体感ください。今だけでなく、将来を見据えた住まいとしても人気を集めています。</p>
+            <p class="p-before-after__text">店舗は、商品やサービスの魅力を伝える大切な場所です。デザインや動線、空間の雰囲気を見直すことで、お客さまに与える印象も大きく変わります。ビフォーアフターで、その違いをご体感ください。<br class="u-mobile">今だけでなく、将来を見据えた住まいとしても人気を集めています。</p>
           </div>
         </article>
       </div>

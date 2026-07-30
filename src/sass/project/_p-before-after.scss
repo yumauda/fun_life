@@ -8,7 +8,7 @@
 
   @include mq(md) {
     padding-top: rem(32);
-    padding-bottom: rem(190);
+    padding-bottom: rem(72);
   }
 }
 
@@ -20,9 +20,9 @@
   letter-spacing: 0.1em;
 
   @include mq(md) {
-    letter-spacing: 0.06em;
+    letter-spacing: 0.1em;
     text-align: right;
-    font-size: rem(28);
+    font-size: rem(36);
   }
 }
 
@@ -39,7 +39,7 @@
   margin-top: rem(90);
 
   @include mq(md) {
-    margin-top: rem(130);
+    margin-top: rem(72);
   }
 }
 
@@ -102,8 +102,8 @@
   letter-spacing: 0.1em;
 
   @include mq(md) {
-    letter-spacing: 0.04em;
-    font-size: rem(22);
+    letter-spacing: 0.1em;
+    font-size: rem(26);
   }
 }
 
@@ -113,9 +113,10 @@
   font-size: rem(18);
   font-weight: $bold;
   line-height: 1;
+  letter-spacing: 0.1em;
 
   @include mq(md) {
-    font-size: rem(10);
+    font-size: rem(16);
   }
 }
 
@@ -123,12 +124,11 @@
   margin-top: rem(48);
   font-size: rem(14);
   font-weight: $bold;
-  letter-spacing: 0.06em;
-  line-height: calc(21 / 12);
+  letter-spacing: 0.1em;
+  line-height: calc(25 / 14);
 
   @include mq(md) {
     margin-top: rem(30);
-    line-height: 2.2;
-    font-size: rem(12);
+    line-height: calc(50 / 18);
   }
 }

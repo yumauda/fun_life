@@ -4,9 +4,6 @@
   padding-top: rem(80);
   overflow-x: clip;
 
-  @include mq("md") {
-    padding-top: rem(120);
-  }
 }
 
 .p-performance__title {
@@ -17,7 +14,7 @@
   line-height: 1.4;
 
   @include mq("md") {
-    font-size: rem(30);
+    font-size: rem(36);
   }
 }
 
@@ -26,7 +23,7 @@
 
   @include mq("md") {
     display: flex;
-    gap: rem(320);
+    gap: rem(240);
     margin-top: rem(42);
   }
 }
@@ -64,7 +61,7 @@
     gap: rem(16);
     min-height: rem(48);
     padding: rem(10) rem(14);
-    font-size: rem(18);
+    font-size: rem(22);
   }
 }
 
@@ -77,7 +74,7 @@
   letter-spacing: 0.1em;
 
   @include mq("md") {
-    font-size: rem(18);
+    font-size: rem(25);
   }
 }
 
@@ -138,7 +135,7 @@
   padding: rem(20);
 
   @include mq("md") {
-    padding: rem(4) rem(28) rem(22);
+    padding: rem(20) rem(28) rem(22);
   }
 }
 
@@ -153,7 +150,7 @@
 
   @include mq("md") {
     display: block;
-    font-size: rem(18);
+    font-size: rem(22);
   }
 }
 
@@ -185,8 +182,8 @@
   letter-spacing: 0.1em;
 
   @include mq("md") {
-    font-size: rem(14);
-    line-height: 1.8;
+    font-size: rem(12);
+    line-height: calc(28 / 16);
   }
 }
 
@@ -200,8 +197,8 @@
 
 
   @include mq("md") {
-    width: 100%;
     margin-top: initial;
+    width: 100%;
   }
 }
 

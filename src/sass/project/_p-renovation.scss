@@ -23,20 +23,21 @@
 
 .p-renovation__copy {
   @include mq(md) {
-    width: rem(470);
-    flex: 0 0 auto;
+    max-width: rem(520);
+    width: 100%;
   }
 }
 
 .p-renovation__lead,
 .p-renovation__subtitle {
   color: #000;
-  font-size: rem(18);
+  font-size: rem(17);
   font-weight: $bold;
   line-height: 1.7;
+  letter-spacing: 0.1em;
 
   @include mq(md) {
-    font-size: rem(26);
+    font-size: rem(24);
   }
 }
 
@@ -50,8 +51,7 @@
 
   @include mq(md) {
     margin-top: rem(34);
-    line-height: 2.2;
-    font-size: rem(13);
+    line-height: calc(48 / 18);
   }
 }
 
@@ -65,9 +65,10 @@
   width: 100vw;
 
   @include mq(md) {
-    width: auto;
+    max-width: rem(522);
+    width: 100%;
     margin-right: initial;
-    margin-left: initial;
+    margin-left: auto;
     flex: 1;
     margin-top: initial;
     margin-left: rem(80);

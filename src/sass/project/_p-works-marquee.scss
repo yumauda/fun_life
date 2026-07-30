@@ -1,0 +1,62 @@
+@use "../global" as *;
+
+.p-works-marquee {
+  display: none;
+  @include mq(md){
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    padding-top: rem(40);
+    padding-bottom: rem(56);
+  }
+}
+
+.p-works-marquee__track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: works-marquee 28s linear infinite;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+.p-works-marquee__group {
+  display: flex;
+  flex-shrink: 0;
+  padding-right: rem(60);
+
+  @include mq("md") {
+    padding-right: rem(96);
+  }
+}
+
+.p-works-marquee__group span {
+  flex-shrink: 0;
+  color: #000;
+  font-family: $second-font-family;
+  font-size: rem(109);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: calc(120 / 109);
+  white-space: nowrap;
+}
+
+.p-works-marquee__group span + span {
+  margin-left: rem(60);
+
+  @include mq("md") {
+    margin-left: rem(96);
+  }
+}
+
+@keyframes works-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}

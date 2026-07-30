@@ -6,7 +6,7 @@
   overflow-x: clip;
   @include mq("md") {
     padding-top: rem(120);
-    padding-bottom: rem(180);
+    padding-bottom: initial;
   }
 }
 
@@ -22,7 +22,7 @@
 
 .p-all__image {
   width: 60vw;
-  aspect-ratio: 550 / 472;
+  aspect-ratio: 550 / 550;
   overflow: hidden;
   margin-top: rem(112);
   margin-left: calc(50% - 50vw);
@@ -44,9 +44,9 @@
 
 .p-all__text {
   color: #000;
-  font-size: rem(16);
+  font-size: rem(18);
   font-weight: $bold;
-  line-height: 1.9;
+  line-height: calc(30/ 18);
   text-align: center;
   letter-spacing: 0.1em;
 
@@ -55,8 +55,9 @@
     order: 2;
     margin-top: initial;
     width: 100%;
+    line-height: calc(60 / 35);
     margin-left: rem(150);
-    font-size: rem(21);
+    font-size: rem(26);
     text-align: center;
   }
 }

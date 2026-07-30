@@ -5,7 +5,7 @@
 
   @include mq("md") {
     padding-top: rem(120);
-    padding-bottom: rem(180);
+    padding-bottom: rem(100);
   }
 }
 
@@ -29,7 +29,7 @@
 
   @include mq("md") {
     order: initial;
-    width: 48vw;
+    width: 46vw;
     margin-top: 0;
     margin-left: calc(50% - 50vw);
   }
@@ -79,8 +79,8 @@
 
   @include mq("md") {
     letter-spacing: 0.18em;
-    min-height: rem(82);
-    font-size: rem(23);
+    min-height: rem(114);
+    font-size: rem(37);
   }
 }
 
@@ -95,7 +95,7 @@
 
   @include mq("md") {
     margin-top: rem(54);
-    font-size: rem(18);
+    font-size: rem(26);
     text-align: left;
   }
 }

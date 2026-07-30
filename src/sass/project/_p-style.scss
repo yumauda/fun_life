@@ -7,7 +7,7 @@
 
   @include mq("md") {
     padding-top: rem(180);
-    padding-bottom: rem(180);
+    padding-bottom: rem(60);
   }
 }
 
@@ -61,8 +61,10 @@
   font-size: rem(11);
   font-weight: $bold;
   line-height: 2.25;
+  letter-spacing: 0.1em;
 
   @include mq("md") {
+    line-height: calc(48 / 18);
     font-size: rem(14);
   }
 }
