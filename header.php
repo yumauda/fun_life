@@ -5,74 +5,108 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <meta name="format-detection" content="telephone=no" />
-    <!-- meta情報 -->
-    <?php if (is_home() || is_front_page()) : ?>
-        <title>ファンライフ株式会社</title>
-        <meta name="description" content="横浜市港北区大倉山の、痛くない・目立たない矯正専門歯科。マウスピース矯正(インビザライン)なども子供から大人まで安心の定額制です。" />
-        <meta name="keywords" content="矯正歯科,港北区,大倉山" />
-        <meta property="og:title" content="横浜市港北区大倉山の矯正専門歯科｜大倉山ファミリア矯正歯科（横浜市港北区）" />
-        <meta property="og:type" content="website">
-        <meta property="og:url" content="https://familiar-kyousei.com/">
-        <meta property="og:image" content="<?php echo get_template_directory_uri() ?>/images/common/ogp.jpg" />
-        <meta property="og:site_name" content="大倉山ファミリア矯正歯科（横浜市港北区）" />
-        <meta property="og:description" content="横浜市大倉山の、痛くない・目立たない矯正専門歯科。マウスピース矯正(インビザラン)なども子供から大人まで安心の定額制です。" />
-    <?php elseif (is_page('adult')) : ?>
-        <title>大人の矯正・成人矯正｜大倉山ファミリア矯正歯科（横浜市港北区）</title>
-        <meta name="description" content="横浜市港北区大倉山の、痛くない・目立たない矯正専門歯科。マウスピース矯正(インビザライン)なども子供から大人まで安心の定額制です。" />
-        <meta name="keywords" content="矯正歯科,港北区,大倉山" />
-        <meta property="og:title" content="大人の矯正｜大倉山ファミリア矯正歯科（横浜市港北区）" />
-        <meta property="og:type" content="article">
-        <meta property="og:url" content="https://familiar-kyousei.com/adult">
-        <meta property="og:image" content="<?php echo get_template_directory_uri() ?>/images/common/ogp.jpg" />
-        <meta property="og:site_name" content="大倉山ファミリア矯正歯科（横浜市港北区）" />
-        <meta property="og:description" content="横浜市大倉山の、痛くない・目立たない矯正専門歯科。マウスピース矯正(インビザラン)なども子供から大人まで安心の定額制です。" />
-    <?php elseif (is_page((array('contact', 'confirm')))) : ?>
-        <title>お問い合わせ｜大倉山ファミリア矯正歯科（横浜市港北区）</title>
-        <meta name="description" content="横浜市港北区大倉山の、痛くない・目立たない矯正専門歯科。マウスピース矯正(インビザライン)なども子供から大人まで安心の定額制です。" />
-        <meta name="keywords" content="矯正歯科,港北区,大倉山" />
-        <meta property="og:title" content="お問い合わせ｜大倉山ファミリア矯正歯科（横浜市港北区）" />
-        <meta property="og:type" content="article">
-        <meta property="og:url" content="https://familiar-kyousei.com/contact">
-        <meta property="og:image" content="<?php echo get_template_directory_uri() ?>/images/common/ogp.jpg" />
-        <meta property="og:site_name" content="大倉山ファミリア矯正歯科（横浜市港北区）" />
-        <meta property="og:description" content="横浜市大倉山の、痛くない・目立たない矯正専門歯科。マウスピース矯正(インビザラン)なども子供から大人まで安心の定額制です。" />
-    <?php elseif (is_page('thanks')) : ?>
-        <title>送信完了｜大倉山ファミリア矯正歯科（横浜市港北区）</title>
-        <meta name="description" content="横浜市港北区大倉山の、痛くない・目立たない矯正専門歯科。マウスピース矯正(インビザライン)なども子供から大人まで安心の定額制です。" />
-        <meta name="keywords" content="矯正歯科,港北区,大倉山" />
-        <meta property="og:title" content="送信完了｜大倉山ファミリア矯正歯科（横浜市港北区）" />
-        <meta property="og:type" content="article">
-        <meta property="og:url" content="https://familiar-kyousei.com/thanks">
-        <meta property="og:image" content="<?php echo get_template_directory_uri() ?>/images/common/ogp.jpg" />
-        <meta property="og:site_name" content="大倉山ファミリア矯正歯科（横浜市港北区）" />
-        <meta property="og:description" content="横浜市大倉山の、痛くない・目立たない矯正専門歯科。マウスピース矯正(インビザラン)なども子供から大人まで安心の定額制です。" />
-    <?php elseif (is_single()) : ?>
-        <title><?php the_title() ?>｜大倉山ファミリア矯正歯科（横浜市港北区）</title>
-        <meta name="description" content="横浜市港北区大倉山の、痛くない・目立たない矯正専門歯科。マウスピース矯正(インビザライン)なども子供から大人まで安心の定額制です。" />
-        <meta name="keywords" content="矯正歯科,港北区,大倉山" />
-        <meta property="og:title" content="<?php the_title() ?>｜大倉山ファミリア矯正歯科（横浜市港北区）" />
-        <meta property="og:type" content="article">
-        <meta property="og:url" content="https://familiar-kyousei.com/adult">
-        <meta property="og:image" content="<?php echo get_template_directory_uri() ?>/images/common/ogp.jpg" />
-        <meta property="og:site_name" content="大倉山ファミリア矯正歯科（横浜市港北区）" />
-        <meta property="og:description" content="横浜市大倉山の、痛くない・目立たない矯正専門歯科。マウスピース矯正(インビザラン)なども子供から大人まで安心の定額制です。" />
+    <?php
+    $site_name = 'ファンライフ株式会社';
+    $default_title = 'ファンライフ株式会社｜熊本・御船町の注文住宅・リフォーム';
+    $default_description = '熊本県上益城郡御船町のファンライフ株式会社。注文住宅・新築・自由設計をはじめ、リフォーム・リノベーション、店舗設計施工まで、暮らしを楽しむための家づくりをご提案します。';
+    $meta_title = $default_title;
+    $meta_description = $default_description;
+    $meta_type = 'website';
+    $meta_url = home_url('/');
+    $meta_image = get_template_directory_uri() . '/images/top/top_slider1.jpg';
+    $meta_image_width = 2161;
+    $meta_image_height = 1301;
+    $show_canonical = true;
 
+    if (is_front_page()) {
+        $meta_title = $default_title;
+        $meta_description = $default_description;
+        $meta_url = home_url('/');
+    } elseif (is_home()) {
+        $meta_title = 'ブログ・施工事例｜' . $site_name;
+        $meta_description = 'ファンライフの施工事例や、注文住宅・リフォームに役立つ家づくりの情報、イベント・お知らせをご紹介します。';
+        $posts_page_id = (int) get_option('page_for_posts');
+        $meta_url = $posts_page_id ? get_permalink($posts_page_id) : home_url('/blog/');
+    } elseif (is_page('about')) {
+        $meta_title = '私たちについて・会社概要｜' . $site_name;
+        $meta_description = 'ファンライフの家づくりへの想い、代表挨拶、会社概要、本社へのアクセス、宿泊体験型モデルハウス「そのうち」をご紹介します。';
+        $meta_url = get_permalink();
+    } elseif (is_page('works')) {
+        $meta_title = '家づくり・住宅性能・リフォーム｜' . $site_name;
+        $meta_description = 'ファンライフの注文住宅、自由設計、住宅性能、規格住宅、リフォーム・リノベーションをご紹介。土地探しから完成まで、同じ担当者が最後まで伴走します。';
+        $meta_url = get_permalink();
+        $meta_image = get_template_directory_uri() . '/images/works/works_mv.jpg';
+        $meta_image_width = 3321;
+        $meta_image_height = 1200;
+    } elseif (is_page(array('contact', 'confirm'))) {
+        $meta_title = 'お問い合わせ・資料請求｜' . $site_name;
+        $meta_description = '注文住宅、リフォーム、モデルハウスのご予約など、ファンライフへのお問い合わせ・資料請求はこちらから。';
+        $meta_url = get_permalink();
+    } elseif (is_page('thanks')) {
+        $meta_title = 'お問い合わせ完了｜' . $site_name;
+        $meta_description = 'ファンライフへのお問い合わせを受け付けました。内容を確認のうえ、担当者よりご連絡いたします。';
+        $meta_url = get_permalink();
+        $show_canonical = false;
+    } elseif (is_single()) {
+        $meta_title = get_the_title() . '｜' . $site_name;
+        $meta_description = has_excerpt() ? get_the_excerpt() : 'ファンライフの施工事例や、家づくり・リフォームに役立つ情報をご紹介します。';
+        $meta_type = 'article';
+        $meta_url = get_permalink();
+
+        if (has_post_thumbnail()) {
+            $thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full');
+            if ($thumbnail) {
+                $meta_image = $thumbnail[0];
+                $meta_image_width = $thumbnail[1];
+                $meta_image_height = $thumbnail[2];
+            }
+        }
+    } elseif (is_search()) {
+        $meta_title = '「' . get_search_query() . '」の検索結果｜' . $site_name;
+        $meta_description = 'ファンライフのサイト内検索結果です。';
+        $meta_url = get_search_link();
+        $show_canonical = false;
+    } elseif (is_archive()) {
+        $archive_title = wp_strip_all_tags(get_the_archive_title());
+        $meta_title = $archive_title . '｜' . $site_name;
+        $meta_description = $archive_title . 'に関するファンライフの記事一覧です。';
+        $meta_url = get_pagenum_link(max(1, (int) get_query_var('paged')));
+    } elseif (is_404()) {
+        $meta_title = 'ページが見つかりません｜' . $site_name;
+        $meta_description = 'お探しのページは移動または削除された可能性があります。';
+        $meta_url = home_url('/');
+        $show_canonical = false;
+    } elseif (is_page()) {
+        $meta_title = get_the_title() . '｜' . $site_name;
+        $meta_url = get_permalink();
+    }
+
+    $meta_description = preg_replace('/\s+/u', ' ', wp_strip_all_tags($meta_description));
+    ?>
+    <title><?php echo esc_html($meta_title); ?></title>
+    <meta name="description" content="<?php echo esc_attr($meta_description); ?>">
+    <?php if ($show_canonical) : ?>
+        <link rel="canonical" href="<?php echo esc_url($meta_url); ?>">
     <?php endif; ?>
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:type" content="<?php echo esc_attr($meta_type); ?>">
+    <meta property="og:title" content="<?php echo esc_attr($meta_title); ?>">
+    <meta property="og:description" content="<?php echo esc_attr($meta_description); ?>">
+    <meta property="og:url" content="<?php echo esc_url($meta_url); ?>">
+    <meta property="og:site_name" content="<?php echo esc_attr($site_name); ?>">
+    <meta property="og:image" content="<?php echo esc_url($meta_image); ?>">
+    <meta property="og:image:width" content="<?php echo esc_attr((string) $meta_image_width); ?>">
+    <meta property="og:image:height" content="<?php echo esc_attr((string) $meta_image_height); ?>">
+    <meta property="og:image:alt" content="<?php echo esc_attr($site_name . 'の家づくり'); ?>">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="<?php echo get_template_directory_uri() ?>/images/common/ogp.jpg">
-
-    <!-- ogp -->
-    <!-- ファビコン -->
-    <link rel="icon" href="<?php echo get_template_directory_uri() ?>/images/common/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="<?php echo get_template_directory_uri() ?>/images/common/apple-touch-icon.png">
+    <meta name="twitter:title" content="<?php echo esc_attr($meta_title); ?>">
+    <meta name="twitter:description" content="<?php echo esc_attr($meta_description); ?>">
+    <meta name="twitter:image" content="<?php echo esc_url($meta_image); ?>">
     <!-- css -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
 
-    <?php if (is_404()) : ?>
-        <meta http-equiv="refresh" content=" 3; url=<?php echo esc_url(home_url("/")); ?>">
-    <?php endif; ?>
     <?php wp_head() ?>
 </head>
 

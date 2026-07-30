@@ -245,12 +245,29 @@ add_filter('get_the_archive_title', function ($title) {
 
 add_filter('wpcf7_autop_or_not', '__return_false');
 
-// titleタグの削除
-function remove_title_tag()
+// WordPress標準のtitleタグとcanonicalタグの削除
+function remove_default_meta_tags()
 {
 	remove_action('wp_head', '_wp_render_title_tag', 1);
+	remove_action('wp_head', 'rel_canonical');
 }
-add_action('init', 'remove_title_tag');
+add_action('init', 'remove_default_meta_tags');
+
+/**
+ * 検索結果・エラーページ・フォーム完了画面を検索対象外にする
+ *
+ * @param array $robots robotsメタの設定値.
+ * @return array
+ */
+function fun_life_meta_robots($robots)
+{
+	if (is_search() || is_404() || is_page(array('confirm', 'thanks'))) {
+		$robots['noindex'] = true;
+	}
+
+	return $robots;
+}
+add_filter('wp_robots', 'fun_life_meta_robots');
 
 
 // 管理画面上「投稿」の名前変更
