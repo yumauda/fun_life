@@ -6,15 +6,13 @@
   overflow-x: clip;
 
   @include mq(md) {
-    padding-top: rem(105);
+    padding-top: initial;
   }
 }
 
 .p-single-blog__hero {
   @include mq(md) {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(280px, 42%);
-    align-items: end;
+    display: flex;
     gap: rem(72);
   }
 }
@@ -24,6 +22,7 @@
 
   @include mq(md) {
     text-align: left;
+    margin-top: rem(240);
   }
 }
 
@@ -171,8 +170,13 @@
 
   @include mq(md) {
     display: block;
-    height: rem(600);
-    margin-top: initial;
+    flex: none;
+    align-self: flex-start;
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: calc(50% - 50vw);
+    aspect-ratio: 665 / 800;
+    width: 35vw;
   }
 }
 

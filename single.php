@@ -17,7 +17,7 @@ $image_uri = get_template_directory_uri() . '/images/blog-single/';
           <time class="p-single-blog__date" datetime="2026-01-01">2026.00.00</time>
         </div>
         <p class="p-single-blog__spec">熊本市中央区八王寺／32坪／3LDK吹き抜け／2階建て</p>
-        <h1 class="p-single-blog__title">6人家族の会話が弾む<br>“繋がり”が深まるお家</h1>
+        <h1 class="p-single-blog__title">6人家族の会話が弾む“繋がり”が深まるお家</h1>
         <a class="p-single-blog__back" href="<?php echo esc_url(home_url('/blog/')); ?>">
           <span>一覧へ</span>
           <span class="p-single-blog__back-arrow" aria-hidden="true"></span>

@@ -13,6 +13,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  max-width: none;
   padding-bottom: rem(64);
 
   @include mq("md") {
@@ -125,9 +126,9 @@
   letter-spacing: 0.08em;
   line-height: 1;
   border: 1px solid #000;
+  opacity: 0.35;
   transition:
-    color 0.3s ease,
-    background-color 0.3s ease;
+    opacity 0.3s ease;
 
   @include mq("md") {
     min-width: rem(92);
@@ -136,15 +137,13 @@
 
   @media (hover: hover) and (pointer: fine) {
     &:hover {
-      color: #fff;
-      background: #000;
+      opacity: 1;
     }
   }
 }
 
 .p-category__filter-link.is-current {
-  color: #fff;
-  background: #000;
+  opacity: 1;
 }
 
 .p-category__archive {
@@ -220,4 +219,8 @@
 .p-category__back:focus-visible {
   outline: 2px solid #000;
   outline-offset: rem(4);
+}
+
+.p-category__filter-link:focus-visible {
+  opacity: 1;
 }

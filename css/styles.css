@@ -1387,6 +1387,7 @@ select::-ms-expand {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  max-width: none;
   padding-bottom: 4rem;
 }
 @media screen and (min-width: 768px) {
@@ -1508,7 +1509,8 @@ select::-ms-expand {
   letter-spacing: 0.08em;
   line-height: 1;
   border: 1px solid #000;
-  transition: color 0.3s ease, background-color 0.3s ease;
+  opacity: 0.35;
+  transition: opacity 0.3s ease;
 }
 @media screen and (min-width: 768px) {
   .p-category__filter-link {
@@ -1518,14 +1520,12 @@ select::-ms-expand {
 }
 @media (hover: hover) and (pointer: fine) {
   .p-category__filter-link:hover {
-    color: #fff;
-    background: #000;
+    opacity: 1;
   }
 }
 
 .p-category__filter-link.is-current {
-  color: #fff;
-  background: #000;
+  opacity: 1;
 }
 
 .p-category__archive {
@@ -1601,6 +1601,10 @@ select::-ms-expand {
 .p-category__back:focus-visible {
   outline: 2px solid #000;
   outline-offset: 0.25rem;
+}
+
+.p-category__filter-link:focus-visible {
+  opacity: 1;
 }
 
 .p-company {
@@ -3181,7 +3185,7 @@ select::-ms-expand {
   align-items: center;
   justify-content: center;
   color: #000;
-  background: #fff;
+  background: transparent;
   border: 1px solid #000;
   border-radius: 0.1875rem;
   width: 1.5rem;
@@ -3223,7 +3227,7 @@ select::-ms-expand {
   line-height: 1;
   letter-spacing: 0.1em;
   color: #000;
-  background: #fff;
+  background: transparent;
   border: 1px solid #000;
   cursor: pointer;
   width: 2.375rem;
@@ -6497,15 +6501,13 @@ select::-ms-expand {
 }
 @media screen and (min-width: 768px) {
   .p-single-blog {
-    padding-top: 6.5625rem;
+    padding-top: initial;
   }
 }
 
 @media screen and (min-width: 768px) {
   .p-single-blog__hero {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(280px, 42%);
-    align-items: end;
+    display: flex;
     gap: 4.5rem;
   }
 }
@@ -6516,6 +6518,7 @@ select::-ms-expand {
 @media screen and (min-width: 768px) {
   .p-single-blog__hero-copy {
     text-align: left;
+    margin-top: 15rem;
   }
 }
 
@@ -6672,8 +6675,13 @@ select::-ms-expand {
 @media screen and (min-width: 768px) {
   .p-single-blog__hero-image {
     display: block;
-    height: 37.5rem;
-    margin-top: initial;
+    flex: none;
+    align-self: flex-start;
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: calc(50% - 50vw);
+    aspect-ratio: 665/800;
+    width: 35vw;
   }
 }
 
