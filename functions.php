@@ -344,10 +344,62 @@ function custom_pagination()
 	}
 }
 
+function fun_life_blog_pagination($aria_label = 'ブログ一覧のページ送り')
+{
+	global $wp_query;
+
+	$current_page = max(1, (int) get_query_var('paged'));
+	$total_pages = $wp_query ? (int) $wp_query->max_num_pages : 0;
+
+	if ($total_pages <= 1) {
+		return;
+	}
+
+	$pagination_items = paginate_links(array(
+		'current'   => $current_page,
+		'total'     => $total_pages,
+		'type'      => 'array',
+		'end_size'  => 1,
+		'mid_size'  => 2,
+		'prev_next' => false,
+	));
+
+	if (!is_array($pagination_items)) {
+		return;
+	}
+
+	echo '<nav class="p-blog__pagination" aria-label="' . esc_attr($aria_label) . '">';
+
+	if ($current_page > 1) {
+		echo '<a class="p-blog__pagination-prev" href="' . esc_url(get_pagenum_link($current_page - 1)) . '" aria-label="前のページへ"></a>';
+	}
+
+	foreach ($pagination_items as $pagination_item) {
+		$pagination_label = html_entity_decode(wp_strip_all_tags($pagination_item), ENT_QUOTES, get_bloginfo('charset'));
+
+		if ('…' === $pagination_label) {
+			echo '<span class="p-blog__pagination-dots" aria-hidden="true">…</span>';
+			continue;
+		}
+
+		$page_number = (int) $pagination_label;
+		$is_current = $page_number === $current_page;
+
+		echo '<a class="p-blog__pagination-link' . ($is_current ? ' is-current' : '') . '" href="' . esc_url(get_pagenum_link($page_number)) . '"' . ($is_current ? ' aria-current="page"' : '') . '>' . esc_html((string) $page_number) . '</a>';
+	}
+
+	if ($current_page < $total_pages) {
+		echo '<a class="p-blog__pagination-next" href="' . esc_url(get_pagenum_link($current_page + 1)) . '" aria-label="次のページへ"></a>';
+	}
+
+	echo '</nav>';
+}
+
 function exclude_multiple_categories_from_homepage($query)
 {
 	if ($query->is_home() && $query->is_main_query()) {
 		$query->set('cat', '-1,-8,-9,-10');
+		$query->set('posts_per_page', 4);
 	}
 }
 add_action('pre_get_posts', 'exclude_multiple_categories_from_homepage');

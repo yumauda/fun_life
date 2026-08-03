@@ -1,58 +1,15 @@
 <?php
 get_header();
 
-$single_post_url = get_permalink(1);
+$event_column_category = get_category_by_slug('event-column');
 
-if (!$single_post_url) {
-  $single_post_url = home_url('/?p=1');
+if (!$event_column_category) {
+  $event_column_category = get_term_by('name', 'イベント・コラム', 'category');
 }
 
-$blog_posts = array(
-  array(
-    'category' => '施工事例',
-    'date' => '2025.06.09',
-    'datetime' => '2025-06-09',
-    'image' => 'works_02.webp',
-    'width' => 1200,
-    'height' => 1201,
-    'alt' => 'モダンな外観の二階建て住宅',
-    'meta' => '久留米市新築住宅／二階建て',
-    'title' => '大栄プロジェクトで叶える、暮らしに寄り添う住まい。',
-  ),
-  array(
-    'category' => '施工事例',
-    'date' => '2025.06.09',
-    'datetime' => '2025-06-09',
-    'image' => 'works_04.webp',
-    'width' => 1200,
-    'height' => 1201,
-    'alt' => '照明と植栽が印象的な店舗外観',
-    'meta' => '福岡市店舗改装／店舗リノベーション',
-    'title' => 'もっと素敵な店舗空間を。想いが伝わる店づくり。',
-  ),
-  array(
-    'category' => 'コラム',
-    'date' => '2025.06.30',
-    'datetime' => '2025-06-30',
-    'image' => 'before_after03.webp',
-    'width' => 1401,
-    'height' => 1401,
-    'alt' => '木とレンガを活かした店舗の玄関',
-    'meta' => '家づくりのアイデア',
-    'title' => '住まいの表情をつくる、素材選びのポイント。',
-  ),
-  array(
-    'category' => 'コラム',
-    'date' => '2025.06.09',
-    'datetime' => '2025-06-09',
-    'image' => 'before_after02.webp',
-    'width' => 1398,
-    'height' => 1398,
-    'alt' => '木の温もりを感じる明るいリビング',
-    'meta' => 'リフォームの基礎知識',
-    'title' => '住まいを快適に整える、リフォームの考え方。',
-  ),
-);
+$event_column_url = $event_column_category instanceof WP_Term
+  ? get_category_link($event_column_category)
+  : home_url('/category/event-column/');
 ?>
 
 <main>
@@ -65,40 +22,53 @@ $blog_posts = array(
       <nav class="p-blog__pages" aria-label="関連ページ">
         <p class="p-blog__pages-title">PAGES</p>
         <div class="p-blog__pages-links">
-          <a class="p-blog__pages-link" href="<?php echo esc_url(home_url('/works/')); ?>">WORKS</a>
-          <a class="p-blog__pages-link" href="<?php echo esc_url(home_url('/#concept')); ?>">ENVIRONMENT</a>
+          <a class="p-blog__pages-link" href="<?php echo esc_url(home_url('/blog-works/')); ?>">WORKS</a>
+          <a class="p-blog__pages-link" href="<?php echo esc_url($event_column_url); ?>">EVENT/COLUMN</a>
         </div>
       </nav>
     </div>
 
     <div class="p-blog__archive">
       <div class="l-inner">
-        <div class="p-blog__grid">
-          <?php foreach ($blog_posts as $post) : ?>
-            <article class="p-blog__card">
-              <a class="p-blog__card-link" href="<?php echo esc_url($single_post_url); ?>">
-                <div class="p-blog__meta">
-                  <span class="p-blog__category"><?php echo esc_html($post['category']); ?></span>
-                  <time class="p-blog__date" datetime="<?php echo esc_attr($post['datetime']); ?>"><?php echo esc_html($post['date']); ?></time>
-                </div>
-                <figure class="p-blog__image">
-                  <img src="<?php echo esc_url(get_template_directory_uri() . '/images/works/' . $post['image']); ?>" alt="<?php echo esc_attr($post['alt']); ?>" width="<?php echo esc_attr($post['width']); ?>" height="<?php echo esc_attr($post['height']); ?>" loading="lazy" decoding="async">
-                </figure>
-                <p class="p-blog__card-meta"><?php echo esc_html($post['meta']); ?></p>
-                <h2 class="p-blog__card-title"><?php echo esc_html($post['title']); ?></h2>
-              </a>
-            </article>
-          <?php endforeach; ?>
-        </div>
+        <?php if (have_posts()) : ?>
+          <div class="p-blog__grid">
+            <?php while (have_posts()) : ?>
+              <?php
+              the_post();
+              $post_categories = get_the_category();
+              $card_category = $post_categories ? $post_categories[0]->name : '';
+              $thumbnail_id = get_post_thumbnail_id();
+              $thumbnail_alt = $thumbnail_id ? get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true) : '';
+              $thumbnail_alt = $thumbnail_alt ?: get_the_title();
+              ?>
+              <article class="p-blog__card">
+                <a class="p-blog__card-link" href="<?php the_permalink(); ?>">
+                  <div class="p-blog__meta">
+                    <?php if ($card_category) : ?>
+                      <span class="p-blog__category"><?php echo esc_html($card_category); ?></span>
+                    <?php endif; ?>
+                    <time class="p-blog__date" datetime="<?php echo esc_attr(get_the_date('c')); ?>"><?php echo esc_html(get_the_date('Y.m.d')); ?></time>
+                  </div>
+                  <figure class="p-blog__image">
+                    <?php if (has_post_thumbnail()) : ?>
+                      <?php echo get_the_post_thumbnail(get_the_ID(), 'large', array('alt' => $thumbnail_alt, 'loading' => 'lazy', 'decoding' => 'async')); ?>
+                    <?php else : ?>
+                      <img src="<?php echo esc_url(get_template_directory_uri() . '/images/works/works_02.webp'); ?>" alt="" width="1200" height="1201" loading="lazy" decoding="async">
+                    <?php endif; ?>
+                  </figure>
+                  <?php if (has_excerpt()) : ?>
+                    <p class="p-blog__card-meta"><?php echo esc_html(get_the_excerpt()); ?></p>
+                  <?php endif; ?>
+                  <h2 class="p-blog__card-title"><?php the_title(); ?></h2>
+                </a>
+              </article>
+            <?php endwhile; ?>
+          </div>
 
-        <nav class="p-blog__pagination" aria-label="ブログ一覧のページ送り">
-          <a class="p-blog__pagination-link is-current" href="#" aria-current="page">1</a>
-          <a class="p-blog__pagination-link" href="#">2</a>
-          <a class="p-blog__pagination-link" href="#">3</a>
-          <span class="p-blog__pagination-dots" aria-hidden="true">…</span>
-          <a class="p-blog__pagination-link" href="#">7</a>
-          <a class="p-blog__pagination-next" href="#" aria-label="次のページへ"></a>
-        </nav>
+          <?php fun_life_blog_pagination(); ?>
+        <?php else : ?>
+          <p class="p-blog__empty">現在、記事はありません。</p>
+        <?php endif; ?>
       </div>
     </div>
   </section>

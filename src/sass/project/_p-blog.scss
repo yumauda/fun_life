@@ -272,18 +272,39 @@
   border: 1px solid #000;
 }
 
+.p-blog__pagination-prev,
 .p-blog__pagination-next {
-  margin-left: rem(42);
   border-top: 2px solid #000;
   border-right: 2px solid #000;
-  transform: rotate(45deg);
   width: rem(8);
   height: rem(8);
+
   @include mq(md){
     width: rem(12);
     height: rem(12);
-
   }
+
+  @media (hover: hover) and (pointer: fine) {
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 0.55;
+      cursor: pointer;
+    }
+  }
+}
+
+.p-blog__pagination-prev {
+  transform: rotate(-135deg);
+}
+
+.p-blog__pagination-prev + .p-blog__pagination-link {
+  margin-left: rem(42);
+}
+
+.p-blog__pagination-next {
+  margin-left: rem(42);
+  transform: rotate(45deg);
 }
 
 @media (hover: hover) and (pointer: fine) {
