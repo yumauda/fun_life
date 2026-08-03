@@ -24,6 +24,7 @@
   font-size: rem(30);
 
   @include mq(md) {
+    letter-spacing: 0.06em;
     font-size: rem(109);
   }
 }

@@ -64,7 +64,7 @@
 .p-about-mv__detail {
   z-index: 3;
   position: absolute;
-  top: rem(515);
+  top: rem(563);
   @include mq(md){
     top: rem(1360);
     margin-top: initial;
@@ -90,7 +90,7 @@
   letter-spacing: 0.1em;
   font-size: rem(14);
   line-height: calc(30 / 14);
-  margin-top: rem(95);
+  margin-top: rem(80);
 
   @include mq(md){
     margin-top: rem(160);

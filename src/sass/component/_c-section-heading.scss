@@ -79,7 +79,7 @@
 
   @include mq("md") {
     margin-top: initial;
-    margin-left: rem(44);
+    margin-left: rem(72);
   }
 }
 
@@ -92,7 +92,7 @@
 
 .c-section-heading__en {
   font-family: $second-font-family;
-  font-size: rem(21);
+  font-size: rem(19);
   line-height: 1.35;
 
   @include mq("md") {
@@ -129,6 +129,6 @@
   @include mq("md") {
     margin-top: rem(8);
     font-size: rem(45);
-    line-height: 1.4;
+    line-height: 1.1;
   }
 }

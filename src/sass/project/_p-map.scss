@@ -75,7 +75,6 @@
 
   @include mq("md") {
     font-size: rem(36);
-    margin-left: rem(36);
   }
 }
 
@@ -99,10 +98,12 @@
 }
 
 .p-map__access-body {
+  display: flex;
+  flex-direction: column;
   margin-top: rem(52);
 
   @include mq("md") {
-    display: flex;
+    flex-direction: row;
     align-items: flex-end;
     gap: rem(70);
     margin-top: rem(84);
@@ -110,10 +111,17 @@
 }
 
 .p-map__map {
+  order: 2;
   aspect-ratio: 1 / 1;
   overflow: hidden;
   max-width: rem(480);
   width: 100%;
+  margin-top: rem(52);
+
+  @include mq("md") {
+    order: initial;
+    margin-top: 0;
+  }
 }
 
 .p-map__map iframe {
@@ -124,9 +132,10 @@
 }
 
 .p-map__routes {
-  margin-top: rem(52);
+  order: 1;
 
   @include mq("md") {
+    order: initial;
     margin-top: 0;
   }
 }

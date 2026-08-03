@@ -60,7 +60,7 @@
   @include mq("md") {
     display: grid;
     grid-template-columns: minmax(0, rem(520)) minmax(0, 1fr);
-    align-items: center;
+    align-items: flex-end;
     gap: rem(48);
     margin-top: rem(90);
   }

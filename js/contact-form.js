@@ -2,6 +2,61 @@ document.addEventListener("DOMContentLoaded", () => {
   const contactForm = document.querySelector(".p-contact__form .wpcf7-form");
   if (!contactForm) return;
 
+  const visitTimeOptions = [];
+  for (let minutes = 9 * 60; minutes <= 18 * 60; minutes += 30) {
+    const hours = Math.floor(minutes / 60);
+    const mins = String(minutes % 60).padStart(2, "0");
+    visitTimeOptions.push(`${hours}:${mins}`);
+  }
+
+  ["visit-time-1", "visit-time-2"].forEach((id) => {
+    const input = contactForm.querySelector(`#${id}`);
+    if (!input || input.tagName === "SELECT") return;
+
+    const select = document.createElement("select");
+    Array.from(input.attributes).forEach(({ name, value }) => {
+      if (!["type", "value", "size"].includes(name)) select.setAttribute(name, value);
+    });
+
+    const placeholderOption = document.createElement("option");
+    placeholderOption.value = "";
+    placeholderOption.textContent = "9:00〜18:00";
+    placeholderOption.selected = true;
+    select.appendChild(placeholderOption);
+
+    visitTimeOptions.forEach((time) => {
+      const option = document.createElement("option");
+      option.value = time;
+      option.textContent = time;
+      select.appendChild(option);
+    });
+
+    const wrapper = input.closest(".wpcf7-form-control-wrap");
+    wrapper?.classList.add("p-contact-form__time-control", "is-placeholder");
+    select.addEventListener("change", () => {
+      wrapper?.classList.toggle("is-placeholder", select.value === "");
+    });
+    input.replaceWith(select);
+  });
+
+  ["visit-date-1", "visit-date-2"].forEach((id) => {
+    const input = contactForm.querySelector(`#${id}`);
+    if (!input) return;
+
+    input.setAttribute("placeholder", "年 / 月 / 日");
+    const wrapper = input.closest(".wpcf7-form-control-wrap");
+    wrapper?.classList.add("p-contact-form__date-control");
+
+    const updateDateState = () => {
+      wrapper?.classList.toggle("is-filled", input.value !== "");
+    };
+    input.addEventListener("focus", () => wrapper?.classList.add("is-focused"));
+    input.addEventListener("blur", () => wrapper?.classList.remove("is-focused"));
+    input.addEventListener("change", updateDateState);
+    input.addEventListener("input", updateDateState);
+    updateDateState();
+  });
+
   const inputArea = contactForm.querySelector(".js-contact-input");
   const confirmArea = contactForm.querySelector(".js-contact-confirm");
   const confirmButton = contactForm.querySelector(".js-contact-confirm-button");

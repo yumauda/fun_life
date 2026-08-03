@@ -6,7 +6,7 @@
   overflow-x: clip;
 
   @include mq("md") {
-    padding-top: rem(120);
+    padding-top: rem(270);
     padding-bottom: rem(120);
   }
 }
@@ -22,6 +22,7 @@
     padding-top: rem(40);
     padding-bottom: rem(40);
     margin-top: rem(120);
+    margin-left: rem(-56);
   }
 }
 .p-company__detail::before {
@@ -33,6 +34,20 @@
   bottom: 0;
   background: #000;
   z-index: -1;
+}
+.p-company__detail::after {
+  position: absolute;
+  content: '';
+  background: #fff;
+  width: 1px;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: rem(80);
+
+  @include mq(md) {
+    left: rem(180);
+  }
 }
 
 .p-company__item {
@@ -59,28 +74,27 @@
     padding-top: rem(14);
     padding-right: rem(40);
     padding-bottom: rem(14);
-    padding-left: rem(100);
+    padding-left: initial;
     font-size: rem(14);
   }
 }
 
 .p-company__term {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
   padding-top: rem(11);
   padding-right: rem(10);
   padding-left: rem(10);
-  border-right: 1px solid #fff;
   font-size: rem(14);
   letter-spacing: 0.1em;
   font-weight: 700;
   color: #fff;
 
+
   @include mq(md) {
     align-items: center;
     padding-top: 0;
     font-size: rem(18);
+    width: rem(190);
+    text-align: center;
   }
 }
 

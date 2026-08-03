@@ -10,7 +10,7 @@
   margin-top: rem(34);
 
   @include mq(md) {
-    margin-top: rem(48);
+    margin-top: rem(72);
   }
 }
 
@@ -154,6 +154,7 @@
 .p-contact-form__input input[type="tel"],
 .p-contact-form__input input[type="email"],
 .p-contact-form__input input[type="date"],
+.p-contact-form__input select,
 .p-contact-form__input textarea {
   display: block;
   width: 100%;
@@ -176,6 +177,7 @@
 .p-contact-form__input input[type="tel"]:focus,
 .p-contact-form__input input[type="email"]:focus,
 .p-contact-form__input input[type="date"]:focus,
+.p-contact-form__input select:focus,
 .p-contact-form__input textarea:focus {
   border-color: #000;
 }
@@ -195,15 +197,110 @@
   }
 }
 
+.p-contact-form__date-control,
+.p-contact-form__time-control {
+  position: relative;
+}
+
+.p-contact-form__date-control {
+  @include mq(md) {
+    width: min(100%, rem(300));
+  }
+}
+
+.p-contact-form__date-control::before {
+  content: "年 / 月 / 日";
+  position: absolute;
+  top: 50%;
+  left: rem(13);
+  z-index: 1;
+  color: #aaa;
+  font-size: rem(14);
+  font-weight: $bold;
+  line-height: 1;
+  pointer-events: none;
+  transform: translateY(-50%);
+
+  @include mq(md) {
+    font-size: rem(16);
+  }
+}
+
+.p-contact-form__date-control.is-focused::before,
+.p-contact-form__date-control.is-filled::before {
+  opacity: 0;
+}
+
+.p-contact-form__date-control input[type="date"] {
+  padding-right: rem(45);
+}
+
+.p-contact-form__date-control input[type="date"]::-webkit-datetime-edit {
+  color: transparent;
+}
+
+.p-contact-form__date-control.is-focused input[type="date"]::-webkit-datetime-edit,
+.p-contact-form__date-control.is-filled input[type="date"]::-webkit-datetime-edit {
+  color: #000;
+}
+
+.p-contact-form__date-control input[type="date"]::-webkit-calendar-picker-indicator {
+  width: rem(22);
+  height: rem(22);
+  opacity: 0.55;
+  cursor: pointer;
+}
+
+.p-contact-form__time-control::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: rem(17);
+  width: rem(8);
+  height: rem(8);
+  border-right: 2px solid #000;
+  border-bottom: 2px solid #000;
+  pointer-events: none;
+  transform: translateY(-70%) rotate(45deg);
+}
+
+.p-contact-form__time-control {
+  @include mq(md) {
+    width: min(100%, rem(225));
+  }
+}
+
+.p-contact-form__time-control select {
+  padding-right: rem(45);
+}
+
+.p-contact-form__time-control.is-placeholder select {
+  color: #aaa;
+  font-weight: $bold;
+}
+
+.p-contact-form__time-control select option {
+  color: #000;
+}
+
 .p-contact-form__group--questions {
   margin-top: rem(132);
   @include mq(md){
-    margin-top: rem(65);
+    margin-top: rem(90);
   }
 }
 
 .p-contact-form__group--questions .p-contact-form__field {
   margin-top: rem(22);
+  @include mq(md){
+   margin-top: rem(36);
+  }
+}
+.p-contact-form__field + .p-contact-form__field {
+  margin-top: rem(20);
+  @include mq(md){
+    margin-top: rem(24);
+  }
 }
 
 .p-contact-form__schedule {

@@ -36,7 +36,7 @@
   font-family: $second-font-family;
   font-size: rem(37);
   font-weight: $bold;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.06em;
   line-height: 1;
 
   @include mq(md) {
@@ -67,6 +67,7 @@
   line-height: 1;
 
   @include mq(md) {
+    text-align: right;
     font-size: rem(45);
   }
 }
@@ -246,7 +247,7 @@
 
   @include mq(md) {
     margin-top: rem(130);
-    column-gap: rem(22);
+    column-gap: rem(4);
   }
 }
 
@@ -293,6 +294,13 @@
   .p-blog__pages-link,
   .p-blog__pagination-link {
     transition: opacity 0.3s ease;
+  }
+  .p-blog__pagination-link {
+    padding: rem(4);
+    @include mq(md){
+      width: rem(40);
+      height: rem(30);
+    }
   }
 
   .p-blog__pages-link:hover,

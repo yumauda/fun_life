@@ -46,10 +46,10 @@
           <div class="p-message__row">
             <div class="p-message__body">
               <h3 class="p-message__title">自分は人生を楽しんでいるか？<br>楽しんで仕事をしているか？</h3>
-              <p class="p-message__text">ある時、ふと頭に浮かんだ「自分は人生を楽しんでいるか？」という問い。<br class="u-desktop">それが、ファンライフ創業のきっかけでした。私たちは、家づくりを通して<br class="u-desktop">お客様はもちろん、関わる職人や協力業者、そして自分たち自身も楽しみ<br class="u-desktop">ながら仕事ができる会社でありたいと考えています。だからこそ、数を追う<br class="u-desktop">家づくりはしません。一人ひとりのお客様と真剣に向き合い、信頼関係を<br class="u-desktop">築きながら、その人にとって本当に良い住まいを一緒につくっていきます。<br class="u-desktop">人と人との信頼の上に家を建てる。それが、ファンライフの家づくりです。</p>
+              <p class="p-message__text">ある時、ふと頭に浮かんだ「自分は人生を楽しんでいるか？」という問い。それが、ファンライフ創業のきっかけでした。<br class="u-mobile">私たちは、家づくりを通してお客様はもちろん、関わる職人や協力業者、そして自分たち自身も楽しみながら仕事ができる会社でありたいと考えています。<br class="u-mobile">だからこそ、数を追う家づくりはしません。一人ひとりのお客様と真剣に向き合い、信頼関係を築きながら、その人にとって本当に良い住まいを一緒につくっていきます。<br class="u-mobile">人と人との信頼の上に家を建てる。それが、ファンライフの家づくりです。</p>
             </div>
             <figure class="p-message__image">
-              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/about/message_01.jpg" alt="ファンライフ代表" width="450" height="450" loading="lazy" decoding="async">
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/about/message_01.webp" alt="ファンライフ代表" width="450" height="450" loading="lazy" decoding="async">
             </figure>
           </div>
         </div>
@@ -66,7 +66,7 @@
           </div>
           <div class="p-message__row">
             <div class="p-message__body">
-              <p class="p-message__text">私たちは、家を建てる前に信頼関係を築きたいと考えています。なぜなら、住まいづくりは図面や金額だけではなく、お客さまの人生や価値観に深く関わるものだからです。たくさんの棟数をこなすのではなく、一人ひとりと真剣に向き合う。その積み重ねが、本当に満足できる家づくりにつながると信じています。人と人との信頼の上に家を建てる。それが、ファンライフの変わらない想いです。</p>
+              <p class="p-message__text">私たちは、家を建てる前に信頼関係を築きたいと考えています。<br class="u-mobile">なぜなら、住まいづくりは図面や金額だけではなく、お客さまの人生や価値観に深く関わるものだからです。<br class="u-mobile">たくさんの棟数をこなすのではなく、一人ひとりと真剣に向き合う。その積み重ねが、本当に満足できる家づくりにつながると信じています。人と人との信頼の上に家を建てる。それが、ファンライフの変わらない想いです。</p>
             </div>
             <figure class="p-message__image">
               <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/about/message_02.jpg" alt="人と人との信頼の上に家を建てる。" width="450" height="450" loading="lazy" decoding="async">
@@ -98,7 +98,7 @@
             </div>
             <div class="p-company__item">
               <dt class="p-company__term">住所</dt>
-              <dd class="p-company__description">〒861-3204 熊本県上益城郡御船町大字木倉222</dd>
+              <dd class="p-company__description">〒861-3204 <br class="u-mobile">熊本県上益城郡御船町大字木倉</dd>
             </div>
             <div class="p-company__item">
               <dt class="p-company__term">TEL/FAX</dt>
@@ -164,7 +164,7 @@
           <div class="p-map__office">
             <p class="p-map__office-en">MAIN OFFICE</p>
             <h3 class="p-map__office-ja">本社</h3>
-            <p class="p-map__address">〒861-3204 熊本県上益城郡御船町大字木倉222</p>
+            <p class="p-map__address">〒861-3204 熊本県上益城郡御船町大字木倉</p>
           </div>
           <div class="p-map__access-body">
             <div class="p-map__map">
