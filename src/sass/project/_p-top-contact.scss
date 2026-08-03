@@ -71,9 +71,12 @@
   text-align: center;
   
   @include mq(md) {
-    left: auto;
+    left: 50%;
+    transform: translate(-50%, -50%);
     flex-direction: row;
     text-align: left;
+    padding-left: rem(30);
+    padding-right: rem(30);
     // justify-content: flex-start;
     justify-content: space-between;
   }

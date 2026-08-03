@@ -7602,9 +7602,12 @@ select::-ms-expand {
 }
 @media screen and (min-width: 768px) {
   .p-top-contact__detail {
-    left: auto;
+    left: 50%;
+    transform: translate(-50%, -50%);
     flex-direction: row;
     text-align: left;
+    padding-left: 1.875rem;
+    padding-right: 1.875rem;
     justify-content: space-between;
   }
 }
