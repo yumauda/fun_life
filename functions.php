@@ -493,3 +493,77 @@ function webp_is_displayable($result, $path)
 	return $result;
 }
 add_filter('file_is_displayable_image', 'webp_is_displayable', 10, 2);
+
+/**
+ * 投稿詳細の入力項目を追加
+ */
+function fun_life_register_single_fields()
+{
+	if (!function_exists('acf_add_local_field_group')) {
+		return;
+	}
+
+	$text_fields = array(
+		array('key' => 'field_fun_life_works_spec', 'label' => '物件概要', 'name' => 'works_spec', 'type' => 'text'),
+		array('key' => 'field_fun_life_works_intro_heading', 'label' => 'セクション1 見出し', 'name' => 'works_intro_heading', 'type' => 'textarea', 'rows' => 2, 'new_lines' => ''),
+		array('key' => 'field_fun_life_works_intro_text', 'label' => 'セクション1 本文', 'name' => 'works_intro_text', 'type' => 'textarea', 'rows' => 5, 'new_lines' => ''),
+		array('key' => 'field_fun_life_works_second_heading', 'label' => 'セクション2 見出し', 'name' => 'works_second_heading', 'type' => 'textarea', 'rows' => 2, 'new_lines' => ''),
+		array('key' => 'field_fun_life_works_second_text', 'label' => 'セクション2 本文', 'name' => 'works_second_text', 'type' => 'textarea', 'rows' => 5, 'new_lines' => ''),
+		array('key' => 'field_fun_life_works_third_heading', 'label' => 'セクション3 見出し', 'name' => 'works_third_heading', 'type' => 'textarea', 'rows' => 2, 'new_lines' => ''),
+		array('key' => 'field_fun_life_works_third_text', 'label' => 'セクション3 本文', 'name' => 'works_third_text', 'type' => 'textarea', 'rows' => 5, 'new_lines' => ''),
+		array('key' => 'field_fun_life_works_before_after_text', 'label' => 'BEFORE / AFTER 本文', 'name' => 'works_before_after_text', 'type' => 'textarea', 'rows' => 4, 'new_lines' => ''),
+	);
+
+	$image_fields = array(
+		array('key' => 'field_fun_life_works_gallery_1', 'label' => 'ギャラリー画像1', 'name' => 'works_gallery_1'),
+		array('key' => 'field_fun_life_works_gallery_2', 'label' => 'ギャラリー画像2', 'name' => 'works_gallery_2'),
+		array('key' => 'field_fun_life_works_gallery_3', 'label' => 'ギャラリー画像3', 'name' => 'works_gallery_3'),
+		array('key' => 'field_fun_life_works_gallery_4', 'label' => 'ギャラリー画像4', 'name' => 'works_gallery_4'),
+		array('key' => 'field_fun_life_works_second_image', 'label' => 'セクション2 画像', 'name' => 'works_second_image'),
+		array('key' => 'field_fun_life_works_pair_1', 'label' => 'セクション3 画像1', 'name' => 'works_pair_1'),
+		array('key' => 'field_fun_life_works_pair_2', 'label' => 'セクション3 画像2', 'name' => 'works_pair_2'),
+		array('key' => 'field_fun_life_works_before_image', 'label' => 'BEFORE画像', 'name' => 'works_before_image'),
+		array('key' => 'field_fun_life_works_after_image', 'label' => 'AFTER画像', 'name' => 'works_after_image'),
+	);
+
+	foreach ($image_fields as &$image_field) {
+		$image_field['type'] = 'image';
+		$image_field['return_format'] = 'id';
+		$image_field['preview_size'] = 'medium';
+		$image_field['library'] = 'all';
+		$image_field['wrapper'] = array('width' => '50');
+	}
+	unset($image_field);
+
+	acf_add_local_field_group(array(
+		'key' => 'group_fun_life_single_fields',
+		'title' => '記事詳細',
+		'fields' => array_merge(
+			array_slice($text_fields, 0, 3),
+			array_slice($image_fields, 0, 4),
+			array_slice($text_fields, 3, 2),
+			array_slice($image_fields, 4, 1),
+			array_slice($text_fields, 5, 2),
+			array_slice($image_fields, 5, 2),
+			array_slice($image_fields, 7, 2),
+			array_slice($text_fields, 7, 1)
+		),
+		'location' => array(
+			array(
+				array(
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'post',
+				),
+			),
+		),
+		'menu_order' => 0,
+		'position' => 'normal',
+		'style' => 'default',
+		'label_placement' => 'top',
+		'instruction_placement' => 'label',
+		'active' => true,
+		'show_in_rest' => 0,
+	));
+}
+add_action('acf/init', 'fun_life_register_single_fields');
