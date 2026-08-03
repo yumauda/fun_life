@@ -7127,7 +7127,7 @@ select::-ms-expand {
 }
 @media screen and (min-width: 768px) {
   .p-style {
-    padding-top: 11.25rem;
+    padding-top: 2.5rem;
     padding-bottom: 3.75rem;
   }
 }
@@ -7138,7 +7138,6 @@ select::-ms-expand {
 @media screen and (min-width: 768px) {
   .p-style__content {
     display: flex;
-    align-items: center;
     gap: 2.25rem;
   }
 }
@@ -7150,9 +7149,11 @@ select::-ms-expand {
   .p-style__detail {
     display: block;
     max-width: 25.625rem;
+    min-width: 25.625rem;
     opacity: 1;
     transform: translateY(0);
     transition: opacity 0.22s ease, transform 0.22s ease;
+    margin-top: 6rem;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -7385,6 +7386,13 @@ select::-ms-expand {
   .p-style__cursor.is-visible {
     visibility: visible;
     opacity: 1;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .p-style__heading {
+    flex-direction: row-reverse;
+    gap: 1.5rem;
   }
 }
 

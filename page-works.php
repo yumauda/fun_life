@@ -583,7 +583,7 @@
           <p class="p-style__detail-text js-style-text"><?php echo esc_html($style_items[0]['text']); ?></p>
         </div>
         <div class="p-style__main">
-          <div class="p-lineup__heading">
+          <div class="p-lineup__heading p-style__heading">
             <span class="p-lineup__heading-line" aria-hidden="true"></span>
             <h2 class="p-lineup__heading-text">STYLE</h2>
           </div>

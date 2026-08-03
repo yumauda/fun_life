@@ -6,7 +6,7 @@
   overflow-x: clip;
 
   @include mq("md") {
-    padding-top: rem(180);
+    padding-top: rem(40);
     padding-bottom: rem(60);
   }
 }
@@ -16,7 +16,6 @@
 
   @include mq("md") {
     display: flex;
-    align-items: center;
     gap: rem(36);
   }
 }
@@ -27,9 +26,11 @@
   @include mq(md) {
     display: block;
     max-width: rem(410);
+    min-width: rem(410);
     opacity: 1;
     transform: translateY(0);
     transition: opacity 0.22s ease, transform 0.22s ease;
+    margin-top: rem(96);
 
   }
 
@@ -256,5 +257,12 @@
       visibility: visible;
       opacity: 1;
     }
+  }
+}
+.p-style__heading {
+  @include mq(md){
+    
+    flex-direction: row-reverse;
+    gap: rem(24);
   }
 }
