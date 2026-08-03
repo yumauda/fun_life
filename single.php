@@ -109,6 +109,7 @@ if (have_posts()) :
     </header>
 
     <div class="p-single-blog__body l-inner">
+      <?php if ($is_works) : ?>
       <section class="p-single-blog__section">
         <div class="p-single-blog__text-block">
           <h2 class="p-single-blog__heading"><?php echo $render_heading($intro_heading); ?></h2>
@@ -154,6 +155,13 @@ if (have_posts()) :
         </figure>
         <p class="p-single-blog__text"><?php echo esc_html($before_after_text); ?></p>
       </section>
+      <?php else : ?>
+        <section class="p-single-blog__section">
+          <div class="p-single-blog__editor-content">
+            <?php the_content(); ?>
+          </div>
+        </section>
+      <?php endif; ?>
 
       <section class="p-single-blog__other">
         <h2 class="p-single-blog__other-heading">OTHER</h2>

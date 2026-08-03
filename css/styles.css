@@ -6713,6 +6713,55 @@ select::-ms-expand {
   }
 }
 
+.p-single-blog__editor-content {
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 2.1428571429;
+}
+@media screen and (min-width: 768px) {
+  .p-single-blog__editor-content {
+    max-width: 51.25rem;
+    font-size: 1.125rem;
+    line-height: 2.7777777778;
+  }
+}
+
+.p-single-blog__editor-content > * + * {
+  margin-top: 1.5rem;
+}
+@media screen and (min-width: 768px) {
+  .p-single-blog__editor-content > * + * {
+    margin-top: 2.5rem;
+  }
+}
+
+.p-single-blog__editor-content h2 {
+  font-size: 1.375rem;
+  line-height: 1.75;
+}
+@media screen and (min-width: 768px) {
+  .p-single-blog__editor-content h2 {
+    font-size: 1.625rem;
+  }
+}
+
+.p-single-blog__editor-content h3 {
+  font-size: 1.125rem;
+  line-height: 1.75;
+}
+@media screen and (min-width: 768px) {
+  .p-single-blog__editor-content h3 {
+    font-size: 1.375rem;
+  }
+}
+
+.p-single-blog__editor-content img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .p-single-blog__heading {
   font-size: 1.375rem;
   font-weight: 700;
