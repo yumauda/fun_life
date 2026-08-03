@@ -217,36 +217,66 @@
 }
 
 .p-modular__slider {
-  position: relative;
+  width: calc(100vw - $padding-sp);
   overflow: hidden;
+
+  @include mq(md) {
+    width: auto;
+  }
+}
+
+.p-modular__card {
+  padding-right: rem(6);
+
+  @include mq(md) {
+    padding-right: 0;
+  }
+}
+
+.p-modular__card-visual {
+  display: flex;
+  align-items: stretch;
 }
 
 .p-modular__image {
+  flex: 1;
+  min-width: 0;
   aspect-ratio: 700 / 700;
+  overflow: hidden;
 }
 
 .p-modular__image img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
 .p-modular__slider-note {
+  position: relative;
+  flex: 0 0 rem(16);
+  margin-left: rem(12);
+
+  @include mq(md) {
+    flex-basis: rem(20);
+    margin-left: rem(18);
+  }
+}
+
+// 横書きの一文を90度回転させるため、カード内の専用領域に限定して絶対配置する。
+.p-modular__slider-note span {
   position: absolute;
-  top: rem(10);
-  right: rem(12);
-  z-index: 2;
-  padding: rem(8) rem(6);
-  font-size: rem(12);
+  top: 0;
+  left: 100%;
+  font-size: clamp(rem(10), calc(12 / 375 * 100vw), rem(12));
   font-weight: $bold;
   line-height: 1.35;
   letter-spacing: 0.04em;
-  writing-mode: vertical-rl;
-  background: rgba(255, 255, 255, 0.9);
+  white-space: nowrap;
+  transform: rotate(90deg);
+  transform-origin: top left;
 
   @include mq(md) {
-    top: rem(12);
-    right: rem(22);
     font-size: rem(15);
   }
 }
@@ -256,7 +286,7 @@
   font-size: rem(10);
   font-weight: $bold;
   line-height: 1.9;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.1em;
 
   @include mq(md) {
     max-width: rem(470);

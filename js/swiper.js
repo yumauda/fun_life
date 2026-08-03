@@ -56,13 +56,18 @@ const modularRoot = document.querySelector(".p-modular");
 if (modularRoot) {
   const modularSwipers = Array.from(modularRoot.querySelectorAll(".p-modular__slider")).map((slider) => {
     const swiper = new Swiper(slider, {
-      slidesPerView: 1.7,
+      slidesPerView: 1,
       loop: true,
       speed: 700,
-      spaceBetween: 40,
+      spaceBetween: 24,
       observer: true,
       observeParents: true,
-
+      breakpoints: {
+        768: {
+          slidesPerView: 1.7,
+          spaceBetween: 40,
+        },
+      },
     });
 
     return {
