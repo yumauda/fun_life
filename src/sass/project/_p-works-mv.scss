@@ -7,6 +7,11 @@
     padding-bottom: rem(32);
   }
 }
+.p-works-mv .l-inner {
+  @include mq(md) {
+    max-width: rem(1230);
+  }
+}
 
 .p-works-mv__image {
   overflow: hidden;

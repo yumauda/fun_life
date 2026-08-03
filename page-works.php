@@ -10,6 +10,11 @@
       </figure>
 
       <h1 class="p-works-mv__title">WORKS</h1>
+
+    </div>
+  </section>
+  <div class="p-works-mvNav">
+    <div class="l-inner">
       <nav class="p-works-mv__nav" aria-label="WORKS ページ内メニュー">
         <ul class="p-works-mv__list">
           <li class="p-works-mv__item">
@@ -39,7 +44,7 @@
         </ul>
       </nav>
     </div>
-  </section>
+  </div>
 
   <section class="p-works-feature p-works-feature--concept" id="concept">
     <div class="l-inner">
@@ -361,7 +366,7 @@
           <div class="p-before-after__body">
             <h3 class="p-before-after__heading">住まいを変える。暮らしが変わる。</h3>
             <p class="p-before-after__category">REFORM</p>
-            <p class="p-before-after__text">住み慣れた家にも、まだまだ可能性があります。<br class="u-mobile">間取りの見直しや内装の刷新、設備の入れ替えによって、毎日の暮らしはもっと快適に。<br class="u-mobile">ビフォーアフターで、その変化をご覧ください。<br class="u-mobile">今だけでなく、将来を見据えた住まいとしても人気を集めています。</p>
+            <p class="p-before-after__text">住み慣れた家にも、まだまだ可能性があります。<br class="u-mobile">間取りの見直しや内装の刷新、設備の入れ替えによって、毎日の暮らしはもっと快適に。<br class="u-mobile">ビフォーアフターで、その変化をご覧ください。</p>
           </div>
         </article>
         <article class="p-before-after__item">
@@ -376,7 +381,7 @@
           <div class="p-before-after__body">
             <h3 class="p-before-after__heading">お店の魅力を引き出す店舗づくり。</h3>
             <p class="p-before-after__category">RENOVATION</p>
-            <p class="p-before-after__text">店舗は、商品やサービスの魅力を伝える大切な場所です。デザインや動線、空間の雰囲気を見直すことで、お客さまに与える印象も大きく変わります。ビフォーアフターで、その違いをご体感ください。<br class="u-mobile">今だけでなく、将来を見据えた住まいとしても人気を集めています。</p>
+            <p class="p-before-after__text">店舗は、商品やサービスの魅力を伝える大切な場所です。デザインや動線、空間の雰囲気を見直すことで、お客さまに与える印象も大きく変わります。ビフォーアフターで、その違いをご体感ください。</p>
           </div>
         </article>
       </div>
@@ -491,7 +496,7 @@
                   <span class="p-lineup__toggle" aria-hidden="true"><?php echo 0 === $index ? 'CLOSE' : 'MORE'; ?></span>
                 </div>
               </button>
-              <div class="p-lineup__panel js-lineup-panel" id="lineup-panel-<?php echo esc_attr($index); ?>"<?php echo 0 === $index ? '' : ' hidden'; ?>>
+              <div class="p-lineup__panel js-lineup-panel" id="lineup-panel-<?php echo esc_attr($index); ?>" <?php echo 0 === $index ? '' : ' hidden'; ?>>
                 <div class="p-lineup__panel-inner">
                   <h3 class="p-lineup__panel-title"><?php echo wp_kses_post($item['title']); ?></h3>
                   <p class="p-lineup__panel-text"><?php echo esc_html($item['text']); ?></p>
@@ -591,7 +596,7 @@
                   </figure>
                   <span class="p-style__mobile-label"><?php echo esc_html($item['label']); ?></span>
                 </button>
-                <div class="p-style__mobile-panel js-style-mobile-panel" id="style-mobile-panel-<?php echo esc_attr($index); ?>"<?php echo 0 === $index ? '' : ' hidden'; ?>>
+                <div class="p-style__mobile-panel js-style-mobile-panel" id="style-mobile-panel-<?php echo esc_attr($index); ?>" <?php echo 0 === $index ? '' : ' hidden'; ?>>
                   <div class="p-style__mobile-panel-inner">
                     <p class="p-style__mobile-text"><?php echo esc_html($item['text']); ?></p>
                   </div>

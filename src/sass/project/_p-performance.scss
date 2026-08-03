@@ -98,9 +98,14 @@
 .p-performance__icon {
   position: absolute;
   right: rem(12);
-  width: rem(14);
-  height: rem(14);
+  width: rem(17);
+  height: rem(11);
   flex: 0 0 auto;
+  background-image: url("../images/common/toggle.webp");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  transition: transform 0.3s ease;
 
   @include mq("md") {
     position: relative;
@@ -108,23 +113,8 @@
   }
 }
 
-.p-performance__icon::before {
-  position: absolute;
-  top: 43%;
-  left: 50%;
-  width: rem(7);
-  height: rem(7);
-  border-right: 1px solid #000;
-  border-bottom: 1px solid #000;
-  content: "";
-  transform: translate(-50%, -50%) rotate(45deg);
-  transition: transform 0.3s ease;
-}
-
-.p-performance__item.is-opened .p-performance__icon::before,
-.p-performance__item[open] .p-performance__icon::before {
-  top: 57%;
-  transform: translate(-50%, -50%) rotate(225deg);
+.p-performance__item[open] .p-performance__icon {
+  transform: rotate(180deg);
 }
 
 .p-performance__body {

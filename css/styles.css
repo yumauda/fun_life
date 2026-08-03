@@ -1208,12 +1208,24 @@ select::-ms-expand {
 
 .p-cad__content--plan {
   margin-top: 5rem;
+  position: relative;
 }
 @media screen and (min-width: 768px) {
   .p-cad__content--plan {
     margin-top: 8.75rem;
     align-items: center;
   }
+}
+
+.p-cad__content--plan::before {
+  position: absolute;
+  content: "";
+  background: #000;
+  width: 100vw;
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  right: calc(50% - 50vw);
 }
 
 .p-cad__body {
@@ -5675,9 +5687,14 @@ select::-ms-expand {
 .p-performance__icon {
   position: absolute;
   right: 0.75rem;
-  width: 0.875rem;
-  height: 0.875rem;
+  width: 1.0625rem;
+  height: 0.6875rem;
   flex: 0 0 auto;
+  background-image: url("../images/common/toggle.webp");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  transition: transform 0.3s ease;
 }
 @media screen and (min-width: 768px) {
   .p-performance__icon {
@@ -5686,23 +5703,8 @@ select::-ms-expand {
   }
 }
 
-.p-performance__icon::before {
-  position: absolute;
-  top: 43%;
-  left: 50%;
-  width: 0.4375rem;
-  height: 0.4375rem;
-  border-right: 1px solid #000;
-  border-bottom: 1px solid #000;
-  content: "";
-  transform: translate(-50%, -50%) rotate(45deg);
-  transition: transform 0.3s ease;
-}
-
-.p-performance__item.is-opened .p-performance__icon::before,
-.p-performance__item[open] .p-performance__icon::before {
-  top: 57%;
-  transform: translate(-50%, -50%) rotate(225deg);
+.p-performance__item[open] .p-performance__icon {
+  transform: rotate(180deg);
 }
 
 .p-performance__body {
@@ -8026,7 +8028,7 @@ select::-ms-expand {
 @media screen and (min-width: 768px) {
   .p-works-feature__body {
     flex-direction: row;
-    align-items: flex-end;
+    align-items: end;
     gap: 4.5rem;
     margin-top: 4.5rem;
   }
@@ -8050,7 +8052,7 @@ select::-ms-expand {
 }
 @media screen and (min-width: 768px) {
   .p-works-feature__image {
-    max-width: 28.125rem;
+    max-width: 32.8125rem;
     order: initial;
     margin-top: initial;
   }
@@ -8124,7 +8126,6 @@ select::-ms-expand {
 @media screen and (min-width: 768px) {
   .p-works-feature__text {
     line-height: 2.7777777778;
-    font-size: 0.875rem;
   }
 }
 
@@ -8349,6 +8350,12 @@ body.is-works-modal-open {
 @media screen and (min-width: 768px) {
   .p-works-mv {
     padding-bottom: 2rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .p-works-mv .l-inner {
+    max-width: 76.875rem;
   }
 }
 
