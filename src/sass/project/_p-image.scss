@@ -2,10 +2,11 @@
 
 .p-image {
   padding-top: rem(128);
+  padding-bottom: rem(54);
 
   @include mq(md) {
     padding-top: rem(300);
-    padding-bottom: rem(200);
+    padding-bottom: rem(300);
   }
 }
 

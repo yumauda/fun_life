@@ -46,7 +46,9 @@
 
 .p-company__description {
   padding-top: rem(11);
+  padding-right: rem(16);
   padding-bottom: rem(11);
+  padding-left: rem(20);
   font-size: rem(12);
   font-weight: $bold;
   line-height: 1.8;
@@ -55,7 +57,9 @@
 
   @include mq("md") {
     padding-top: rem(14);
+    padding-right: rem(40);
     padding-bottom: rem(14);
+    padding-left: rem(100);
     font-size: rem(14);
   }
 }
@@ -77,16 +81,6 @@
     align-items: center;
     padding-top: 0;
     font-size: rem(18);
-  }
-}
-
-.p-company__description {
-  padding-right: rem(16);
-  padding-left: rem(20);
-
-  @include mq("md") {
-    padding-right: rem(40);
-    padding-left: rem(100);
   }
 }
 

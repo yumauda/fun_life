@@ -15,25 +15,13 @@
 }
 
 
-.p-top-contact__content {}
-
-.p-top-contact__inner {
-  max-width: rem(1100);
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 0;
-  padding-right: 0;
-
-  @include mq(md) {
-    padding-left: $padding-pc;
-    padding-right: $padding-pc;
-  }
-}
 
 .p-top-contact__btn {
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
+  padding-left: rem(20);
+  padding-right: rem(20);
   display: block;
   position: relative;
   transition: 0.3s ease-in-out;
@@ -57,6 +45,9 @@
 .p-top-contact__img {
   height: 100%;
   transition: 0.3s ease-in-out;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
 }
 
 .p-top-contact__img img {
@@ -77,14 +68,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   text-align: center;
-
+  
   @include mq(md) {
     left: auto;
     flex-direction: row;
-    justify-content: flex-start;
     text-align: left;
+    // justify-content: flex-start;
+    justify-content: space-between;
   }
 }
 
@@ -136,8 +127,9 @@
   margin-top: rem(24);
 
   @include mq(md) {
-    width: rem(150);
-    height: rem(150);
+    width: min(rem(150), calc(150 / 1440) * 100vw);
+    height: min(rem(150), calc(150 / 1440) * 100vw);
+
     margin-top: 0;
     margin-left: auto;
   }

@@ -31,7 +31,6 @@ if ($contact_args['modifier']) {
                         <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/contact_bg_sp.webp" alt="<?php echo esc_attr($contact_args['image_alt']); ?>" width="788" height="534">
                     </picture>
                 </figure>
-                <div class="p-top-contact__inner">
                     <div class="p-top-contact__detail">
                         <div class="p-top-contact__text-wrapper">
                             <p class="p-top-contact__request"><?php echo esc_html($contact_args['request']); ?></p>
@@ -45,7 +44,6 @@ if ($contact_args['modifier']) {
                         </div>
 
                     </div>
-                </div>
             </a>
         </div>
     </div>

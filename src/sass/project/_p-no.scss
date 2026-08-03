@@ -2,7 +2,11 @@
 
 .p-no {
   overflow-x: clip;
-  padding-top: rem(430);
+  padding-top: rem(175);
+  @include mq(md){
+    
+    padding-top: rem(430);
+  }
 }
 
 .p-no__content {
@@ -140,12 +144,13 @@
 
   @include mq(md) {
     max-width: initial;
+    margin-top: initial;
   }
 }
 
 .p-no__second-img {
   width: calc(145 / 375) * 100vw;
-  margin-top: rem(-18);
+  margin-top: rem(-8);
   order: 6;
 
   @include mq(md){
@@ -162,12 +167,6 @@
   object-fit: cover;
 }
 
-.p-no__concept {}
-
-.p-no__concept-title {
-  text-align: center;
-}
-
 .p-no__button {}
 
 
@@ -182,12 +181,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: rem(82);
+  margin-top: rem(132);
   order: 7;
 
   @include mq(md) {
     flex-direction: row;
-    align-items: center;
+    align-items: flex-end;
     gap: rem(48);
     margin-top: rem(175);
   }
@@ -195,16 +194,16 @@
 
 .p-no__concept-detail {
   order: 2;
-  margin-top: rem(24);
+  margin-top: rem(48);
 
   @include mq(md) {
     order: initial;
-    margin-top: 0;
+    margin-top: initial;
   }
 }
 
 .p-no__concept-title {
-  font-size: rem(20);
+  font-size: rem(30);
   font-weight: 700;
   line-height: calc(45 / 45);
   text-transform: uppercase;
@@ -217,19 +216,21 @@
 }
 
 .p-no__concept-button {
-  border: 2px solid #000;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: rem(94);
-  height: rem(24);
-  margin-top: rem(8);
-  font-size: rem(8);
+  width: rem(140);
+  height: rem(35);
+  margin-top: rem(12);
+  font-size: rem(13);
   font-family: $second-font-family;
   font-weight: 700;
   text-transform: capitalize;
+    border: 1px solid #000;
 
+  
   @include mq(md) {
+    border: 2px solid #000;
     width: rem(217);
     height: rem(52);
     margin-top: rem(24);
@@ -259,7 +260,7 @@
 .p-no__bottom {
   width: 100vw;
   aspect-ratio: 375 / 137;
-  margin-top: rem(48);
+  margin-top: rem(60);
   margin-left: calc(50% - 50vw);
   order: 8;
 
@@ -274,8 +275,5 @@
 .p-no__bottom img {
   width: 100%;
   height: 100%;
-}
-
-.p-no__bottom img {
   object-fit: cover;
 }

@@ -1,5 +1,15 @@
 <?php get_header(); ?>
 <main>
+  <div class="p-mv">
+    <div class="l-inner">
+      <div class="p-mv__content">
+        <div class="p-mv__video">
+          <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/mv_pc.webp" alt="動画" width="900" height="480">
+        </div>
+        <!-- <video src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/mv.mp4" autoplay muted loop playsinline></video> -->
+      </div>
+    </div>
+  </div>
   <section class="p-no">
     <div class="l-inner">
       <div class="p-no__content">
@@ -38,7 +48,10 @@
           </figure>
         </div>
         <figure class="p-no__bottom">
-          <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/no_bottom.webp" alt="" width="930" height="340">
+          <picture>
+            <source srcset="<?php echo get_template_directory_uri(); ?>/images/top/no_bottom.webp" media="(min-width: 768px)" width="1238" height="570"/>
+            <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/no_bottom_sp.webp" alt="" width="375" height="137">
+          </picture>
 
         </figure>
 
@@ -94,7 +107,10 @@
         </p>
       </div>
       <figure class="p-no-works__bottom">
-        <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/no_works_bottom.webp" alt="" width="930" height="340">
+        <picture>
+          <source srcset="<?php echo get_template_directory_uri(); ?>/images/top/no_works_bottom.webp" media="(min-width: 768px)" width="1238" height="570"/>
+          <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/no_works_bottom_sp.webp" alt="" width="375" height="137">
+        </picture>
       </figure>
     </div>
   </section>
@@ -110,7 +126,10 @@
         <div class="p-reform__body">
           <div class="p-reform__item p-reform__item--before">
             <figure class="p-reform__image">
-              <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/reform_1.webp" alt="リフォーム前の暮らしのイメージ" width="500" height="500">
+              <picture>
+                <source srcset="<?php echo get_template_directory_uri(); ?>/images/top/reform_1.webp" media="(min-width: 768px)" width="500" height="500"/>
+                <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/reform_1_sp.webp" alt="リフォーム前の暮らしのイメージ" width="375" height="227">
+              </picture>
             </figure>
             <p class="p-reform__text">
               リフォームは、古くなった家を直すだけではありません。住み慣れた家や家族の思い出を残しながら今の暮らしに合った住まいへアップデートしていく方法です。新築ではなく「この家でこれからも暮らしたい」という想いに寄り添いながら暮らしやすさやデザインまで丁寧に考えこれからの毎日がもっと快適になるリフォームを提案しています。
@@ -118,7 +137,10 @@
           </div>
           <div class="p-reform__item p-reform__item--after">
             <figure class="p-reform__image">
-              <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/reform_2.webp" alt="リフォーム後の住まいのイメージ" width="500" height="500">
+              <picture>
+                <source srcset="<?php echo get_template_directory_uri(); ?>/images/top/reform_2.webp" media="(min-width: 768px)" width="500" height="500"/>
+                <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/reform_2_sp.webp" alt="リフォーム後の住まいのイメージ" width="375" height="227">
+              </picture>
             </figure>
             <p class="p-reform__text">
               家には、たくさんの思い出や、これまでの暮らしが詰まっています。だからこそファンライフは新しく建て替えるだけではなく、今ある家を活かすという選択も大切にしています。家族の記憶を残しながらこれからの暮らしがもっと快適になるように。そんな想いを込めて、一つひとつ丁寧にリフォームを行っています。
@@ -321,7 +343,7 @@
                 <figure class="p-top-project__img">
                   <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/top_slider1.webp" alt="金属の未来をリファイン" width="431" height="38">
                 </figure>
-                <p class="p-top-project__text">HOUSE 新築</p>
+                <p class="p-top-project__text">上益城郡御船町豊秋/27.3坪/2LDK（耐震等級2/UA値0.53/C値0.09）</p>
               </div>
               <div class="swiper-slide">
                 <figure class="p-top-project__img">
@@ -338,12 +360,25 @@
 
               </div>
             </div>
+            <div class="p-top-project__pager">
+              <!-- If we need navigation buttons -->
+              <div class="swiper-button-prev">
+                <div class="p-top-project__swiper-button">
+                  <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/slider_prev.webp" alt="" width="52" height="52">
+                </div>
+              </div>
+              <div class="swiper-button-next">
+                <div class="p-top-project__swiper-button">
+                  <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/slider_next.webp" alt="" width="52" height="52">
+                </div>
+              </div>
+            </div>
 
-            <!-- If we need navigation buttons -->
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
 
           </div>
+        </div>
+        <div class="p-top-project__more">
+          <a href="#" class="p-top-project__more-link">View more</a>
         </div>
       </div>
     </div>
