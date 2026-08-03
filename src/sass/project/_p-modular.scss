@@ -26,7 +26,7 @@
 }
 
 .p-modular__category {
-  font-size: rem(18);
+  font-size: rem(28);
 
   @include mq(md) {
     font-size: rem(36);
@@ -35,7 +35,7 @@
 
 .p-modular__title {
   font-family: $second-font-family;
-  font-size: rem(24);
+  font-size: rem(18);
   font-weight: $bold;
   line-height: 1.15;
 
@@ -46,15 +46,21 @@
 }
 
 .p-modular__lead {
-  max-width: rem(335);
-  margin-top: rem(28);
-  font-size: rem(15);
+  font-size: rem(14);
   font-weight: $bold;
-  line-height: 1.85;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.1em;
+  margin-top: rem(48);
+  line-height: calc(25 /14);
+  @include mq(md) {
+    max-width: rem(425);
+    line-height: 1.85;
+    margin-top: rem(28);
+  }
 }
 
 .p-modular__body {
+  display: flex;
+  flex-direction: column;
   margin-top: rem(44);
 
   @include mq(md) {
@@ -66,16 +72,29 @@
 }
 
 .p-modular__menu {
-  position: relative;
+  display: contents;
   font-size: rem(13);
   font-weight: $bold;
   line-height: 1.5;
   letter-spacing: 0.04em;
+
+  @include mq(md) {
+    position: relative;
+    display: block;
+  }
 }
 
 .p-modular__menu-title {
+  order: 1;
+  padding-bottom: rem(8);
+  border-bottom: 1px solid #000;
   margin-top: rem(24);
   font-size: rem(16);
+
+  @include mq(md) {
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
 }
 
 .p-modular__menu-title:first-child {
@@ -83,20 +102,42 @@
 }
 
 .p-modular__menu-title--mt {
+  order: 4;
   margin-top: rem(26);
+}
+
+.p-modular__additional-menu {
+  display: contents;
+
+  @include mq(md) {
+    display: block;
+  }
+}
+
+.p-modular__additional-menu .p-modular__menu-button,
+.p-modular__additional-menu .p-modular__menu-title {
+  @media (max-width: 767px) {
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
 }
 
 .p-modular__menu-row {
   position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, rem(138)) minmax(rem(92), 1fr);
-  align-items: center;
-  margin-top: rem(13);
+  order: 4;
+  margin-top: rem(24);
 
   @include mq(md) {
+    display: grid;
     grid-template-columns: rem(142) rem(96);
+    align-items: center;
     margin-top: rem(26);
   }
+}
+
+.p-modular__menu-row--primary {
+  order: 2;
+  margin-top: rem(20);
 }
 
 .p-modular__menu-button,
@@ -119,77 +160,165 @@
   text-align: left;
   white-space: nowrap;
   font-size: rem(16);
-}
 
-.p-modular__menu-row.is-active .p-modular__menu-button::after,
-.p-modular__menu-row:focus-within .p-modular__menu-button::after,
-.p-modular__menu-row:hover .p-modular__menu-button::after {
-  content: "";
-  flex-shrink: 1;
-  width: rem(78);
-  min-width: rem(24);
-  height: 1px;
-  margin-left: rem(12);
-  background: #000;
-}
-
-.p-modular__sub-menu {
-  position: absolute;
-  top: 0;
-  left: calc(100% + rem(18));
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  min-width: rem(76);
-  margin-left: 0;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s ease;
-
-  @include mq(md) {
-    left: rem(160);
+  @media (max-width: 767px) {
+    padding-bottom: rem(8);
+    border-bottom: 1px solid #a8aeae;
   }
 }
 
-.p-modular__menu-row.is-active .p-modular__sub-menu,
+.p-modular__menu-row.is-active .p-modular__menu-button::after {
+  @include mq(md) {
+    content: "";
+    flex-shrink: 1;
+    width: rem(78);
+    min-width: rem(24);
+    height: 1px;
+    margin-left: rem(12);
+    background: #000;
+  }
+}
+
+.p-modular__menu-row:focus-within .p-modular__menu-button::after,
+.p-modular__menu-row:hover .p-modular__menu-button::after {
+  @include mq(md) {
+    content: "";
+    flex-shrink: 1;
+    width: rem(78);
+    min-width: rem(24);
+    height: 1px;
+    margin-left: rem(12);
+    background: #000;
+  }
+}
+
+.p-modular__sub-menu {
+  display: none;
+  grid-template-columns: repeat(2, minmax(0, rem(105)));
+  column-gap: rem(12);
+  row-gap: rem(10);
+  margin-top: rem(14);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(rem(-8));
+  transition:
+    opacity 0.25s ease,
+    transform 0.35s ease,
+    visibility 0s linear 0.35s;
+
+  @include mq(md) {
+    position: absolute;
+    top: 0;
+    left: rem(160);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: rem(76);
+    margin-top: 0;
+    transform: none;
+  }
+}
+
+.p-modular__menu-row.is-active .p-modular__sub-menu {
+  display: grid;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+  transition:
+    opacity 0.25s ease,
+    transform 0.35s ease,
+    visibility 0s;
+
+  @media (max-width: 767px) {
+    animation: modular-options-reveal 0.35s ease both;
+  }
+
+  @include mq(md) {
+    display: flex;
+  }
+}
+
 .p-modular__menu-row:focus-within .p-modular__sub-menu,
 .p-modular__menu-row:hover .p-modular__sub-menu {
-  opacity: 1;
-  pointer-events: auto;
+  @include mq(md) {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+    transition:
+      opacity 0.25s ease,
+      transform 0.35s ease,
+      visibility 0s;
+  }
 }
 
 .p-modular__sub-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: rem(60);
+  min-width: rem(105);
   min-height: rem(28);
   padding-right: rem(12);
   padding-left: rem(12);
-  border: 2px solid transparent;
+  border: 1px solid #a8aeae;
   font-size: rem(16);
+  white-space: nowrap;
+
+  @include mq(md) {
+    min-width: rem(60);
+  }
 }
 
 .p-modular__sub-button + .p-modular__sub-button {
-  margin-top: rem(13);
+  @include mq(md) {
+    margin-top: rem(13);
+  }
 }
 
 .p-modular__sub-button.is-active {
   border-color: #000;
 }
 
+.p-modular.is-mobile-awaiting-selection .p-modular__sub-button.is-active {
+  @media (max-width: 767px) {
+    border-color: #a8aeae;
+  }
+}
+
 .p-modular__main {
+  display: contents;
   margin-top: rem(40);
 
   @include mq(md) {
+    display: block;
     margin-top: rem(-168);
     margin-right: calc(50% - 50vw);
   }
 }
 
 .p-modular__panels {
+  order: 3;
+  margin-top: rem(30);
   display: grid;
+
+  @include mq(md) {
+    margin-top: 0;
+  }
+}
+
+.p-modular.is-mobile-awaiting-selection .p-modular__panels {
+  @media (max-width: 767px) {
+    display: none;
+  }
+}
+
+.p-modular.is-mobile-panel-visible .p-modular__panels {
+  @media (max-width: 767px) {
+    animation: modular-panel-reveal 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
 }
 
 .p-modular__panel {
@@ -198,11 +327,15 @@
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transform: translateX(rem(36));
+  transform: translateY(rem(24));
   transition:
     opacity 0.45s ease,
     transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
     visibility 0s linear 0.65s;
+
+  @include mq(md) {
+    transform: translateX(rem(36));
+  }
 }
 
 .p-modular__panel.is-active {
@@ -234,15 +367,21 @@
 }
 
 .p-modular__card-visual {
-  display: flex;
-  align-items: stretch;
+  @include mq(md) {
+    display: flex;
+    align-items: stretch;
+  }
 }
 
 .p-modular__image {
-  flex: 1;
-  min-width: 0;
+  width: 100%;
   aspect-ratio: 700 / 700;
   overflow: hidden;
+
+  @include mq(md) {
+    flex: 1;
+    min-width: 0;
+  }
 }
 
 .p-modular__image img {
@@ -253,52 +392,86 @@
 }
 
 .p-modular__slider-note {
-  position: relative;
-  flex: 0 0 rem(16);
-  margin-left: rem(12);
+  margin-top: rem(24);
 
   @include mq(md) {
-    flex-basis: rem(20);
+    position: relative;
+    flex: 0 0 rem(20);
+    margin-top: 0;
     margin-left: rem(18);
   }
 }
 
-// 横書きの一文を90度回転させるため、カード内の専用領域に限定して絶対配置する。
+// PCのみ横書きの一文を90度回転し、カード内の専用領域に限定して絶対配置する。
 .p-modular__slider-note span {
-  position: absolute;
-  top: 0;
-  left: 100%;
-  font-size: clamp(rem(10), calc(12 / 375 * 100vw), rem(12));
+  display: block;
+  font-size: rem(16);
   font-weight: $bold;
-  line-height: 1.35;
+  line-height: 1.8;
   letter-spacing: 0.04em;
-  white-space: nowrap;
-  transform: rotate(90deg);
-  transform-origin: top left;
 
   @include mq(md) {
-    font-size: rem(15);
+    position: absolute;
+    top: 0;
+    left: 100%;
+    font-size: min(rem(24), calc(24 / 1440) * 100vw);
+    line-height: 1.35;
+    white-space: nowrap;
+    transform: rotate(90deg);
+    transform-origin: top left;
   }
 }
 
 .p-modular__description {
-  margin-top: rem(28);
-  font-size: rem(10);
+  font-size: rem(14);
   font-weight: $bold;
-  line-height: 1.9;
+  line-height: calc(25 / 14);
   letter-spacing: 0.1em;
+  margin-top: rem(24);
 
   @include mq(md) {
+    margin-top: rem(28);
     max-width: rem(470);
     font-size: rem(14);
   }
 }
 
 .p-modular__more {
-  margin-top: rem(16);
+  order: 5;
   font-family: $second-font-family;
-  font-size: rem(12);
   font-weight: $bold;
   line-height: 1.4;
-  text-align: right;
+  margin-top: rem(95);
+  text-align: center;
+  font-size: rem(25);
+  letter-spacing: 0.075em;
+  @include mq(md){
+    margin-top: rem(16);
+    font-size: rem(12);
+    text-align: right;
+  }
+}
+
+@keyframes modular-panel-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(rem(24));
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes modular-options-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(rem(-8));
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

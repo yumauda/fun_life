@@ -131,7 +131,7 @@
       </div>
     </div>
   </section>
-  <section class="p-modular" id="modular">
+  <section class="p-modular is-mobile-awaiting-selection" id="modular">
     <div class="l-inner">
       <div class="p-modular__content">
         <div class="p-modular__heading">
@@ -139,37 +139,39 @@
           <h2 class="p-modular__title">MODULAR HOME</h2>
         </div>
         <p class="p-modular__lead">
-          価格をおさえつつ、プロが厳選した洗練のデザインと間取りをベースに建てるお家です。
+          規格住宅とは、プロが厳選した間取りやデザイン(型)を<br class="u-desktop">ベースに建てるお家です。
         </p>
         <div class="p-modular__body">
           <div class="p-modular__menu" aria-label="規格住宅プラン">
             <p class="p-modular__menu-title">シンプルモダン</p>
-            <div class="p-modular__menu-row" data-modular-group="simple">
-              <button class="p-modular__menu-button" type="button">平屋</button>
-              <div class="p-modular__sub-menu" aria-label="シンプルモダン 平屋">
+            <div class="p-modular__menu-row p-modular__menu-row--primary" data-modular-group="simple">
+              <button class="p-modular__menu-button" type="button" aria-expanded="false" aria-controls="modular-simple-options">平屋</button>
+              <div class="p-modular__sub-menu" id="modular-simple-options" aria-label="シンプルモダン 平屋">
                 <button class="p-modular__sub-button is-active" type="button" data-modular-target="koti">コティ</button>
                 <button class="p-modular__sub-button" type="button" data-modular-target="root">ルートゥ</button>
                 <button class="p-modular__sub-button" type="button" data-modular-target="polku">ポルク</button>
                 <button class="p-modular__sub-button" type="button" data-modular-target="perhe">ペルヘ</button>
               </div>
             </div>
-            <div class="p-modular__menu-row" data-modular-group="courtyard">
-              <button class="p-modular__menu-button" type="button">中庭の家</button>
+            <div class="p-modular__additional-menu">
+              <div class="p-modular__menu-row" data-modular-group="courtyard">
+                <button class="p-modular__menu-button" type="button">中庭の家</button>
+              </div>
+              <div class="p-modular__menu-row" data-modular-group="second">
+                <button class="p-modular__menu-button" type="button">2階リビング</button>
+              </div>
+              <div class="p-modular__menu-row" data-modular-group="skiphous">
+                <button class="p-modular__menu-button" type="button">スキップフロア</button>
+              </div>
+              <div class="p-modular__menu-row" data-modular-group="earth">
+                <button class="p-modular__menu-button" type="button">土間の家</button>
+              </div>
+              <p class="p-modular__menu-title p-modular__menu-title--mt">ワンルーム</p>
+              <p class="p-modular__menu-title p-modular__menu-title--mt">ガレージハウス</p>
             </div>
-            <div class="p-modular__menu-row" data-modular-group="second">
-              <button class="p-modular__menu-button" type="button">2階リビング</button>
-            </div>
-            <div class="p-modular__menu-row" data-modular-group="skiphous">
-              <button class="p-modular__menu-button" type="button">スキップフロア</button>
-            </div>
-            <div class="p-modular__menu-row" data-modular-group="earth">
-              <button class="p-modular__menu-button" type="button">土間の家</button>
-            </div>
-            <p class="p-modular__menu-title p-modular__menu-title--mt">ワンルーム</p>
-            <p class="p-modular__menu-title p-modular__menu-title--mt">ガレージハウス</p>
           </div>
           <div class="p-modular__main">
-            <div class="p-modular__panels">
+            <div class="p-modular__panels" aria-live="polite">
               <div class="p-modular__panel is-active" data-modular-panel="koti">
                 <div class="swiper p-modular__slider">
                   <div class="swiper-wrapper">
@@ -179,7 +181,7 @@
                           <figure class="p-modular__image">
                             <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/top_slider1.webp" alt="規格住宅 コティ 外観" width="2161" height="1301">
                           </figure>
-                          <p class="p-modular__slider-note"><span>「住むという空間を、とことん追求した家。」</span></p>
+                          <p class="p-modular__slider-note"><span>「住むという空間を、<br class="u-mobile">とことん追求した家。」</span></p>
                         </div>
                         <p class="p-modular__description">資料の平面を再現し設計とアイデアを反映したCONCEPTモデルです。<br>シンプルタイプを中心にとして画像でみることで細かな注文住宅の空間をお届けします。</p>
                       </div>
@@ -190,7 +192,7 @@
                           <figure class="p-modular__image">
                             <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/no_new.webp" alt="規格住宅 コティ 室内" width="1600" height="1401">
                           </figure>
-                          <p class="p-modular__slider-note"><span>「住むという空間を、とことん追求した家。」</span></p>
+                          <p class="p-modular__slider-note"><span>「住むという空間を、<br class="u-mobile">とことん追求した家。」</span></p>
                         </div>
                         <p class="p-modular__description">資料の平面を再現し設計とアイデアを反映したCONCEPTモデルです。<br>シンプルタイプを中心にとして画像でみることで細かな注文住宅の空間をお届けします。</p>
                       </div>

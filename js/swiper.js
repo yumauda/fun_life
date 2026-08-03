@@ -77,18 +77,29 @@ if (modularRoot) {
   });
 
   const rows = Array.from(modularRoot.querySelectorAll(".p-modular__menu-row"));
+  const menuButtons = Array.from(modularRoot.querySelectorAll(".p-modular__menu-button"));
   const subButtons = Array.from(modularRoot.querySelectorAll(".p-modular__sub-button"));
   const panels = Array.from(modularRoot.querySelectorAll(".p-modular__panel"));
+  const mobileMedia = window.matchMedia("(max-width: 767px)");
 
   const updateActiveRow = (row) => {
     rows.forEach((item) => {
       item.classList.toggle("is-active", item === row);
+
+      const button = item.querySelector(".p-modular__menu-button[aria-controls]");
+
+      if (button) {
+        button.setAttribute("aria-expanded", String(item === row));
+      }
     });
   };
 
   const showPanel = (target) => {
     panels.forEach((panel) => {
-      panel.classList.toggle("is-active", panel.dataset.modularPanel === target);
+      const isActive = panel.dataset.modularPanel === target;
+
+      panel.classList.toggle("is-active", isActive);
+      panel.setAttribute("aria-hidden", String(!isActive));
     });
 
     subButtons.forEach((button) => {
@@ -111,8 +122,34 @@ if (modularRoot) {
   };
 
   rows.forEach((row) => {
-    row.addEventListener("mouseenter", () => updateActiveRow(row));
-    row.addEventListener("focusin", () => updateActiveRow(row));
+    row.addEventListener("mouseenter", () => {
+      if (!mobileMedia.matches) {
+        updateActiveRow(row);
+      }
+    });
+
+    row.addEventListener("focusin", () => {
+      if (!mobileMedia.matches) {
+        updateActiveRow(row);
+      }
+    });
+  });
+
+  menuButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      if (!mobileMedia.matches) {
+        return;
+      }
+
+      const row = button.closest(".p-modular__menu-row");
+      const hasSubMenu = row && row.querySelector(".p-modular__sub-menu");
+      const willOpen = Boolean(hasSubMenu && !row.classList.contains("is-active"));
+
+      updateActiveRow(willOpen ? row : null);
+      modularRoot.classList.add("is-mobile-awaiting-selection");
+      modularRoot.classList.remove("is-mobile-panel-visible");
+      panels.forEach((panel) => panel.setAttribute("aria-hidden", "true"));
+    });
   });
 
   subButtons.forEach((button) => {
@@ -124,6 +161,19 @@ if (modularRoot) {
       }
 
       showPanel(button.dataset.modularTarget);
+
+      if (mobileMedia.matches) {
+        modularRoot.classList.remove("is-mobile-awaiting-selection");
+        modularRoot.classList.add("is-mobile-panel-visible");
+      }
     });
   });
+
+  if (mobileMedia.matches) {
+    panels.forEach((panel) => panel.setAttribute("aria-hidden", "true"));
+  } else {
+    panels.forEach((panel) => {
+      panel.setAttribute("aria-hidden", String(!panel.classList.contains("is-active")));
+    });
+  }
 }
