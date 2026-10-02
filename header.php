@@ -13,9 +13,9 @@
     $meta_description = $default_description;
     $meta_type = 'website';
     $meta_url = home_url('/');
-    $meta_image = get_template_directory_uri() . '/images/top/top_slider1.jpg';
-    $meta_image_width = 2161;
-    $meta_image_height = 1301;
+    $meta_image = get_template_directory_uri() . '/images/common/ogp.png';
+    $meta_image_width = 1200;
+    $meta_image_height = 630;
     $show_canonical = true;
 
     if (is_front_page()) {
