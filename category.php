@@ -6,66 +6,65 @@ $category_slug = $queried_category instanceof WP_Term ? $queried_category->slug 
 $category_name = $queried_category instanceof WP_Term ? $queried_category->name : '';
 $is_works_category = in_array($category_slug, array('works', 'work', 'construction'), true)
   || in_array($category_name, array('施工事例', 'WORKS'), true);
-
-$find_category = static function ($slugs, $name) {
-  $category = null;
-
-  foreach ((array) $slugs as $slug) {
-    $category = get_category_by_slug($slug);
-
-    if ($category) {
-      break;
-    }
-  }
-
-  if (!$category) {
-    $category = get_term_by('name', $name, 'category');
-  }
-
-  return $category instanceof WP_Term ? $category : null;
-};
-
-$event_column_category = $find_category(array('event-column', 'event_column'), 'イベント・コラム');
-$event_category = $find_category('event', 'イベント');
-$column_category = $find_category('column', 'コラム');
-$posts_page_id = (int) get_option('page_for_posts');
-$blog_url = $posts_page_id ? get_permalink($posts_page_id) : home_url('/blog/');
-$event_column_url = $event_column_category ? get_category_link($event_column_category) : home_url('/category/event-column/');
-$all_posts_url = $event_column_url;
-$switch_label = 'ブログ一覧へ';
+$category_config = array(
+  'works' => array('en' => 'WORKS', 'ja' => '施工事例'),
+  'column' => array('en' => 'COLUMN', 'ja' => 'コラム'),
+  'blog' => array('en' => 'BLOG', 'ja' => 'ブログ'),
+  'event' => array('en' => 'EVENT', 'ja' => 'イベント/お知らせ'),
+);
+$current_config = isset($category_config[$category_slug])
+  ? $category_config[$category_slug]
+  : array('en' => strtoupper($category_slug), 'ja' => $category_name);
+$placeholder_tag_rows = array(
+  array('すべて', '平屋', '規格住宅', '二階建て'),
+  array('店舗兼住宅', 'リフォーム', 'リノベーション', 'アパート'),
+  array('内装', '外装', 'モデルハウス', 'メンテナンス'),
+  array('お知らせ'),
+);
 ?>
 
 <main>
   <section class="p-category<?php echo $is_works_category ? ' p-category--works' : ''; ?>">
-    <div class="p-category__heading l-inner">
-      <h1 class="p-category__title">
-        <span class="p-category__title-en"><?php echo $is_works_category ? 'WORKS' : 'EVENT/COLUMN'; ?></span>
-        <span class="p-category__title-ja"><?php echo $is_works_category ? '施工事例' : 'イベント / コラム'; ?></span>
-      </h1>
+    <div class="l-inner">
+      <div class="p-category__heading">
+        <div class="p-category__main">
+          <h1 class="p-category__title">
+            <span class="p-category__title-en"><?php echo esc_html($current_config['en']); ?></span>
+            <span class="p-category__title-ja"><?php echo esc_html($current_config['ja']); ?></span>
+          </h1>
 
-      <div class="p-category__controls">
-        <?php if (!$is_works_category) : ?>
-          <nav class="p-category__filter" aria-label="カテゴリーで絞り込む">
-            <p class="p-category__filter-title">CATEGORY</p>
-            <div class="p-category__filter-links">
-              <a class="p-category__filter-link<?php echo $event_column_category && $queried_category->term_id === $event_column_category->term_id ? ' is-current' : ''; ?>" href="<?php echo esc_url($all_posts_url); ?>"<?php echo $event_column_category && $queried_category->term_id === $event_column_category->term_id ? ' aria-current="page"' : ''; ?>>すべて</a>
-              <?php if ($event_category) : ?>
-                <a class="p-category__filter-link<?php echo $queried_category->term_id === $event_category->term_id ? ' is-current' : ''; ?>" href="<?php echo esc_url(get_category_link($event_category)); ?>"<?php echo $queried_category->term_id === $event_category->term_id ? ' aria-current="page"' : ''; ?>>イベント</a>
-              <?php endif; ?>
-              <?php if ($column_category) : ?>
-                <a class="p-category__filter-link<?php echo $queried_category->term_id === $column_category->term_id ? ' is-current' : ''; ?>" href="<?php echo esc_url(get_category_link($column_category)); ?>"<?php echo $queried_category->term_id === $column_category->term_id ? ' aria-current="page"' : ''; ?>>コラム</a>
-              <?php endif; ?>
+          <nav class="p-category__pages" aria-label="カテゴリーページを切り替える">
+            <p class="p-category__pages-title">PAGES</p>
+            <div class="p-category__pages-links">
+              <?php foreach ($category_config as $filter_slug => $filter_config) : ?>
+                <?php $is_current = $category_slug === $filter_slug; ?>
+                <a class="p-category__pages-link<?php echo $is_current ? ' is-current' : ''; ?>" href="<?php echo esc_url(fun_life_category_url($filter_slug)); ?>"<?php echo $is_current ? ' aria-current="page"' : ''; ?>><?php echo esc_html($filter_config['en']); ?></a>
+              <?php endforeach; ?>
             </div>
           </nav>
-        <?php endif; ?>
-        <div class="p-category__back-wrapper">
-          <a class="p-category__back" href="<?php echo esc_url($blog_url); ?>" aria-label="<?php echo esc_attr($switch_label); ?>">
-            <p class="p-category__back-text">一覧へ</p>
-            <span class="p-category__back-icon" aria-hidden="true">
-              <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/back.webp" alt="" width="110" height="25">
-            </span>
-          </a>
         </div>
+
+        <aside class="p-category__tags" aria-label="タグ一覧">
+          <p class="p-category__tags-title">TAGS</p>
+          <div class="p-category__tags-list">
+            <?php foreach ($placeholder_tag_rows as $tag_row_index => $placeholder_tag_row) : ?>
+              <div class="p-category__tags-row">
+                <?php foreach ($placeholder_tag_row as $tag_index => $placeholder_tag) : ?>
+                  <?php $is_current_tag = 0 === $tag_row_index && 0 === $tag_index; ?>
+                  <span class="p-category__tag<?php echo $is_current_tag ? ' is-current' : ''; ?>"><?php echo esc_html($placeholder_tag); ?></span>
+                <?php endforeach; ?>
+              </div>
+            <?php endforeach; ?>
+          </div>
+        </aside>
+      </div>
+      <div class="p-category__back-wrapper">
+        <a class="p-category__back" href="<?php echo esc_url(home_url('/')); ?>" aria-label="トップページへ">
+          <p class="p-category__back-text">TOPへ</p>
+          <span class="p-category__back-icon" aria-hidden="true">
+            <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/back.webp" alt="" width="110" height="25">
+          </span>
+        </a>
       </div>
     </div>
   </section>

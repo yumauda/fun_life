@@ -10,16 +10,23 @@ if (have_posts()) :
     $primary_category = $post_categories ? $post_categories[0] : null;
     $category_slug = $primary_category instanceof WP_Term ? $primary_category->slug : '';
     $category_label = $primary_category instanceof WP_Term ? $primary_category->name : '施工事例';
-    $is_works = in_array($category_slug, array('blog-works', 'works', 'work', 'construction'), true)
+    $is_works = in_array($category_slug, array('works', 'work', 'construction'), true)
       || in_array($category_label, array('施工事例', 'WORKS'), true);
-    $eyebrow_en = $is_works ? 'WORKS' : 'EVENT/';
-    $eyebrow_ja = $is_works ? '施工事例' : 'イベント / コラム';
-    $posts_page_id = (int) get_option('page_for_posts');
-    $blog_url = $posts_page_id ? get_permalink($posts_page_id) : home_url('/blog/');
-    $works_category = get_category_by_slug('blog-works');
-    $event_column_category = get_category_by_slug('event-column');
-    $works_url = $works_category instanceof WP_Term ? get_category_link($works_category) : home_url('/category/blog-works/');
-    $event_column_url = $event_column_category instanceof WP_Term ? get_category_link($event_column_category) : home_url('/category/event-column/');
+    $single_category_config = array(
+      'works' => array('en' => 'WORKS', 'ja' => '施工事例'),
+      'column' => array('en' => 'COLUMN', 'ja' => 'コラム'),
+      'blog' => array('en' => 'BLOG', 'ja' => 'ブログ'),
+      'event' => array('en' => 'EVENT', 'ja' => 'イベント'),
+    );
+    $current_category_config = isset($single_category_config[$category_slug])
+      ? $single_category_config[$category_slug]
+      : array('en' => strtoupper($category_slug), 'ja' => $category_label);
+    $eyebrow_en = $current_category_config['en'];
+    $eyebrow_ja = $current_category_config['ja'];
+    $works_url = fun_life_category_url('works');
+    $column_url = fun_life_category_url('column');
+    $blog_url = fun_life_category_url('blog');
+    $event_url = fun_life_category_url('event');
     $archive_url = $primary_category instanceof WP_Term ? get_category_link($primary_category) : $blog_url;
 
     $get_detail = static function ($field_name, $fallback = '') {
@@ -71,6 +78,28 @@ if (have_posts()) :
     $third_heading = $get_detail('works_third_heading', "視線が抜ける、\n開放的な家族の空間。");
     $third_text = $get_detail('works_third_text', '吹き抜けとスケルトン階段が上下階を繋ぎ、どこにいても家族の気配を感じられます。たっぷりの自然光と、使いやすい収納計画で、心地よさと暮らしやすさを両立しました。');
     $before_after_text = $get_detail('works_before_after_text', '外からの視線をほどよく遮りながら、家族が安心して過ごせる中庭に。室内とひと続きに使える、もう一つのリビングが生まれました。');
+    $works_overview_rows = array(
+      array(
+        'left' => array('label' => '建物タイプ', 'value' => $get_detail('works_building_type', '二階建て')),
+        'right' => array('label' => '間取り', 'value' => $get_detail('works_layout', '32坪 / 3LDK吹き抜け')),
+      ),
+      array(
+        'left' => array('label' => '工事種別', 'value' => $get_detail('works_construction_type', '新築')),
+        'right' => array('label' => 'テイスト', 'value' => $get_detail('works_taste', 'ナチュラルモダン')),
+      ),
+      array(
+        'left' => array('label' => 'エリア', 'value' => $get_detail('works_area', '熊本県熊本市')),
+        'right' => array('label' => '性能', 'value' => $get_detail('works_performance', 'UA値0.46／耐震等級3')),
+      ),
+      array(
+        'left' => array('label' => '延床面積', 'value' => $get_detail('works_floor_area', '32.5坪（107.4㎡）')),
+        'right' => array('label' => 'こだわり', 'value' => $get_detail('works_features', '回遊動線・吹き抜け・造作洗面・無垢フローリング')),
+      ),
+      array(
+        'left' => array('label' => '素材', 'value' => $get_detail('works_material', '無垢材・塗り壁')),
+        'right' => null,
+      ),
+    );
     $hero_image_id = get_post_thumbnail_id();
     $other_posts = new WP_Query(array(
       'post_type' => 'post',
@@ -83,11 +112,11 @@ if (have_posts()) :
 ?>
 
 <main>
-  <article class="p-single-blog">
+  <article class="p-single-blog<?php echo $is_works ? ' p-single-blog--works' : ''; ?>">
     <header class="p-single-blog__hero l-inner">
       <div class="p-single-blog__hero-copy">
         <p class="p-single-blog__eyebrow">
-          <span class="p-single-blog__eyebrow-en"><?php echo esc_html($eyebrow_en); ?><?php if (!$is_works) : ?><br>COLUMN<?php endif; ?></span>
+          <span class="p-single-blog__eyebrow-en"><?php echo esc_html($eyebrow_en); ?></span>
           <span class="p-single-blog__eyebrow-ja"><?php echo esc_html($eyebrow_ja); ?></span>
         </p>
         <div class="p-single-blog__meta">
@@ -98,15 +127,56 @@ if (have_posts()) :
           <p class="p-single-blog__spec"><?php echo esc_html($works_spec); ?></p>
         <?php endif; ?>
         <h1 class="p-single-blog__title"><?php the_title(); ?></h1>
-        <a class="p-single-blog__back" href="<?php echo esc_url($archive_url); ?>">
-          <span>一覧へ</span>
-          <span class="p-single-blog__back-arrow" aria-hidden="true"></span>
-        </a>
+        <nav class="p-single-blog__pages" aria-label="カテゴリーページを切り替える">
+          <div class="p-single-blog__pages-heading">
+            <p class="p-single-blog__pages-title">PAGES</p>
+            <a class="p-single-blog__pages-back" href="<?php echo esc_url($archive_url); ?>">
+              <span>一覧へ</span>
+              <span class="p-single-blog__pages-back-arrow" aria-hidden="true"></span>
+            </a>
+          </div>
+          <div class="p-single-blog__pages-links">
+            <a class="p-single-blog__pages-link<?php echo 'works' === $category_slug ? ' is-current' : ''; ?>" href="<?php echo esc_url($works_url); ?>"<?php echo 'works' === $category_slug ? ' aria-current="page"' : ''; ?>>WORKS</a>
+            <a class="p-single-blog__pages-link<?php echo 'column' === $category_slug ? ' is-current' : ''; ?>" href="<?php echo esc_url($column_url); ?>"<?php echo 'column' === $category_slug ? ' aria-current="page"' : ''; ?>>COLUMN</a>
+            <a class="p-single-blog__pages-link<?php echo 'blog' === $category_slug ? ' is-current' : ''; ?>" href="<?php echo esc_url($blog_url); ?>"<?php echo 'blog' === $category_slug ? ' aria-current="page"' : ''; ?>>BLOG</a>
+            <a class="p-single-blog__pages-link<?php echo 'event' === $category_slug ? ' is-current' : ''; ?>" href="<?php echo esc_url($event_url); ?>"<?php echo 'event' === $category_slug ? ' aria-current="page"' : ''; ?>>EVENT</a>
+          </div>
+        </nav>
       </div>
       <figure class="p-single-blog__hero-image">
         <?php echo $render_image($hero_image_id, 'blog6.jpg', get_the_title(), 1000, 1500, false); ?>
       </figure>
     </header>
+
+    <?php if ($is_works) : ?>
+      <section class="p-single-blog__works-overview" aria-label="施工事例の建物情報">
+        <div class="l-inner">
+          <table class="p-single-blog__works-overview-table">
+            <caption>DATE</caption>
+            <colgroup>
+              <col class="p-single-blog__works-overview-label-column">
+              <col class="p-single-blog__works-overview-value-column">
+              <col class="p-single-blog__works-overview-label-column">
+              <col class="p-single-blog__works-overview-value-column">
+            </colgroup>
+            <tbody>
+              <?php foreach ($works_overview_rows as $overview_row) : ?>
+                <tr<?php echo null === $overview_row['right'] ? ' class="p-single-blog__works-overview-material"' : ''; ?>>
+                  <th scope="row"><?php echo esc_html($overview_row['left']['label']); ?></th>
+                  <?php if (null === $overview_row['right']) : ?>
+                    <td colspan="3"><?php echo esc_html($overview_row['left']['value']); ?></td>
+                  <?php else : ?>
+                    <td><?php echo esc_html($overview_row['left']['value']); ?></td>
+                    <th scope="row"><?php echo esc_html($overview_row['right']['label']); ?></th>
+                    <td><?php echo esc_html($overview_row['right']['value']); ?></td>
+                  <?php endif; ?>
+                </tr>
+              <?php endforeach; ?>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    <?php endif; ?>
 
     <div class="p-single-blog__body l-inner">
       <?php if ($is_works) : ?>
@@ -195,11 +265,15 @@ if (have_posts()) :
         </div>
         <nav class="p-single-blog__other-nav" aria-label="記事ナビゲーション">
           <a href="<?php echo esc_url($blog_url); ?>">
-            <span class="p-single-blog__other-nav-label">一覧へ</span>
+            <span class="p-single-blog__other-nav-label">ブログへ</span>
             <span class="p-single-blog__other-nav-arrow" aria-hidden="true"></span>
           </a>
-          <a href="<?php echo esc_url($event_column_url); ?>">
-            <span class="p-single-blog__other-nav-label">イベント/コラムへ</span>
+          <a href="<?php echo esc_url($column_url); ?>">
+            <span class="p-single-blog__other-nav-label">コラムへ</span>
+            <span class="p-single-blog__other-nav-arrow" aria-hidden="true"></span>
+          </a>
+          <a href="<?php echo esc_url($event_url); ?>">
+            <span class="p-single-blog__other-nav-label">イベントへ</span>
             <span class="p-single-blog__other-nav-arrow" aria-hidden="true"></span>
           </a>
           <a href="<?php echo esc_url($works_url); ?>">

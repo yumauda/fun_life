@@ -1,34 +1,45 @@
 "use strict";
 
-if (document.querySelector(".slider1")) {
-  const slider2 = new Swiper(".slider1", {
-    slidesPerView: 1.2,
-    centeredSlides: true,
-    loop: true,
+const topProjectItems = document.querySelectorAll(".js-top-project-item");
+
+topProjectItems.forEach((item) => {
+  const slider = item.querySelector(".js-top-project-slider");
+  const slides = slider.querySelectorAll(".swiper-slide");
+  const current = item.querySelector(".js-top-project-current");
+  const total = item.querySelector(".js-top-project-total");
+
+  const updateProjectCounter = (swiper) => {
+    current.textContent = String(swiper.realIndex + 1);
+    total.textContent = String(slides.length);
+  };
+
+  new Swiper(slider, {
+    slidesPerView: "auto",
     spaceBetween: 12,
-    initialSlide: 0,
-    breakpoints: {
-      768: {
-        effect: "slide",
-        slidesPerView: 1.7,
-        spaceBetween: 150,
-        centeredSlides: true,
-        autoplay: {
-          delay: 3000,
-          disableOnInteraction: false,
-        },
-      },
+    loop: slides.length > 1,
+    loopedSlides: slides.length,
+    loopAdditionalSlides: slides.length,
+    speed: 700,
+    grabCursor: slides.length > 1,
+    keyboard: {
+      enabled: true,
+      onlyInViewport: true,
     },
     navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
+      nextEl: item.querySelector(".js-top-project-next"),
+      prevEl: item.querySelector(".js-top-project-prev"),
     },
-
-    scrollbar: {
-      el: ".swiper-scrollbar",
+    breakpoints: {
+      768: {
+        spaceBetween: 45,
+      },
+    },
+    on: {
+      init: updateProjectCounter,
+      slideChange: updateProjectCounter,
     },
   });
-}
+});
 
 if (document.querySelector(".p-free__slider")) {
   new Swiper(".p-free__slider", {

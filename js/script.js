@@ -27,13 +27,10 @@ jQuery(function ($) {
     return false;
   });
 
-
-  $("#drawer a[href]").on("click", function () {
-    $(".js-drawer-trigger").trigger("click");
-  });
 });
 
 document.addEventListener("DOMContentLoaded", () => {
+  setUpDrawer();
   setUpAboutHeaderColor();
   setUpAccordion();
   setUpWorksModal();
@@ -41,6 +38,41 @@ document.addEventListener("DOMContentLoaded", () => {
   setUpStyleMobileAccordion();
   setUpStyleSelector();
 });
+
+const setUpDrawer = () => {
+  const trigger = document.querySelector(".js-drawer-trigger");
+  const drawer = document.querySelector(".p-drawer-content");
+  if (!trigger || !drawer) return;
+
+  const setDrawerState = (isOpen, shouldReturnFocus = false) => {
+    trigger.classList.toggle("is-active", isOpen);
+    trigger.setAttribute("aria-expanded", String(isOpen));
+    trigger.setAttribute("aria-label", isOpen ? "メニューを閉じる" : "メニューを開く");
+    drawer.classList.toggle("is-active", isOpen);
+    drawer.setAttribute("aria-hidden", String(!isOpen));
+    document.body.classList.toggle("drawer-open", isOpen);
+
+    if (shouldReturnFocus) trigger.focus();
+  };
+
+  trigger.addEventListener("click", () => {
+    setDrawerState(!trigger.classList.contains("is-active"));
+  });
+
+  drawer.addEventListener("click", (event) => {
+    if (event.target === drawer) setDrawerState(false, true);
+  });
+
+  drawer.querySelectorAll("a[href]").forEach((link) => {
+    link.addEventListener("click", () => setDrawerState(false));
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && trigger.classList.contains("is-active")) {
+      setDrawerState(false, true);
+    }
+  });
+};
 
 const setUpAboutHeaderColor = () => {
   const header = document.querySelector(".p-header--about");
@@ -405,18 +437,6 @@ const openingAnimKeyframes = (content) => [
     opacity: 1,
   },
 ];
-jQuery(".js-drawer-trigger").on("click", function (e) {
-  e.preventDefault();
-  const trigger = jQuery(this);
-  const isOpen = !trigger.hasClass("is-active");
-
-  trigger.toggleClass("is-active", isOpen);
-  trigger.attr("aria-expanded", isOpen ? "true" : "false");
-  jQuery(".p-drawer-content").toggleClass("is-active", isOpen);
-  jQuery("body").toggleClass("drawer-open", isOpen);
-  return false;
-});
-
 window.onload = function () {
   document.body.classList.add("fade-in");
 };

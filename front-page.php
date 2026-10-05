@@ -50,15 +50,8 @@
       </div>
     </div>
   <?php
-  $event_column_category = get_category_by_slug('event-column');
-
-  if (!$event_column_category) {
-    $event_column_category = get_term_by('name', 'イベント・コラム', 'category');
-  }
-
-  $event_archive_url = $event_column_category instanceof WP_Term
-    ? get_category_link($event_column_category)
-    : home_url('/category/event-column/');
+  $event_category = get_category_by_slug('event');
+  $event_archive_url = fun_life_category_url('event');
   $event_query_args = array(
     'post_type' => 'post',
     'post_status' => 'publish',
@@ -66,10 +59,10 @@
     'ignore_sticky_posts' => true,
   );
 
-  if ($event_column_category instanceof WP_Term) {
-    $event_query_args['cat'] = $event_column_category->term_id;
+  if ($event_category instanceof WP_Term) {
+    $event_query_args['cat'] = $event_category->term_id;
   } else {
-    $event_query_args['category_name'] = 'event-column';
+    $event_query_args['category_name'] = 'event';
   }
 
   $event_posts = new WP_Query($event_query_args);
@@ -102,9 +95,9 @@
                 $event_location = get_post_meta(get_the_ID(), 'event_place', true);
               }
 
-              foreach ($event_categories as $event_category) {
-                if ('event-column' !== $event_category->slug) {
-                  $event_category_label = $event_category->name;
+              foreach ($event_categories as $post_event_category) {
+                if ('event' === $post_event_category->slug) {
+                  $event_category_label = $post_event_category->name;
                   break;
                 }
               }
@@ -183,10 +176,88 @@
     </div>
   </section>
   <section class="p-no-works" id="works">
-
     <div class="l-inner">
       <h2 class="p-no-works__title">WORKS</h2>
+    </div>
 
+    <?php
+    $project_examples = array(
+      array(
+        'title' => '菊池市泗水町吉富/36坪 5LDK＋書斎',
+        'images' => array(
+          array('name' => 'project-example-1-1.webp', 'width' => 1620, 'height' => 1080),
+          array('name' => 'project-example-1-3.webp', 'width' => 1080, 'height' => 1620),
+          array('name' => 'project-example-1-2.webp', 'width' => 1080, 'height' => 1620),
+        ),
+      ),
+      array(
+        'title' => '熊本市北区龍田 /29坪 バイクガレージ付2LDK',
+        'images' => array(
+          array('name' => 'project-example-2-1.webp', 'width' => 1620, 'height' => 1080),
+          array('name' => 'project-example-2-3.webp', 'width' => 1080, 'height' => 1620),
+          array('name' => 'project-example-2-2.webp', 'width' => 1080, 'height' => 1620),
+        ),
+      ),
+      array(
+        'title' => '上益城郡御船町豊秋/27.3坪/2LDK',
+        'images' => array(
+          array('name' => 'project-example-3-1.webp', 'width' => 1170, 'height' => 878),
+          array('name' => 'project-example-3-3.webp', 'width' => 1600, 'height' => 2400),
+          array('name' => 'project-example-3-2.webp', 'width' => 1600, 'height' => 2400),
+        ),
+      ),
+    );
+    $works_archive_url = fun_life_category_url('works');
+    ?>
+    <section class="p-top-project" aria-labelledby="top-project-title">
+      <div class="l-inner">
+        <div class="p-top-project__content">
+          <div class="p-top-project__detail">
+            <h2 class="p-top-project__title" id="top-project-title">施工事例</h2>
+            <p class="p-top-project__en">PROJECT EXAMPLES</p>
+          </div>
+        </div>
+      </div>
+      <div class="p-top-project__list">
+        <?php foreach ($project_examples as $project_index => $project_example) : ?>
+          <article class="p-top-project__item js-top-project-item">
+            <div class="p-top-project__slider-shell">
+              <div class="swiper p-top-project__slider js-top-project-slider">
+                <div class="swiper-wrapper">
+                  <?php foreach ($project_example['images'] as $image_index => $image) : ?>
+                    <div class="swiper-slide">
+                      <figure class="p-top-project__img">
+                        <img src="<?php echo esc_url(get_template_directory_uri() . '/images/top/' . $image['name']); ?>" alt="<?php echo esc_attr($project_example['title'] . 'の施工事例写真' . ($image_index + 1)); ?>" width="<?php echo esc_attr((string) $image['width']); ?>" height="<?php echo esc_attr((string) $image['height']); ?>" loading="lazy" decoding="async">
+                      </figure>
+                    </div>
+                  <?php endforeach; ?>
+                </div>
+              </div>
+            </div>
+            <div class="l-inner">
+              <div class="p-top-project__meta">
+                <h3 class="p-top-project__text"><?php echo esc_html($project_example['title']); ?></h3>
+                <div class="p-top-project__controls">
+                  <button class="p-top-project__arrow p-top-project__arrow--prev js-top-project-prev" type="button" aria-label="<?php echo esc_attr(($project_index + 1) . 'つ目の施工事例で前の写真を表示'); ?>"></button>
+                  <p class="p-top-project__counter" aria-live="polite">
+                    <span class="js-top-project-current">1</span>
+                    <span aria-hidden="true"> / </span>
+                    <span class="js-top-project-total"><?php echo esc_html((string) count($project_example['images'])); ?></span>
+                  </p>
+                  <button class="p-top-project__arrow p-top-project__arrow--next js-top-project-next" type="button" aria-label="<?php echo esc_attr(($project_index + 1) . 'つ目の施工事例で次の写真を表示'); ?>"></button>
+                </div>
+              </div>
+            </div>
+          </article>
+        <?php endforeach; ?>
+      </div>
+      <div class="p-top-project__more">
+        <span class="p-top-project__more-line" aria-hidden="true"></span>
+        <a href="<?php echo esc_url($works_archive_url); ?>" class="p-top-project__more-link">View More</a>
+      </div>
+    </section>
+
+    <div class="l-inner">
       <div class="p-no-works__body">
         <div class="p-no-works__detail">
           <div class="p-no-works__heading">
@@ -450,63 +521,6 @@
     </div>
 
   </div>
-  <section class="p-top-project">
-    <div class="l-inner">
-      <div class="p-top-project__content">
-        <div class="p-top-project__detail">
-          <h3 class="p-top-project__title">施工事例</h3>
-          <p class="p-top-project__en">PROJECT EXAMPLES</p>
-        </div>
-        <div class="p-top-project__slider">
-          <!-- Slider main container -->
-          <div class="swiper slider1">
-            <!-- Additional required wrapper -->
-            <div class="swiper-wrapper">
-              <!-- Slides -->
-              <div class="swiper-slide">
-                <figure class="p-top-project__img">
-                  <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/top_slider1.webp" alt="金属の未来をリファイン" width="431" height="38">
-                </figure>
-                <p class="p-top-project__text">上益城郡御船町豊秋/27.3坪/2LDK（耐震等級2/UA値0.53/C値0.09）</p>
-              </div>
-              <div class="swiper-slide">
-                <figure class="p-top-project__img">
-                  <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/top_slider1.webp" alt="金属の未来をリファイン" width="431" height="38">
-                </figure>
-                <p class="p-top-project__text">HOUSE 新築</p>
-
-              </div>
-              <div class="swiper-slide">
-                <figure class="p-top-project__img">
-                  <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/top_slider1.webp" alt="金属の未来をリファイン" width="431" height="38">
-                </figure>
-                <p class="p-top-project__text">HOUSE 新築</p>
-
-              </div>
-            </div>
-            <div class="p-top-project__pager">
-              <!-- If we need navigation buttons -->
-              <div class="swiper-button-prev">
-                <div class="p-top-project__swiper-button">
-                  <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/slider_prev.webp" alt="" width="52" height="52">
-                </div>
-              </div>
-              <div class="swiper-button-next">
-                <div class="p-top-project__swiper-button">
-                  <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/slider_next.webp" alt="" width="52" height="52">
-                </div>
-              </div>
-            </div>
-
-
-          </div>
-        </div>
-        <div class="p-top-project__more">
-          <a href="#" class="p-top-project__more-link">View more</a>
-        </div>
-      </div>
-    </div>
-  </section>
   <div class="p-banner">
     <div class="l-inner">
       <a href="#" class="p-banner__link">

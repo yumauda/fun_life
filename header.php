@@ -23,8 +23,8 @@
         $meta_description = $default_description;
         $meta_url = home_url('/');
     } elseif (is_home()) {
-        $meta_title = 'ブログ・施工事例｜' . $site_name;
-        $meta_description = 'ファンライフの施工事例や、注文住宅・リフォームに役立つ家づくりの情報、イベント・お知らせをご紹介します。';
+        $meta_title = 'ブログ｜' . $site_name;
+        $meta_description = 'ファンライフの日々の取り組みや、家づくりに関するブログ記事をご紹介します。';
         $posts_page_id = (int) get_option('page_for_posts');
         $meta_url = $posts_page_id ? get_permalink($posts_page_id) : home_url('/blog/');
     } elseif (is_page('about')) {
@@ -105,18 +105,28 @@
     <!-- css -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&amp;family=Noto+Sans+JP:wght@100..900&amp;display=swap" rel="stylesheet">
 
     <?php wp_head() ?>
 </head>
 
 <body <?php body_class(); ?>>
     <header class="l-header p-header<?php echo is_page('about') ? ' p-header--about' : ''; ?>">
-        <div class="l-inner">
+        <div class="p-header__container">
             <div class="p-header__inner">
                 <a class="p-header__logo" href="<?php echo esc_url(home_url('/')); ?>" aria-label="ファンライフ株式会社 ホーム">
-                    <img decoding="async" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/footer_logo.png" alt="Fun life. ファンライフ株式会社" width="431" height="118">
+                    <img decoding="async" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/footer_logo.png" alt="Fun life. ファンライフ株式会社" width="712" height="254">
                 </a>
+                <nav class="p-header__nav" aria-label="ヘッダーナビゲーション">
+                    <a class="p-header__nav-link" href="<?php echo esc_url(home_url('/about/')); ?>">ABOUT</a>
+                    <a class="p-header__nav-link" href="<?php echo esc_url(fun_life_category_url('works')); ?>">WORKS</a>
+                    <a class="p-header__nav-link" href="<?php echo esc_url(fun_life_category_url('blog')); ?>">BLOG</a>
+                    <a class="p-header__nav-link" href="<?php echo esc_url(fun_life_category_url('event')); ?>">EVENT</a>
+                </nav>
+                <div class="p-header__guide-links">
+                    <a class="p-header__guide-link" href="<?php echo esc_url(home_url('/contact/')); ?>">資料請求</a>
+                    <a class="p-header__guide-link p-header__guide-link--model" href="<?php echo esc_url(home_url('/about/#model-house')); ?>">公開中<br>モデルハウス</a>
+                </div>
                 <div class="p-header__actions">
                     <a class="p-header__icon-link" href="<?php echo esc_url(home_url('/contact/')); ?>" aria-label="メールでお問い合わせ">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30.58 23.8">
@@ -168,17 +178,17 @@
                     </button>
                 </div>
             </div>
-            <div class="p-header__drawer-content p-drawer-content" id="drawer">
+            <div class="p-header__drawer-content p-drawer-content" id="drawer" aria-hidden="true">
                 <div class="p-drawer-content__items">
                     <div class="p-drawer-content__body">
                         <nav class="p-drawer-content__nav" aria-label="メインメニュー">
                             <ul class="p-drawer-content__lists">
                                 <li class="p-drawer-content__list"><a href="<?php echo esc_url(home_url('/')); ?>" class="p-drawer-content__link">TOP</a></li>
-                                <li class="p-drawer-content__list"><a href="<?php echo esc_url(home_url('/works/')); ?>" class="p-drawer-content__link">WORKS</a></li>
+                                <li class="p-drawer-content__list"><a href="<?php echo esc_url(fun_life_category_url('works')); ?>" class="p-drawer-content__link">WORKS</a></li>
                                 <li class="p-drawer-content__list"><a href="<?php echo esc_url(home_url('/about/')); ?>" class="p-drawer-content__link">ABOUT</a></li>
-                                <li class="p-drawer-content__list"><a href="<?php echo esc_url(home_url('/blog/')); ?>" class="p-drawer-content__link">BLOG</a></li>
-                                <li class="p-drawer-content__list"><a href="<?php echo esc_url(home_url('/works/')); ?>" class="p-drawer-content__link p-drawer-content__link--muted">WORKS</a></li>
-                                <li class="p-drawer-content__list"><a href="<?php echo esc_url(home_url('/blog/')); ?>" class="p-drawer-content__link p-drawer-content__link--muted">EVENT/COLUMN</a></li>
+                                <li class="p-drawer-content__list"><a href="<?php echo esc_url(fun_life_category_url('blog')); ?>" class="p-drawer-content__link">BLOG</a></li>
+                                <li class="p-drawer-content__list"><a href="<?php echo esc_url(fun_life_category_url('column')); ?>" class="p-drawer-content__link p-drawer-content__link--muted">COLUMN</a></li>
+                                <li class="p-drawer-content__list"><a href="<?php echo esc_url(fun_life_category_url('event')); ?>" class="p-drawer-content__link p-drawer-content__link--muted">EVENT</a></li>
                                 <li class="p-drawer-content__list"><a href="<?php echo esc_url(home_url('/contact/')); ?>" class="p-drawer-content__link">CONTACT</a></li>
                             </ul>
                         </nav>

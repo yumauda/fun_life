@@ -395,10 +395,46 @@ function fun_life_blog_pagination($aria_label = 'ブログ一覧のページ送�
 	echo '</nav>';
 }
 
+/**
+ * カテゴリーアーカイブURLを取得する。
+ *
+ * @param string $slug カテゴリースラッグ。
+ * @return string
+ */
+function fun_life_category_url($slug)
+{
+	$category = get_category_by_slug($slug);
+
+	return $category instanceof WP_Term
+		? get_category_link($category)
+		: home_url('/category/' . $slug . '/');
+}
+
+/**
+ * works固定ページと施工事例詳細のURL競合を避ける。
+ */
+function fun_life_add_works_post_rewrite()
+{
+	add_rewrite_rule('^works/([0-9]+)/?$', 'index.php?p=$matches[1]', 'top');
+
+	if ('1' !== get_option('fun_life_works_rewrite_version')) {
+		flush_rewrite_rules(false);
+		update_option('fun_life_works_rewrite_version', '1');
+	}
+}
+add_action('init', 'fun_life_add_works_post_rewrite');
+
 function exclude_multiple_categories_from_homepage($query)
 {
 	if ($query->is_home() && $query->is_main_query()) {
-		$query->set('cat', '-1,-8,-9,-10');
+		$blog_category = get_category_by_slug('blog');
+
+		if ($blog_category instanceof WP_Term) {
+			$query->set('cat', $blog_category->term_id);
+		} else {
+			$query->set('post__in', array(0));
+		}
+
 		$query->set('posts_per_page', 4);
 	}
 }
@@ -514,6 +550,18 @@ function fun_life_register_single_fields()
 		array('key' => 'field_fun_life_works_before_after_text', 'label' => 'BEFORE / AFTER 本文', 'name' => 'works_before_after_text', 'type' => 'textarea', 'rows' => 4, 'new_lines' => ''),
 	);
 
+	$overview_fields = array(
+		array('key' => 'field_fun_life_works_building_type', 'label' => '建物タイプ', 'name' => 'works_building_type', 'type' => 'text', 'wrapper' => array('width' => '50')),
+		array('key' => 'field_fun_life_works_layout', 'label' => '間取り', 'name' => 'works_layout', 'type' => 'text', 'wrapper' => array('width' => '50')),
+		array('key' => 'field_fun_life_works_construction_type', 'label' => '工事種別', 'name' => 'works_construction_type', 'type' => 'text', 'wrapper' => array('width' => '50')),
+		array('key' => 'field_fun_life_works_taste', 'label' => 'テイスト', 'name' => 'works_taste', 'type' => 'text', 'wrapper' => array('width' => '50')),
+		array('key' => 'field_fun_life_works_area', 'label' => 'エリア', 'name' => 'works_area', 'type' => 'text', 'wrapper' => array('width' => '50')),
+		array('key' => 'field_fun_life_works_performance', 'label' => '性能', 'name' => 'works_performance', 'type' => 'text', 'wrapper' => array('width' => '50')),
+		array('key' => 'field_fun_life_works_floor_area', 'label' => '延床面積', 'name' => 'works_floor_area', 'type' => 'text', 'wrapper' => array('width' => '50')),
+		array('key' => 'field_fun_life_works_features', 'label' => 'こだわり', 'name' => 'works_features', 'type' => 'text', 'wrapper' => array('width' => '50')),
+		array('key' => 'field_fun_life_works_material', 'label' => '素材', 'name' => 'works_material', 'type' => 'text'),
+	);
+
 	$image_fields = array(
 		array('key' => 'field_fun_life_works_gallery_1', 'label' => 'ギャラリー画像1', 'name' => 'works_gallery_1'),
 		array('key' => 'field_fun_life_works_gallery_2', 'label' => 'ギャラリー画像2', 'name' => 'works_gallery_2'),
@@ -539,7 +587,9 @@ function fun_life_register_single_fields()
 		'key' => 'group_fun_life_single_fields',
 		'title' => '記事詳細',
 		'fields' => array_merge(
-			array_slice($text_fields, 0, 3),
+			array_slice($text_fields, 0, 1),
+			$overview_fields,
+			array_slice($text_fields, 1, 2),
 			array_slice($image_fields, 0, 4),
 			array_slice($text_fields, 3, 2),
 			array_slice($image_fields, 4, 1),

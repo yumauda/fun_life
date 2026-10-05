@@ -187,7 +187,7 @@
       </div>
     </div>
   </section>
-  <section class="p-model-house">
+  <section class="p-model-house" id="model-house">
     <div class="l-inner">
       <div class="p-model-house__content">
         <div class="p-model-house__heading">

@@ -1,15 +1,9 @@
 <?php
 get_header();
 
-$event_column_category = get_category_by_slug('event-column');
-
-if (!$event_column_category) {
-  $event_column_category = get_term_by('name', 'イベント・コラム', 'category');
-}
-
-$event_column_url = $event_column_category instanceof WP_Term
-  ? get_category_link($event_column_category)
-  : home_url('/category/event-column/');
+$works_url = fun_life_category_url('works');
+$column_url = fun_life_category_url('column');
+$event_url = fun_life_category_url('event');
 ?>
 
 <main>
@@ -22,8 +16,9 @@ $event_column_url = $event_column_category instanceof WP_Term
       <nav class="p-blog__pages" aria-label="関連ページ">
         <p class="p-blog__pages-title">PAGES</p>
         <div class="p-blog__pages-links">
-          <a class="p-blog__pages-link" href="<?php echo esc_url(home_url('/blog-works/')); ?>">WORKS</a>
-          <a class="p-blog__pages-link" href="<?php echo esc_url($event_column_url); ?>">EVENT/COLUMN</a>
+          <a class="p-blog__pages-link" href="<?php echo esc_url($works_url); ?>">WORKS</a>
+          <a class="p-blog__pages-link" href="<?php echo esc_url($column_url); ?>">COLUMN</a>
+          <a class="p-blog__pages-link" href="<?php echo esc_url($event_url); ?>">EVENT</a>
         </div>
       </nav>
     </div>

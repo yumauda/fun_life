@@ -1,6 +1,11 @@
 @use "../global" as *;
 
 .p-model-house {
+  scroll-margin-top: rem(110);
+
+  @include mq(lg) {
+    scroll-margin-top: rem(183);
+  }
   padding-top: rem(100);
   padding-bottom: rem(100);
 
