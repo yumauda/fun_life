@@ -59,6 +59,39 @@ function initScrollAnimations() {
     );
   });
 
+  const textTargets = Array.from(document.querySelectorAll(
+    "main section h1, main section h2, main section h3, main section p, main section li, main section a.c-hover-invert"
+  )).filter((target) => {
+    return target.textContent.trim() !== ""
+      && !target.closest(".swiper, .p-modular__menu, .p-works-modal")
+      && !target.matches(".p-top-project__counter");
+  });
+
+  textTargets.forEach((target) => {
+    const timeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: target,
+        start: "top 90%",
+        once: true,
+      },
+    });
+
+    timeline.fromTo(
+      target,
+      {
+        autoAlpha: 0,
+        y: 32,
+      },
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.75,
+        ease: "power3.out",
+        clearProps: "opacity,visibility,transform",
+      }
+    );
+  });
+
   const imageFigures = Array.from(document.querySelectorAll("main section figure")).filter((figure) => {
     const bounds = figure.getBoundingClientRect();
 
