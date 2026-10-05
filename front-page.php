@@ -627,6 +627,47 @@
         <figure class="p-image__img2 c-parallax c-parallax--strong js-parallax">
           <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/image_2.webp" alt="リフォーム後の住まいのイメージ" width="431" height="38">
         </figure>
+      </div>
+    </div>
+  </div>
+  <section class="p-home-model-house" aria-labelledby="home-model-house-title">
+    <div class="l-inner">
+      <div class="p-home-model-house__content">
+        <div class="p-home-model-house__heading">
+          <h2 class="p-home-model-house__heading-ja" id="home-model-house-title">モデルハウス</h2>
+          <p class="p-home-model-house__heading-en">MODELHOUSE</p>
+        </div>
+        <div class="p-home-model-house__layout">
+          <div class="p-home-model-house__detail">
+            <h3 class="p-home-model-house__title">宿泊体験型モデルハウス<br>「そのうち」</h3>
+            <p class="p-home-model-house__address">〒861-3202 熊本県上益城郡御船町小坂999-3</p>
+            <p class="p-home-model-house__text">「そのうち」は、ファンライフが自信を持ってご提案する宿泊体験型モデルハウスです。特別な仕様や高額なオプションではなく、ファンライフの標準仕様で建てた“等身大の家”。断熱・気密・換気・耐震のバランスが取れた住まいで、実際の暮らしに近い住み心地をご体感いただけます。いつか住みたくなるその時まで。家づくりについて、ゆっくり考えられる場所です。</p>
+            <a class="p-home-model-house__button c-hover-invert" href="<?php echo esc_url(home_url('/contact/')); ?>">
+              <span class="p-home-model-house__button-icon" aria-hidden="true"></span>
+              <span>ご予約はこちら</span>
+            </a>
+          </div>
+          <div class="p-home-model-house__visual">
+            <div class="p-home-model-house__status" role="group" aria-label="1枚目／全4枚">
+              <div class="p-home-model-house__progress" aria-hidden="true">
+                <span class="p-home-model-house__progress-item is-active"></span>
+                <span class="p-home-model-house__progress-item"></span>
+                <span class="p-home-model-house__progress-item"></span>
+                <span class="p-home-model-house__progress-item"></span>
+              </div>
+              <p class="p-home-model-house__count">1/4</p>
+            </div>
+            <figure class="p-home-model-house__image c-parallax js-parallax">
+              <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/home_model_house.webp" alt="宿泊体験型モデルハウス「そのうち」の外観" width="2400" height="1600">
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="p-image p-image--bottom">
+    <div class="l-inner">
+      <div class="p-image__content">
         <figure class="p-image__img3 c-parallax c-parallax--strong js-parallax">
           <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/image_3.webp" alt="リフォーム後の暮らしを楽しむイメージ" width="431" height="38">
         </figure>

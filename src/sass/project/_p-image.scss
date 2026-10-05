@@ -2,14 +2,21 @@
 
 .p-image {
   padding-top: rem(128);
-  padding-bottom: rem(54);
 
   @include mq(md) {
     padding-top: rem(300);
-    padding-bottom: rem(300);
   }
 }
 
+.p-image--bottom {
+  padding-top: rem(84);
+  padding-bottom: rem(54);
+
+  @include mq(md) {
+    padding-top: rem(160);
+    padding-bottom: rem(300);
+  }
+}
 
 .p-image__content {}
 
@@ -42,7 +49,6 @@
 }
 
 .p-image__img3 {
-  margin-top: rem(84);
   overflow: hidden;
   aspect-ratio: 954 / 686;
   margin-left: auto;
@@ -51,7 +57,6 @@
   width: calc(258 / 375) * 100vw;
 
   @include mq(md) {
-    margin-top: rem(160);
     width: rem(715);
   }
 }
