@@ -601,10 +601,10 @@
   <div class="p-top-gallery">
     <div class="l-inner">
       <div class="p-top-gallery__content">
-        <figure class="p-top-gallery__top-img c-parallax js-parallax">
+        <figure class="p-top-gallery__top-img c-parallax c-parallax--strong js-parallax">
           <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/top_gallery1.webp" alt="猫ちゃん" width="360" height="360">
         </figure>
-        <figure class="p-top-gallery__top-img2 c-parallax js-parallax">
+        <figure class="p-top-gallery__top-img2 c-parallax c-parallax--strong js-parallax">
           <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/top_gallery2.webp" alt="カップルの写真" width="1080" height="529">
         </figure>
       </div>
@@ -621,13 +621,13 @@
   <div class="p-image">
     <div class="l-inner">
       <div class="p-image__content">
-        <figure class="p-image__img1">
+        <figure class="p-image__img1 c-parallax c-parallax--strong js-parallax">
           <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/image_1.webp" alt="リフォーム前の暮らしのイメージ" width="431" height="38">
         </figure>
-        <figure class="p-image__img2">
+        <figure class="p-image__img2 c-parallax c-parallax--strong js-parallax">
           <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/image_2.webp" alt="リフォーム後の住まいのイメージ" width="431" height="38">
         </figure>
-        <figure class="p-image__img3">
+        <figure class="p-image__img3 c-parallax c-parallax--strong js-parallax">
           <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/image_3.webp" alt="リフォーム後の暮らしを楽しむイメージ" width="431" height="38">
         </figure>
       </div>

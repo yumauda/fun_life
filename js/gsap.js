@@ -147,13 +147,25 @@ function initScrollAnimations() {
 
   parallaxFigures.forEach((figure) => {
     const image = figure.querySelector("img");
+    const isStrongParallax = figure.classList.contains("c-parallax--strong");
 
     if (!image) return;
+
+    const getParallaxDistance = () => {
+      const configuredDistance = isStrongParallax
+        ? (window.matchMedia("(min-width: 768px)").matches ? 100 : 72)
+        : 60;
+      const availableDistance = Math.max(0, image.offsetHeight - figure.clientHeight);
+
+      return availableDistance > 0
+        ? Math.min(configuredDistance, availableDistance)
+        : configuredDistance;
+    };
 
     gsap.fromTo(
       image,
       {
-        y: -60,
+        y: () => -getParallaxDistance(),
       },
       {
         y: 0,
@@ -164,6 +176,7 @@ function initScrollAnimations() {
           start: "top bottom",
           end: "bottom top",
           scrub: true,
+          invalidateOnRefresh: true,
         },
       }
     );

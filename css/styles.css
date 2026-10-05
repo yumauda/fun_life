@@ -10157,6 +10157,20 @@ body.is-works-modal-open {
   }
 }
 
+.c-parallax--strong img {
+  height: calc(100% + 4.5rem);
+}
+@media screen and (min-width: 768px) {
+  .c-parallax--strong img {
+    height: calc(100% + 6.25rem);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .c-parallax--strong img {
+    height: 100%;
+  }
+}
+
 .c-section-heading {
   display: block;
   white-space: normal;

@@ -11,3 +11,15 @@
     height: 100%;
   }
 }
+
+.c-parallax--strong img {
+  height: calc(100% + rem(72));
+
+  @include mq(md) {
+    height: calc(100% + rem(100));
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    height: 100%;
+  }
+}
