@@ -34,6 +34,10 @@
   display: flex;
   align-items: center;
   margin-top: rem(2);
+
+  @include mq(md) {
+    width: calc(100vw - max($padding-pc, calc((100vw - rem(1200)) / 2 + $padding-pc)));
+  }
 }
 
 .p-home-event__eyebrow {

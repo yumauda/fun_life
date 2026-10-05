@@ -3802,6 +3802,11 @@ select::-ms-expand {
   align-items: center;
   margin-top: 0.125rem;
 }
+@media screen and (min-width: 768px) {
+  .p-home-event__eyebrow-row {
+    width: calc(100vw - max(25px, (100vw - 75rem) / 2 + 25px));
+  }
+}
 
 .p-home-event__eyebrow {
   flex: 0 0 auto;
