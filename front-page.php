@@ -49,121 +49,121 @@
         </div>
       </div>
     </div>
-  <?php
-  $event_category = get_category_by_slug('event');
-  $event_archive_url = fun_life_category_url('event');
-  $event_query_args = array(
-    'post_type' => 'post',
-    'post_status' => 'publish',
-    'posts_per_page' => 5,
-    'ignore_sticky_posts' => true,
-  );
+    <?php
+    $event_category = get_category_by_slug('event');
+    $event_archive_url = fun_life_category_url('event');
+    $event_query_args = array(
+      'post_type' => 'post',
+      'post_status' => 'publish',
+      'posts_per_page' => 5,
+      'ignore_sticky_posts' => true,
+    );
 
-  if ($event_category instanceof WP_Term) {
-    $event_query_args['cat'] = $event_category->term_id;
-  } else {
-    $event_query_args['category_name'] = 'event';
-  }
+    if ($event_category instanceof WP_Term) {
+      $event_query_args['cat'] = $event_category->term_id;
+    } else {
+      $event_query_args['category_name'] = 'event';
+    }
 
-  $event_posts = new WP_Query($event_query_args);
-  ?>
-  <?php if ($event_posts->have_posts()) : ?>
-    <section class="p-home-event" aria-labelledby="home-event-title">
-      <div class="l-inner p-home-event__inner">
-        <div class="p-home-event__heading">
-          <h2 class="p-home-event__title" id="home-event-title">イベント/お知らせ</h2>
-          <div class="p-home-event__eyebrow-row">
-            <p class="p-home-event__eyebrow">EVENT</p>
-            <span class="p-home-event__heading-line" aria-hidden="true"></span>
+    $event_posts = new WP_Query($event_query_args);
+    ?>
+    <?php if ($event_posts->have_posts()) : ?>
+      <section class="p-home-event" aria-labelledby="home-event-title">
+        <div class="l-inner p-home-event__inner">
+          <div class="p-home-event__heading">
+            <h2 class="p-home-event__title" id="home-event-title">イベント/お知らせ</h2>
+            <div class="p-home-event__eyebrow-row">
+              <p class="p-home-event__eyebrow">EVENT</p>
+              <span class="p-home-event__heading-line" aria-hidden="true"></span>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="p-home-event__slider-shell">
-        <div class="swiper p-home-event__slider js-home-event-slider">
-          <div class="swiper-wrapper">
-            <?php while ($event_posts->have_posts()) : ?>
-              <?php
-              $event_posts->the_post();
-              $event_categories = get_the_category();
-              $event_category_label = 'お知らせ';
-              $event_thumbnail_id = get_post_thumbnail_id();
-              $event_thumbnail_alt = $event_thumbnail_id ? get_post_meta($event_thumbnail_id, '_wp_attachment_image_alt', true) : '';
-              $event_date = get_post_meta(get_the_ID(), 'event_date', true);
-              $event_location = get_post_meta(get_the_ID(), 'event_location', true);
+        <div class="p-home-event__slider-shell">
+          <div class="swiper p-home-event__slider js-home-event-slider">
+            <div class="swiper-wrapper">
+              <?php while ($event_posts->have_posts()) : ?>
+                <?php
+                $event_posts->the_post();
+                $event_categories = get_the_category();
+                $event_category_label = 'お知らせ';
+                $event_thumbnail_id = get_post_thumbnail_id();
+                $event_thumbnail_alt = $event_thumbnail_id ? get_post_meta($event_thumbnail_id, '_wp_attachment_image_alt', true) : '';
+                $event_date = get_post_meta(get_the_ID(), 'event_date', true);
+                $event_location = get_post_meta(get_the_ID(), 'event_location', true);
 
-              if (!$event_location) {
-                $event_location = get_post_meta(get_the_ID(), 'event_place', true);
-              }
-
-              foreach ($event_categories as $post_event_category) {
-                if ('event' === $post_event_category->slug) {
-                  $event_category_label = $post_event_category->name;
-                  break;
+                if (!$event_location) {
+                  $event_location = get_post_meta(get_the_ID(), 'event_place', true);
                 }
-              }
-              ?>
-              <div class="swiper-slide">
-                <article class="p-home-event__card">
-                  <a class="p-home-event__card-link" href="<?php the_permalink(); ?>">
-                    <div class="p-home-event__meta">
-                      <span class="p-home-event__label">EVENT</span>
-                      <span class="p-home-event__category"><?php echo esc_html($event_category_label); ?></span>
-                      <time class="p-home-event__date" datetime="<?php echo esc_attr(get_the_date('c')); ?>"><?php echo esc_html(get_the_date('Y.m.d')); ?></time>
-                    </div>
-                    <figure class="p-home-event__image">
-                      <?php if ($event_thumbnail_id) : ?>
-                        <?php echo wp_get_attachment_image($event_thumbnail_id, 'large', false, array('alt' => $event_thumbnail_alt ?: get_the_title(), 'loading' => 'lazy', 'decoding' => 'async')); ?>
-                      <?php else : ?>
-                        <img src="<?php echo esc_url(get_template_directory_uri() . '/images/top/no_new.webp'); ?>" alt="<?php echo esc_attr(get_the_title()); ?>" width="1600" height="1401" loading="lazy" decoding="async">
-                      <?php endif; ?>
-                    </figure>
-                    <h3 class="p-home-event__card-title"><?php the_title(); ?></h3>
-                    <dl class="p-home-event__details">
-                      <?php if ($event_date || $event_location) : ?>
-                        <?php if ($event_date) : ?>
+
+                foreach ($event_categories as $post_event_category) {
+                  if ('event' === $post_event_category->slug) {
+                    $event_category_label = $post_event_category->name;
+                    break;
+                  }
+                }
+                ?>
+                <div class="swiper-slide">
+                  <article class="p-home-event__card">
+                    <a class="p-home-event__card-link" href="<?php the_permalink(); ?>">
+                      <div class="p-home-event__meta">
+                        <span class="p-home-event__label">EVENT</span>
+                        <span class="p-home-event__category"><?php echo esc_html($event_category_label); ?></span>
+                        <time class="p-home-event__date" datetime="<?php echo esc_attr(get_the_date('c')); ?>"><?php echo esc_html(get_the_date('Y.m.d')); ?></time>
+                      </div>
+                      <figure class="p-home-event__image">
+                        <?php if ($event_thumbnail_id) : ?>
+                          <?php echo wp_get_attachment_image($event_thumbnail_id, 'large', false, array('alt' => $event_thumbnail_alt ?: get_the_title(), 'loading' => 'lazy', 'decoding' => 'async')); ?>
+                        <?php else : ?>
+                          <img src="<?php echo esc_url(get_template_directory_uri() . '/images/top/no_new.webp'); ?>" alt="<?php echo esc_attr(get_the_title()); ?>" width="1600" height="1401" loading="lazy" decoding="async">
+                        <?php endif; ?>
+                      </figure>
+                      <h3 class="p-home-event__card-title"><?php the_title(); ?></h3>
+                      <dl class="p-home-event__details">
+                        <?php if ($event_date || $event_location) : ?>
+                          <?php if ($event_date) : ?>
+                            <div class="p-home-event__detail-row">
+                              <dt>日　時</dt>
+                              <dd><?php echo esc_html($event_date); ?></dd>
+                            </div>
+                          <?php endif; ?>
+                          <?php if ($event_location) : ?>
+                            <div class="p-home-event__detail-row">
+                              <dt>場　所</dt>
+                              <dd><?php echo esc_html($event_location); ?></dd>
+                            </div>
+                          <?php endif; ?>
+                        <?php else : ?>
                           <div class="p-home-event__detail-row">
-                            <dt>日　時</dt>
-                            <dd><?php echo esc_html($event_date); ?></dd>
+                            <dt>公 開 日</dt>
+                            <dd><?php echo esc_html(get_the_date('Y年 m月 d日')); ?></dd>
                           </div>
                         <?php endif; ?>
-                        <?php if ($event_location) : ?>
-                          <div class="p-home-event__detail-row">
-                            <dt>場　所</dt>
-                            <dd><?php echo esc_html($event_location); ?></dd>
-                          </div>
-                        <?php endif; ?>
-                      <?php else : ?>
-                        <div class="p-home-event__detail-row">
-                          <dt>公 開 日</dt>
-                          <dd><?php echo esc_html(get_the_date('Y年 m月 d日')); ?></dd>
-                        </div>
-                      <?php endif; ?>
-                    </dl>
-                  </a>
-                </article>
-              </div>
-            <?php endwhile; ?>
+                      </dl>
+                    </a>
+                  </article>
+                </div>
+              <?php endwhile; ?>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="p-home-event__footer">
-        <div class="p-home-event__controls">
-          <button class="p-home-event__arrow p-home-event__arrow--prev js-home-event-prev" type="button" aria-label="前の記事を表示"></button>
-          <p class="p-home-event__counter" aria-live="polite">
-            <span class="js-home-event-current">1</span>
-            <span aria-hidden="true"> / </span>
-            <span class="js-home-event-total"><?php echo esc_html((string) $event_posts->post_count); ?></span>
-          </p>
-          <button class="p-home-event__arrow p-home-event__arrow--next js-home-event-next" type="button" aria-label="次の記事を表示"></button>
+        <div class="p-home-event__footer">
+          <div class="p-home-event__controls">
+            <button class="p-home-event__arrow p-home-event__arrow--prev js-home-event-prev" type="button" aria-label="前の記事を表示"></button>
+            <p class="p-home-event__counter" aria-live="polite">
+              <span class="js-home-event-current">1</span>
+              <span aria-hidden="true"> / </span>
+              <span class="js-home-event-total"><?php echo esc_html((string) $event_posts->post_count); ?></span>
+            </p>
+            <button class="p-home-event__arrow p-home-event__arrow--next js-home-event-next" type="button" aria-label="次の記事を表示"></button>
+          </div>
+          <div class="p-home-event__more-row">
+            <span class="p-home-event__footer-line" aria-hidden="true"></span>
+            <a class="p-home-event__more c-hover-invert" href="<?php echo esc_url($event_archive_url); ?>">View More</a>
+          </div>
         </div>
-        <div class="p-home-event__more-row">
-          <span class="p-home-event__footer-line" aria-hidden="true"></span>
-          <a class="p-home-event__more c-hover-invert" href="<?php echo esc_url($event_archive_url); ?>">View More</a>
-        </div>
-      </div>
-    </section>
-  <?php endif; ?>
-  <?php wp_reset_postdata(); ?>
+      </section>
+    <?php endif; ?>
+    <?php wp_reset_postdata(); ?>
     <div class="l-inner">
       <div class="p-no__content">
         <figure class="p-no__bottom c-parallax js-parallax">
@@ -302,15 +302,15 @@
                     <div class="swiper-slide">
                       <?php if ($project_example['url']) : ?>
                         <a class="p-top-project__slide-link" href="<?php echo esc_url($project_example['url']); ?>">
-                      <?php endif; ?>
-                          <figure class="p-top-project__img">
-                            <?php if ($image['attachment_id']) : ?>
-                              <?php echo wp_get_attachment_image($image['attachment_id'], 'large', false, array('alt' => $project_example['title'] . 'の施工事例写真' . ($image_index + 1), 'loading' => 'lazy', 'decoding' => 'async')); ?>
-                            <?php else : ?>
-                              <img src="<?php echo esc_url(get_template_directory_uri() . '/images/top/' . $image['name']); ?>" alt="<?php echo esc_attr($project_example['title'] . 'の施工事例写真' . ($image_index + 1)); ?>" width="<?php echo esc_attr((string) $image['width']); ?>" height="<?php echo esc_attr((string) $image['height']); ?>" loading="lazy" decoding="async">
-                            <?php endif; ?>
-                          </figure>
-                      <?php if ($project_example['url']) : ?>
+                        <?php endif; ?>
+                        <figure class="p-top-project__img">
+                          <?php if ($image['attachment_id']) : ?>
+                            <?php echo wp_get_attachment_image($image['attachment_id'], 'large', false, array('alt' => $project_example['title'] . 'の施工事例写真' . ($image_index + 1), 'loading' => 'lazy', 'decoding' => 'async')); ?>
+                          <?php else : ?>
+                            <img src="<?php echo esc_url(get_template_directory_uri() . '/images/top/' . $image['name']); ?>" alt="<?php echo esc_attr($project_example['title'] . 'の施工事例写真' . ($image_index + 1)); ?>" width="<?php echo esc_attr((string) $image['width']); ?>" height="<?php echo esc_attr((string) $image['height']); ?>" loading="lazy" decoding="async">
+                          <?php endif; ?>
+                        </figure>
+                        <?php if ($project_example['url']) : ?>
                         </a>
                       <?php endif; ?>
                     </div>
@@ -393,51 +393,13 @@
       </div>
       <figure class="p-no-works__bottom c-parallax js-parallax">
         <picture>
-          <source srcset="<?php echo get_template_directory_uri(); ?>/images/top/no_works_bottom.webp" media="(min-width: 768px)" width="1238" height="570"/>
+          <source srcset="<?php echo get_template_directory_uri(); ?>/images/top/no_works_bottom.webp" media="(min-width: 768px)" width="1238" height="570" />
           <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/no_works_bottom_sp.webp" alt="" width="375" height="137">
         </picture>
       </figure>
     </div>
   </section>
-  <section class="p-reform" id="reform">
-    <div class="l-inner">
-      <div class="p-reform__content">
-        <div class="p-reform__heading">
-          <h2 class="p-reform__title">
-            <span class="p-reform__title-ja">リフォーム / リノベーション</span>
-            <span class="p-reform__title-en">REFORM / RENOVATION</span>
-          </h2>
-        </div>
-        <div class="p-reform__body">
-          <div class="p-reform__item p-reform__item--before">
-            <figure class="p-reform__image c-parallax js-parallax">
-              <picture>
-                <source srcset="<?php echo get_template_directory_uri(); ?>/images/top/reform_1.webp" media="(min-width: 768px)" width="500" height="500"/>
-                <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/reform_1_sp.webp" alt="リフォーム前の暮らしのイメージ" width="375" height="227">
-              </picture>
-            </figure>
-            <p class="p-reform__text">
-              リフォームは、古くなった家を直すだけではありません。住み慣れた家や家族の思い出を残しながら今の暮らしに合った住まいへアップデートしていく方法です。新築ではなく「この家でこれからも暮らしたい」という想いに寄り添いながら暮らしやすさやデザインまで丁寧に考えこれからの毎日がもっと快適になるリフォームを提案しています。
-            </p>
-          </div>
-          <div class="p-reform__item p-reform__item--after">
-            <figure class="p-reform__image c-parallax js-parallax">
-              <picture>
-                <source srcset="<?php echo get_template_directory_uri(); ?>/images/top/reform_2.webp" media="(min-width: 768px)" width="500" height="500"/>
-                <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/reform_2_sp.webp" alt="リフォーム後の住まいのイメージ" width="375" height="227">
-              </picture>
-            </figure>
-            <p class="p-reform__text">
-              家には、たくさんの思い出や、これまでの暮らしが詰まっています。だからこそファンライフは新しく建て替えるだけではなく、今ある家を活かすという選択も大切にしています。家族の記憶を残しながらこれからの暮らしがもっと快適になるように。そんな想いを込めて、一つひとつ丁寧にリフォームを行っています。
-            </p>
-          </div>
-        </div>
-        <figure class="p-reform__bottom c-parallax js-parallax">
-          <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/reform_3.webp" alt="リフォーム後の暮らしを楽しむイメージ" width="930" height="340">
-        </figure>
-      </div>
-    </div>
-  </section>
+
   <section class="p-modular is-mobile-awaiting-selection" id="modular">
     <div class="l-inner">
       <div class="p-modular__content">
@@ -611,15 +573,55 @@
     </div>
 
   </div>
-  <?php if (false) : // 宿泊体験型モデルハウス「そのうち」バナーは一時非表示 ?>
-  <div class="p-banner">
-    <div class="l-inner">
-      <a href="#" class="p-banner__link">
-        <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/banner_img.webp" alt="ファンライフ株式会社" width="930" height="340">
-      </a>
+  <?php if (false) : // 宿泊体験型モデルハウス「そのうち」バナーは一時非表示
+  ?>
+    <div class="p-banner">
+      <div class="l-inner">
+        <a href="#" class="p-banner__link">
+          <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/banner_img.webp" alt="ファンライフ株式会社" width="930" height="340">
+        </a>
+      </div>
     </div>
-  </div>
   <?php endif; ?>
+  <section class="p-reform" id="reform">
+    <div class="l-inner">
+      <div class="p-reform__content">
+        <div class="p-reform__heading">
+          <h2 class="p-reform__title">
+            <span class="p-reform__title-ja">リフォーム / リノベーション</span>
+            <span class="p-reform__title-en">REFORM / RENOVATION</span>
+          </h2>
+        </div>
+        <div class="p-reform__body">
+          <div class="p-reform__item p-reform__item--before">
+            <figure class="p-reform__image c-parallax js-parallax">
+              <picture>
+                <source srcset="<?php echo get_template_directory_uri(); ?>/images/top/reform_1.webp" media="(min-width: 768px)" width="500" height="500" />
+                <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/reform_1_sp.webp" alt="リフォーム前の暮らしのイメージ" width="375" height="227">
+              </picture>
+            </figure>
+            <p class="p-reform__text">
+              リフォームは、古くなった家を直すだけではありません。住み慣れた家や家族の思い出を残しながら今の暮らしに合った住まいへアップデートしていく方法です。新築ではなく「この家でこれからも暮らしたい」という想いに寄り添いながら暮らしやすさやデザインまで丁寧に考えこれからの毎日がもっと快適になるリフォームを提案しています。
+            </p>
+          </div>
+          <div class="p-reform__item p-reform__item--after">
+            <figure class="p-reform__image c-parallax js-parallax">
+              <picture>
+                <source srcset="<?php echo get_template_directory_uri(); ?>/images/top/reform_2.webp" media="(min-width: 768px)" width="500" height="500" />
+                <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/reform_2_sp.webp" alt="リフォーム後の住まいのイメージ" width="375" height="227">
+              </picture>
+            </figure>
+            <p class="p-reform__text">
+              家には、たくさんの思い出や、これまでの暮らしが詰まっています。だからこそファンライフは新しく建て替えるだけではなく、今ある家を活かすという選択も大切にしています。家族の記憶を残しながらこれからの暮らしがもっと快適になるように。そんな想いを込めて、一つひとつ丁寧にリフォームを行っています。
+            </p>
+          </div>
+        </div>
+        <figure class="p-reform__bottom c-parallax js-parallax">
+          <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/reform_3.webp" alt="リフォーム後の暮らしを楽しむイメージ" width="930" height="340">
+        </figure>
+      </div>
+    </div>
+  </section>
   <section class="p-home-model-house" aria-labelledby="home-model-house-title">
     <div class="l-inner">
       <div class="p-home-model-house__content">
