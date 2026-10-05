@@ -21,7 +21,7 @@
               家って、ただ住む箱じゃない。<br class="u-mobile">毎日帰って、笑って、落ち着いて、人生のほとんどを過ごす場所。だからファンライフは、むやみに棟数を増やさない。性能は、本当にいいと思えるものを。でも、間取りもデザイン性能も、「こうじゃないとダメ」とは言いません。
             </p>
           </div>
-          <figure class="p-no__top-img">
+          <figure class="p-no__top-img c-parallax js-parallax">
             <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/no_1.jpg" alt="ファンライフ株式会社" width="500" height="500">
           </figure>
 
@@ -32,7 +32,7 @@
             「どう暮らしたいか」。妥協しない。<br>
             ちゃんと、自分たちの家をつくる。
           </p>
-          <figure class="p-no__second-img">
+          <figure class="p-no__second-img c-parallax js-parallax">
             <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/no_2.webp" alt="ファンライフ株式会社" width="350" height="270">
           </figure>
 
@@ -43,7 +43,7 @@
             <p class="p-no__concept-title">about</p>
             <a href="#" class="p-no__concept-button c-hover-invert">view more</a>
           </div>
-          <figure class="p-no__concept-img">
+          <figure class="p-no__concept-img c-parallax js-parallax">
             <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/concept_img.webp" alt="concept" width="600" height="400">
           </figure>
         </div>
@@ -166,7 +166,7 @@
   <?php wp_reset_postdata(); ?>
     <div class="l-inner">
       <div class="p-no__content">
-        <figure class="p-no__bottom">
+        <figure class="p-no__bottom c-parallax js-parallax">
           <picture>
             <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/no_bottom.webp" media="(min-width: 768px)" width="1238" height="570">
             <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/no_bottom_sp.webp" alt="" width="375" height="137">
@@ -360,7 +360,7 @@
             </p>
           </div>
         </div>
-        <figure class="p-no-works__image">
+        <figure class="p-no-works__image c-parallax js-parallax">
           <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/no_new.webp" alt="新築住宅" width="500" height="500">
 
         </figure>
@@ -391,7 +391,7 @@
           お客様の好みやこだわりに合わせて、さまざまなデザインに対応しています。<br>カッコイイも、カワイイも、暮らしやすさを追求するのも自由。<br>大切なのは、あなたらしい家であること。一緒に、自分たちだけのデザインを見つけましょう。
         </p>
       </div>
-      <figure class="p-no-works__bottom">
+      <figure class="p-no-works__bottom c-parallax js-parallax">
         <picture>
           <source srcset="<?php echo get_template_directory_uri(); ?>/images/top/no_works_bottom.webp" media="(min-width: 768px)" width="1238" height="570"/>
           <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/no_works_bottom_sp.webp" alt="" width="375" height="137">
@@ -410,7 +410,7 @@
         </div>
         <div class="p-reform__body">
           <div class="p-reform__item p-reform__item--before">
-            <figure class="p-reform__image">
+            <figure class="p-reform__image c-parallax js-parallax">
               <picture>
                 <source srcset="<?php echo get_template_directory_uri(); ?>/images/top/reform_1.webp" media="(min-width: 768px)" width="500" height="500"/>
                 <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/reform_1_sp.webp" alt="リフォーム前の暮らしのイメージ" width="375" height="227">
@@ -421,7 +421,7 @@
             </p>
           </div>
           <div class="p-reform__item p-reform__item--after">
-            <figure class="p-reform__image">
+            <figure class="p-reform__image c-parallax js-parallax">
               <picture>
                 <source srcset="<?php echo get_template_directory_uri(); ?>/images/top/reform_2.webp" media="(min-width: 768px)" width="500" height="500"/>
                 <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/reform_2_sp.webp" alt="リフォーム後の住まいのイメージ" width="375" height="227">
@@ -432,7 +432,7 @@
             </p>
           </div>
         </div>
-        <figure class="p-reform__bottom">
+        <figure class="p-reform__bottom c-parallax js-parallax">
           <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/reform_3.webp" alt="リフォーム後の暮らしを楽しむイメージ" width="930" height="340">
         </figure>
       </div>
@@ -601,10 +601,10 @@
   <div class="p-top-gallery">
     <div class="l-inner">
       <div class="p-top-gallery__content">
-        <figure class="p-top-gallery__top-img">
+        <figure class="p-top-gallery__top-img c-parallax js-parallax">
           <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/top_gallery1.webp" alt="猫ちゃん" width="360" height="360">
         </figure>
-        <figure class="p-top-gallery__top-img2">
+        <figure class="p-top-gallery__top-img2 c-parallax js-parallax">
           <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/top_gallery2.webp" alt="カップルの写真" width="1080" height="529">
         </figure>
       </div>

@@ -93,18 +93,46 @@ function initScrollAnimations() {
       }
     );
 
-    timeline.fromTo(
+    if (!figure.classList.contains("js-parallax")) {
+      timeline.fromTo(
+        image,
+        {
+          scale: 1.04,
+        },
+        {
+          scale: 1,
+          duration: 1.1,
+          ease: "power2.out",
+          clearProps: "transform",
+        },
+        "<"
+      );
+    }
+  });
+
+  const parallaxFigures = document.querySelectorAll(".js-parallax");
+
+  parallaxFigures.forEach((figure) => {
+    const image = figure.querySelector("img");
+
+    if (!image) return;
+
+    gsap.fromTo(
       image,
       {
-        scale: 1.04,
+        y: -60,
       },
       {
-        scale: 1,
-        duration: 1.1,
-        ease: "power2.out",
-        clearProps: "transform",
-      },
-      "<"
+        y: 0,
+        duration: 1,
+        ease: "power2.inOut",
+        scrollTrigger: {
+          trigger: figure,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      }
     );
   });
 

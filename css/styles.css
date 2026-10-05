@@ -10144,6 +10144,19 @@ body.is-works-modal-open {
   }
 }
 
+.c-parallax {
+  overflow: hidden;
+}
+
+.c-parallax img {
+  height: calc(100% + 3.75rem);
+}
+@media (prefers-reduced-motion: reduce) {
+  .c-parallax img {
+    height: 100%;
+  }
+}
+
 .c-section-heading {
   display: block;
   white-space: normal;
