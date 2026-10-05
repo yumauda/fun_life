@@ -102,6 +102,89 @@ if (homeEventSlider) {
   });
 }
 
+const homeModelHouseSlider = document.querySelector(".js-home-model-house-slider");
+
+if (homeModelHouseSlider) {
+  const section = homeModelHouseSlider.closest(".p-home-model-house");
+  const progressItems = Array.from(section.querySelectorAll(".p-home-model-house__progress-item"));
+  const current = section.querySelector(".p-home-model-house__count-current");
+  const total = section.querySelector(".p-home-model-house__count-total");
+  const slides = Array.from(homeModelHouseSlider.querySelectorAll(".p-home-model-house__slide"));
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let activeIndex = 0;
+  let autoplayTimer = null;
+  let pointerStartX = 0;
+
+  const stopModelHouseAutoplay = () => {
+    window.clearTimeout(autoplayTimer);
+  };
+
+  const startModelHouseAutoplay = () => {
+    stopModelHouseAutoplay();
+
+    if (!prefersReducedMotion) {
+      autoplayTimer = window.setTimeout(() => {
+        showModelHouseSlide(activeIndex + 1);
+      }, 4500);
+    }
+  };
+
+  const showModelHouseSlide = (nextIndex) => {
+    activeIndex = (nextIndex + slides.length) % slides.length;
+    current.textContent = String(activeIndex + 1);
+    total.textContent = String(slides.length);
+
+    slides.forEach((slide, index) => {
+      const isActive = index === activeIndex;
+
+      slide.classList.toggle("is-active", isActive);
+      slide.setAttribute("aria-hidden", isActive ? "false" : "true");
+    });
+
+    progressItems.forEach((item, index) => {
+      const isActive = index === activeIndex;
+
+      item.classList.toggle("is-active", isActive);
+      if (isActive) {
+        item.setAttribute("aria-current", "true");
+      } else {
+        item.removeAttribute("aria-current");
+      }
+    });
+
+    startModelHouseAutoplay();
+  };
+
+  progressItems.forEach((item, index) => {
+    item.addEventListener("click", () => {
+      showModelHouseSlide(index);
+    });
+  });
+
+  homeModelHouseSlider.addEventListener("pointerdown", (event) => {
+    pointerStartX = event.clientX;
+  });
+
+  homeModelHouseSlider.addEventListener("pointerup", (event) => {
+    const distance = event.clientX - pointerStartX;
+
+    if (Math.abs(distance) >= 40) {
+      showModelHouseSlide(activeIndex + (distance < 0 ? 1 : -1));
+    }
+  });
+
+  homeModelHouseSlider.addEventListener("mouseenter", stopModelHouseAutoplay);
+  homeModelHouseSlider.addEventListener("mouseleave", startModelHouseAutoplay);
+  homeModelHouseSlider.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
+      event.preventDefault();
+      showModelHouseSlide(activeIndex + (event.key === "ArrowRight" ? 1 : -1));
+    }
+  });
+
+  showModelHouseSlide(0);
+}
+
 const modularRoot = document.querySelector(".p-modular");
 
 if (modularRoot) {

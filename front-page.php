@@ -611,6 +611,7 @@
     </div>
 
   </div>
+  <?php if (false) : // 宿泊体験型モデルハウス「そのうち」バナーは一時非表示 ?>
   <div class="p-banner">
     <div class="l-inner">
       <a href="#" class="p-banner__link">
@@ -618,18 +619,7 @@
       </a>
     </div>
   </div>
-  <div class="p-image">
-    <div class="l-inner">
-      <div class="p-image__content">
-        <figure class="p-image__img1 c-parallax c-parallax--strong js-parallax">
-          <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/image_1.webp" alt="リフォーム前の暮らしのイメージ" width="431" height="38">
-        </figure>
-        <figure class="p-image__img2 c-parallax c-parallax--strong js-parallax">
-          <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/image_2.webp" alt="リフォーム後の住まいのイメージ" width="431" height="38">
-        </figure>
-      </div>
-    </div>
-  </div>
+  <?php endif; ?>
   <section class="p-home-model-house" aria-labelledby="home-model-house-title">
     <div class="l-inner">
       <div class="p-home-model-house__content">
@@ -643,28 +633,69 @@
             <p class="p-home-model-house__address">〒861-3202 熊本県上益城郡御船町小坂999-3</p>
             <p class="p-home-model-house__text">「そのうち」は、ファンライフが自信を持ってご提案する宿泊体験型モデルハウスです。特別な仕様や高額なオプションではなく、ファンライフの標準仕様で建てた“等身大の家”。断熱・気密・換気・耐震のバランスが取れた住まいで、実際の暮らしに近い住み心地をご体感いただけます。いつか住みたくなるその時まで。家づくりについて、ゆっくり考えられる場所です。</p>
             <a class="p-home-model-house__button c-hover-invert" href="<?php echo esc_url(home_url('/contact/')); ?>">
-              <span class="p-home-model-house__button-icon" aria-hidden="true"></span>
+              <svg class="p-home-model-house__button-icon" aria-hidden="true" viewBox="0 0 32 34" width="32" height="34">
+                <path d="M4 2h14l7 7v9"></path>
+                <path d="M18 2v7h7"></path>
+                <path d="M18 32H4V2"></path>
+                <path d="M9 14h10M9 19h10M9 24h7"></path>
+                <path d="m18 27 9-9 3 3-9 9-4 1 1-4Z"></path>
+              </svg>
               <span>ご予約はこちら</span>
             </a>
           </div>
           <div class="p-home-model-house__visual">
-            <div class="p-home-model-house__status" role="group" aria-label="1枚目／全4枚">
-              <div class="p-home-model-house__progress" aria-hidden="true">
-                <span class="p-home-model-house__progress-item is-active"></span>
-                <span class="p-home-model-house__progress-item"></span>
-                <span class="p-home-model-house__progress-item"></span>
-                <span class="p-home-model-house__progress-item"></span>
+            <div class="p-home-model-house__status">
+              <div class="p-home-model-house__progress" aria-label="モデルハウス画像を選択">
+                <button class="p-home-model-house__progress-item is-active" type="button" aria-label="1枚目を表示" aria-current="true"></button>
+                <button class="p-home-model-house__progress-item" type="button" aria-label="2枚目を表示"></button>
+                <button class="p-home-model-house__progress-item" type="button" aria-label="3枚目を表示"></button>
+                <button class="p-home-model-house__progress-item" type="button" aria-label="4枚目を表示"></button>
               </div>
-              <p class="p-home-model-house__count">1/4</p>
+              <p class="p-home-model-house__count" aria-live="polite">
+                <span class="p-home-model-house__count-current">1</span><span class="p-home-model-house__count-rest">/<span class="p-home-model-house__count-total">4</span></span>
+              </p>
             </div>
-            <figure class="p-home-model-house__image c-parallax js-parallax">
-              <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/home_model_house.webp" alt="宿泊体験型モデルハウス「そのうち」の外観" width="2400" height="1600">
-            </figure>
+            <div class="p-home-model-house__slider js-home-model-house-slider" role="region" aria-roledescription="carousel" aria-label="モデルハウスの写真" tabindex="0">
+              <div class="p-home-model-house__slides">
+                <div class="p-home-model-house__slide is-active" aria-hidden="false">
+                  <figure class="p-home-model-house__image">
+                    <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/home_model_house.webp" alt="宿泊体験型モデルハウス「そのうち」の外観" width="2400" height="1600">
+                  </figure>
+                </div>
+                <div class="p-home-model-house__slide" aria-hidden="true">
+                  <figure class="p-home-model-house__image">
+                    <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/project-example-1-1.webp" alt="モデルハウスのイメージ" width="1620" height="1080">
+                  </figure>
+                </div>
+                <div class="p-home-model-house__slide" aria-hidden="true">
+                  <figure class="p-home-model-house__image">
+                    <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/project-example-2-1.webp" alt="モデルハウスのイメージ" width="1620" height="1080">
+                  </figure>
+                </div>
+                <div class="p-home-model-house__slide" aria-hidden="true">
+                  <figure class="p-home-model-house__image">
+                    <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/project-example-3-1.webp" alt="モデルハウスのイメージ" width="1170" height="878">
+                  </figure>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
+  <div class="p-image">
+    <div class="l-inner">
+      <div class="p-image__content">
+        <figure class="p-image__img1 c-parallax c-parallax--strong js-parallax">
+          <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/image_1.webp" alt="サーフボードを持つ男性" width="431" height="38">
+        </figure>
+        <figure class="p-image__img2 c-parallax c-parallax--strong js-parallax">
+          <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/image_2.webp" alt="室内で過ごす猫" width="431" height="38">
+        </figure>
+      </div>
+    </div>
+  </div>
   <div class="p-image p-image--bottom">
     <div class="l-inner">
       <div class="p-image__content">
