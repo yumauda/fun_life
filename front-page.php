@@ -181,33 +181,107 @@
     </div>
 
     <?php
-    $project_examples = array(
+    $project_examples_fallback = array(
       array(
         'title' => '菊池市泗水町吉富/36坪 5LDK＋書斎',
+        'url' => '',
         'images' => array(
-          array('name' => 'project-example-1-1.webp', 'width' => 1620, 'height' => 1080),
-          array('name' => 'project-example-1-3.webp', 'width' => 1080, 'height' => 1620),
-          array('name' => 'project-example-1-2.webp', 'width' => 1080, 'height' => 1620),
+          array('attachment_id' => 0, 'name' => 'project-example-1-1.webp', 'width' => 1620, 'height' => 1080),
+          array('attachment_id' => 0, 'name' => 'project-example-1-3.webp', 'width' => 1080, 'height' => 1620),
+          array('attachment_id' => 0, 'name' => 'project-example-1-2.webp', 'width' => 1080, 'height' => 1620),
         ),
       ),
       array(
         'title' => '熊本市北区龍田 /29坪 バイクガレージ付2LDK',
+        'url' => '',
         'images' => array(
-          array('name' => 'project-example-2-1.webp', 'width' => 1620, 'height' => 1080),
-          array('name' => 'project-example-2-3.webp', 'width' => 1080, 'height' => 1620),
-          array('name' => 'project-example-2-2.webp', 'width' => 1080, 'height' => 1620),
+          array('attachment_id' => 0, 'name' => 'project-example-2-1.webp', 'width' => 1620, 'height' => 1080),
+          array('attachment_id' => 0, 'name' => 'project-example-2-3.webp', 'width' => 1080, 'height' => 1620),
+          array('attachment_id' => 0, 'name' => 'project-example-2-2.webp', 'width' => 1080, 'height' => 1620),
         ),
       ),
       array(
         'title' => '上益城郡御船町豊秋/27.3坪/2LDK',
+        'url' => '',
         'images' => array(
-          array('name' => 'project-example-3-1.webp', 'width' => 1170, 'height' => 878),
-          array('name' => 'project-example-3-3.webp', 'width' => 1600, 'height' => 2400),
-          array('name' => 'project-example-3-2.webp', 'width' => 1600, 'height' => 2400),
+          array('attachment_id' => 0, 'name' => 'project-example-3-1.webp', 'width' => 1170, 'height' => 878),
+          array('attachment_id' => 0, 'name' => 'project-example-3-3.webp', 'width' => 1600, 'height' => 2400),
+          array('attachment_id' => 0, 'name' => 'project-example-3-2.webp', 'width' => 1600, 'height' => 2400),
         ),
       ),
     );
-    $works_archive_url = fun_life_category_url('works');
+    $works_category = get_category_by_slug('works');
+
+    if (!$works_category instanceof WP_Term) {
+      $works_category = get_category_by_slug('blog-works');
+    }
+
+    if (!$works_category instanceof WP_Term) {
+      $works_category = get_term_by('name', '施工事例', 'category');
+    }
+
+    $works_archive_url = $works_category instanceof WP_Term
+      ? get_category_link($works_category)
+      : fun_life_category_url('works');
+    $project_examples = array();
+
+    if ($works_category instanceof WP_Term) {
+      $works_posts = new WP_Query(array(
+        'post_type' => 'post',
+        'post_status' => 'publish',
+        'posts_per_page' => 3,
+        'cat' => $works_category->term_id,
+        'ignore_sticky_posts' => true,
+      ));
+
+      while ($works_posts->have_posts()) {
+        $works_posts->the_post();
+        $project_images = array();
+        $project_image_ids = array(get_post_thumbnail_id());
+
+        foreach (array('works_gallery_1', 'works_gallery_2', 'works_gallery_3', 'works_gallery_4') as $works_image_field) {
+          $works_image_id = function_exists('get_field')
+            ? get_field($works_image_field)
+            : get_post_meta(get_the_ID(), $works_image_field, true);
+
+          if (is_array($works_image_id) && isset($works_image_id['ID'])) {
+            $works_image_id = $works_image_id['ID'];
+          }
+
+          $project_image_ids[] = (int) $works_image_id;
+        }
+
+        foreach (array_unique(array_filter(array_map('intval', $project_image_ids))) as $project_image_id) {
+          $project_images[] = array(
+            'attachment_id' => $project_image_id,
+            'name' => '',
+            'width' => 0,
+            'height' => 0,
+          );
+
+          if (3 === count($project_images)) {
+            break;
+          }
+        }
+
+        if (!$project_images) {
+          $fallback_index = count($project_examples) % count($project_examples_fallback);
+          $project_images = $project_examples_fallback[$fallback_index]['images'];
+        }
+
+        $project_examples[] = array(
+          'title' => get_the_title(),
+          'url' => get_permalink(),
+          'images' => $project_images,
+        );
+      }
+
+      wp_reset_postdata();
+    }
+
+    if (!$project_examples) {
+      $project_examples = $project_examples_fallback;
+    }
     ?>
     <section class="p-top-project" aria-labelledby="top-project-title">
       <div class="l-inner">
@@ -226,9 +300,19 @@
                 <div class="swiper-wrapper">
                   <?php foreach ($project_example['images'] as $image_index => $image) : ?>
                     <div class="swiper-slide">
-                      <figure class="p-top-project__img">
-                        <img src="<?php echo esc_url(get_template_directory_uri() . '/images/top/' . $image['name']); ?>" alt="<?php echo esc_attr($project_example['title'] . 'の施工事例写真' . ($image_index + 1)); ?>" width="<?php echo esc_attr((string) $image['width']); ?>" height="<?php echo esc_attr((string) $image['height']); ?>" loading="lazy" decoding="async">
-                      </figure>
+                      <?php if ($project_example['url']) : ?>
+                        <a class="p-top-project__slide-link" href="<?php echo esc_url($project_example['url']); ?>">
+                      <?php endif; ?>
+                          <figure class="p-top-project__img">
+                            <?php if ($image['attachment_id']) : ?>
+                              <?php echo wp_get_attachment_image($image['attachment_id'], 'large', false, array('alt' => $project_example['title'] . 'の施工事例写真' . ($image_index + 1), 'loading' => 'lazy', 'decoding' => 'async')); ?>
+                            <?php else : ?>
+                              <img src="<?php echo esc_url(get_template_directory_uri() . '/images/top/' . $image['name']); ?>" alt="<?php echo esc_attr($project_example['title'] . 'の施工事例写真' . ($image_index + 1)); ?>" width="<?php echo esc_attr((string) $image['width']); ?>" height="<?php echo esc_attr((string) $image['height']); ?>" loading="lazy" decoding="async">
+                            <?php endif; ?>
+                          </figure>
+                      <?php if ($project_example['url']) : ?>
+                        </a>
+                      <?php endif; ?>
                     </div>
                   <?php endforeach; ?>
                 </div>
@@ -236,7 +320,13 @@
             </div>
             <div class="l-inner">
               <div class="p-top-project__meta">
-                <h3 class="p-top-project__text"><?php echo esc_html($project_example['title']); ?></h3>
+                <h3 class="p-top-project__text">
+                  <?php if ($project_example['url']) : ?>
+                    <a href="<?php echo esc_url($project_example['url']); ?>"><?php echo esc_html($project_example['title']); ?></a>
+                  <?php else : ?>
+                    <?php echo esc_html($project_example['title']); ?>
+                  <?php endif; ?>
+                </h3>
                 <div class="p-top-project__controls">
                   <button class="p-top-project__arrow p-top-project__arrow--prev js-top-project-prev" type="button" aria-label="<?php echo esc_attr(($project_index + 1) . 'つ目の施工事例で前の写真を表示'); ?>"></button>
                   <p class="p-top-project__counter" aria-live="polite">
