@@ -202,7 +202,7 @@
           <div class="p-model-house__detail">
             <h3 class="p-model-house__title">そのうち、住みたくなる家。</h3>
             <p class="p-model-house__text">「そのうち」は、ファンライフが自信を持ってご提案する宿泊体験型モデルハウスです。特別な仕様や高級なオプションではなく、ファンライフの標準仕様で建てた“等身大の家”。断熱・気密・換気・耐震のバランスが取れた住まいで、実際の暮らしに近い住み心地をご体感いただけます。いつか住みたくなるその時まで、家づくりについて、ゆっくり考えられる場所です。</p>
-            <a class="p-model-house__button" href="#contact">
+            <a class="p-model-house__button c-hover-invert" href="#contact">
               <span class="p-model-house__button-icon" aria-hidden="true"></span>
               <span>ご予約はこちら</span>
             </a>

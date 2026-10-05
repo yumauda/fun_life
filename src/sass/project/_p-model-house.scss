@@ -142,6 +142,16 @@
     font-size: rem(20);
 
   }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover .p-model-house__button-icon::after {
+      background-color: #000;
+    }
+  }
+
+  &:focus-visible .p-model-house__button-icon::after {
+    background-color: #000;
+  }
 }
 
 .p-model-house__button-icon {
@@ -149,14 +159,14 @@
   display: block;
   width: rem(15);
   height: rem(17);
-  border: 2px solid #000;
+  border: 2px solid currentColor;
 }
 
 .p-model-house__button-icon::before,
 .p-model-house__button-icon::after {
   position: absolute;
   content: "";
-  background: #000;
+  background-color: currentColor;
 }
 
 .p-model-house__button-icon::before {
@@ -164,7 +174,7 @@
   left: rem(3);
   width: rem(8);
   height: 2px;
-  box-shadow: 0 rem(4) 0 #000;
+  box-shadow: 0 rem(4) 0 currentColor;
 }
 
 .p-model-house__button-icon::after {
@@ -172,8 +182,9 @@
   bottom: rem(-3);
   width: rem(7);
   height: rem(7);
-  border: 1px solid #000;
-  background: #fff;
+  border: 1px solid currentColor;
+  background-color: #fff;
+  transition: background-color 0.35s ease;
 }
 
 .p-model-house__access {

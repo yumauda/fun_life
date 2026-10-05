@@ -5194,20 +5194,28 @@ select::-ms-expand {
     font-size: 1.25rem;
   }
 }
+@media (hover: hover) and (pointer: fine) {
+  .p-model-house__button:hover .p-model-house__button-icon::after {
+    background-color: #000;
+  }
+}
+.p-model-house__button:focus-visible .p-model-house__button-icon::after {
+  background-color: #000;
+}
 
 .p-model-house__button-icon {
   position: relative;
   display: block;
   width: 0.9375rem;
   height: 1.0625rem;
-  border: 2px solid #000;
+  border: 2px solid currentColor;
 }
 
 .p-model-house__button-icon::before,
 .p-model-house__button-icon::after {
   position: absolute;
   content: "";
-  background: #000;
+  background-color: currentColor;
 }
 
 .p-model-house__button-icon::before {
@@ -5215,7 +5223,7 @@ select::-ms-expand {
   left: 0.1875rem;
   width: 0.5rem;
   height: 2px;
-  box-shadow: 0 0.25rem 0 #000;
+  box-shadow: 0 0.25rem 0 currentColor;
 }
 
 .p-model-house__button-icon::after {
@@ -5223,8 +5231,9 @@ select::-ms-expand {
   bottom: -0.1875rem;
   width: 0.4375rem;
   height: 0.4375rem;
-  border: 1px solid #000;
-  background: #fff;
+  border: 1px solid currentColor;
+  background-color: #fff;
+  transition: background-color 0.35s ease;
 }
 
 .p-model-house__access {
