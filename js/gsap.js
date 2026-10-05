@@ -143,6 +143,33 @@ function initScrollAnimations() {
     }
   });
 
+  const collageFigures = document.querySelectorAll(".c-parallax--strong");
+
+  collageFigures.forEach((figure) => {
+    const timeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: figure,
+        start: "top 90%",
+        once: true,
+      },
+    });
+
+    timeline.fromTo(
+      figure,
+      {
+        autoAlpha: 0,
+        y: 36,
+      },
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.85,
+        ease: "power3.out",
+        clearProps: "opacity,visibility,transform",
+      }
+    );
+  });
+
   const parallaxFigures = document.querySelectorAll(".js-parallax");
 
   parallaxFigures.forEach((figure) => {
