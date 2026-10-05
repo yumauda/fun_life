@@ -173,8 +173,6 @@ if (homeModelHouseSlider) {
     }
   });
 
-  homeModelHouseSlider.addEventListener("mouseenter", stopModelHouseAutoplay);
-  homeModelHouseSlider.addEventListener("mouseleave", startModelHouseAutoplay);
   homeModelHouseSlider.addEventListener("keydown", (event) => {
     if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
       event.preventDefault();
