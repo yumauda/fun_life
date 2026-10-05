@@ -38,7 +38,6 @@ function initScrollAnimations() {
       scrollTrigger: {
         trigger: section,
         start: "top 86%",
-        once: true,
       },
     });
 
@@ -72,7 +71,6 @@ function initScrollAnimations() {
       scrollTrigger: {
         trigger: target,
         start: "top 90%",
-        once: true,
       },
     });
 
@@ -109,7 +107,6 @@ function initScrollAnimations() {
       scrollTrigger: {
         trigger: figure,
         start: "top 90%",
-        once: true,
       },
     });
 
@@ -150,7 +147,6 @@ function initScrollAnimations() {
       scrollTrigger: {
         trigger: figure,
         start: "top 90%",
-        once: true,
       },
     });
 
