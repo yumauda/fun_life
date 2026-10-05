@@ -10013,6 +10013,47 @@ body.is-works-modal-open {
   }
 }
 
+.c-hover-invert {
+  transition: color 0.35s ease, background-color 0.35s ease, border-color 0.35s ease, opacity 0.35s ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .c-hover-invert:hover {
+    color: #fff;
+    background-color: #000;
+    border-color: #000;
+    opacity: 1;
+  }
+}
+.c-hover-invert:focus-visible {
+  color: #fff;
+  background-color: #000;
+  border-color: #000;
+  opacity: 1;
+  outline: 2px solid #000;
+  outline-offset: 0.25rem;
+}
+@media (prefers-reduced-motion: reduce) {
+  .c-hover-invert {
+    transition-duration: 0.01ms;
+  }
+}
+
+.c-hover-invert--dark {
+  color: #fff;
+  background-color: #000;
+  border: 1px solid #000;
+}
+@media (hover: hover) and (pointer: fine) {
+  .c-hover-invert--dark:hover {
+    color: #000;
+    background-color: #fff;
+  }
+}
+.c-hover-invert--dark:focus-visible {
+  color: #000;
+  background-color: #fff;
+}
+
 .c-main-text {
   font-size: 0.8125rem;
   line-height: 1.6;

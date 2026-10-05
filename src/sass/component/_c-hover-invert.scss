@@ -1,0 +1,45 @@
+@use "../global" as *;
+
+.c-hover-invert {
+  transition: color 0.35s ease, background-color 0.35s ease, border-color 0.35s ease, opacity 0.35s ease;
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      color: #fff;
+      background-color: #000;
+      border-color: #000;
+      opacity: 1;
+    }
+  }
+
+  &:focus-visible {
+    color: #fff;
+    background-color: #000;
+    border-color: #000;
+    opacity: 1;
+    outline: 2px solid #000;
+    outline-offset: rem(4);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition-duration: 0.01ms;
+  }
+}
+
+.c-hover-invert--dark {
+  color: #fff;
+  background-color: #000;
+  border: 1px solid #000;
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      color: #000;
+      background-color: #fff;
+    }
+  }
+
+  &:focus-visible {
+    color: #000;
+    background-color: #fff;
+  }
+}

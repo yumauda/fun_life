@@ -136,10 +136,10 @@ if (have_posts()) :
             </a>
           </div>
           <div class="p-single-blog__pages-links">
-            <a class="p-single-blog__pages-link<?php echo 'works' === $category_slug ? ' is-current' : ''; ?>" href="<?php echo esc_url($works_url); ?>"<?php echo 'works' === $category_slug ? ' aria-current="page"' : ''; ?>>WORKS</a>
-            <a class="p-single-blog__pages-link<?php echo 'column' === $category_slug ? ' is-current' : ''; ?>" href="<?php echo esc_url($column_url); ?>"<?php echo 'column' === $category_slug ? ' aria-current="page"' : ''; ?>>COLUMN</a>
-            <a class="p-single-blog__pages-link<?php echo 'blog' === $category_slug ? ' is-current' : ''; ?>" href="<?php echo esc_url($blog_url); ?>"<?php echo 'blog' === $category_slug ? ' aria-current="page"' : ''; ?>>BLOG</a>
-            <a class="p-single-blog__pages-link<?php echo 'event' === $category_slug ? ' is-current' : ''; ?>" href="<?php echo esc_url($event_url); ?>"<?php echo 'event' === $category_slug ? ' aria-current="page"' : ''; ?>>EVENT</a>
+            <a class="p-single-blog__pages-link c-hover-invert c-hover-invert--dark<?php echo 'works' === $category_slug ? ' is-current' : ''; ?>" href="<?php echo esc_url($works_url); ?>"<?php echo 'works' === $category_slug ? ' aria-current="page"' : ''; ?>>WORKS</a>
+            <a class="p-single-blog__pages-link c-hover-invert c-hover-invert--dark<?php echo 'column' === $category_slug ? ' is-current' : ''; ?>" href="<?php echo esc_url($column_url); ?>"<?php echo 'column' === $category_slug ? ' aria-current="page"' : ''; ?>>COLUMN</a>
+            <a class="p-single-blog__pages-link c-hover-invert c-hover-invert--dark<?php echo 'blog' === $category_slug ? ' is-current' : ''; ?>" href="<?php echo esc_url($blog_url); ?>"<?php echo 'blog' === $category_slug ? ' aria-current="page"' : ''; ?>>BLOG</a>
+            <a class="p-single-blog__pages-link c-hover-invert c-hover-invert--dark<?php echo 'event' === $category_slug ? ' is-current' : ''; ?>" href="<?php echo esc_url($event_url); ?>"<?php echo 'event' === $category_slug ? ' aria-current="page"' : ''; ?>>EVENT</a>
           </div>
         </nav>
       </div>
@@ -283,9 +283,9 @@ if (have_posts()) :
               </a>
             </div>
             <div class="p-single-blog__other-pages-links">
-              <a class="p-single-blog__other-pages-link" href="<?php echo esc_url($archive_url); ?>">WORKS</a>
-              <a class="p-single-blog__other-pages-link" href="<?php echo esc_url($event_url); ?>">EVENT</a>
-              <a class="p-single-blog__other-pages-link" href="<?php echo esc_url($column_url); ?>">COLUMN</a>
+              <a class="p-single-blog__other-pages-link c-hover-invert c-hover-invert--dark" href="<?php echo esc_url($archive_url); ?>">WORKS</a>
+              <a class="p-single-blog__other-pages-link c-hover-invert c-hover-invert--dark" href="<?php echo esc_url($event_url); ?>">EVENT</a>
+              <a class="p-single-blog__other-pages-link c-hover-invert c-hover-invert--dark" href="<?php echo esc_url($column_url); ?>">COLUMN</a>
             </div>
           </nav>
         <?php else : ?>

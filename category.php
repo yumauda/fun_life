@@ -38,7 +38,7 @@ $placeholder_tag_rows = array(
             <div class="p-category__pages-links">
               <?php foreach ($category_config as $filter_slug => $filter_config) : ?>
                 <?php $is_current = $category_slug === $filter_slug; ?>
-                <a class="p-category__pages-link<?php echo $is_current ? ' is-current' : ''; ?>" href="<?php echo esc_url(fun_life_category_url($filter_slug)); ?>"<?php echo $is_current ? ' aria-current="page"' : ''; ?>><?php echo esc_html($filter_config['en']); ?></a>
+                <a class="p-category__pages-link c-hover-invert c-hover-invert--dark<?php echo $is_current ? ' is-current' : ''; ?>" href="<?php echo esc_url(fun_life_category_url($filter_slug)); ?>"<?php echo $is_current ? ' aria-current="page"' : ''; ?>><?php echo esc_html($filter_config['en']); ?></a>
               <?php endforeach; ?>
             </div>
           </nav>

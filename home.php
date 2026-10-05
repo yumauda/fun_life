@@ -16,9 +16,9 @@ $event_url = fun_life_category_url('event');
       <nav class="p-blog__pages" aria-label="関連ページ">
         <p class="p-blog__pages-title">PAGES</p>
         <div class="p-blog__pages-links">
-          <a class="p-blog__pages-link" href="<?php echo esc_url($works_url); ?>">WORKS</a>
-          <a class="p-blog__pages-link" href="<?php echo esc_url($column_url); ?>">COLUMN</a>
-          <a class="p-blog__pages-link" href="<?php echo esc_url($event_url); ?>">EVENT</a>
+          <a class="p-blog__pages-link c-hover-invert c-hover-invert--dark" href="<?php echo esc_url($works_url); ?>">WORKS</a>
+          <a class="p-blog__pages-link c-hover-invert c-hover-invert--dark" href="<?php echo esc_url($column_url); ?>">COLUMN</a>
+          <a class="p-blog__pages-link c-hover-invert c-hover-invert--dark" href="<?php echo esc_url($event_url); ?>">EVENT</a>
         </div>
       </nav>
     </div>

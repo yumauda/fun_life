@@ -41,7 +41,7 @@
         <div class="p-no__concept" id="concept">
           <div class="p-no__concept-detail">
             <p class="p-no__concept-title">about</p>
-            <a href="#" class="p-no__concept-button">view more</a>
+            <a href="#" class="p-no__concept-button c-hover-invert">view more</a>
           </div>
           <figure class="p-no__concept-img">
             <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/concept_img.webp" alt="concept" width="600" height="400">
@@ -158,7 +158,7 @@
         </div>
         <div class="p-home-event__more-row">
           <span class="p-home-event__footer-line" aria-hidden="true"></span>
-          <a class="p-home-event__more" href="<?php echo esc_url($event_archive_url); ?>">View More</a>
+          <a class="p-home-event__more c-hover-invert" href="<?php echo esc_url($event_archive_url); ?>">View More</a>
         </div>
       </div>
     </section>
@@ -253,7 +253,7 @@
       </div>
       <div class="p-top-project__more">
         <span class="p-top-project__more-line" aria-hidden="true"></span>
-        <a href="<?php echo esc_url($works_archive_url); ?>" class="p-top-project__more-link">View More</a>
+        <a href="<?php echo esc_url($works_archive_url); ?>" class="p-top-project__more-link c-hover-invert">View More</a>
       </div>
     </section>
 

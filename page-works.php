@@ -400,7 +400,7 @@
           </figure>
           <div class="p-reform-link__body">
             <h2 class="p-reform-link__title">REFORM / RENOVATION</h2>
-            <a class="p-reform-link__button" href="<?php echo esc_url(home_url('/#reform')); ?>">View More</a>
+            <a class="p-reform-link__button c-hover-invert" href="<?php echo esc_url(home_url('/#reform')); ?>">View More</a>
           </div>
         </div>
       </div>
