@@ -51,6 +51,46 @@ if (document.querySelector(".p-free__slider")) {
   });
 }
 
+const homeEventSlider = document.querySelector(".js-home-event-slider");
+
+if (homeEventSlider) {
+  const eventSection = homeEventSlider.closest(".p-home-event");
+  const eventSlides = homeEventSlider.querySelectorAll(".swiper-slide");
+  const current = eventSection.querySelector(".js-home-event-current");
+  const total = eventSection.querySelector(".js-home-event-total");
+
+  const updateEventCounter = (swiper) => {
+    current.textContent = String(swiper.realIndex + 1);
+    total.textContent = String(eventSlides.length);
+  };
+
+  new Swiper(homeEventSlider, {
+    slidesPerView: "auto",
+    spaceBetween: 18,
+    loop: eventSlides.length > 1,
+    speed: 700,
+    grabCursor: eventSlides.length > 1,
+    watchOverflow: true,
+    keyboard: {
+      enabled: true,
+      onlyInViewport: true,
+    },
+    navigation: {
+      nextEl: eventSection.querySelector(".js-home-event-next"),
+      prevEl: eventSection.querySelector(".js-home-event-prev"),
+    },
+    breakpoints: {
+      768: {
+        spaceBetween: 42,
+      },
+    },
+    on: {
+      init: updateEventCounter,
+      slideChange: updateEventCounter,
+    },
+  });
+}
+
 const modularRoot = document.querySelector(".p-modular");
 
 if (modularRoot) {

@@ -1,0 +1,346 @@
+@use "../global" as *;
+
+.p-home-event {
+  overflow-x: clip;
+  padding-top: rem(64);
+  padding-bottom: rem(72);
+  background-color: #f7f7f7;
+  margin-top: rem(80);
+
+  @include mq(md) {
+    margin-top: rem(160);
+    padding-top: rem(132);
+    padding-bottom: rem(126);
+  }
+}
+
+.p-home-event__inner {
+  max-width: rem(1200);
+}
+
+.p-home-event__title {
+  color: #000;
+  font-size: rem(26);
+  font-weight: $bold;
+  line-height: 1.5;
+  letter-spacing: 0.08em;
+
+  @include mq(md) {
+    font-size: rem(36);
+  }
+}
+
+.p-home-event__eyebrow-row {
+  display: flex;
+  align-items: center;
+  margin-top: rem(2);
+}
+
+.p-home-event__eyebrow {
+  flex: 0 0 auto;
+  color: #000;
+  font-family: $second-font-family;
+  font-size: rem(16);
+  font-weight: $bold;
+  line-height: 1.4;
+
+  @include mq(md) {
+    font-size: rem(28);
+  }
+}
+
+.p-home-event__heading-line {
+  display: block;
+  flex: 1;
+  height: 1px;
+  margin-left: rem(22);
+  background-color: #000;
+
+  @include mq(md) {
+    margin-left: rem(48);
+  }
+}
+
+.p-home-event__slider-shell {
+  width: calc(100% - rem(20));
+  margin-top: rem(42);
+  margin-left: rem(20);
+  overflow: hidden;
+
+  @include mq(md) {
+    width: calc(100% - max($padding-pc, calc((100vw - rem(1200)) / 2 + $padding-pc)));
+    margin-top: rem(62);
+    margin-left: max($padding-pc, calc((100vw - rem(1200)) / 2 + $padding-pc));
+  }
+}
+
+.p-home-event__slider {
+  overflow: visible;
+}
+
+.p-home-event__slider .swiper-wrapper {
+  align-items: stretch;
+}
+
+.p-home-event__slider .swiper-slide {
+  display: flex;
+  width: calc(100vw - rem(40));
+  height: auto;
+
+  @include mq(md) {
+    width: min(rem(488), 33.9vw);
+    max-width: none;
+  }
+}
+
+.p-home-event__card {
+  display: flex;
+  flex: 1;
+  background-color: #fff;
+}
+
+.p-home-event__card-link {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding-top: rem(16);
+  padding-right: rem(16);
+  padding-bottom: rem(22);
+  padding-left: rem(16);
+
+  @include mq(md) {
+    padding-top: rem(24);
+    padding-right: rem(16);
+    padding-bottom: rem(28);
+    padding-left: rem(16);
+  }
+}
+
+.p-home-event__meta {
+  display: flex;
+  align-items: center;
+}
+
+.p-home-event__label,
+.p-home-event__category,
+.p-home-event__date {
+  font-size: rem(10);
+  font-weight: $bold;
+  line-height: 1.5;
+
+  @include mq(md) {
+    font-size: rem(12);
+  }
+}
+
+.p-home-event__label,
+.p-home-event__category {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: rem(72);
+  padding-top: rem(3);
+  padding-right: rem(10);
+  padding-bottom: rem(3);
+  padding-left: rem(10);
+}
+
+.p-home-event__label {
+  color: #fff;
+  background-color: #000;
+}
+
+.p-home-event__category {
+  margin-left: rem(10);
+  color: #000;
+  border: 1px solid #000;
+}
+
+.p-home-event__date {
+  margin-left: auto;
+  color: rgba(0, 0, 0, 0.8);
+  white-space: nowrap;
+}
+
+.p-home-event__image {
+  align-self: center;
+  width: calc(100% - rem(24));
+  max-width: rem(338);
+  aspect-ratio: 1 / 1;
+  margin-top: rem(18);
+  overflow: hidden;
+
+  @include mq(md) {
+    margin-top: rem(20);
+  }
+}
+
+.p-home-event__image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.p-home-event__card-title {
+  margin-top: rem(22);
+  color: #000;
+  font-size: rem(15);
+  font-weight: $bold;
+  line-height: 1.75;
+  letter-spacing: 0.08em;
+
+  @include mq(md) {
+    margin-top: rem(26);
+    font-size: rem(16);
+  }
+}
+
+.p-home-event__details {
+  margin-top: auto;
+  padding-top: rem(18);
+}
+
+.p-home-event__detail-row {
+  display: flex;
+  align-items: flex-start;
+}
+
+.p-home-event__detail-row + .p-home-event__detail-row {
+  margin-top: rem(5);
+}
+
+.p-home-event__detail-row dt,
+.p-home-event__detail-row dd {
+  color: rgba(0, 0, 0, 0.8);
+  font-size: rem(10);
+  font-weight: $bold;
+  line-height: 1.65;
+
+  @include mq(md) {
+    font-size: rem(12);
+  }
+}
+
+.p-home-event__detail-row dt {
+  flex: 0 0 rem(66);
+  padding-top: rem(1);
+  padding-right: rem(5);
+  padding-bottom: rem(1);
+  padding-left: rem(5);
+  border: 1px solid #000;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.p-home-event__detail-row dd {
+  margin-left: rem(12);
+}
+
+.p-home-event__footer {
+  margin-top: rem(36);
+
+  @include mq(md) {
+    margin-top: rem(58);
+  }
+}
+
+.p-home-event__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include mq(md) {
+    width: calc(rem(300) + max($padding-pc, calc((100vw - $inner) / 2)));
+    padding-right: max($padding-pc, calc((100vw - $inner) / 2));
+    margin-left: auto;
+  }
+}
+
+.p-home-event__arrow {
+  position: relative;
+  width: rem(34);
+  height: rem(34);
+}
+
+.p-home-event__arrow::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: rem(11);
+  height: rem(11);
+  border-top: 2px solid #000;
+  border-right: 2px solid #000;
+  content: "";
+}
+
+.p-home-event__arrow--prev::before {
+  transform: translate(-35%, -50%) rotate(-135deg);
+}
+
+.p-home-event__arrow--next::before {
+  transform: translate(-65%, -50%) rotate(45deg);
+}
+
+.p-home-event__arrow.swiper-button-disabled {
+  cursor: default;
+  opacity: 0.3;
+}
+
+.p-home-event__counter {
+  min-width: rem(70);
+  color: #000;
+  font-family: $second-font-family;
+  font-size: rem(13);
+  font-weight: $bold;
+  letter-spacing: 0.15em;
+  text-align: center;
+
+  @include mq(md) {
+    font-size: rem(18);
+  }
+}
+
+.p-home-event__more-row {
+  display: flex;
+  align-items: center;
+  padding-right: rem(20);
+  margin-top: rem(30);
+
+  @include mq(md) {
+    padding-right: max($padding-pc, calc((100vw - $inner) / 2));
+  }
+}
+
+.p-home-event__footer-line {
+  display: block;
+  flex: 1;
+  height: 1px;
+  background-color: #000;
+}
+
+.p-home-event__more {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: rem(140);
+  padding-top: rem(10);
+  padding-right: rem(12);
+  padding-bottom: rem(10);
+  padding-left: rem(12);
+  margin-left: rem(12);
+  color: #000;
+  border: 1px solid #000;
+  font-family: $second-font-family;
+  font-size: rem(13);
+  font-weight: $bold;
+  line-height: 1.3;
+
+  @include mq(md) {
+    width: rem(300);
+    padding-top: rem(20);
+    padding-bottom: rem(20);
+    margin-left: rem(25);
+    font-size: rem(26);
+  }
+}

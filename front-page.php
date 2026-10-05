@@ -47,14 +47,138 @@
             <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/concept_img.webp" alt="concept" width="600" height="400">
           </figure>
         </div>
+      </div>
+    </div>
+  <?php
+  $event_column_category = get_category_by_slug('event-column');
+
+  if (!$event_column_category) {
+    $event_column_category = get_term_by('name', 'イベント・コラム', 'category');
+  }
+
+  $event_archive_url = $event_column_category instanceof WP_Term
+    ? get_category_link($event_column_category)
+    : home_url('/category/event-column/');
+  $event_query_args = array(
+    'post_type' => 'post',
+    'post_status' => 'publish',
+    'posts_per_page' => 5,
+    'ignore_sticky_posts' => true,
+  );
+
+  if ($event_column_category instanceof WP_Term) {
+    $event_query_args['cat'] = $event_column_category->term_id;
+  } else {
+    $event_query_args['category_name'] = 'event-column';
+  }
+
+  $event_posts = new WP_Query($event_query_args);
+  ?>
+  <?php if ($event_posts->have_posts()) : ?>
+    <section class="p-home-event" aria-labelledby="home-event-title">
+      <div class="l-inner p-home-event__inner">
+        <div class="p-home-event__heading">
+          <h2 class="p-home-event__title" id="home-event-title">イベント/お知らせ</h2>
+          <div class="p-home-event__eyebrow-row">
+            <p class="p-home-event__eyebrow">EVENT</p>
+            <span class="p-home-event__heading-line" aria-hidden="true"></span>
+          </div>
+        </div>
+      </div>
+      <div class="p-home-event__slider-shell">
+        <div class="swiper p-home-event__slider js-home-event-slider">
+          <div class="swiper-wrapper">
+            <?php while ($event_posts->have_posts()) : ?>
+              <?php
+              $event_posts->the_post();
+              $event_categories = get_the_category();
+              $event_category_label = 'お知らせ';
+              $event_thumbnail_id = get_post_thumbnail_id();
+              $event_thumbnail_alt = $event_thumbnail_id ? get_post_meta($event_thumbnail_id, '_wp_attachment_image_alt', true) : '';
+              $event_date = get_post_meta(get_the_ID(), 'event_date', true);
+              $event_location = get_post_meta(get_the_ID(), 'event_location', true);
+
+              if (!$event_location) {
+                $event_location = get_post_meta(get_the_ID(), 'event_place', true);
+              }
+
+              foreach ($event_categories as $event_category) {
+                if ('event-column' !== $event_category->slug) {
+                  $event_category_label = $event_category->name;
+                  break;
+                }
+              }
+              ?>
+              <div class="swiper-slide">
+                <article class="p-home-event__card">
+                  <a class="p-home-event__card-link" href="<?php the_permalink(); ?>">
+                    <div class="p-home-event__meta">
+                      <span class="p-home-event__label">EVENT</span>
+                      <span class="p-home-event__category"><?php echo esc_html($event_category_label); ?></span>
+                      <time class="p-home-event__date" datetime="<?php echo esc_attr(get_the_date('c')); ?>"><?php echo esc_html(get_the_date('Y.m.d')); ?></time>
+                    </div>
+                    <figure class="p-home-event__image">
+                      <?php if ($event_thumbnail_id) : ?>
+                        <?php echo wp_get_attachment_image($event_thumbnail_id, 'large', false, array('alt' => $event_thumbnail_alt ?: get_the_title(), 'loading' => 'lazy', 'decoding' => 'async')); ?>
+                      <?php else : ?>
+                        <img src="<?php echo esc_url(get_template_directory_uri() . '/images/top/no_new.webp'); ?>" alt="<?php echo esc_attr(get_the_title()); ?>" width="1600" height="1401" loading="lazy" decoding="async">
+                      <?php endif; ?>
+                    </figure>
+                    <h3 class="p-home-event__card-title"><?php the_title(); ?></h3>
+                    <dl class="p-home-event__details">
+                      <?php if ($event_date || $event_location) : ?>
+                        <?php if ($event_date) : ?>
+                          <div class="p-home-event__detail-row">
+                            <dt>日　時</dt>
+                            <dd><?php echo esc_html($event_date); ?></dd>
+                          </div>
+                        <?php endif; ?>
+                        <?php if ($event_location) : ?>
+                          <div class="p-home-event__detail-row">
+                            <dt>場　所</dt>
+                            <dd><?php echo esc_html($event_location); ?></dd>
+                          </div>
+                        <?php endif; ?>
+                      <?php else : ?>
+                        <div class="p-home-event__detail-row">
+                          <dt>公 開 日</dt>
+                          <dd><?php echo esc_html(get_the_date('Y年 m月 d日')); ?></dd>
+                        </div>
+                      <?php endif; ?>
+                    </dl>
+                  </a>
+                </article>
+              </div>
+            <?php endwhile; ?>
+          </div>
+        </div>
+      </div>
+      <div class="p-home-event__footer">
+        <div class="p-home-event__controls">
+          <button class="p-home-event__arrow p-home-event__arrow--prev js-home-event-prev" type="button" aria-label="前の記事を表示"></button>
+          <p class="p-home-event__counter" aria-live="polite">
+            <span class="js-home-event-current">1</span>
+            <span aria-hidden="true"> / </span>
+            <span class="js-home-event-total"><?php echo esc_html((string) $event_posts->post_count); ?></span>
+          </p>
+          <button class="p-home-event__arrow p-home-event__arrow--next js-home-event-next" type="button" aria-label="次の記事を表示"></button>
+        </div>
+        <div class="p-home-event__more-row">
+          <span class="p-home-event__footer-line" aria-hidden="true"></span>
+          <a class="p-home-event__more" href="<?php echo esc_url($event_archive_url); ?>">View More</a>
+        </div>
+      </div>
+    </section>
+  <?php endif; ?>
+  <?php wp_reset_postdata(); ?>
+    <div class="l-inner">
+      <div class="p-no__content">
         <figure class="p-no__bottom">
           <picture>
-            <source srcset="<?php echo get_template_directory_uri(); ?>/images/top/no_bottom.webp" media="(min-width: 768px)" width="1238" height="570"/>
+            <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/no_bottom.webp" media="(min-width: 768px)" width="1238" height="570">
             <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/no_bottom_sp.webp" alt="" width="375" height="137">
           </picture>
-
         </figure>
-
       </div>
     </div>
   </section>
