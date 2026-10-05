@@ -7810,7 +7810,7 @@ select::-ms-expand {
   }
 }
 
-.p-single-blog__other-meta span {
+.p-single-blog__other-category {
   padding-top: 0.5rem;
   padding-right: 1.5rem;
   padding-bottom: 0.5rem;
@@ -7821,9 +7821,108 @@ select::-ms-expand {
   border: 1px solid #000;
 }
 @media screen and (min-width: 768px) {
-  .p-single-blog__other-meta span {
-    padding: 0.5rem 1rem;
+  .p-single-blog__other-category {
+    padding-top: 0.5rem;
+    padding-right: 1rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1rem;
     font-size: 0.875rem;
+  }
+}
+
+.p-single-blog__other-meta-primary {
+  display: flex;
+  align-items: center;
+}
+
+.p-single-blog__other-type {
+  margin-left: 0.75rem;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.p-single-blog--works .p-single-blog__other::before {
+  background-color: #f7f8f8;
+}
+
+.p-single-blog--works .p-single-blog__other-heading {
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .p-single-blog--works .p-single-blog__other-grid {
+    gap: 4.375rem;
+    margin-top: 3.25rem;
+  }
+}
+
+.p-single-blog--works .p-single-blog__other-card {
+  padding-top: 1.125rem;
+  padding-right: 1rem;
+  padding-bottom: 1.875rem;
+  padding-left: 1rem;
+  background-color: #fff;
+}
+@media screen and (min-width: 768px) {
+  .p-single-blog--works .p-single-blog__other-card {
+    padding-top: 1.5rem;
+    padding-right: 2.125rem;
+    padding-bottom: 4.875rem;
+    padding-left: 2.125rem;
+  }
+}
+
+.p-single-blog--works .p-single-blog__other-card + .p-single-blog__other-card {
+  margin-top: 1.75rem;
+}
+@media screen and (min-width: 768px) {
+  .p-single-blog--works .p-single-blog__other-card + .p-single-blog__other-card {
+    margin-top: 0;
+  }
+}
+
+.p-single-blog--works .p-single-blog__other-meta {
+  font-size: 0.6875rem;
+}
+@media screen and (min-width: 768px) {
+  .p-single-blog--works .p-single-blog__other-meta {
+    font-size: 0.84375rem;
+  }
+}
+
+.p-single-blog--works .p-single-blog__other-meta time {
+  opacity: 0.8;
+}
+
+.p-single-blog--works .p-single-blog__other-category {
+  min-width: 4.5rem;
+  padding-top: 0.4375rem;
+  padding-right: 0.75rem;
+  padding-bottom: 0.4375rem;
+  padding-left: 0.75rem;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  font-size: 0.6875rem;
+  text-align: center;
+  background-color: #000;
+  border: 0;
+}
+@media screen and (min-width: 768px) {
+  .p-single-blog--works .p-single-blog__other-category {
+    min-width: 5.6875rem;
+    padding-top: 0.5rem;
+    padding-right: 1rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1rem;
+    font-size: 0.84375rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .p-single-blog--works .p-single-blog__other-type {
+    font-size: 0.84375rem;
   }
 }
 
@@ -7831,6 +7930,10 @@ select::-ms-expand {
   aspect-ratio: 1.72/1;
   margin-top: 1.25rem;
   overflow: hidden;
+}
+
+.p-single-blog--works .p-single-blog__other-card figure {
+  aspect-ratio: 16/9;
 }
 
 .p-single-blog__other-card img {
@@ -7853,6 +7956,16 @@ select::-ms-expand {
   }
 }
 
+.p-single-blog--works .p-single-blog__other-spec {
+  font-size: 0.6875rem;
+}
+@media screen and (min-width: 768px) {
+  .p-single-blog--works .p-single-blog__other-spec {
+    margin-top: 1.0625rem;
+    font-size: 0.84375rem;
+  }
+}
+
 .p-single-blog__other-card h3 {
   margin-top: 0.5rem;
   font-size: 1.125rem;
@@ -7866,6 +7979,131 @@ select::-ms-expand {
     font-size: 1rem;
     line-height: 1.7142857143;
     letter-spacing: normal;
+  }
+}
+
+.p-single-blog--works .p-single-blog__other-card h3 {
+  font-size: 0.875rem;
+  line-height: 1.75;
+  letter-spacing: 0.1em;
+}
+@media screen and (min-width: 768px) {
+  .p-single-blog--works .p-single-blog__other-card h3 {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    line-height: 1.75;
+    letter-spacing: 0.1em;
+  }
+}
+
+.p-single-blog__other-pages {
+  width: 100%;
+  max-width: 21.25rem;
+  margin-top: 3.625rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media screen and (min-width: 768px) {
+  .p-single-blog__other-pages {
+    margin-top: 4.5rem;
+  }
+}
+
+.p-single-blog__other-pages-heading {
+  display: flex;
+  align-items: center;
+}
+
+.p-single-blog__other-pages-title {
+  font-family: "Inter", sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1;
+}
+@media screen and (min-width: 768px) {
+  .p-single-blog__other-pages-title {
+    font-size: 2.8125rem;
+  }
+}
+
+.p-single-blog__other-pages-back {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: auto;
+  color: #000;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1;
+}
+@media screen and (min-width: 768px) {
+  .p-single-blog__other-pages-back {
+    font-size: 0.84375rem;
+  }
+}
+
+.p-single-blog__other-pages-back-arrow {
+  position: relative;
+  display: block;
+  width: 4.375rem;
+  margin-top: 0.5rem;
+  border-top: 1px solid #000;
+}
+@media screen and (min-width: 768px) {
+  .p-single-blog__other-pages-back-arrow {
+    width: 6rem;
+  }
+}
+
+.p-single-blog__other-pages-back-arrow::before {
+  position: absolute;
+  top: -0.25rem;
+  left: 0;
+  width: 0.4375rem;
+  height: 0.4375rem;
+  content: "";
+  border-bottom: 1px solid #000;
+  border-left: 1px solid #000;
+  transform: rotate(45deg);
+}
+
+.p-single-blog__other-pages-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  column-gap: 0.5rem;
+  row-gap: 0.5rem;
+  margin-top: 1.125rem;
+}
+@media screen and (min-width: 768px) {
+  .p-single-blog__other-pages-links {
+    column-gap: 1.25rem;
+    margin-top: 0.875rem;
+  }
+}
+
+.p-single-blog__other-pages-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 5.125rem;
+  padding-top: 0.4375rem;
+  padding-right: 0.75rem;
+  padding-bottom: 0.4375rem;
+  padding-left: 0.75rem;
+  color: #f7f8f8;
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1;
+  background-color: #000;
+}
+@media screen and (min-width: 768px) {
+  .p-single-blog__other-pages-link {
+    min-width: 6.25rem;
+    font-size: 0.9375rem;
   }
 }
 

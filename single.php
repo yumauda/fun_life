@@ -243,11 +243,21 @@ if (have_posts()) :
             $other_category_label = $other_categories ? $other_categories[0]->name : $category_label;
             $other_spec = function_exists('get_field') ? get_field('works_spec') : get_post_meta(get_the_ID(), 'works_spec', true);
             $other_spec = $other_spec ?: get_the_excerpt();
+            $other_building_type = function_exists('get_field') ? get_field('works_building_type') : get_post_meta(get_the_ID(), 'works_building_type', true);
+            $other_building_type = $other_building_type ?: '二階建て';
             $other_thumbnail_id = get_post_thumbnail_id();
             $other_thumbnail_alt = $other_thumbnail_id ? get_post_meta($other_thumbnail_id, '_wp_attachment_image_alt', true) : '';
             ?>
             <a class="p-single-blog__other-card" href="<?php the_permalink(); ?>">
-              <div class="p-single-blog__other-meta"><span><?php echo esc_html($other_category_label); ?></span><time datetime="<?php echo esc_attr(get_the_date('c')); ?>"><?php echo esc_html(get_the_date('Y.m.d')); ?></time></div>
+              <div class="p-single-blog__other-meta">
+                <div class="p-single-blog__other-meta-primary">
+                  <span class="p-single-blog__other-category"><?php echo esc_html($is_works ? 'WORKS' : $other_category_label); ?></span>
+                  <?php if ($is_works) : ?>
+                    <span class="p-single-blog__other-type"><?php echo esc_html($other_building_type); ?></span>
+                  <?php endif; ?>
+                </div>
+                <time datetime="<?php echo esc_attr(get_the_date('c')); ?>"><?php echo esc_html(get_the_date('Y.m.d')); ?></time>
+              </div>
               <figure>
                 <?php if ($other_thumbnail_id) : ?>
                   <?php echo wp_get_attachment_image($other_thumbnail_id, 'large', false, array('alt' => $other_thumbnail_alt ?: get_the_title(), 'loading' => 'lazy', 'decoding' => 'async')); ?>
@@ -263,24 +273,41 @@ if (have_posts()) :
           <?php endwhile; ?>
           <?php wp_reset_postdata(); ?>
         </div>
-        <nav class="p-single-blog__other-nav" aria-label="記事ナビゲーション">
-          <a href="<?php echo esc_url($blog_url); ?>">
-            <span class="p-single-blog__other-nav-label">ブログへ</span>
-            <span class="p-single-blog__other-nav-arrow" aria-hidden="true"></span>
-          </a>
-          <a href="<?php echo esc_url($column_url); ?>">
-            <span class="p-single-blog__other-nav-label">コラムへ</span>
-            <span class="p-single-blog__other-nav-arrow" aria-hidden="true"></span>
-          </a>
-          <a href="<?php echo esc_url($event_url); ?>">
-            <span class="p-single-blog__other-nav-label">イベントへ</span>
-            <span class="p-single-blog__other-nav-arrow" aria-hidden="true"></span>
-          </a>
-          <a href="<?php echo esc_url($works_url); ?>">
-            <span class="p-single-blog__other-nav-label">施工事例へ</span>
-            <span class="p-single-blog__other-nav-arrow" aria-hidden="true"></span>
-          </a>
-        </nav>
+        <?php if ($is_works) : ?>
+          <nav class="p-single-blog__other-pages" aria-label="カテゴリーページを切り替える">
+            <div class="p-single-blog__other-pages-heading">
+              <p class="p-single-blog__other-pages-title">PAGES</p>
+              <a class="p-single-blog__other-pages-back" href="<?php echo esc_url($archive_url); ?>">
+                <span>一覧へ</span>
+                <span class="p-single-blog__other-pages-back-arrow" aria-hidden="true"></span>
+              </a>
+            </div>
+            <div class="p-single-blog__other-pages-links">
+              <a class="p-single-blog__other-pages-link" href="<?php echo esc_url($archive_url); ?>">WORKS</a>
+              <a class="p-single-blog__other-pages-link" href="<?php echo esc_url($event_url); ?>">EVENT</a>
+              <a class="p-single-blog__other-pages-link" href="<?php echo esc_url($column_url); ?>">COLUMN</a>
+            </div>
+          </nav>
+        <?php else : ?>
+          <nav class="p-single-blog__other-nav" aria-label="記事ナビゲーション">
+            <a href="<?php echo esc_url($blog_url); ?>">
+              <span class="p-single-blog__other-nav-label">ブログへ</span>
+              <span class="p-single-blog__other-nav-arrow" aria-hidden="true"></span>
+            </a>
+            <a href="<?php echo esc_url($column_url); ?>">
+              <span class="p-single-blog__other-nav-label">コラムへ</span>
+              <span class="p-single-blog__other-nav-arrow" aria-hidden="true"></span>
+            </a>
+            <a href="<?php echo esc_url($event_url); ?>">
+              <span class="p-single-blog__other-nav-label">イベントへ</span>
+              <span class="p-single-blog__other-nav-arrow" aria-hidden="true"></span>
+            </a>
+            <a href="<?php echo esc_url($works_url); ?>">
+              <span class="p-single-blog__other-nav-label">施工事例へ</span>
+              <span class="p-single-blog__other-nav-arrow" aria-hidden="true"></span>
+            </a>
+          </nav>
+        <?php endif; ?>
       </section>
     </div>
   </article>
