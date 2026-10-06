@@ -255,50 +255,7 @@
   font-weight: $bold;
   text-align: center;
 }
-.p-category__back-wrapper {
-  margin-top: rem(25);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-
-  @include mq("md") {
-    align-items: flex-end;
-    justify-content: flex-end;
-  }
-}
-
-.p-category__back {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  width: rem(75);
-  aspect-ratio: 75 / 45;
-  color: #000;
-  border: 2px solid #000;
-}
-
-.p-category__back-text {
-  font-size: rem(12);
-  letter-spacing: 0.1em;
-  font-weight: 700;
-  line-height: 1;
-}
-
-.p-category__back-icon {
-  width: rem(40);
-  aspect-ratio: 110 / 25;
-  margin-top: rem(4);
-  overflow: hidden;
-  color: inherit;
-  background-color: currentColor;
-  -webkit-mask: url("../images/common/arrow-back.svg") center / contain no-repeat;
-  mask: url("../images/common/arrow-back.svg") center / contain no-repeat;
-}
-
-.p-category__pages-link:focus-visible,
-.p-category__back:focus-visible {
+.p-category__pages-link:focus-visible {
   outline: 2px solid #000;
   outline-offset: rem(4);
 }

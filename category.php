@@ -73,12 +73,6 @@ $all_tags_url = $is_tag_archive
           </div>
         </aside>
       </div>
-      <div class="p-category__back-wrapper">
-        <a class="p-category__back c-hover-invert" href="<?php echo esc_url(home_url('/')); ?>" aria-label="トップページへ">
-          <p class="p-category__back-text">TOPへ</p>
-          <span class="p-category__back-icon" aria-hidden="true"></span>
-        </a>
-      </div>
     </div>
   </section>
 

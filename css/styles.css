@@ -1655,51 +1655,7 @@ select::-ms-expand {
   text-align: center;
 }
 
-.p-category__back-wrapper {
-  margin-top: 1.5625rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-@media screen and (min-width: 768px) {
-  .p-category__back-wrapper {
-    align-items: flex-end;
-    justify-content: flex-end;
-  }
-}
-
-.p-category__back {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  width: 4.6875rem;
-  aspect-ratio: 75/45;
-  color: #000;
-  border: 2px solid #000;
-}
-
-.p-category__back-text {
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
-  font-weight: 700;
-  line-height: 1;
-}
-
-.p-category__back-icon {
-  width: 2.5rem;
-  aspect-ratio: 110/25;
-  margin-top: 0.25rem;
-  overflow: hidden;
-  color: inherit;
-  background-color: currentColor;
-  -webkit-mask: url("../images/common/arrow-back.svg") center/contain no-repeat;
-  mask: url("../images/common/arrow-back.svg") center/contain no-repeat;
-}
-
-.p-category__pages-link:focus-visible,
-.p-category__back:focus-visible {
+.p-category__pages-link:focus-visible {
   outline: 2px solid #000;
   outline-offset: 0.25rem;
 }
