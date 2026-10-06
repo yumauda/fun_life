@@ -8,20 +8,32 @@
   }
 }
 
-.p-banner__link {
-  display: block;
-  // width: rem(324);
-  width: calc(324 / 375) * 100vw;
-  margin-left: auto;
-  margin-right: auto;
-
+.p-banner--archive {
   @include mq(md) {
-    width: auto;
+    margin-top: rem(134);
   }
 }
-.p-banner__link img {
+
+.p-banner__link {
+  display: block;
+  width: calc(324 / 375) * 100vw;
+  margin-right: auto;
+  margin-left: auto;
+
+  @include mq(md) {
+    width: 100%;
+  }
+}
+
+.p-banner__image {
+  aspect-ratio: 1100 / 449;
+  overflow: hidden;
+}
+
+.p-banner__image img {
+  display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
   object-position: center center;
 }

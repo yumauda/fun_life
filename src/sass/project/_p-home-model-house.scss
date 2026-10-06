@@ -117,6 +117,8 @@
   width: fit-content;
   min-width: rem(190);
   margin-top: rem(40);
+  margin-right: auto;
+  margin-left: auto;
   padding-top: rem(11);
   padding-right: rem(18);
   padding-bottom: rem(11);
@@ -131,6 +133,8 @@
   @include mq(md) {
     min-width: rem(219);
     margin-top: rem(72);
+    margin-right: 0;
+    margin-left: 0;
     font-size: rem(20);
   }
 }
@@ -262,10 +266,14 @@
 
 .p-home-model-house__slider {
   position: relative;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 1 / 1;
   margin-top: rem(14);
   overflow: hidden;
   touch-action: pan-y;
+
+  @include mq(md) {
+    aspect-ratio: 3 / 2;
+  }
 }
 
 .p-home-model-house__slides {
@@ -292,8 +300,12 @@
 
 .p-home-model-house__image {
   height: 100%;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
+
+  @include mq(md) {
+    aspect-ratio: 3 / 2;
+  }
 }
 
 .p-home-model-house__image img {

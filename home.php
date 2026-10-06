@@ -64,6 +64,16 @@ $event_url = fun_life_category_url('event');
         <?php else : ?>
           <p class="p-blog__empty">現在、記事はありません。</p>
         <?php endif; ?>
+        <?php
+        get_template_part(
+          'includes/banner',
+          null,
+          array(
+            'modifier' => 'p-banner--archive',
+            'with_inner' => false,
+          )
+        );
+        ?>
       </div>
     </div>
   </section>

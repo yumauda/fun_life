@@ -194,9 +194,9 @@
 
 .p-modular__sub-menu {
   display: none;
-  grid-template-columns: repeat(2, minmax(0, rem(105)));
-  column-gap: rem(12);
-  row-gap: rem(10);
+  grid-template-columns: repeat(2, minmax(0, rem(131)));
+  justify-content: center;
+  gap: rem(13);
   margin-top: rem(14);
   opacity: 0;
   visibility: hidden;
@@ -215,6 +215,8 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    gap: 0;
+    justify-content: flex-start;
     min-width: rem(76);
     margin-top: 0;
     transform: none;
@@ -259,16 +261,18 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: rem(105);
-  min-height: rem(28);
+  min-width: rem(131);
+  min-height: rem(52);
   padding-right: rem(12);
   padding-left: rem(12);
   border: 1px solid #a8aeae;
-  font-size: rem(16);
+  font-size: rem(18);
   white-space: nowrap;
 
   @include mq(md) {
     min-width: rem(60);
+    min-height: rem(28);
+    font-size: rem(16);
   }
 }
 

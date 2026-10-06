@@ -17,7 +17,9 @@
   @include mq("md") {
     display: flex;
     align-items: center;
-    gap: rem(220);
+    // gap: rem(220);
+     gap: min(rem(220), calc(220 / 1440) * 100vw);
+
   }
 }
 

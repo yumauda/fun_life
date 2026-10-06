@@ -15,11 +15,21 @@ $category_config = array(
 $current_config = isset($category_config[$category_slug])
   ? $category_config[$category_slug]
   : array('en' => strtoupper($category_slug), 'ja' => $category_name);
-$placeholder_tag_rows = array(
-  array('すべて', '平屋', '規格住宅', '二階建て'),
-  array('店舗兼住宅', 'リフォーム', 'リノベーション', 'アパート'),
-  array('内装', '外装', 'モデルハウス', 'メンテナンス'),
-  array('お知らせ'),
+$category_nav_order = array('works', 'event', 'column', 'blog');
+$placeholder_tags = array(
+  'すべて',
+  '平屋',
+  '規格住宅',
+  '二階建て',
+  '店舗兼住宅',
+  'リフォーム',
+  'リノベーション',
+  'アパート',
+  '内装',
+  '外装',
+  'モデルハウス',
+  'メンテナンス',
+  'お知らせ',
 );
 ?>
 
@@ -36,9 +46,12 @@ $placeholder_tag_rows = array(
           <nav class="p-category__pages" aria-label="カテゴリーページを切り替える">
             <p class="p-category__pages-title">PAGES</p>
             <div class="p-category__pages-links">
-              <?php foreach ($category_config as $filter_slug => $filter_config) : ?>
+              <?php foreach ($category_nav_order as $filter_slug) : ?>
+                <?php if (!isset($category_config[$filter_slug])) : ?>
+                  <?php continue; ?>
+                <?php endif; ?>
                 <?php $is_current = $category_slug === $filter_slug; ?>
-                <a class="p-category__pages-link c-hover-invert c-hover-invert--dark<?php echo $is_current ? ' is-current' : ''; ?>" href="<?php echo esc_url(fun_life_category_url($filter_slug)); ?>"<?php echo $is_current ? ' aria-current="page"' : ''; ?>><?php echo esc_html($filter_config['en']); ?></a>
+                <a class="p-category__pages-link c-hover-invert c-hover-invert--dark<?php echo $is_current ? ' is-current' : ''; ?>" href="<?php echo esc_url(fun_life_category_url($filter_slug)); ?>"<?php echo $is_current ? ' aria-current="page"' : ''; ?>><?php echo esc_html($category_config[$filter_slug]['en']); ?></a>
               <?php endforeach; ?>
             </div>
           </nav>
@@ -47,13 +60,9 @@ $placeholder_tag_rows = array(
         <aside class="p-category__tags" aria-label="タグ一覧">
           <p class="p-category__tags-title">TAGS</p>
           <div class="p-category__tags-list">
-            <?php foreach ($placeholder_tag_rows as $tag_row_index => $placeholder_tag_row) : ?>
-              <div class="p-category__tags-row">
-                <?php foreach ($placeholder_tag_row as $tag_index => $placeholder_tag) : ?>
-                  <?php $is_current_tag = 0 === $tag_row_index && 0 === $tag_index; ?>
-                  <span class="p-category__tag<?php echo $is_current_tag ? ' is-current' : ''; ?>"><?php echo esc_html($placeholder_tag); ?></span>
-                <?php endforeach; ?>
-              </div>
+            <?php foreach ($placeholder_tags as $tag_index => $placeholder_tag) : ?>
+              <?php $is_current_tag = 0 === $tag_index; ?>
+              <span class="p-category__tag<?php echo $is_current_tag ? ' is-current' : ''; ?>"><?php echo esc_html($placeholder_tag); ?></span>
             <?php endforeach; ?>
           </div>
         </aside>
@@ -108,6 +117,16 @@ $placeholder_tag_rows = array(
       <?php else : ?>
         <p class="p-category__empty">現在、このカテゴリーの記事はありません。</p>
       <?php endif; ?>
+      <?php
+      get_template_part(
+        'includes/banner',
+        null,
+        array(
+          'modifier' => 'p-banner--archive',
+          'with_inner' => false,
+        )
+      );
+      ?>
     </div>
   </section>
 

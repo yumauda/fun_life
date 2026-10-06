@@ -1,0 +1,63 @@
+@use "../global" as *;
+
+.c-button-list {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  width: rem(96);
+  margin-left: auto;
+  padding-top: rem(8);
+  padding-right: rem(10);
+  padding-bottom: rem(8);
+  padding-left: rem(12);
+  color: #000;
+  font-size: rem(12);
+  font-weight: $bold;
+  line-height: 1;
+  transition: opacity 0.3s ease;
+  border: 1px solid #000;
+
+  @include mq(md) {
+    width: rem(122);
+    padding-top: rem(9.25);
+    padding-right: rem(12);
+    padding-bottom: rem(9.25);
+    padding-left: rem(16);
+    font-size: rem(13.5);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid #000;
+    outline-offset: rem(5);
+  }
+}
+
+.c-button-list__arrow {
+  position: relative;
+  display: block;
+  width: rem(24);
+  margin-left: rem(12);
+  border-top: 1px solid #000;
+
+  @include mq(md) {
+    width: rem(29);
+  }
+}
+
+.c-button-list__arrow::before {
+  position: absolute;
+  top: rem(-4);
+  right: 0;
+  width: rem(7);
+  height: rem(7);
+  content: "";
+  border-top: 1px solid #000;
+  border-right: 1px solid #000;
+  transform: rotate(45deg);
+}

@@ -573,16 +573,6 @@
     </div>
 
   </div>
-  <?php if (false) : // 宿泊体験型モデルハウス「そのうち」バナーは一時非表示
-  ?>
-    <div class="p-banner">
-      <div class="l-inner">
-        <a href="#" class="p-banner__link">
-          <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/banner_img.webp" alt="ファンライフ株式会社" width="930" height="340">
-        </a>
-      </div>
-    </div>
-  <?php endif; ?>
   <section class="p-reform" id="reform">
     <div class="l-inner">
       <div class="p-reform__content">

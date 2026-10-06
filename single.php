@@ -130,9 +130,9 @@ if (have_posts()) :
         <nav class="p-single-blog__pages" aria-label="カテゴリーページを切り替える">
           <div class="p-single-blog__pages-heading">
             <p class="p-single-blog__pages-title">PAGES</p>
-            <a class="p-single-blog__pages-back" href="<?php echo esc_url($archive_url); ?>">
+            <a class="c-button-list" href="<?php echo esc_url($archive_url); ?>">
               <span>一覧へ</span>
-              <span class="p-single-blog__pages-back-arrow" aria-hidden="true"></span>
+              <span class="c-button-list__arrow" aria-hidden="true"></span>
             </a>
           </div>
           <div class="p-single-blog__pages-links">
@@ -241,6 +241,10 @@ if (have_posts()) :
             $other_posts->the_post();
             $other_categories = get_the_category();
             $other_category_label = $other_categories ? $other_categories[0]->name : $category_label;
+            $other_category_slug = $other_categories ? $other_categories[0]->slug : $category_slug;
+            $other_category_en = isset($single_category_config[$other_category_slug])
+              ? $single_category_config[$other_category_slug]['en']
+              : strtoupper($other_category_slug);
             $other_spec = function_exists('get_field') ? get_field('works_spec') : get_post_meta(get_the_ID(), 'works_spec', true);
             $other_spec = $other_spec ?: get_the_excerpt();
             $other_building_type = function_exists('get_field') ? get_field('works_building_type') : get_post_meta(get_the_ID(), 'works_building_type', true);
@@ -251,7 +255,7 @@ if (have_posts()) :
             <a class="p-single-blog__other-card" href="<?php the_permalink(); ?>">
               <div class="p-single-blog__other-meta">
                 <div class="p-single-blog__other-meta-primary">
-                  <span class="p-single-blog__other-category"><?php echo esc_html($is_works ? 'WORKS' : $other_category_label); ?></span>
+                  <span class="p-single-blog__other-category"><?php echo esc_html($other_category_en ?: $other_category_label); ?></span>
                   <?php if ($is_works) : ?>
                     <span class="p-single-blog__other-type"><?php echo esc_html($other_building_type); ?></span>
                   <?php endif; ?>
@@ -273,41 +277,30 @@ if (have_posts()) :
           <?php endwhile; ?>
           <?php wp_reset_postdata(); ?>
         </div>
-        <?php if ($is_works) : ?>
-          <nav class="p-single-blog__other-pages" aria-label="カテゴリーページを切り替える">
-            <div class="p-single-blog__other-pages-heading">
-              <p class="p-single-blog__other-pages-title">PAGES</p>
-              <a class="p-single-blog__other-pages-back" href="<?php echo esc_url($archive_url); ?>">
-                <span>一覧へ</span>
-                <span class="p-single-blog__other-pages-back-arrow" aria-hidden="true"></span>
-              </a>
-            </div>
-            <div class="p-single-blog__other-pages-links">
-              <a class="p-single-blog__other-pages-link c-hover-invert c-hover-invert--dark" href="<?php echo esc_url($archive_url); ?>">WORKS</a>
-              <a class="p-single-blog__other-pages-link c-hover-invert c-hover-invert--dark" href="<?php echo esc_url($event_url); ?>">EVENT</a>
-              <a class="p-single-blog__other-pages-link c-hover-invert c-hover-invert--dark" href="<?php echo esc_url($column_url); ?>">COLUMN</a>
-            </div>
-          </nav>
-        <?php else : ?>
-          <nav class="p-single-blog__other-nav" aria-label="記事ナビゲーション">
-            <a href="<?php echo esc_url($blog_url); ?>">
-              <span class="p-single-blog__other-nav-label">ブログへ</span>
-              <span class="p-single-blog__other-nav-arrow" aria-hidden="true"></span>
+        <nav class="p-single-blog__other-pages" aria-label="カテゴリーページを切り替える">
+          <div class="p-single-blog__other-pages-heading">
+            <p class="p-single-blog__other-pages-title">PAGES</p>
+            <a class="c-button-list" href="<?php echo esc_url($archive_url); ?>">
+              <span>一覧へ</span>
+              <span class="c-button-list__arrow" aria-hidden="true"></span>
             </a>
-            <a href="<?php echo esc_url($column_url); ?>">
-              <span class="p-single-blog__other-nav-label">コラムへ</span>
-              <span class="p-single-blog__other-nav-arrow" aria-hidden="true"></span>
-            </a>
-            <a href="<?php echo esc_url($event_url); ?>">
-              <span class="p-single-blog__other-nav-label">イベントへ</span>
-              <span class="p-single-blog__other-nav-arrow" aria-hidden="true"></span>
-            </a>
-            <a href="<?php echo esc_url($works_url); ?>">
-              <span class="p-single-blog__other-nav-label">施工事例へ</span>
-              <span class="p-single-blog__other-nav-arrow" aria-hidden="true"></span>
-            </a>
-          </nav>
-        <?php endif; ?>
+          </div>
+          <div class="p-single-blog__other-pages-links">
+            <a class="p-single-blog__other-pages-link c-hover-invert c-hover-invert--dark" href="<?php echo esc_url($works_url); ?>">WORKS</a>
+            <a class="p-single-blog__other-pages-link c-hover-invert c-hover-invert--dark" href="<?php echo esc_url($event_url); ?>">EVENT</a>
+            <a class="p-single-blog__other-pages-link c-hover-invert c-hover-invert--dark" href="<?php echo esc_url($column_url); ?>">COLUMN</a>
+          </div>
+        </nav>
+        <?php
+        get_template_part(
+          'includes/banner',
+          null,
+          array(
+            'modifier' => 'p-banner--other',
+            'with_inner' => false,
+          )
+        );
+        ?>
       </section>
     </div>
   </article>

@@ -184,7 +184,7 @@
                         <nav class="p-drawer-content__nav" aria-label="メインメニュー">
                             <ul class="p-drawer-content__lists">
                                 <li class="p-drawer-content__list"><a href="<?php echo esc_url(home_url('/')); ?>" class="p-drawer-content__link">TOP</a></li>
-                                <li class="p-drawer-content__list"><a href="<?php echo esc_url(fun_life_category_url('works')); ?>" class="p-drawer-content__link">WORKS</a></li>
+                                <li class="p-drawer-content__list"><a href="<?php echo esc_url(home_url('/works/')); ?>" class="p-drawer-content__link">WORKS</a></li>
                                 <li class="p-drawer-content__list"><a href="<?php echo esc_url(home_url('/about/')); ?>" class="p-drawer-content__link">ABOUT</a></li>
                                 <li class="p-drawer-content__list"><a href="<?php echo esc_url(fun_life_category_url('blog')); ?>" class="p-drawer-content__link">BLOG</a></li>
                                 <li class="p-drawer-content__list"><a href="<?php echo esc_url(fun_life_category_url('column')); ?>" class="p-drawer-content__link p-drawer-content__link--muted">COLUMN</a></li>

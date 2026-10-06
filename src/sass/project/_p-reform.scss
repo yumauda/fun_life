@@ -93,7 +93,7 @@
 
 .p-reform__image {
   position: relative;
-  width: calc(222 / 375) * 100vw;
+  width: calc(250 / 393) * 100vw;
   aspect-ratio: 600 / 600;
   overflow: hidden;
 
@@ -105,9 +105,11 @@
 .p-reform__item--before .p-reform__image {
   order: 3;
   margin-top: rem(48);
+  margin-left: calc(50% - 50vw);
 
   @include mq(md) {
     margin-top: 0;
+    margin-left: 0;
   }
 }
 
