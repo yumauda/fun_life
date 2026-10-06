@@ -33,29 +33,23 @@ add_action('after_setup_theme', 'my_setup');
  */
 function my_script_init()
 {
-	wp_enqueue_script('jquery', '//code.jquery.com/jquery-3.6.0.min.js', '', "1.0.1", true);
+	wp_enqueue_script('jquery');
 
 	wp_enqueue_style('my', get_template_directory_uri() . '/css/styles.css', array(), filemtime(get_theme_file_path('/css/styles.css')), 'all');
-	wp_enqueue_script('gsap', '//cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js', '', "1.0.1", true);
-	wp_enqueue_script('scrollTrigger', '//cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js', '', "1.0.1", true);
+	wp_enqueue_script('gsap', '//cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js', array(), '3.9.1', true);
+	wp_enqueue_script('scrollTrigger', '//cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js', array('gsap'), '3.9.1', true);
 	wp_enqueue_script('js-gsap', get_template_directory_uri() . '/js/gsap.js', array('gsap', 'scrollTrigger'), filemtime(get_theme_file_path('/js/gsap.js')), true);
 
 	if (is_front_page() || is_page('works')) {
 		wp_enqueue_style('swiper-css', get_template_directory_uri() . '/css/swiper-bundle.min.css', array(), filemtime(get_theme_file_path('/css/swiper-bundle.min.css')), 'all');
-		wp_enqueue_script('js-swiper-bundle', get_template_directory_uri() . '/js/swiper.min.js', array('jquery'), filemtime(get_theme_file_path('/js/swiper.min.js')), true);
-		wp_enqueue_script('js-swiper-init', get_template_directory_uri() . '/js/swiper.js', array('jquery'), filemtime(get_theme_file_path('/js/swiper.js')), true);
+		wp_enqueue_script('js-swiper-bundle', get_template_directory_uri() . '/js/swiper.min.js', array(), filemtime(get_theme_file_path('/js/swiper.min.js')), true);
+		wp_enqueue_script('js-swiper-init', get_template_directory_uri() . '/js/swiper.js', array('js-swiper-bundle'), filemtime(get_theme_file_path('/js/swiper.js')), true);
 	}
-	if (is_page('banquet') || is_page('restaurant') || is_page('suite-a') || is_page('suite-b') || is_page('twin') || is_page('double') || is_page('single') || is_page('japanese')) {
-		wp_enqueue_style('swiper-css', get_template_directory_uri() . '/css/swiper-bundle.min.css', array(), filemtime(get_theme_file_path('/css/swiper-bundle.min.css')), 'all');
-		wp_enqueue_script('js-swiper-bundle', get_template_directory_uri() . '/js/swiper.min.js', array('jquery'), filemtime(get_theme_file_path('/js/swiper.min.js')), true);
-		wp_enqueue_script('js-swiper-init', get_template_directory_uri() . '/js/swiper.js', array('jquery'), filemtime(get_theme_file_path('/js/swiper.js')), true);
-	}
-	if (is_page('office')) {
-		wp_enqueue_script('js-office-agreement', get_template_directory_uri() . '/js/office-agreement.js', array('jquery'), filemtime(get_theme_file_path('/js/office-agreement.js')), true);
-	}
+
 	if (is_page('contact')) {
 		wp_enqueue_script('js-contact-form', get_template_directory_uri() . '/js/contact-form.js', array(), filemtime(get_theme_file_path('/js/contact-form.js')), true);
 	}
+
 	wp_enqueue_script('script', get_template_directory_uri() . '/js/script.js', array('jquery'), filemtime(get_theme_file_path('/js/script.js')), true);
 }
 add_action('wp_enqueue_scripts', 'my_script_init');
@@ -531,13 +525,51 @@ function webp_is_displayable($result, $path)
 add_filter('file_is_displayable_image', 'webp_is_displayable', 10, 2);
 
 /**
- * 投稿詳細の入力項目を追加
+ * 投稿の入力項目を追加
  */
 function fun_life_register_single_fields()
 {
 	if (!function_exists('acf_add_local_field_group')) {
 		return;
 	}
+
+	$top_slider_fields = array(
+		array('key' => 'field_fun_life_works_top_slider_1', 'label' => 'TOPスライダー画像1', 'name' => 'works_top_slider_1'),
+		array('key' => 'field_fun_life_works_top_slider_2', 'label' => 'TOPスライダー画像2', 'name' => 'works_top_slider_2'),
+		array('key' => 'field_fun_life_works_top_slider_3', 'label' => 'TOPスライダー画像3', 'name' => 'works_top_slider_3'),
+	);
+
+	foreach ($top_slider_fields as &$top_slider_field) {
+		$top_slider_field['type'] = 'image';
+		$top_slider_field['instructions'] = 'TOPページの施工事例スライダーに表示する画像を設定します。';
+		$top_slider_field['return_format'] = 'id';
+		$top_slider_field['preview_size'] = 'medium';
+		$top_slider_field['library'] = 'all';
+		$top_slider_field['wrapper'] = array('width' => '33.33');
+	}
+	unset($top_slider_field);
+
+	acf_add_local_field_group(array(
+		'key' => 'group_fun_life_works_top_slider',
+		'title' => 'TOP施工事例スライダー',
+		'fields' => $top_slider_fields,
+		'location' => array(
+			array(
+				array(
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'post',
+				),
+			),
+		),
+		'menu_order' => -1,
+		'position' => 'normal',
+		'style' => 'default',
+		'label_placement' => 'top',
+		'instruction_placement' => 'label',
+		'active' => true,
+		'show_in_rest' => 0,
+	));
 
 	$text_fields = array(
 		array('key' => 'field_fun_life_works_spec', 'label' => '物件概要', 'name' => 'works_spec', 'type' => 'text'),
@@ -617,3 +649,73 @@ function fun_life_register_single_fields()
 	));
 }
 add_action('acf/init', 'fun_life_register_single_fields');
+
+/**
+ * 施工事例用ACFの管理画面制御を読み込む。
+ *
+ * @param string $hook_suffix 現在の管理画面フック。
+ */
+function fun_life_enqueue_works_admin_assets($hook_suffix)
+{
+	if (!in_array($hook_suffix, array('post.php', 'post-new.php'), true)) {
+		return;
+	}
+
+	$screen = get_current_screen();
+
+	if (!$screen || 'post' !== $screen->post_type) {
+		return;
+	}
+
+	$works_category = get_category_by_slug('works');
+
+	if (!$works_category instanceof WP_Term) {
+		return;
+	}
+
+	wp_enqueue_style(
+		'fun-life-admin-works-fields',
+		get_template_directory_uri() . '/css/admin-works-fields.css',
+		array(),
+		filemtime(get_theme_file_path('/css/admin-works-fields.css'))
+	);
+	wp_enqueue_script(
+		'fun-life-admin-works-fields',
+		get_template_directory_uri() . '/js/admin-works-fields.js',
+		array('wp-data'),
+		filemtime(get_theme_file_path('/js/admin-works-fields.js')),
+		true
+	);
+	wp_localize_script(
+		'fun-life-admin-works-fields',
+		'funLifeWorksFields',
+		array(
+			'categoryId' => (int) $works_category->term_id,
+			'groupKey' => 'group_fun_life_works_top_slider',
+		)
+	);
+}
+add_action('admin_enqueue_scripts', 'fun_life_enqueue_works_admin_assets');
+
+/**
+ * 施工事例以外の投稿ではTOPスライダー画像を更新しない。
+ *
+ * @param mixed  $value   保存予定の値。
+ * @param mixed  $post_id 投稿ID。
+ * @param array  $field   ACFフィールド設定。
+ * @return mixed
+ */
+function fun_life_restrict_works_slider_value($value, $post_id, $field)
+{
+	$post_id = (int) $post_id;
+
+	if (!$post_id || has_category('works', $post_id)) {
+		return $value;
+	}
+
+	return get_post_meta($post_id, $field['name'], true);
+}
+
+foreach (array('works_top_slider_1', 'works_top_slider_2', 'works_top_slider_3') as $works_slider_field_name) {
+	add_filter('acf/update_value/name=' . $works_slider_field_name, 'fun_life_restrict_works_slider_value', 10, 3);
+}

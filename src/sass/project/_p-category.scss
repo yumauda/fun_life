@@ -277,18 +277,6 @@
   aspect-ratio: 75 / 45;
   color: #000;
   border: 2px solid #000;
-  transition: color 0.3s ease, background-color 0.3s ease;
-
-  @media (hover: hover) and (pointer: fine) {
-    &:hover {
-      color: #fff;
-      background: #000;
-    }
-
-    &:hover .p-category__back-icon img {
-      filter: brightness(0) invert(1);
-    }
-  }
 }
 
 .p-category__back-text {
@@ -303,15 +291,10 @@
   aspect-ratio: 110 / 25;
   margin-top: rem(4);
   overflow: hidden;
-}
-
-.p-category__back-icon img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center center;
-  transition: filter 0.3s ease;
+  color: inherit;
+  background-color: currentColor;
+  -webkit-mask: url("../images/common/arrow-back.svg") center / contain no-repeat;
+  mask: url("../images/common/arrow-back.svg") center / contain no-repeat;
 }
 
 .p-category__pages-link:focus-visible,

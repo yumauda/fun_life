@@ -237,9 +237,9 @@
       while ($works_posts->have_posts()) {
         $works_posts->the_post();
         $project_images = array();
-        $project_image_ids = array(get_post_thumbnail_id());
+        $project_image_ids = array();
 
-        foreach (array('works_gallery_1', 'works_gallery_2', 'works_gallery_3', 'works_gallery_4') as $works_image_field) {
+        foreach (array('works_top_slider_1', 'works_top_slider_2', 'works_top_slider_3') as $works_image_field) {
           $works_image_id = function_exists('get_field')
             ? get_field($works_image_field)
             : get_post_meta(get_the_ID(), $works_image_field, true);
@@ -249,6 +249,24 @@
           }
 
           $project_image_ids[] = (int) $works_image_id;
+        }
+
+        $project_image_ids = array_values(array_unique(array_filter(array_map('intval', $project_image_ids))));
+
+        if (!$project_image_ids) {
+          $project_image_ids = array(get_post_thumbnail_id());
+
+          foreach (array('works_gallery_1', 'works_gallery_2', 'works_gallery_3', 'works_gallery_4') as $works_image_field) {
+            $works_image_id = function_exists('get_field')
+              ? get_field($works_image_field)
+              : get_post_meta(get_the_ID(), $works_image_field, true);
+
+            if (is_array($works_image_id) && isset($works_image_id['ID'])) {
+              $works_image_id = $works_image_id['ID'];
+            }
+
+            $project_image_ids[] = (int) $works_image_id;
+          }
         }
 
         foreach (array_unique(array_filter(array_map('intval', $project_image_ids))) as $project_image_id) {

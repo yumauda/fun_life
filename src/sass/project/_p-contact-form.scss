@@ -538,6 +538,18 @@
 .p-contact-form__button--back {
   color: #000;
   background: #fff;
+
+  @media (hover: hover) and (pointer: fine) {
+    &:not(:disabled):hover {
+      color: #fff;
+      background: #000;
+    }
+  }
+
+  &:focus-visible {
+    color: #fff;
+    background: #000;
+  }
 }
 
 .p-contact-form__confirm-content {

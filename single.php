@@ -136,7 +136,7 @@ if (have_posts()) :
         <nav class="p-single-blog__pages" aria-label="カテゴリーページを切り替える">
           <div class="p-single-blog__pages-heading">
             <p class="p-single-blog__pages-title">PAGES</p>
-            <a class="c-button-list" href="<?php echo esc_url($archive_url); ?>">
+            <a class="c-button-list c-hover-invert" href="<?php echo esc_url($archive_url); ?>">
               <span>一覧へ</span>
               <span class="c-button-list__arrow" aria-hidden="true"></span>
             </a>
@@ -286,7 +286,7 @@ if (have_posts()) :
         <nav class="p-single-blog__other-pages" aria-label="カテゴリーページを切り替える">
           <div class="p-single-blog__other-pages-heading">
             <p class="p-single-blog__other-pages-title">PAGES</p>
-            <a class="c-button-list" href="<?php echo esc_url($archive_url); ?>">
+            <a class="c-button-list c-hover-invert" href="<?php echo esc_url($archive_url); ?>">
               <span>一覧へ</span>
               <span class="c-button-list__arrow" aria-hidden="true"></span>
             </a>

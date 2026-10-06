@@ -1,0 +1,31 @@
+#acf-group_fun_life_works_top_slider .acf-fields {
+  transition: opacity 0.2s ease, filter 0.2s ease;
+}
+
+#acf-group_fun_life_works_top_slider.is-disabled .acf-fields {
+  opacity: 0.42;
+  filter: grayscale(1);
+  cursor: not-allowed;
+}
+
+#acf-group_fun_life_works_top_slider.is-disabled .acf-fields * {
+  cursor: not-allowed;
+}
+
+.fun-life-works-fields__notice {
+  box-sizing: border-box;
+  width: calc(100% - 24px);
+  padding-top: 10px;
+  padding-right: 12px;
+  padding-bottom: 10px;
+  padding-left: 12px;
+  margin-top: 12px;
+  margin-left: 12px;
+  color: #646970;
+  background-color: #f0f0f1;
+  border-left: 4px solid #8c8f94;
+}
+
+#acf-group_fun_life_works_top_slider:not(.is-disabled) .fun-life-works-fields__notice {
+  display: none;
+}

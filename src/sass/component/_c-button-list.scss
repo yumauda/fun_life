@@ -14,7 +14,6 @@
   font-size: rem(12);
   font-weight: $bold;
   line-height: 1;
-  transition: opacity 0.3s ease;
   border: 1px solid #000;
 
   @include mq(md) {
@@ -26,38 +25,20 @@
     font-size: rem(13.5);
   }
 
-  @media (hover: hover) and (pointer: fine) {
-    &:hover {
-      opacity: 0.5;
-    }
-  }
-
-  &:focus-visible {
-    outline: 2px solid #000;
-    outline-offset: rem(5);
-  }
 }
 
 .c-button-list__arrow {
-  position: relative;
   display: block;
   width: rem(24);
+  height: rem(8);
   margin-left: rem(12);
-  border-top: 1px solid #000;
+  color: inherit;
+  background-color: currentColor;
+  -webkit-mask: url("../images/common/arrow-right.svg") center / contain no-repeat;
+  mask: url("../images/common/arrow-right.svg") center / contain no-repeat;
 
   @include mq(md) {
     width: rem(29);
+    height: rem(10);
   }
-}
-
-.c-button-list__arrow::before {
-  position: absolute;
-  top: rem(-4);
-  right: 0;
-  width: rem(7);
-  height: rem(7);
-  content: "";
-  border-top: 1px solid #000;
-  border-right: 1px solid #000;
-  transform: rotate(45deg);
 }

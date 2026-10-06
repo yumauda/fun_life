@@ -62,7 +62,7 @@ function initScrollAnimations() {
     "main section h1, main section h2, main section h3, main section p, main section li, main section a.c-hover-invert"
   )).filter((target) => {
     return target.textContent.trim() !== ""
-      && !target.closest(".swiper, .p-modular__menu, .p-works-modal")
+      && !target.closest(".swiper, .p-modular__menu, .p-works-modal, .p-contact-form__privacy")
       && !target.matches(".p-top-project__counter");
   });
 

@@ -19,7 +19,7 @@
           </div>
         </div>
 
-        <a class="p-thanks__button" href="<?php echo esc_url(home_url('/')); ?>">TOPに戻る</a>
+        <a class="p-thanks__button c-hover-invert c-hover-invert--dark" href="<?php echo esc_url(home_url('/')); ?>">TOPに戻る</a>
       </div>
     </div>
   </section>

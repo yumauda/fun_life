@@ -74,11 +74,9 @@ $all_tags_url = $is_tag_archive
         </aside>
       </div>
       <div class="p-category__back-wrapper">
-        <a class="p-category__back" href="<?php echo esc_url(home_url('/')); ?>" aria-label="トップページへ">
+        <a class="p-category__back c-hover-invert" href="<?php echo esc_url(home_url('/')); ?>" aria-label="トップページへ">
           <p class="p-category__back-text">TOPへ</p>
-          <span class="p-category__back-icon" aria-hidden="true">
-            <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/back.webp" alt="" width="110" height="25">
-          </span>
+          <span class="p-category__back-icon" aria-hidden="true"></span>
         </a>
       </div>
     </div>

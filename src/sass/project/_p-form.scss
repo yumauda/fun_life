@@ -172,12 +172,18 @@
   border: 1px solid #000;
   border-radius: 0;
   cursor: pointer;
+  transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 .p-form__button--back {
   margin-top: rem(14);
   color: #000;
   background: #fff;
+
+  &:focus-visible {
+    color: #fff;
+    background: #000;
+  }
 }
 
 .p-form__confirm {
@@ -253,20 +259,23 @@
   font-size: rem(12);
   font-weight: $bold;
   background: #000;
+  border: 1px solid #000;
+  transition: color 0.3s ease, background-color 0.3s ease;
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .p-form__button,
-  .p-form input[type="submit"],
-  .p-contact__thanks-link a {
-    transition: color 0.3s ease, background-color 0.3s ease;
-  }
-
-  .p-form__button:hover,
-  .p-form input[type="submit"]:hover,
-  .p-contact__thanks-link a:hover {
+.p-form__button:hover,
+.p-form input[type="submit"]:hover,
+.p-contact__thanks-link a:hover {
+  @media (hover: hover) and (pointer: fine) {
     color: #000;
     background: #fff;
+  }
+}
+
+.p-form__button--back:hover {
+  @media (hover: hover) and (pointer: fine) {
+    color: #fff;
+    background: #000;
   }
 }
 
