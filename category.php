@@ -1,9 +1,12 @@
 <?php
 get_header();
 
-$queried_category = get_queried_object();
-$category_slug = $queried_category instanceof WP_Term ? $queried_category->slug : '';
-$category_name = $queried_category instanceof WP_Term ? $queried_category->name : '';
+$queried_term = get_queried_object();
+$is_tag_archive = is_tag();
+$category_slug = !$is_tag_archive && $queried_term instanceof WP_Term ? $queried_term->slug : '';
+$category_name = !$is_tag_archive && $queried_term instanceof WP_Term ? $queried_term->name : '';
+$current_tag_id = $is_tag_archive && $queried_term instanceof WP_Term ? (int) $queried_term->term_id : 0;
+$current_tag_name = $is_tag_archive && $queried_term instanceof WP_Term ? $queried_term->name : '';
 $is_works_category = in_array($category_slug, array('works', 'work', 'construction'), true)
   || in_array($category_name, array('施工事例', 'WORKS'), true);
 $category_config = array(
@@ -12,25 +15,22 @@ $category_config = array(
   'blog' => array('en' => 'BLOG', 'ja' => 'ブログ'),
   'event' => array('en' => 'EVENT', 'ja' => 'イベント/お知らせ'),
 );
-$current_config = isset($category_config[$category_slug])
-  ? $category_config[$category_slug]
-  : array('en' => strtoupper($category_slug), 'ja' => $category_name);
+$current_config = $is_tag_archive
+  ? array('en' => 'TAGS', 'ja' => $current_tag_name)
+  : (isset($category_config[$category_slug])
+    ? $category_config[$category_slug]
+    : array('en' => strtoupper($category_slug), 'ja' => $category_name));
 $category_nav_order = array('works', 'event', 'column', 'blog');
-$placeholder_tags = array(
-  'すべて',
-  '平屋',
-  '規格住宅',
-  '二階建て',
-  '店舗兼住宅',
-  'リフォーム',
-  'リノベーション',
-  'アパート',
-  '内装',
-  '外装',
-  'モデルハウス',
-  'メンテナンス',
-  'お知らせ',
+$archive_tags = get_tags(
+  array(
+    'hide_empty' => false,
+    'orderby' => 'term_id',
+    'order' => 'ASC',
+  )
 );
+$all_tags_url = $is_tag_archive
+  ? fun_life_category_url('blog')
+  : fun_life_category_url($category_slug);
 ?>
 
 <main>
@@ -60,9 +60,15 @@ $placeholder_tags = array(
         <aside class="p-category__tags" aria-label="タグ一覧">
           <p class="p-category__tags-title">TAGS</p>
           <div class="p-category__tags-list">
-            <?php foreach ($placeholder_tags as $tag_index => $placeholder_tag) : ?>
-              <?php $is_current_tag = 0 === $tag_index; ?>
-              <span class="p-category__tag<?php echo $is_current_tag ? ' is-current' : ''; ?>"><?php echo esc_html($placeholder_tag); ?></span>
+            <a class="p-category__tag<?php echo $is_tag_archive ? '' : ' is-current'; ?>" href="<?php echo esc_url($all_tags_url); ?>"<?php echo $is_tag_archive ? '' : ' aria-current="page"'; ?>>すべて</a>
+            <?php foreach ($archive_tags as $archive_tag) : ?>
+              <?php
+              $is_current_tag = $current_tag_id === (int) $archive_tag->term_id;
+              $tag_url = get_tag_link($archive_tag);
+              ?>
+              <?php if (!is_wp_error($tag_url)) : ?>
+                <a class="p-category__tag<?php echo $is_current_tag ? ' is-current' : ''; ?>" href="<?php echo esc_url($tag_url); ?>"<?php echo $is_current_tag ? ' aria-current="page"' : ''; ?>><?php echo esc_html($archive_tag->name); ?></a>
+              <?php endif; ?>
             <?php endforeach; ?>
           </div>
         </aside>
@@ -78,7 +84,7 @@ $placeholder_tags = array(
     </div>
   </section>
 
-  <section class="p-blog__archive p-category__archive">
+  <div class="p-blog__archive p-category__archive">
     <div class="l-inner">
       <?php if (have_posts()) : ?>
         <div class="p-blog__grid">
@@ -86,7 +92,7 @@ $placeholder_tags = array(
             <?php
             the_post();
             $post_categories = get_the_category();
-            $card_category = $post_categories ? $post_categories[0]->name : $category_name;
+            $card_category = $post_categories ? $post_categories[0]->name : $current_config['ja'];
             $thumbnail_id = get_post_thumbnail_id();
             $thumbnail_alt = $thumbnail_id ? get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true) : '';
             $thumbnail_alt = $thumbnail_alt ?: get_the_title();
@@ -115,7 +121,7 @@ $placeholder_tags = array(
 
         <?php fun_life_blog_pagination('記事一覧のページ送り'); ?>
       <?php else : ?>
-        <p class="p-category__empty">現在、このカテゴリーの記事はありません。</p>
+        <p class="p-category__empty">現在、該当する記事はありません。</p>
       <?php endif; ?>
       <?php
       get_template_part(
@@ -128,7 +134,7 @@ $placeholder_tags = array(
       );
       ?>
     </div>
-  </section>
+  </div>
 
   <?php get_template_part('includes/contact'); ?>
 </main>

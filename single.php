@@ -78,27 +78,33 @@ if (have_posts()) :
     $third_heading = $get_detail('works_third_heading', "視線が抜ける、\n開放的な家族の空間。");
     $third_text = $get_detail('works_third_text', '吹き抜けとスケルトン階段が上下階を繋ぎ、どこにいても家族の気配を感じられます。たっぷりの自然光と、使いやすい収納計画で、心地よさと暮らしやすさを両立しました。');
     $before_after_text = $get_detail('works_before_after_text', '外からの視線をほどよく遮りながら、家族が安心して過ごせる中庭に。室内とひと続きに使える、もう一つのリビングが生まれました。');
-    $works_overview_rows = array(
-      array(
-        'left' => array('label' => '建物タイプ', 'value' => $get_detail('works_building_type', '二階建て')),
-        'right' => array('label' => '間取り', 'value' => $get_detail('works_layout', '32坪 / 3LDK吹き抜け')),
-      ),
-      array(
-        'left' => array('label' => '工事種別', 'value' => $get_detail('works_construction_type', '新築')),
-        'right' => array('label' => 'テイスト', 'value' => $get_detail('works_taste', 'ナチュラルモダン')),
-      ),
-      array(
-        'left' => array('label' => 'エリア', 'value' => $get_detail('works_area', '熊本県熊本市')),
-        'right' => array('label' => '性能', 'value' => $get_detail('works_performance', 'UA値0.46／耐震等級3')),
-      ),
-      array(
-        'left' => array('label' => '延床面積', 'value' => $get_detail('works_floor_area', '32.5坪（107.4㎡）')),
-        'right' => array('label' => 'こだわり', 'value' => $get_detail('works_features', '回遊動線・吹き抜け・造作洗面・無垢フローリング')),
-      ),
-      array(
-        'left' => array('label' => '素材', 'value' => $get_detail('works_material', '無垢材・塗り壁')),
-        'right' => null,
-      ),
+    $works_overview_items = array(
+      array('label' => '建物タイプ', 'value' => $get_detail('works_building_type')),
+      array('label' => '間取り', 'value' => $get_detail('works_layout')),
+      array('label' => '工事種別', 'value' => $get_detail('works_construction_type')),
+      array('label' => 'テイスト', 'value' => $get_detail('works_taste')),
+      array('label' => 'エリア', 'value' => $get_detail('works_area')),
+      array('label' => '性能', 'value' => $get_detail('works_performance')),
+      array('label' => '延床面積', 'value' => $get_detail('works_floor_area')),
+      array('label' => 'こだわり', 'value' => $get_detail('works_features')),
+      array('label' => '素材', 'value' => $get_detail('works_material')),
+    );
+    $works_overview_items = array_values(
+      array_filter(
+        $works_overview_items,
+        static function ($overview_item) {
+          return '' !== $overview_item['value'];
+        }
+      )
+    );
+    $works_overview_rows = array_map(
+      static function ($overview_items) {
+        return array(
+          'left' => $overview_items[0],
+          'right' => isset($overview_items[1]) ? $overview_items[1] : null,
+        );
+      },
+      array_chunk($works_overview_items, 2)
     );
     $hero_image_id = get_post_thumbnail_id();
     $other_posts = new WP_Query(array(
@@ -148,7 +154,7 @@ if (have_posts()) :
       </figure>
     </header>
 
-    <?php if ($is_works) : ?>
+    <?php if ($is_works && $works_overview_rows) : ?>
       <section class="p-single-blog__works-overview" aria-label="施工事例の建物情報">
         <div class="l-inner">
           <table class="p-single-blog__works-overview-table">
@@ -214,7 +220,7 @@ if (have_posts()) :
         </div>
       </section>
 
-      <section class="p-single-blog__section p-single-blog__section--before-after">
+      <div class="p-single-blog__section p-single-blog__section--before-after">
         <figure class="p-single-blog__before-after-image">
           <?php echo $render_image($get_detail('works_before_image'), 'blog_2.jpg', get_the_title(), 1000, 1500); ?>
           <figcaption>BEFORE</figcaption>
@@ -224,7 +230,7 @@ if (have_posts()) :
           <figcaption>AFTER</figcaption>
         </figure>
         <p class="p-single-blog__text"><?php echo esc_html($before_after_text); ?></p>
-      </section>
+      </div>
       <?php else : ?>
         <section class="p-single-blog__section">
           <div class="p-single-blog__editor-content">
