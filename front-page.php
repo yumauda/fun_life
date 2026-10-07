@@ -418,6 +418,166 @@
     </div>
   </section>
 
+  <?php
+  $modular_additional_groups = array(
+    array(
+      'slug' => 'courtyard',
+      'label' => '中庭の家',
+      'plans' => array(
+        array(
+          'slug' => 'courtyard-court',
+          'name' => 'コート',
+          'images' => array(
+            array('path' => '/images/top/project-example-1-1.webp', 'width' => 1620, 'height' => 1080),
+            array('path' => '/images/top/project-example-1-2.webp', 'width' => 1080, 'height' => 1620),
+          ),
+          'note' => '中庭の光と風を、暮らしの中心に取り込む家。',
+          'description' => '中庭を囲むように居室を配置した、開放感とプライバシーを両立するダミープランです。',
+        ),
+        array(
+          'slug' => 'courtyard-patio',
+          'name' => 'パティオ',
+          'images' => array(
+            array('path' => '/images/top/project-example-1-3.webp', 'width' => 1080, 'height' => 1620),
+            array('path' => '/images/top/project-example-2-1.webp', 'width' => 1620, 'height' => 1080),
+          ),
+          'note' => '家族だけの空を楽しめる、プライベートな中庭。',
+          'description' => '室内と庭が自然につながり、家族の時間をゆったり楽しめる中庭住宅のダミープランです。',
+        ),
+      ),
+    ),
+    array(
+      'slug' => 'second',
+      'label' => '2階リビング',
+      'plans' => array(
+        array(
+          'slug' => 'second-sora',
+          'name' => 'ソラ',
+          'images' => array(
+            array('path' => '/images/top/project-example-2-2.webp', 'width' => 1080, 'height' => 1620),
+            array('path' => '/images/top/project-example-2-3.webp', 'width' => 1080, 'height' => 1620),
+          ),
+          'note' => '空に近いリビングで、明るくのびやかに暮らす。',
+          'description' => '光と眺めを取り込みやすい2階に家族の居場所を設けた、明るい住まいのダミープランです。',
+        ),
+        array(
+          'slug' => 'second-view',
+          'name' => 'ビュー',
+          'images' => array(
+            array('path' => '/images/top/project-example-3-1.webp', 'width' => 1170, 'height' => 878),
+            array('path' => '/images/top/project-example-3-2.webp', 'width' => 1600, 'height' => 2400),
+          ),
+          'note' => '景色を切り取る窓が、毎日の特等席になる家。',
+          'description' => '周囲の視線をかわしながら、眺望を楽しむ2階リビングを中心にしたダミープランです。',
+        ),
+      ),
+    ),
+    array(
+      'slug' => 'skiphous',
+      'label' => 'スキップフロア',
+      'plans' => array(
+        array(
+          'slug' => 'skip-step',
+          'name' => 'ステップ',
+          'images' => array(
+            array('path' => '/images/top/project-example-3-3.webp', 'width' => 1600, 'height' => 2400),
+            array('path' => '/images/blog-single/blog_1.jpg', 'width' => 1000, 'height' => 1500),
+          ),
+          'note' => '段差が生み出す、つながりと居場所のある暮らし。',
+          'description' => '床の高さを緩やかに変え、ひとつの空間に多彩な居場所をつくるダミープランです。',
+        ),
+        array(
+          'slug' => 'skip-link',
+          'name' => 'リンク',
+          'images' => array(
+            array('path' => '/images/blog-single/blog_2.jpg', 'width' => 1000, 'height' => 1500),
+            array('path' => '/images/blog-single/blog_4.jpg', 'width' => 1000, 'height' => 1500),
+          ),
+          'note' => '目線がつながり、家族の気配を感じられる家。',
+          'description' => 'フロアごとの居場所が立体的につながる、家族の距離感を大切にしたダミープランです。',
+        ),
+      ),
+    ),
+    array(
+      'slug' => 'earth',
+      'label' => '土間の家',
+      'plans' => array(
+        array(
+          'slug' => 'earth-doma',
+          'name' => 'ドマ',
+          'images' => array(
+            array('path' => '/images/blog-single/blog_5.jpg', 'width' => 1000, 'height' => 1500),
+            array('path' => '/images/blog-single/blog_6.jpg', 'width' => 2000, 'height' => 3000),
+          ),
+          'note' => '外の楽しみを、そのまま室内へつなぐ土間空間。',
+          'description' => '趣味や家事に自由に使える広い土間を、暮らしの中心に取り入れたダミープランです。',
+        ),
+        array(
+          'slug' => 'earth-en',
+          'name' => 'エン',
+          'images' => array(
+            array('path' => '/images/blog-single/blog_7.jpg', 'width' => 1000, 'height' => 1500),
+            array('path' => '/images/blog-single/blog_8.jpg', 'width' => 2000, 'height' => 3000),
+          ),
+          'note' => '土間と縁側が、人と暮らしをやさしく結ぶ家。',
+          'description' => '内と外の中間領域をゆったり設け、自然と触れ合う時間を楽しめるダミープランです。',
+        ),
+      ),
+    ),
+    array(
+      'slug' => 'one-room',
+      'label' => 'ワンルーム',
+      'plans' => array(
+        array(
+          'slug' => 'one-room-one',
+          'name' => 'ワン',
+          'images' => array(
+            array('path' => '/images/works/reform_img.webp', 'width' => 1396, 'height' => 1105),
+            array('path' => '/images/works/reform_link1.webp', 'width' => 1594, 'height' => 1160),
+          ),
+          'note' => 'ひとつながりの空間を、自分らしく使いこなす。',
+          'description' => '間仕切りを抑えた大きな空間で、暮らしに合わせて居場所を変えられるダミープランです。',
+        ),
+        array(
+          'slug' => 'one-room-minima',
+          'name' => 'ミニマ',
+          'images' => array(
+            array('path' => '/images/works/reform_link2.webp', 'width' => 1215, 'height' => 884),
+            array('path' => '/images/works/performance_img.webp', 'width' => 1100, 'height' => 1401),
+          ),
+          'note' => '小さく整えて、心地よく豊かに暮らす家。',
+          'description' => '必要な機能をコンパクトにまとめ、余白を楽しむミニマルな暮らしのダミープランです。',
+        ),
+      ),
+    ),
+    array(
+      'slug' => 'garage',
+      'label' => 'ガレージハウス',
+      'plans' => array(
+        array(
+          'slug' => 'garage-gare',
+          'name' => 'ガレ',
+          'images' => array(
+            array('path' => '/images/blog-single/blog2.jpg', 'width' => 1620, 'height' => 1080),
+            array('path' => '/images/blog-single/blog3.jpg', 'width' => 1620, 'height' => 1080),
+          ),
+          'note' => '愛車を眺める時間まで、暮らしの一部になる家。',
+          'description' => 'ガレージと居住空間を近づけ、車やバイクのある日常を楽しむためのダミープランです。',
+        ),
+        array(
+          'slug' => 'garage-pit',
+          'name' => 'ピット',
+          'images' => array(
+            array('path' => '/images/blog-single/blog6.jpg', 'width' => 1000, 'height' => 1500),
+            array('path' => '/images/top/no_new.webp', 'width' => 1000, 'height' => 1000),
+          ),
+          'note' => '趣味に没頭できるピットが、毎日をもっと楽しくする。',
+          'description' => 'メンテナンスや収納にも使える作業スペースを備えた、趣味を楽しむダミープランです。',
+        ),
+      ),
+    ),
+  );
+  ?>
   <section class="p-modular is-mobile-awaiting-selection" id="modular">
     <!-- ダミー外観写真: Pexels / Max Vakhtbovych（photo IDs 7587854–7587884） -->
     <div class="l-inner">
@@ -430,11 +590,11 @@
           規格住宅とは、プロが厳選した間取りやデザイン(型)を<br class="u-desktop">ベースに建てるお家です。
         </p>
         <div class="p-modular__body">
-          <div class="p-modular__menu" aria-label="規格住宅プラン">
+          <div class="p-modular__menu" role="group" aria-label="規格住宅プラン">
             <p class="p-modular__menu-title">シンプルモダン</p>
             <div class="p-modular__menu-row p-modular__menu-row--primary" data-modular-group="simple">
               <button class="p-modular__menu-button" type="button" aria-expanded="false" aria-controls="modular-simple-options">平屋</button>
-              <div class="p-modular__sub-menu" id="modular-simple-options" aria-label="シンプルモダン 平屋">
+              <div class="p-modular__sub-menu" id="modular-simple-options" role="group" aria-label="シンプルモダン 平屋">
                 <button class="p-modular__sub-button is-active" type="button" data-modular-target="koti">コティ</button>
                 <button class="p-modular__sub-button" type="button" data-modular-target="root">ルートゥ</button>
                 <button class="p-modular__sub-button" type="button" data-modular-target="polku">ポルク</button>
@@ -442,48 +602,29 @@
               </div>
             </div>
             <div class="p-modular__additional-menu">
-              <div class="p-modular__menu-row" data-modular-group="courtyard">
-                <button class="p-modular__menu-button" type="button" aria-expanded="false" aria-controls="modular-courtyard-options">中庭の家</button>
-                <div class="p-modular__sub-menu" id="modular-courtyard-options" aria-label="中庭の家">
-                  <button class="p-modular__sub-button" type="button" data-modular-target="courtyard-court" data-modular-name="コート">コート</button>
-                  <button class="p-modular__sub-button" type="button" data-modular-target="courtyard-patio" data-modular-name="パティオ">パティオ</button>
+              <?php foreach ($modular_additional_groups as $modular_group) : ?>
+                <div class="p-modular__menu-row" data-modular-group="<?php echo esc_attr($modular_group['slug']); ?>">
+                  <button class="p-modular__menu-button" type="button" aria-expanded="false" aria-controls="modular-<?php echo esc_attr($modular_group['slug']); ?>-options"><?php echo esc_html($modular_group['label']); ?></button>
+                  <div class="p-modular__sub-menu" id="modular-<?php echo esc_attr($modular_group['slug']); ?>-options" role="group" aria-label="<?php echo esc_attr($modular_group['label']); ?>">
+                    <?php foreach ($modular_group['plans'] as $modular_plan) : ?>
+                      <button
+                        class="p-modular__sub-button"
+                        type="button"
+                        data-modular-target="<?php echo esc_attr($modular_plan['slug']); ?>"
+                        data-modular-name="<?php echo esc_attr($modular_plan['name']); ?>"
+                        data-modular-image-1="<?php echo esc_url(get_template_directory_uri() . $modular_plan['images'][0]['path']); ?>"
+                        data-modular-image-1-width="<?php echo esc_attr($modular_plan['images'][0]['width']); ?>"
+                        data-modular-image-1-height="<?php echo esc_attr($modular_plan['images'][0]['height']); ?>"
+                        data-modular-image-2="<?php echo esc_url(get_template_directory_uri() . $modular_plan['images'][1]['path']); ?>"
+                        data-modular-image-2-width="<?php echo esc_attr($modular_plan['images'][1]['width']); ?>"
+                        data-modular-image-2-height="<?php echo esc_attr($modular_plan['images'][1]['height']); ?>"
+                        data-modular-note="<?php echo esc_attr($modular_plan['note']); ?>"
+                        data-modular-description="<?php echo esc_attr($modular_plan['description']); ?>"
+                      ><?php echo esc_html($modular_plan['name']); ?></button>
+                    <?php endforeach; ?>
+                  </div>
                 </div>
-              </div>
-              <div class="p-modular__menu-row" data-modular-group="second">
-                <button class="p-modular__menu-button" type="button" aria-expanded="false" aria-controls="modular-second-options">2階リビング</button>
-                <div class="p-modular__sub-menu" id="modular-second-options" aria-label="2階リビング">
-                  <button class="p-modular__sub-button" type="button" data-modular-target="second-sora" data-modular-name="ソラ">ソラ</button>
-                  <button class="p-modular__sub-button" type="button" data-modular-target="second-view" data-modular-name="ビュー">ビュー</button>
-                </div>
-              </div>
-              <div class="p-modular__menu-row" data-modular-group="skiphous">
-                <button class="p-modular__menu-button" type="button" aria-expanded="false" aria-controls="modular-skip-options">スキップフロア</button>
-                <div class="p-modular__sub-menu" id="modular-skip-options" aria-label="スキップフロア">
-                  <button class="p-modular__sub-button" type="button" data-modular-target="skip-step" data-modular-name="ステップ">ステップ</button>
-                  <button class="p-modular__sub-button" type="button" data-modular-target="skip-link" data-modular-name="リンク">リンク</button>
-                </div>
-              </div>
-              <div class="p-modular__menu-row" data-modular-group="earth">
-                <button class="p-modular__menu-button" type="button" aria-expanded="false" aria-controls="modular-earth-options">土間の家</button>
-                <div class="p-modular__sub-menu" id="modular-earth-options" aria-label="土間の家">
-                  <button class="p-modular__sub-button" type="button" data-modular-target="earth-doma" data-modular-name="ドマ">ドマ</button>
-                  <button class="p-modular__sub-button" type="button" data-modular-target="earth-en" data-modular-name="エン">エン</button>
-                </div>
-              </div>
-              <div class="p-modular__menu-row" data-modular-group="one-room">
-                <button class="p-modular__menu-button" type="button" aria-expanded="false" aria-controls="modular-one-room-options">ワンルーム</button>
-                <div class="p-modular__sub-menu" id="modular-one-room-options" aria-label="ワンルーム">
-                  <button class="p-modular__sub-button" type="button" data-modular-target="one-room-one" data-modular-name="ワン">ワン</button>
-                  <button class="p-modular__sub-button" type="button" data-modular-target="one-room-minima" data-modular-name="ミニマ">ミニマ</button>
-                </div>
-              </div>
-              <div class="p-modular__menu-row" data-modular-group="garage">
-                <button class="p-modular__menu-button" type="button" aria-expanded="false" aria-controls="modular-garage-options">ガレージハウス</button>
-                <div class="p-modular__sub-menu" id="modular-garage-options" aria-label="ガレージハウス">
-                  <button class="p-modular__sub-button" type="button" data-modular-target="garage-gare" data-modular-name="ガレ">ガレ</button>
-                  <button class="p-modular__sub-button" type="button" data-modular-target="garage-pit" data-modular-name="ピット">ピット</button>
-                </div>
-              </div>
+              <?php endforeach; ?>
             </div>
           </div>
           <div class="p-modular__main">
@@ -607,7 +748,7 @@
                       <div class="p-modular__card">
                         <div class="p-modular__card-visual">
                           <figure class="p-modular__image">
-                            <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/modular-root-01.webp" alt="規格住宅の外観イメージ" width="1800" height="1201" data-modular-dummy-image>
+                            <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/modular-root-01.webp" alt="規格住宅の外観イメージ" width="1800" height="1201" data-modular-dummy-image="1">
                           </figure>
                           <p class="p-modular__slider-note"><span data-modular-dummy-note>プランの暮らしを楽しむ、心地よい規格住宅。</span></p>
                         </div>
@@ -618,7 +759,7 @@
                       <div class="p-modular__card">
                         <div class="p-modular__card-visual">
                           <figure class="p-modular__image">
-                            <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/modular-perhe-01.webp" alt="規格住宅の外観イメージ" width="1800" height="1201" data-modular-dummy-image>
+                            <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/modular-perhe-01.webp" alt="規格住宅の外観イメージ" width="1800" height="1201" data-modular-dummy-image="2">
                           </figure>
                           <p class="p-modular__slider-note"><span data-modular-dummy-note>プランの暮らしを楽しむ、心地よい規格住宅。</span></p>
                         </div>
@@ -712,7 +853,7 @@
           </div>
           <div class="p-home-model-house__visual">
             <div class="p-home-model-house__status">
-              <div class="p-home-model-house__progress" aria-label="モデルハウス画像を選択">
+              <div class="p-home-model-house__progress" role="group" aria-label="モデルハウス画像を選択">
                 <button class="p-home-model-house__progress-item is-active" type="button" aria-label="1枚目を表示" aria-current="true"></button>
                 <button class="p-home-model-house__progress-item" type="button" aria-label="2枚目を表示"></button>
                 <button class="p-home-model-house__progress-item" type="button" aria-label="3枚目を表示"></button>

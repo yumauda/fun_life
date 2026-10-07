@@ -236,12 +236,26 @@ if (modularRoot) {
       const categoryName = menuButton ? menuButton.textContent.trim() : "規格住宅";
 
       activePanel.querySelectorAll("[data-modular-dummy-note]").forEach((note) => {
-        note.textContent = `${planName}の暮らしを楽しむ、心地よい規格住宅。`;
+        note.textContent = sourceButton.dataset.modularNote || `${planName}の暮らしを楽しむ、心地よい規格住宅。`;
       });
       activePanel.querySelectorAll("[data-modular-dummy-description]").forEach((description) => {
-        description.textContent = `${categoryName}「${planName}」の特徴を活かしたダミープランです。暮らしやすい動線と、家族が自然に集まる空間をご提案します。`;
+        description.textContent = sourceButton.dataset.modularDescription || `${categoryName}「${planName}」の特徴を活かしたダミープランです。暮らしやすい動線と、家族が自然に集まる空間をご提案します。`;
       });
       activePanel.querySelectorAll("[data-modular-dummy-image]").forEach((image) => {
+        const imageNumber = image.dataset.modularDummyImage;
+        const imageSource = sourceButton.getAttribute(`data-modular-image-${imageNumber}`);
+        const imageWidth = sourceButton.getAttribute(`data-modular-image-${imageNumber}-width`);
+        const imageHeight = sourceButton.getAttribute(`data-modular-image-${imageNumber}-height`);
+
+        if (imageSource) {
+          image.src = imageSource;
+        }
+
+        if (imageWidth && imageHeight) {
+          image.width = Number(imageWidth);
+          image.height = Number(imageHeight);
+        }
+
         image.alt = `${categoryName} ${planName}の外観イメージ`;
       });
     }
