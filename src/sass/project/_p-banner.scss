@@ -16,13 +16,9 @@
 
 .p-banner__link {
   display: block;
-  width: calc(324 / 375) * 100vw;
   margin-right: auto;
   margin-left: auto;
-
-  @include mq(md) {
-    width: 100%;
-  }
+  width: 100%;
 }
 
 .p-banner__image {

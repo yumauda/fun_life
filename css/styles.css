@@ -689,14 +689,9 @@ select::-ms-expand {
 
 .p-banner__link {
   display: block;
-  width: 86.4vw;
   margin-right: auto;
   margin-left: auto;
-}
-@media screen and (min-width: 768px) {
-  .p-banner__link {
-    width: 100%;
-  }
+  width: 100%;
 }
 
 .p-banner__image {
