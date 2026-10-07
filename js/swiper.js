@@ -226,9 +226,28 @@ if (modularRoot) {
     });
   };
 
-  const showPanel = (target) => {
+  const showPanel = (target, sourceButton = null) => {
+    const matchedPanel = panels.find((panel) => panel.dataset.modularPanel === target);
+    const activePanel = matchedPanel || panels.find((panel) => panel.dataset.modularPanel === "dummy");
+
+    if (!matchedPanel && activePanel && sourceButton) {
+      const planName = sourceButton.dataset.modularName || sourceButton.textContent.trim();
+      const menuButton = sourceButton.closest(".p-modular__menu-row")?.querySelector(".p-modular__menu-button");
+      const categoryName = menuButton ? menuButton.textContent.trim() : "規格住宅";
+
+      activePanel.querySelectorAll("[data-modular-dummy-note]").forEach((note) => {
+        note.textContent = `${planName}の暮らしを楽しむ、心地よい規格住宅。`;
+      });
+      activePanel.querySelectorAll("[data-modular-dummy-description]").forEach((description) => {
+        description.textContent = `${categoryName}「${planName}」の特徴を活かしたダミープランです。暮らしやすい動線と、家族が自然に集まる空間をご提案します。`;
+      });
+      activePanel.querySelectorAll("[data-modular-dummy-image]").forEach((image) => {
+        image.alt = `${categoryName} ${planName}の外観イメージ`;
+      });
+    }
+
     panels.forEach((panel) => {
-      const isActive = panel.dataset.modularPanel === target;
+      const isActive = panel === activePanel;
 
       panel.classList.toggle("is-active", isActive);
       panel.setAttribute("aria-hidden", String(!isActive));
@@ -243,7 +262,6 @@ if (modularRoot) {
     });
 
     requestAnimationFrame(() => {
-      const activePanel = panels.find((panel) => panel.dataset.modularPanel === target);
       const activeSwiper = modularSwipers.find((item) => activePanel && activePanel.contains(item.element));
 
       if (activeSwiper) {
@@ -256,6 +274,12 @@ if (modularRoot) {
   rows.forEach((row) => {
     row.addEventListener("mouseenter", () => {
       if (!mobileMedia.matches) {
+        const activeElement = document.activeElement;
+
+        if (activeElement instanceof HTMLElement && modularRoot.contains(activeElement) && !row.contains(activeElement)) {
+          activeElement.blur();
+        }
+
         updateActiveRow(row);
       }
     });
@@ -292,7 +316,7 @@ if (modularRoot) {
         updateActiveRow(parentRow);
       }
 
-      showPanel(button.dataset.modularTarget);
+      showPanel(button.dataset.modularTarget, button);
 
       if (mobileMedia.matches) {
         modularRoot.classList.remove("is-mobile-awaiting-selection");

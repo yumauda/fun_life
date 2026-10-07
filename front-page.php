@@ -443,19 +443,47 @@
             </div>
             <div class="p-modular__additional-menu">
               <div class="p-modular__menu-row" data-modular-group="courtyard">
-                <button class="p-modular__menu-button" type="button">中庭の家</button>
+                <button class="p-modular__menu-button" type="button" aria-expanded="false" aria-controls="modular-courtyard-options">中庭の家</button>
+                <div class="p-modular__sub-menu" id="modular-courtyard-options" aria-label="中庭の家">
+                  <button class="p-modular__sub-button" type="button" data-modular-target="courtyard-court" data-modular-name="コート">コート</button>
+                  <button class="p-modular__sub-button" type="button" data-modular-target="courtyard-patio" data-modular-name="パティオ">パティオ</button>
+                </div>
               </div>
               <div class="p-modular__menu-row" data-modular-group="second">
-                <button class="p-modular__menu-button" type="button">2階リビング</button>
+                <button class="p-modular__menu-button" type="button" aria-expanded="false" aria-controls="modular-second-options">2階リビング</button>
+                <div class="p-modular__sub-menu" id="modular-second-options" aria-label="2階リビング">
+                  <button class="p-modular__sub-button" type="button" data-modular-target="second-sora" data-modular-name="ソラ">ソラ</button>
+                  <button class="p-modular__sub-button" type="button" data-modular-target="second-view" data-modular-name="ビュー">ビュー</button>
+                </div>
               </div>
               <div class="p-modular__menu-row" data-modular-group="skiphous">
-                <button class="p-modular__menu-button" type="button">スキップフロア</button>
+                <button class="p-modular__menu-button" type="button" aria-expanded="false" aria-controls="modular-skip-options">スキップフロア</button>
+                <div class="p-modular__sub-menu" id="modular-skip-options" aria-label="スキップフロア">
+                  <button class="p-modular__sub-button" type="button" data-modular-target="skip-step" data-modular-name="ステップ">ステップ</button>
+                  <button class="p-modular__sub-button" type="button" data-modular-target="skip-link" data-modular-name="リンク">リンク</button>
+                </div>
               </div>
               <div class="p-modular__menu-row" data-modular-group="earth">
-                <button class="p-modular__menu-button" type="button">土間の家</button>
+                <button class="p-modular__menu-button" type="button" aria-expanded="false" aria-controls="modular-earth-options">土間の家</button>
+                <div class="p-modular__sub-menu" id="modular-earth-options" aria-label="土間の家">
+                  <button class="p-modular__sub-button" type="button" data-modular-target="earth-doma" data-modular-name="ドマ">ドマ</button>
+                  <button class="p-modular__sub-button" type="button" data-modular-target="earth-en" data-modular-name="エン">エン</button>
+                </div>
               </div>
-              <p class="p-modular__menu-title p-modular__menu-title--mt">ワンルーム</p>
-              <p class="p-modular__menu-title p-modular__menu-title--mt">ガレージハウス</p>
+              <div class="p-modular__menu-row" data-modular-group="one-room">
+                <button class="p-modular__menu-button" type="button" aria-expanded="false" aria-controls="modular-one-room-options">ワンルーム</button>
+                <div class="p-modular__sub-menu" id="modular-one-room-options" aria-label="ワンルーム">
+                  <button class="p-modular__sub-button" type="button" data-modular-target="one-room-one" data-modular-name="ワン">ワン</button>
+                  <button class="p-modular__sub-button" type="button" data-modular-target="one-room-minima" data-modular-name="ミニマ">ミニマ</button>
+                </div>
+              </div>
+              <div class="p-modular__menu-row" data-modular-group="garage">
+                <button class="p-modular__menu-button" type="button" aria-expanded="false" aria-controls="modular-garage-options">ガレージハウス</button>
+                <div class="p-modular__sub-menu" id="modular-garage-options" aria-label="ガレージハウス">
+                  <button class="p-modular__sub-button" type="button" data-modular-target="garage-gare" data-modular-name="ガレ">ガレ</button>
+                  <button class="p-modular__sub-button" type="button" data-modular-target="garage-pit" data-modular-name="ピット">ピット</button>
+                </div>
+              </div>
             </div>
           </div>
           <div class="p-modular__main">
@@ -567,6 +595,34 @@
                           <p class="p-modular__slider-note"><span>段差で空間を分け、家族の距離が近くなる住まい。</span></p>
                         </div>
                         <p class="p-modular__description">資料の平面を再現し設計とアイデアを反映したCONCEPTモデルです。<br>シンプルタイプを中心にとして画像でみることで細かな注文住宅の空間をお届けします。</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="p-modular__panel" data-modular-panel="dummy">
+                <div class="swiper p-modular__slider">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                      <div class="p-modular__card">
+                        <div class="p-modular__card-visual">
+                          <figure class="p-modular__image">
+                            <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/modular-root-01.webp" alt="規格住宅の外観イメージ" width="1800" height="1201" data-modular-dummy-image>
+                          </figure>
+                          <p class="p-modular__slider-note"><span data-modular-dummy-note>プランの暮らしを楽しむ、心地よい規格住宅。</span></p>
+                        </div>
+                        <p class="p-modular__description" data-modular-dummy-description>プランの特徴を活かしたダミープランです。暮らしやすい動線と、家族が自然に集まる空間をご提案します。</p>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="p-modular__card">
+                        <div class="p-modular__card-visual">
+                          <figure class="p-modular__image">
+                            <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/modular-perhe-01.webp" alt="規格住宅の外観イメージ" width="1800" height="1201" data-modular-dummy-image>
+                          </figure>
+                          <p class="p-modular__slider-note"><span data-modular-dummy-note>プランの暮らしを楽しむ、心地よい規格住宅。</span></p>
+                        </div>
+                        <p class="p-modular__description" data-modular-dummy-description>プランの特徴を活かしたダミープランです。暮らしやすい動線と、家族が自然に集まる空間をご提案します。</p>
                       </div>
                     </div>
                   </div>

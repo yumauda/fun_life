@@ -6076,7 +6076,7 @@ select::-ms-expand {
 }
 
 .p-modular__panels {
-  order: 3;
+  order: 5;
   margin-top: 1.875rem;
   display: grid;
 }
@@ -6214,7 +6214,7 @@ select::-ms-expand {
 }
 
 .p-modular__more {
-  order: 5;
+  order: 6;
   font-family: "Inter", sans-serif;
   font-weight: 700;
   line-height: 1.4;
