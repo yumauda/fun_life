@@ -120,8 +120,8 @@
                 <nav class="p-header__nav" aria-label="ヘッダーナビゲーション">
                     <a class="p-header__nav-link" href="<?php echo esc_url(home_url('/about/')); ?>">ABOUT</a>
                     <a class="p-header__nav-link" href="<?php echo esc_url(fun_life_category_url('works')); ?>">WORKS</a>
-                    <a class="p-header__nav-link" href="<?php echo esc_url(fun_life_category_url('blog')); ?>">BLOG</a>
-                    <a class="p-header__nav-link" href="<?php echo esc_url(fun_life_category_url('event')); ?>">EVENT</a>
+                    <a class="p-header__nav-link" href="<?php echo esc_url(fun_life_blog_url()); ?>">BLOG</a>
+                    <a class="p-header__nav-link" href="<?php echo esc_url(fun_life_category_url('news')); ?>">NEWS</a>
                 </nav>
                 <div class="p-header__guide-links">
                     <a class="p-header__guide-link" href="<?php echo esc_url(home_url('/contact/')); ?>">資料請求</a>
@@ -184,11 +184,11 @@
                         <nav class="p-drawer-content__nav" aria-label="メインメニュー">
                             <ul class="p-drawer-content__lists">
                                 <li class="p-drawer-content__list"><a href="<?php echo esc_url(home_url('/')); ?>" class="p-drawer-content__link">TOP</a></li>
-                                <li class="p-drawer-content__list"><a href="<?php echo esc_url(home_url('/works/')); ?>" class="p-drawer-content__link">WORKS</a></li>
+                                <li class="p-drawer-content__list"><a href="<?php echo esc_url(fun_life_category_url('works')); ?>" class="p-drawer-content__link">WORKS</a></li>
                                 <li class="p-drawer-content__list"><a href="<?php echo esc_url(home_url('/about/')); ?>" class="p-drawer-content__link">ABOUT</a></li>
-                                <li class="p-drawer-content__list"><a href="<?php echo esc_url(fun_life_category_url('blog')); ?>" class="p-drawer-content__link">BLOG</a></li>
+                                <li class="p-drawer-content__list"><a href="<?php echo esc_url(fun_life_blog_url()); ?>" class="p-drawer-content__link">BLOG</a></li>
                                 <li class="p-drawer-content__list"><a href="<?php echo esc_url(fun_life_category_url('column')); ?>" class="p-drawer-content__link p-drawer-content__link--muted">COLUMN</a></li>
-                                <li class="p-drawer-content__list"><a href="<?php echo esc_url(fun_life_category_url('event')); ?>" class="p-drawer-content__link p-drawer-content__link--muted">EVENT</a></li>
+                                <li class="p-drawer-content__list"><a href="<?php echo esc_url(fun_life_category_url('news')); ?>" class="p-drawer-content__link p-drawer-content__link--muted">NEWS</a></li>
                                 <li class="p-drawer-content__list"><a href="<?php echo esc_url(home_url('/contact/')); ?>" class="p-drawer-content__link">CONTACT</a></li>
                             </ul>
                         </nav>

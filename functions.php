@@ -405,6 +405,106 @@ function fun_life_category_url($slug)
 }
 
 /**
+ * ブログで使用する大分類カテゴリーを取得する。
+ *
+ * @return array<string, array<string, string>>
+ */
+function fun_life_blog_category_config()
+{
+	return array(
+		'works' => array('en' => 'WORKS', 'ja' => '施工事例'),
+		'column' => array('en' => 'COLUMN', 'ja' => 'コラム'),
+		'news' => array('en' => 'NEWS', 'ja' => 'お知らせ'),
+	);
+}
+
+/**
+ * BLOGトップのURLを取得する。
+ *
+ * @return string
+ */
+function fun_life_blog_url()
+{
+	$posts_page_id = (int) get_option('page_for_posts');
+
+	return $posts_page_id ? get_permalink($posts_page_id) : home_url('/blog/');
+}
+
+/**
+ * 投稿に設定されたブログ大分類カテゴリーを取得する。
+ *
+ * @param int $post_id 投稿ID。
+ * @return WP_Term|null
+ */
+function fun_life_get_primary_blog_category($post_id = 0)
+{
+	$post_id = $post_id ?: get_the_ID();
+	$post_categories = get_the_category($post_id);
+	$category_config = fun_life_blog_category_config();
+
+	foreach (array_keys($category_config) as $category_slug) {
+		foreach ($post_categories as $post_category) {
+			if ($category_slug === $post_category->slug) {
+				return $post_category;
+			}
+		}
+	}
+
+	return $post_categories ? $post_categories[0] : null;
+}
+
+/**
+ * 指定カテゴリーの投稿で使用されているタグを取得する。
+ *
+ * @param int $category_id カテゴリーID。
+ * @return WP_Term[]
+ */
+function fun_life_get_category_tags($category_id)
+{
+	$post_ids = get_posts(
+		array(
+			'post_type' => 'post',
+			'post_status' => 'publish',
+			'category' => (int) $category_id,
+			'fields' => 'ids',
+			'posts_per_page' => -1,
+			'no_found_rows' => true,
+		)
+	);
+
+	if (!$post_ids) {
+		return array();
+	}
+
+	$tags = wp_get_object_terms(
+		$post_ids,
+		'post_tag',
+		array(
+			'orderby' => 'term_id',
+			'order' => 'ASC',
+		)
+	);
+
+	return is_wp_error($tags) ? array() : $tags;
+}
+
+/**
+ * カテゴリー内タグ絞り込みURLを取得する。
+ *
+ * @param string $category_slug カテゴリースラッグ。
+ * @param string $tag_slug タグスラッグ。
+ * @return string
+ */
+function fun_life_category_filter_url($category_slug, $tag_slug = '')
+{
+	$category_url = fun_life_category_url($category_slug);
+
+	return $tag_slug
+		? add_query_arg('tag_filter', sanitize_title($tag_slug), $category_url)
+		: $category_url;
+}
+
+/**
  * works固定ページと施工事例詳細のURL競合を避ける。
  */
 function fun_life_add_works_post_rewrite()
@@ -418,21 +518,77 @@ function fun_life_add_works_post_rewrite()
 }
 add_action('init', 'fun_life_add_works_post_rewrite');
 
-function exclude_multiple_categories_from_homepage($query)
+function fun_life_filter_blog_queries($query)
 {
-	if ($query->is_home() && $query->is_main_query()) {
-		$blog_category = get_category_by_slug('blog');
+	if (is_admin() || !$query->is_main_query()) {
+		return;
+	}
 
-		if ($blog_category instanceof WP_Term) {
-			$query->set('cat', $blog_category->term_id);
-		} else {
-			$query->set('post__in', array(0));
+	$category_config = fun_life_blog_category_config();
+
+	if ($query->is_home()) {
+		$category_ids = array();
+
+		foreach (array_keys($category_config) as $category_slug) {
+			$category = get_category_by_slug($category_slug);
+
+			if ($category instanceof WP_Term) {
+				$category_ids[] = (int) $category->term_id;
+			}
 		}
+
+		$query->set('category__in', $category_ids ?: array(0));
 
 		$query->set('posts_per_page', 4);
 	}
+
+	if ($query->is_category(array_keys($category_config))) {
+		$tag_filter = isset($_GET['tag_filter'])
+			? sanitize_title(wp_unslash($_GET['tag_filter']))
+			: '';
+
+		if ($tag_filter) {
+			$query->set('tag', $tag_filter);
+		}
+	}
 }
-add_action('pre_get_posts', 'exclude_multiple_categories_from_homepage');
+add_action('pre_get_posts', 'fun_life_filter_blog_queries');
+
+/**
+ * 旧タグアーカイブを、カテゴリー内タグ絞り込みへ案内する。
+ */
+function fun_life_redirect_tag_archive()
+{
+	if (!is_tag()) {
+		return;
+	}
+
+	$tag = get_queried_object();
+
+	if (!$tag instanceof WP_Term) {
+		return;
+	}
+
+	$posts = get_posts(
+		array(
+			'post_type' => 'post',
+			'post_status' => 'publish',
+			'tag_id' => (int) $tag->term_id,
+			'posts_per_page' => 20,
+			'no_found_rows' => true,
+		)
+	);
+
+	foreach ($posts as $post) {
+		$category = fun_life_get_primary_blog_category($post->ID);
+
+		if ($category instanceof WP_Term && isset(fun_life_blog_category_config()[$category->slug])) {
+			wp_safe_redirect(fun_life_category_filter_url($category->slug, $tag->slug), 301);
+			exit;
+		}
+	}
+}
+add_action('template_redirect', 'fun_life_redirect_tag_archive');
 
 add_filter('wpcf7_validate_text', 'custom_hiragana_validation_filter', 20, 2);
 add_filter('wpcf7_validate_text*', 'custom_hiragana_validation_filter', 20, 2);

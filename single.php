@@ -6,18 +6,12 @@ if (have_posts()) :
     the_post();
 
     $image_uri = get_template_directory_uri() . '/images/blog-single/';
-    $post_categories = get_the_category();
-    $primary_category = $post_categories ? $post_categories[0] : null;
+    $primary_category = fun_life_get_primary_blog_category();
     $category_slug = $primary_category instanceof WP_Term ? $primary_category->slug : '';
     $category_label = $primary_category instanceof WP_Term ? $primary_category->name : '施工事例';
     $is_works = in_array($category_slug, array('works', 'work', 'construction'), true)
       || in_array($category_label, array('施工事例', 'WORKS'), true);
-    $single_category_config = array(
-      'works' => array('en' => 'WORKS', 'ja' => '施工事例'),
-      'column' => array('en' => 'COLUMN', 'ja' => 'コラム'),
-      'blog' => array('en' => 'BLOG', 'ja' => 'ブログ'),
-      'event' => array('en' => 'EVENT', 'ja' => 'イベント'),
-    );
+    $single_category_config = fun_life_blog_category_config();
     $current_category_config = isset($single_category_config[$category_slug])
       ? $single_category_config[$category_slug]
       : array('en' => strtoupper($category_slug), 'ja' => $category_label);
@@ -25,8 +19,8 @@ if (have_posts()) :
     $eyebrow_ja = $current_category_config['ja'];
     $works_url = fun_life_category_url('works');
     $column_url = fun_life_category_url('column');
-    $blog_url = fun_life_category_url('blog');
-    $event_url = fun_life_category_url('event');
+    $blog_url = fun_life_blog_url();
+    $news_url = fun_life_category_url('news');
     $archive_url = $primary_category instanceof WP_Term ? get_category_link($primary_category) : $blog_url;
 
     $get_detail = static function ($field_name, $fallback = '') {
@@ -144,8 +138,7 @@ if (have_posts()) :
           <div class="p-single-blog__pages-links">
             <a class="p-single-blog__pages-link c-hover-invert c-hover-invert--dark<?php echo 'works' === $category_slug ? ' is-current' : ''; ?>" href="<?php echo esc_url($works_url); ?>"<?php echo 'works' === $category_slug ? ' aria-current="page"' : ''; ?>>WORKS</a>
             <a class="p-single-blog__pages-link c-hover-invert c-hover-invert--dark<?php echo 'column' === $category_slug ? ' is-current' : ''; ?>" href="<?php echo esc_url($column_url); ?>"<?php echo 'column' === $category_slug ? ' aria-current="page"' : ''; ?>>COLUMN</a>
-            <a class="p-single-blog__pages-link c-hover-invert c-hover-invert--dark<?php echo 'blog' === $category_slug ? ' is-current' : ''; ?>" href="<?php echo esc_url($blog_url); ?>"<?php echo 'blog' === $category_slug ? ' aria-current="page"' : ''; ?>>BLOG</a>
-            <a class="p-single-blog__pages-link c-hover-invert c-hover-invert--dark<?php echo 'event' === $category_slug ? ' is-current' : ''; ?>" href="<?php echo esc_url($event_url); ?>"<?php echo 'event' === $category_slug ? ' aria-current="page"' : ''; ?>>EVENT</a>
+            <a class="p-single-blog__pages-link c-hover-invert c-hover-invert--dark<?php echo 'news' === $category_slug ? ' is-current' : ''; ?>" href="<?php echo esc_url($news_url); ?>"<?php echo 'news' === $category_slug ? ' aria-current="page"' : ''; ?>>NEWS</a>
           </div>
         </nav>
       </div>
@@ -245,9 +238,9 @@ if (have_posts()) :
           <?php while ($other_posts->have_posts()) : ?>
             <?php
             $other_posts->the_post();
-            $other_categories = get_the_category();
-            $other_category_label = $other_categories ? $other_categories[0]->name : $category_label;
-            $other_category_slug = $other_categories ? $other_categories[0]->slug : $category_slug;
+            $other_category = fun_life_get_primary_blog_category();
+            $other_category_label = $other_category instanceof WP_Term ? $other_category->name : $category_label;
+            $other_category_slug = $other_category instanceof WP_Term ? $other_category->slug : $category_slug;
             $other_category_en = isset($single_category_config[$other_category_slug])
               ? $single_category_config[$other_category_slug]['en']
               : strtoupper($other_category_slug);
@@ -293,8 +286,8 @@ if (have_posts()) :
           </div>
           <div class="p-single-blog__other-pages-links">
             <a class="p-single-blog__other-pages-link c-hover-invert c-hover-invert--dark" href="<?php echo esc_url($works_url); ?>">WORKS</a>
-            <a class="p-single-blog__other-pages-link c-hover-invert c-hover-invert--dark" href="<?php echo esc_url($event_url); ?>">EVENT</a>
             <a class="p-single-blog__other-pages-link c-hover-invert c-hover-invert--dark" href="<?php echo esc_url($column_url); ?>">COLUMN</a>
+            <a class="p-single-blog__other-pages-link c-hover-invert c-hover-invert--dark" href="<?php echo esc_url($news_url); ?>">NEWS</a>
           </div>
         </nav>
         <?php

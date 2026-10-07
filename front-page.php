@@ -50,8 +50,8 @@
       </div>
     </div>
     <?php
-    $event_category = get_category_by_slug('event');
-    $event_archive_url = fun_life_category_url('event');
+    $event_category = get_category_by_slug('news');
+    $event_archive_url = fun_life_category_url('news');
     $event_query_args = array(
       'post_type' => 'post',
       'post_status' => 'publish',
@@ -62,7 +62,7 @@
     if ($event_category instanceof WP_Term) {
       $event_query_args['cat'] = $event_category->term_id;
     } else {
-      $event_query_args['category_name'] = 'event';
+      $event_query_args['category_name'] = 'news';
     }
 
     $event_posts = new WP_Query($event_query_args);
@@ -71,9 +71,9 @@
       <section class="p-home-event" aria-labelledby="home-event-title">
         <div class="l-inner p-home-event__inner">
           <div class="p-home-event__heading">
-            <h2 class="p-home-event__title" id="home-event-title">イベント/お知らせ</h2>
+            <h2 class="p-home-event__title" id="home-event-title">お知らせ</h2>
             <div class="p-home-event__eyebrow-row">
-              <p class="p-home-event__eyebrow">EVENT</p>
+              <p class="p-home-event__eyebrow">NEWS</p>
               <span class="p-home-event__heading-line" aria-hidden="true"></span>
             </div>
           </div>
@@ -96,7 +96,7 @@
                 }
 
                 foreach ($event_categories as $post_event_category) {
-                  if ('event' === $post_event_category->slug) {
+                  if ('news' === $post_event_category->slug) {
                     $event_category_label = $post_event_category->name;
                     break;
                   }
@@ -106,7 +106,7 @@
                   <article class="p-home-event__card">
                     <a class="p-home-event__card-link" href="<?php the_permalink(); ?>">
                       <div class="p-home-event__meta">
-                        <span class="p-home-event__label">EVENT</span>
+                        <span class="p-home-event__label">NEWS</span>
                         <span class="p-home-event__category"><?php echo esc_html($event_category_label); ?></span>
                         <time class="p-home-event__date" datetime="<?php echo esc_attr(get_the_date('c')); ?>"><?php echo esc_html(get_the_date('Y.m.d')); ?></time>
                       </div>
@@ -419,6 +419,7 @@
   </section>
 
   <section class="p-modular is-mobile-awaiting-selection" id="modular">
+    <!-- ダミー外観写真: Pexels / Max Vakhtbovych（photo IDs 7587854–7587884） -->
     <div class="l-inner">
       <div class="p-modular__content">
         <div class="p-modular__heading">
@@ -466,7 +467,7 @@
                       <div class="p-modular__card">
                         <div class="p-modular__card-visual">
                           <figure class="p-modular__image">
-                            <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/top_slider1.webp" alt="規格住宅 コティ 外観" width="2161" height="1301">
+                            <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/modular-koti-01.webp" alt="平屋の規格住宅 コティの外観イメージ" width="1800" height="1201">
                           </figure>
                           <p class="p-modular__slider-note"><span>「住むという空間を、<br class="u-mobile">とことん追求した家。」</span></p>
                         </div>
@@ -477,7 +478,7 @@
                       <div class="p-modular__card">
                         <div class="p-modular__card-visual">
                           <figure class="p-modular__image">
-                            <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/no_new.webp" alt="規格住宅 コティ 室内" width="1600" height="1401">
+                            <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/modular-koti-02.webp" alt="平屋の規格住宅 コティの外観イメージ" width="1800" height="1201">
                           </figure>
                           <p class="p-modular__slider-note"><span>「住むという空間を、<br class="u-mobile">とことん追求した家。」</span></p>
                         </div>
@@ -494,7 +495,7 @@
                       <div class="p-modular__card">
                         <div class="p-modular__card-visual">
                           <figure class="p-modular__image">
-                            <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/concept_img.webp" alt="規格住宅 ルートゥ 外観" width="2070" height="841">
+                            <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/modular-root-01.webp" alt="平屋の規格住宅 ルートゥの外観イメージ" width="1800" height="1201">
                           </figure>
                           <p class="p-modular__slider-note"><span>中庭を中心に、外と内がゆるやかにつながる住まい。</span></p>
                         </div>
@@ -505,7 +506,7 @@
                       <div class="p-modular__card">
                         <div class="p-modular__card-visual">
                           <figure class="p-modular__image">
-                            <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/no_bottom.webp" alt="規格住宅 ルートゥ 暮らしのイメージ" width="1400" height="500">
+                            <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/modular-root-02.webp" alt="平屋の規格住宅 ルートゥの外観イメージ" width="1800" height="1200">
                           </figure>
                           <p class="p-modular__slider-note"><span>中庭を中心に、外と内がゆるやかにつながる住まい。</span></p>
                         </div>
@@ -522,7 +523,7 @@
                       <div class="p-modular__card">
                         <div class="p-modular__card-visual">
                           <figure class="p-modular__image">
-                            <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/reform_3.webp" alt="規格住宅 ポルク リビング" width="930" height="340">
+                            <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/modular-polku-01.webp" alt="平屋の規格住宅 ポルクの外観イメージ" width="1800" height="1201">
                           </figure>
                           <p class="p-modular__slider-note"><span>光と眺めを取り込む、2階リビングの暮らし。</span></p>
                         </div>
@@ -533,7 +534,7 @@
                       <div class="p-modular__card">
                         <div class="p-modular__card-visual">
                           <figure class="p-modular__image">
-                            <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/image_1.webp" alt="規格住宅 ポルク 室内" width="431" height="38">
+                            <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/modular-polku-02.webp" alt="平屋の規格住宅 ポルクの外観イメージ" width="1800" height="1201">
                           </figure>
                           <p class="p-modular__slider-note"><span>光と眺めを取り込む、2階リビングの暮らし。</span></p>
                         </div>
@@ -550,7 +551,7 @@
                       <div class="p-modular__card">
                         <div class="p-modular__card-visual">
                           <figure class="p-modular__image">
-                            <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/reform_1.webp" alt="規格住宅 ペルヘ 室内" width="500" height="500">
+                            <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/modular-perhe-01.webp" alt="平屋の規格住宅 ペルヘの外観イメージ" width="1800" height="1201">
                           </figure>
                           <p class="p-modular__slider-note"><span>段差で空間を分け、家族の距離が近くなる住まい。</span></p>
                         </div>
@@ -561,7 +562,7 @@
                       <div class="p-modular__card">
                         <div class="p-modular__card-visual">
                           <figure class="p-modular__image">
-                            <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/reform_2.webp" alt="規格住宅 ペルヘ 暮らしのイメージ" width="500" height="500">
+                            <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/modular-perhe-02.webp" alt="平屋の規格住宅 ペルヘの外観イメージ" width="1800" height="1201">
                           </figure>
                           <p class="p-modular__slider-note"><span>段差で空間を分け、家族の距離が近くなる住まい。</span></p>
                         </div>

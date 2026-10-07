@@ -3,7 +3,7 @@ get_header();
 
 $works_url = fun_life_category_url('works');
 $column_url = fun_life_category_url('column');
-$event_url = fun_life_category_url('event');
+$news_url = fun_life_category_url('news');
 ?>
 
 <main>
@@ -18,7 +18,7 @@ $event_url = fun_life_category_url('event');
         <div class="p-blog__pages-links">
           <a class="p-blog__pages-link c-hover-invert c-hover-invert--dark" href="<?php echo esc_url($works_url); ?>">WORKS</a>
           <a class="p-blog__pages-link c-hover-invert c-hover-invert--dark" href="<?php echo esc_url($column_url); ?>">COLUMN</a>
-          <a class="p-blog__pages-link c-hover-invert c-hover-invert--dark" href="<?php echo esc_url($event_url); ?>">EVENT</a>
+          <a class="p-blog__pages-link c-hover-invert c-hover-invert--dark" href="<?php echo esc_url($news_url); ?>">NEWS</a>
         </div>
       </nav>
     </div>
@@ -30,8 +30,8 @@ $event_url = fun_life_category_url('event');
             <?php while (have_posts()) : ?>
               <?php
               the_post();
-              $post_categories = get_the_category();
-              $card_category = $post_categories ? $post_categories[0]->name : '';
+              $card_category_term = fun_life_get_primary_blog_category();
+              $card_category = $card_category_term instanceof WP_Term ? $card_category_term->name : '';
               $thumbnail_id = get_post_thumbnail_id();
               $thumbnail_alt = $thumbnail_id ? get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true) : '';
               $thumbnail_alt = $thumbnail_alt ?: get_the_title();

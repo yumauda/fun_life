@@ -2,35 +2,19 @@
 get_header();
 
 $queried_term = get_queried_object();
-$is_tag_archive = is_tag();
-$category_slug = !$is_tag_archive && $queried_term instanceof WP_Term ? $queried_term->slug : '';
-$category_name = !$is_tag_archive && $queried_term instanceof WP_Term ? $queried_term->name : '';
-$current_tag_id = $is_tag_archive && $queried_term instanceof WP_Term ? (int) $queried_term->term_id : 0;
-$current_tag_name = $is_tag_archive && $queried_term instanceof WP_Term ? $queried_term->name : '';
-$is_works_category = in_array($category_slug, array('works', 'work', 'construction'), true)
-  || in_array($category_name, array('施工事例', 'WORKS'), true);
-$category_config = array(
-  'works' => array('en' => 'WORKS', 'ja' => '施工事例'),
-  'column' => array('en' => 'COLUMN', 'ja' => 'コラム'),
-  'blog' => array('en' => 'BLOG', 'ja' => 'ブログ'),
-  'event' => array('en' => 'EVENT', 'ja' => 'イベント/お知らせ'),
-);
-$current_config = $is_tag_archive
-  ? array('en' => 'TAGS', 'ja' => $current_tag_name)
-  : (isset($category_config[$category_slug])
-    ? $category_config[$category_slug]
-    : array('en' => strtoupper($category_slug), 'ja' => $category_name));
-$category_nav_order = array('works', 'event', 'column', 'blog');
-$archive_tags = get_tags(
-  array(
-    'hide_empty' => false,
-    'orderby' => 'term_id',
-    'order' => 'ASC',
-  )
-);
-$all_tags_url = $is_tag_archive
-  ? fun_life_category_url('blog')
-  : fun_life_category_url($category_slug);
+$category_slug = $queried_term instanceof WP_Term ? $queried_term->slug : '';
+$category_name = $queried_term instanceof WP_Term ? $queried_term->name : '';
+$category_config = fun_life_blog_category_config();
+$current_config = isset($category_config[$category_slug])
+  ? $category_config[$category_slug]
+  : array('en' => strtoupper($category_slug), 'ja' => $category_name);
+$is_works_category = 'works' === $category_slug;
+$selected_tag_slug = isset($_GET['tag_filter'])
+  ? sanitize_title(wp_unslash($_GET['tag_filter']))
+  : '';
+$archive_tags = $queried_term instanceof WP_Term
+  ? fun_life_get_category_tags($queried_term->term_id)
+  : array();
 ?>
 
 <main>
@@ -46,32 +30,26 @@ $all_tags_url = $is_tag_archive
           <nav class="p-category__pages" aria-label="カテゴリーページを切り替える">
             <p class="p-category__pages-title">PAGES</p>
             <div class="p-category__pages-links">
-              <?php foreach ($category_nav_order as $filter_slug) : ?>
-                <?php if (!isset($category_config[$filter_slug])) : ?>
-                  <?php continue; ?>
-                <?php endif; ?>
+              <?php foreach ($category_config as $filter_slug => $filter_config) : ?>
                 <?php $is_current = $category_slug === $filter_slug; ?>
-                <a class="p-category__pages-link c-hover-invert c-hover-invert--dark<?php echo $is_current ? ' is-current' : ''; ?>" href="<?php echo esc_url(fun_life_category_url($filter_slug)); ?>"<?php echo $is_current ? ' aria-current="page"' : ''; ?>><?php echo esc_html($category_config[$filter_slug]['en']); ?></a>
+                <a class="p-category__pages-link c-hover-invert c-hover-invert--dark<?php echo $is_current ? ' is-current' : ''; ?>" href="<?php echo esc_url(fun_life_category_url($filter_slug)); ?>"<?php echo $is_current ? ' aria-current="page"' : ''; ?>><?php echo esc_html($filter_config['en']); ?></a>
               <?php endforeach; ?>
             </div>
           </nav>
         </div>
 
-        <aside class="p-category__tags" aria-label="タグ一覧">
-          <p class="p-category__tags-title">TAGS</p>
-          <div class="p-category__tags-list">
-            <a class="p-category__tag<?php echo $is_tag_archive ? '' : ' is-current'; ?>" href="<?php echo esc_url($all_tags_url); ?>"<?php echo $is_tag_archive ? '' : ' aria-current="page"'; ?>>すべて</a>
-            <?php foreach ($archive_tags as $archive_tag) : ?>
-              <?php
-              $is_current_tag = $current_tag_id === (int) $archive_tag->term_id;
-              $tag_url = get_tag_link($archive_tag);
-              ?>
-              <?php if (!is_wp_error($tag_url)) : ?>
-                <a class="p-category__tag<?php echo $is_current_tag ? ' is-current' : ''; ?>" href="<?php echo esc_url($tag_url); ?>"<?php echo $is_current_tag ? ' aria-current="page"' : ''; ?>><?php echo esc_html($archive_tag->name); ?></a>
-              <?php endif; ?>
-            <?php endforeach; ?>
-          </div>
-        </aside>
+        <?php if ($archive_tags) : ?>
+          <aside class="p-category__tags" aria-label="<?php echo esc_attr($current_config['en']); ?>の記事タグ">
+            <p class="p-category__tags-title">TAGS</p>
+            <div class="p-category__tags-list">
+              <a class="p-category__tag<?php echo $selected_tag_slug ? '' : ' is-current'; ?>" href="<?php echo esc_url(fun_life_category_filter_url($category_slug)); ?>"<?php echo $selected_tag_slug ? '' : ' aria-current="page"'; ?>>すべて</a>
+              <?php foreach ($archive_tags as $archive_tag) : ?>
+                <?php $is_current_tag = $selected_tag_slug === $archive_tag->slug; ?>
+                <a class="p-category__tag<?php echo $is_current_tag ? ' is-current' : ''; ?>" href="<?php echo esc_url(fun_life_category_filter_url($category_slug, $archive_tag->slug)); ?>"<?php echo $is_current_tag ? ' aria-current="page"' : ''; ?>><?php echo esc_html($archive_tag->name); ?></a>
+              <?php endforeach; ?>
+            </div>
+          </aside>
+        <?php endif; ?>
       </div>
     </div>
   </section>
@@ -83,8 +61,10 @@ $all_tags_url = $is_tag_archive
           <?php while (have_posts()) : ?>
             <?php
             the_post();
-            $post_categories = get_the_category();
-            $card_category = $post_categories ? $post_categories[0]->name : $current_config['ja'];
+            $card_category_term = fun_life_get_primary_blog_category();
+            $card_category = $card_category_term instanceof WP_Term
+              ? $card_category_term->name
+              : $current_config['ja'];
             $thumbnail_id = get_post_thumbnail_id();
             $thumbnail_alt = $thumbnail_id ? get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true) : '';
             $thumbnail_alt = $thumbnail_alt ?: get_the_title();
