@@ -1509,17 +1509,7 @@ select::-ms-expand {
   }
 }
 
-.p-category__pages-heading .p-category__pages-back {
-  width: 8.625rem;
-}
-@media screen and (min-width: 768px) {
-  .p-category__pages-heading .p-category__pages-back {
-    width: 10.25rem;
-  }
-}
-
 .p-category__pages-back-arrow {
-  margin-left: 0;
   transform: rotate(180deg);
 }
 
