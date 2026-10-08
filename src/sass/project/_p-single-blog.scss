@@ -66,14 +66,21 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+  width: 100%;
+  max-width: rem(276);
   column-gap: rem(14);
   row-gap: rem(10);
   margin-top: rem(22);
+  margin-right: auto;
+  margin-left: auto;
 
   @include mq(md) {
     justify-content: flex-start;
+    max-width: rem(330);
     column-gap: rem(25);
     margin-top: rem(28);
+    margin-right: 0;
+    margin-left: 0;
   }
 }
 
@@ -106,6 +113,7 @@
 }
 
 .p-single-blog__date {
+  margin-left: auto;
   font-family: $second-font-family;
   font-size: rem(14);
   letter-spacing: 0.1em;
@@ -145,11 +153,16 @@
 
 .p-single-blog__pages {
   width: 100%;
+  max-width: rem(276);
   margin-top: rem(48);
+  margin-right: auto;
+  margin-left: auto;
 
   @include mq(md) {
-    max-width: rem(448);
+    max-width: rem(330);
     margin-top: rem(62);
+    margin-right: 0;
+    margin-left: 0;
   }
 }
 
@@ -173,15 +186,13 @@
 .p-single-blog__pages-links {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   flex-wrap: wrap;
-  column-gap: rem(8);
+  column-gap: 0;
   row-gap: rem(8);
   margin-top: rem(18);
 
   @include mq(md) {
-    justify-content: flex-start;
-    column-gap: rem(16);
     margin-top: rem(14);
   }
 }
@@ -204,6 +215,12 @@
   background-color: #000;
   opacity: 0.25;
   transition: opacity 0.3s ease;
+
+  @media (max-width: 350px) {
+    min-width: rem(82);
+    padding-right: rem(8);
+    padding-left: rem(8);
+  }
 
   @include mq(md) {
     min-width: rem(100);
