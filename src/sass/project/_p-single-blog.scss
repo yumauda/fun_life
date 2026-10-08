@@ -724,14 +724,26 @@
   align-items: center;
 }
 
-.p-single-blog__other-type {
+.p-single-blog__other-tag {
   margin-left: rem(12);
   font-family: $base-font-family;
   font-size: rem(12);
   font-weight: $bold;
+  line-height: 1;
   letter-spacing: 0.1em;
+  padding-top: rem(6);
+  padding-right: rem(12);
+  padding-bottom: rem(6);
+  padding-left: rem(12);
+  color: #000;
+  background-color: #fff;
+  border: 1px solid #000;
 
   @include mq(md) {
+    padding-top: rem(7);
+    padding-right: rem(16);
+    padding-bottom: rem(7);
+    padding-left: rem(16);
     font-size: rem(13.5);
   }
 }

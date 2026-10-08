@@ -258,10 +258,9 @@ if (have_posts()) :
             $other_category_en = isset($single_category_config[$other_category_slug])
               ? $single_category_config[$other_category_slug]['en']
               : strtoupper($other_category_slug);
+            $other_tag = fun_life_get_card_tag();
             $other_spec = function_exists('get_field') ? get_field('works_spec') : get_post_meta(get_the_ID(), 'works_spec', true);
             $other_spec = $other_spec ?: get_the_excerpt();
-            $other_building_type = function_exists('get_field') ? get_field('works_building_type') : get_post_meta(get_the_ID(), 'works_building_type', true);
-            $other_building_type = $other_building_type ?: '二階建て';
             $other_thumbnail_id = get_post_thumbnail_id();
             $other_thumbnail_alt = $other_thumbnail_id ? get_post_meta($other_thumbnail_id, '_wp_attachment_image_alt', true) : '';
             ?>
@@ -269,8 +268,8 @@ if (have_posts()) :
               <div class="p-single-blog__other-meta">
                 <div class="p-single-blog__other-meta-primary">
                   <span class="p-single-blog__other-category"><?php echo esc_html($other_category_en ?: $other_category_label); ?></span>
-                  <?php if ($is_works) : ?>
-                    <span class="p-single-blog__other-type"><?php echo esc_html($other_building_type); ?></span>
+                  <?php if ($other_tag instanceof WP_Term) : ?>
+                    <span class="p-single-blog__other-tag"><?php echo esc_html($other_tag->name); ?></span>
                   <?php endif; ?>
                 </div>
                 <time datetime="<?php echo esc_attr(get_the_date('c')); ?>"><?php echo esc_html(get_the_date('Y.m.d')); ?></time>
