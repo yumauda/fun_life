@@ -413,10 +413,90 @@ function fun_life_blog_category_config()
 {
 	return array(
 		'works' => array('en' => 'WORKS', 'ja' => '施工事例'),
+		'event' => array('en' => 'EVENT', 'ja' => 'イベント / お知らせ'),
 		'column' => array('en' => 'COLUMN', 'ja' => 'コラム'),
-		'news' => array('en' => 'NEWS', 'ja' => 'お知らせ'),
 	);
 }
+
+/**
+ * 旧NEWSカテゴリーをEVENTカテゴリーへ移行する。
+ */
+function fun_life_migrate_news_category_to_event()
+{
+	if ('1' === get_option('fun_life_event_category_migration_version')) {
+		return;
+	}
+
+	$news_category = get_category_by_slug('news');
+	$event_category = get_category_by_slug('event');
+
+	if ($news_category instanceof WP_Term && !($event_category instanceof WP_Term)) {
+		$result = wp_update_term(
+			$news_category->term_id,
+			'category',
+			array(
+				'name' => 'イベント / お知らせ',
+				'slug' => 'event',
+			)
+		);
+
+		if (is_wp_error($result)) {
+			return;
+		}
+	} elseif ($event_category instanceof WP_Term) {
+		wp_update_term(
+			$event_category->term_id,
+			'category',
+			array('name' => 'イベント / お知らせ')
+		);
+
+		if ($news_category instanceof WP_Term) {
+			$news_post_ids = get_posts(
+				array(
+					'post_type' => 'post',
+					'post_status' => 'any',
+					'category' => $news_category->term_id,
+					'fields' => 'ids',
+					'posts_per_page' => -1,
+					'no_found_rows' => true,
+				)
+			);
+
+			foreach ($news_post_ids as $news_post_id) {
+				wp_set_post_categories($news_post_id, array($event_category->term_id), true);
+			}
+
+			wp_delete_term($news_category->term_id, 'category');
+		}
+	}
+
+	$event_category = get_category_by_slug('event');
+
+	if (!($event_category instanceof WP_Term)) {
+		return;
+	}
+
+	update_option('fun_life_event_category_migration_version', '1');
+}
+add_action('init', 'fun_life_migrate_news_category_to_event', 5);
+
+/**
+ * 旧NEWSカテゴリーURLをEVENTカテゴリーへ転送する。
+ */
+function fun_life_redirect_legacy_news_category()
+{
+	$request_uri = isset($_SERVER['REQUEST_URI']) ? wp_unslash($_SERVER['REQUEST_URI']) : '';
+	$request_path = trim((string) wp_parse_url($request_uri, PHP_URL_PATH), '/');
+	$category_base = trim((string) get_option('category_base'), '/') ?: 'category';
+
+	if ($category_base . '/news' !== $request_path) {
+		return;
+	}
+
+	wp_safe_redirect(fun_life_category_url('event'), 301);
+	exit;
+}
+add_action('template_redirect', 'fun_life_redirect_legacy_news_category');
 
 /**
  * BLOGトップのURLを取得する。
@@ -451,6 +531,26 @@ function fun_life_get_primary_blog_category($post_id = 0)
 	}
 
 	return $post_categories ? $post_categories[0] : null;
+}
+
+/**
+ * カードに表示する先頭タグを取得する。
+ *
+ * @param int $post_id 投稿ID。
+ * @return WP_Term|null
+ */
+function fun_life_get_card_tag($post_id = 0)
+{
+	$post_id = $post_id ?: get_the_ID();
+	$post_tags = wp_get_post_tags(
+		$post_id,
+		array(
+			'orderby' => 'term_id',
+			'order' => 'ASC',
+		)
+	);
+
+	return $post_tags ? $post_tags[0] : null;
 }
 
 /**
@@ -796,6 +896,45 @@ function fun_life_register_single_fields()
 			),
 		),
 		'menu_order' => 0,
+		'position' => 'normal',
+		'style' => 'default',
+		'label_placement' => 'top',
+		'instruction_placement' => 'label',
+		'active' => true,
+		'show_in_rest' => 0,
+	));
+
+	acf_add_local_field_group(array(
+		'key' => 'group_fun_life_event_fields',
+		'title' => 'イベント情報',
+		'fields' => array(
+			array(
+				'key' => 'field_fun_life_event_date',
+				'label' => '日時',
+				'name' => 'event_date',
+				'type' => 'text',
+				'instructions' => '例：2026年 09月 10日',
+				'wrapper' => array('width' => '50'),
+			),
+			array(
+				'key' => 'field_fun_life_event_location',
+				'label' => '場所',
+				'name' => 'event_location',
+				'type' => 'text',
+				'instructions' => '例：〒861-3202 熊本県上益城郡御船町小坂999-3',
+				'wrapper' => array('width' => '50'),
+			),
+		),
+		'location' => array(
+			array(
+				array(
+					'param' => 'post_taxonomy',
+					'operator' => '==',
+					'value' => 'category:event',
+				),
+			),
+		),
+		'menu_order' => -2,
 		'position' => 'normal',
 		'style' => 'default',
 		'label_placement' => 'top',

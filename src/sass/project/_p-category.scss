@@ -130,6 +130,8 @@
 }
 
 .p-category__pages-link {
+  --hover-invert-dark-background: rgba(0, 0, 0, 0.5);
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -143,29 +145,17 @@
   font-size: rem(13);
   font-weight: $bold;
   line-height: 1;
-  background-color: #000;
-  opacity: 0.25;
-  transition: opacity 0.3s ease;
+  background-color: rgba(0, 0, 0, 0.5);
 
   @include mq("md") {
     min-width: rem(100);
     font-size: rem(15);
   }
 
-  @media (hover: hover) and (pointer: fine) {
-    &:hover {
-      opacity: 1;
-    }
-  }
 }
 
 .p-category__pages-link.is-current {
-  display: none;
-  opacity: 1;
-
-  @include mq("md") {
-    display: inline-flex;
-  }
+  --hover-invert-dark-background: #000;
 }
 
 .p-category__tags {

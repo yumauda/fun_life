@@ -2,8 +2,9 @@
 get_header();
 
 $works_url = fun_life_category_url('works');
+$event_url = fun_life_category_url('event');
 $column_url = fun_life_category_url('column');
-$news_url = fun_life_category_url('news');
+$category_config = fun_life_blog_category_config();
 ?>
 
 <main>
@@ -17,8 +18,8 @@ $news_url = fun_life_category_url('news');
         <p class="p-blog__pages-title">PAGES</p>
         <div class="p-blog__pages-links">
           <a class="p-blog__pages-link c-hover-invert c-hover-invert--dark" href="<?php echo esc_url($works_url); ?>">WORKS</a>
+          <a class="p-blog__pages-link c-hover-invert c-hover-invert--dark" href="<?php echo esc_url($event_url); ?>">EVENT</a>
           <a class="p-blog__pages-link c-hover-invert c-hover-invert--dark" href="<?php echo esc_url($column_url); ?>">COLUMN</a>
-          <a class="p-blog__pages-link c-hover-invert c-hover-invert--dark" href="<?php echo esc_url($news_url); ?>">NEWS</a>
         </div>
       </nav>
     </div>
@@ -31,7 +32,11 @@ $news_url = fun_life_category_url('news');
               <?php
               the_post();
               $card_category_term = fun_life_get_primary_blog_category();
-              $card_category = $card_category_term instanceof WP_Term ? $card_category_term->name : '';
+              $card_category_slug = $card_category_term instanceof WP_Term ? $card_category_term->slug : '';
+              $card_category = isset($category_config[$card_category_slug])
+                ? $category_config[$card_category_slug]['en']
+                : strtoupper($card_category_slug);
+              $card_tag = fun_life_get_card_tag();
               $thumbnail_id = get_post_thumbnail_id();
               $thumbnail_alt = $thumbnail_id ? get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true) : '';
               $thumbnail_alt = $thumbnail_alt ?: get_the_title();
@@ -39,9 +44,14 @@ $news_url = fun_life_category_url('news');
               <article class="p-blog__card">
                 <a class="p-blog__card-link" href="<?php the_permalink(); ?>">
                   <div class="p-blog__meta">
-                    <?php if ($card_category) : ?>
-                      <span class="p-blog__category"><?php echo esc_html($card_category); ?></span>
-                    <?php endif; ?>
+                    <div class="p-blog__labels">
+                      <?php if ($card_category) : ?>
+                        <span class="p-blog__category"><?php echo esc_html($card_category); ?></span>
+                      <?php endif; ?>
+                      <?php if ($card_tag instanceof WP_Term) : ?>
+                        <span class="p-blog__tag"><?php echo esc_html($card_tag->name); ?></span>
+                      <?php endif; ?>
+                    </div>
                     <time class="p-blog__date" datetime="<?php echo esc_attr(get_the_date('c')); ?>"><?php echo esc_html(get_the_date('Y.m.d')); ?></time>
                   </div>
                   <figure class="p-blog__image">

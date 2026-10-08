@@ -50,8 +50,8 @@
       </div>
     </div>
     <?php
-    $event_category = get_category_by_slug('news');
-    $event_archive_url = fun_life_category_url('news');
+    $event_category = get_category_by_slug('event');
+    $event_archive_url = fun_life_category_url('event');
     $event_query_args = array(
       'post_type' => 'post',
       'post_status' => 'publish',
@@ -62,7 +62,7 @@
     if ($event_category instanceof WP_Term) {
       $event_query_args['cat'] = $event_category->term_id;
     } else {
-      $event_query_args['category_name'] = 'news';
+      $event_query_args['category_name'] = 'event';
     }
 
     $event_posts = new WP_Query($event_query_args);
@@ -71,9 +71,9 @@
       <section class="p-home-event" aria-labelledby="home-event-title">
         <div class="l-inner p-home-event__inner">
           <div class="p-home-event__heading">
-            <h2 class="p-home-event__title" id="home-event-title">お知らせ</h2>
+            <h2 class="p-home-event__title" id="home-event-title">イベント / お知らせ</h2>
             <div class="p-home-event__eyebrow-row">
-              <p class="p-home-event__eyebrow">NEWS</p>
+              <p class="p-home-event__eyebrow">EVENT</p>
               <span class="p-home-event__heading-line" aria-hidden="true"></span>
             </div>
           </div>
@@ -84,8 +84,7 @@
               <?php while ($event_posts->have_posts()) : ?>
                 <?php
                 $event_posts->the_post();
-                $event_categories = get_the_category();
-                $event_category_label = 'お知らせ';
+                $event_tag = fun_life_get_card_tag();
                 $event_thumbnail_id = get_post_thumbnail_id();
                 $event_thumbnail_alt = $event_thumbnail_id ? get_post_meta($event_thumbnail_id, '_wp_attachment_image_alt', true) : '';
                 $event_date = get_post_meta(get_the_ID(), 'event_date', true);
@@ -94,20 +93,15 @@
                 if (!$event_location) {
                   $event_location = get_post_meta(get_the_ID(), 'event_place', true);
                 }
-
-                foreach ($event_categories as $post_event_category) {
-                  if ('news' === $post_event_category->slug) {
-                    $event_category_label = $post_event_category->name;
-                    break;
-                  }
-                }
                 ?>
                 <div class="swiper-slide">
                   <article class="p-home-event__card">
                     <a class="p-home-event__card-link" href="<?php the_permalink(); ?>">
                       <div class="p-home-event__meta">
-                        <span class="p-home-event__label">NEWS</span>
-                        <span class="p-home-event__category"><?php echo esc_html($event_category_label); ?></span>
+                        <span class="p-home-event__label">EVENT</span>
+                        <?php if ($event_tag instanceof WP_Term) : ?>
+                          <span class="p-home-event__category"><?php echo esc_html($event_tag->name); ?></span>
+                        <?php endif; ?>
                         <time class="p-home-event__date" datetime="<?php echo esc_attr(get_the_date('c')); ?>"><?php echo esc_html(get_the_date('Y.m.d')); ?></time>
                       </div>
                       <figure class="p-home-event__image">

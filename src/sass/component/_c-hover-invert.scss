@@ -28,7 +28,7 @@
 
 .c-hover-invert--dark {
   color: #fff;
-  background-color: #000;
+  background-color: var(--hover-invert-dark-background, #000);
   border: 1px solid #000;
 
   @media (hover: hover) and (pointer: fine) {

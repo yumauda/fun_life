@@ -18,9 +18,9 @@ if (have_posts()) :
     $eyebrow_en = $current_category_config['en'];
     $eyebrow_ja = $current_category_config['ja'];
     $works_url = fun_life_category_url('works');
+    $event_url = fun_life_category_url('event');
     $column_url = fun_life_category_url('column');
     $blog_url = fun_life_blog_url();
-    $news_url = fun_life_category_url('news');
     $archive_url = $primary_category instanceof WP_Term ? get_category_link($primary_category) : $blog_url;
     $post_tags = get_the_tags();
 
@@ -139,13 +139,13 @@ if (have_posts()) :
             <p class="p-single-blog__pages-title">PAGES</p>
             <a class="c-button-list c-hover-invert" href="<?php echo esc_url($archive_url); ?>">
               <span>一覧へ</span>
-              <span class="c-button-list__arrow" aria-hidden="true"></span>
+              <span class="c-button-list__arrow p-single-blog__pages-back-arrow" aria-hidden="true"></span>
             </a>
           </div>
           <div class="p-single-blog__pages-links">
             <a class="p-single-blog__pages-link c-hover-invert c-hover-invert--dark<?php echo 'works' === $category_slug ? ' is-current' : ''; ?>" href="<?php echo esc_url($works_url); ?>"<?php echo 'works' === $category_slug ? ' aria-current="page"' : ''; ?>>WORKS</a>
+            <a class="p-single-blog__pages-link c-hover-invert c-hover-invert--dark<?php echo 'event' === $category_slug ? ' is-current' : ''; ?>" href="<?php echo esc_url($event_url); ?>"<?php echo 'event' === $category_slug ? ' aria-current="page"' : ''; ?>>EVENT</a>
             <a class="p-single-blog__pages-link c-hover-invert c-hover-invert--dark<?php echo 'column' === $category_slug ? ' is-current' : ''; ?>" href="<?php echo esc_url($column_url); ?>"<?php echo 'column' === $category_slug ? ' aria-current="page"' : ''; ?>>COLUMN</a>
-            <a class="p-single-blog__pages-link c-hover-invert c-hover-invert--dark<?php echo 'news' === $category_slug ? ' is-current' : ''; ?>" href="<?php echo esc_url($news_url); ?>"<?php echo 'news' === $category_slug ? ' aria-current="page"' : ''; ?>>NEWS</a>
           </div>
         </nav>
       </div>
@@ -295,13 +295,13 @@ if (have_posts()) :
             <p class="p-single-blog__other-pages-title">PAGES</p>
             <a class="c-button-list c-hover-invert" href="<?php echo esc_url($archive_url); ?>">
               <span>一覧へ</span>
-              <span class="c-button-list__arrow" aria-hidden="true"></span>
+              <span class="c-button-list__arrow p-single-blog__pages-back-arrow" aria-hidden="true"></span>
             </a>
           </div>
           <div class="p-single-blog__other-pages-links">
             <a class="p-single-blog__other-pages-link c-hover-invert c-hover-invert--dark" href="<?php echo esc_url($works_url); ?>">WORKS</a>
+            <a class="p-single-blog__other-pages-link c-hover-invert c-hover-invert--dark" href="<?php echo esc_url($event_url); ?>">EVENT</a>
             <a class="p-single-blog__other-pages-link c-hover-invert c-hover-invert--dark" href="<?php echo esc_url($column_url); ?>">COLUMN</a>
-            <a class="p-single-blog__other-pages-link c-hover-invert c-hover-invert--dark" href="<?php echo esc_url($news_url); ?>">NEWS</a>
           </div>
         </nav>
         <?php

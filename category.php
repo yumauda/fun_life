@@ -69,9 +69,11 @@ $archive_tags = $queried_term instanceof WP_Term
             <?php
             the_post();
             $card_category_term = fun_life_get_primary_blog_category();
-            $card_category = $card_category_term instanceof WP_Term
-              ? $card_category_term->name
-              : $current_config['ja'];
+            $card_category_slug = $card_category_term instanceof WP_Term ? $card_category_term->slug : $category_slug;
+            $card_category = isset($category_config[$card_category_slug])
+              ? $category_config[$card_category_slug]['en']
+              : strtoupper($card_category_slug);
+            $card_tag = fun_life_get_card_tag();
             $thumbnail_id = get_post_thumbnail_id();
             $thumbnail_alt = $thumbnail_id ? get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true) : '';
             $thumbnail_alt = $thumbnail_alt ?: get_the_title();
@@ -79,7 +81,12 @@ $archive_tags = $queried_term instanceof WP_Term
             <article class="p-blog__card">
               <a class="p-blog__card-link" href="<?php the_permalink(); ?>">
                 <div class="p-blog__meta">
-                  <span class="p-blog__category"><?php echo esc_html($card_category); ?></span>
+                  <div class="p-blog__labels">
+                    <span class="p-blog__category"><?php echo esc_html($card_category); ?></span>
+                    <?php if ($card_tag instanceof WP_Term) : ?>
+                      <span class="p-blog__tag"><?php echo esc_html($card_tag->name); ?></span>
+                    <?php endif; ?>
+                  </div>
                   <time class="p-blog__date" datetime="<?php echo esc_attr(get_the_date('c')); ?>"><?php echo esc_html(get_the_date('Y.m.d')); ?></time>
                 </div>
                 <figure class="p-blog__image">
