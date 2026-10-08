@@ -123,7 +123,7 @@ if (have_posts()) :
           <span class="p-single-blog__category"><?php echo esc_html($category_label); ?></span>
           <time class="p-single-blog__date" datetime="<?php echo esc_attr(get_the_date('c')); ?>"><?php echo esc_html(get_the_date('Y.m.d')); ?></time>
         </div>
-        <?php if ($works_spec) : ?>
+        <?php if ($is_works && $works_spec) : ?>
           <p class="p-single-blog__spec"><?php echo esc_html($works_spec); ?></p>
         <?php endif; ?>
         <h1 class="p-single-blog__title"><?php the_title(); ?></h1>
