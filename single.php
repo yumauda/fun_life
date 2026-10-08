@@ -232,6 +232,13 @@ if (have_posts()) :
         </section>
       <?php endif; ?>
 
+      <div class="p-single-blog__back">
+        <a class="p-single-blog__back-link c-button-list c-hover-invert" href="<?php echo esc_url($blog_url); ?>">
+          <span>一覧へ戻る</span>
+          <span class="c-button-list__arrow" aria-hidden="true"></span>
+        </a>
+      </div>
+
       <section class="p-single-blog__other">
         <h2 class="p-single-blog__other-heading">OTHER</h2>
         <div class="p-single-blog__other-grid">

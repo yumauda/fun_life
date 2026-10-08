@@ -8064,6 +8064,27 @@ select::-ms-expand {
   }
 }
 
+.p-single-blog__back {
+  display: flex;
+  justify-content: center;
+  margin-top: 4.5rem;
+}
+@media screen and (min-width: 768px) {
+  .p-single-blog__back {
+    margin-top: 6.875rem;
+  }
+}
+
+.p-single-blog__back .p-single-blog__back-link {
+  width: 8.625rem;
+  margin-left: 0;
+}
+@media screen and (min-width: 768px) {
+  .p-single-blog__back .p-single-blog__back-link {
+    width: 10.25rem;
+  }
+}
+
 .p-single-blog__other {
   margin-top: 6.25rem;
   padding-top: 3.4375rem;
