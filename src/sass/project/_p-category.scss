@@ -104,8 +104,38 @@
   }
 }
 
+.p-category__pages-heading .p-category__pages-back {
+  width: rem(86);
+  padding-top: rem(7);
+  padding-right: rem(8);
+  padding-bottom: rem(7);
+  padding-left: rem(10);
+  font-size: rem(13);
+
+  @include mq("md") {
+    width: rem(100);
+    padding-top: rem(7);
+    padding-right: rem(10);
+    padding-bottom: rem(7);
+    padding-left: rem(12);
+    font-size: rem(15);
+  }
+}
+
 .p-category__pages-back-arrow {
   transform: rotate(180deg);
+}
+
+.p-category__pages-back .p-category__pages-back-arrow {
+  width: rem(20);
+  height: rem(7);
+  margin-left: rem(6);
+
+  @include mq("md") {
+    width: rem(22);
+    height: rem(8);
+    margin-left: rem(8);
+  }
 }
 
 .p-category__pages-links {
