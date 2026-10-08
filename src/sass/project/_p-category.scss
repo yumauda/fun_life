@@ -87,6 +87,11 @@
   }
 }
 
+.p-category__pages-heading {
+  display: flex;
+  align-items: center;
+}
+
 .p-category__pages-title {
   font-family: $second-font-family;
   font-size: rem(24);
@@ -97,6 +102,19 @@
   @include mq("md") {
     font-size: rem(45);
   }
+}
+
+.p-category__pages-heading .p-category__pages-back {
+  width: rem(138);
+
+  @include mq("md") {
+    width: rem(164);
+  }
+}
+
+.p-category__pages-back-arrow {
+  margin-left: 0;
+  transform: rotate(180deg);
 }
 
 .p-category__pages-links {

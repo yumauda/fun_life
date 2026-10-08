@@ -5,6 +5,7 @@ $queried_term = get_queried_object();
 $category_slug = $queried_term instanceof WP_Term ? $queried_term->slug : '';
 $category_name = $queried_term instanceof WP_Term ? $queried_term->name : '';
 $category_config = fun_life_blog_category_config();
+$blog_url = fun_life_blog_url();
 $current_config = isset($category_config[$category_slug])
   ? $category_config[$category_slug]
   : array('en' => strtoupper($category_slug), 'ja' => $category_name);
@@ -28,7 +29,13 @@ $archive_tags = $queried_term instanceof WP_Term
           </h1>
 
           <nav class="p-category__pages" aria-label="カテゴリーページを切り替える">
-            <p class="p-category__pages-title">PAGES</p>
+            <div class="p-category__pages-heading">
+              <p class="p-category__pages-title">PAGES</p>
+              <a class="p-category__pages-back c-button-list c-hover-invert" href="<?php echo esc_url($blog_url); ?>">
+                <span class="c-button-list__arrow p-category__pages-back-arrow" aria-hidden="true"></span>
+                <span>一覧へ戻る</span>
+              </a>
+            </div>
             <div class="p-category__pages-links">
               <?php foreach ($category_config as $filter_slug => $filter_config) : ?>
                 <?php $is_current = $category_slug === $filter_slug; ?>
