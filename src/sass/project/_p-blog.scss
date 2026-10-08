@@ -148,9 +148,24 @@
   }
 }
 
+.p-blog__card {
+  background-color: #fff;
+}
+
 .p-blog__card-link {
   display: block;
+  padding-top: rem(20);
+  padding-right: rem(20);
+  padding-bottom: rem(20);
+  padding-left: rem(20);
   color: #000;
+
+  @include mq(md) {
+    padding-top: rem(30);
+    padding-right: rem(30);
+    padding-bottom: rem(30);
+    padding-left: rem(30);
+  }
 }
 
 .p-blog__meta {

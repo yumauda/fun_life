@@ -1009,9 +1009,25 @@ select::-ms-expand {
   }
 }
 
+.p-blog__card {
+  background-color: #fff;
+}
+
 .p-blog__card-link {
   display: block;
+  padding-top: 1.25rem;
+  padding-right: 1.25rem;
+  padding-bottom: 1.25rem;
+  padding-left: 1.25rem;
   color: #000;
+}
+@media screen and (min-width: 768px) {
+  .p-blog__card-link {
+    padding-top: 1.875rem;
+    padding-right: 1.875rem;
+    padding-bottom: 1.875rem;
+    padding-left: 1.875rem;
+  }
 }
 
 .p-blog__meta {
