@@ -22,6 +22,7 @@ if (have_posts()) :
     $blog_url = fun_life_blog_url();
     $news_url = fun_life_category_url('news');
     $archive_url = $primary_category instanceof WP_Term ? get_category_link($primary_category) : $blog_url;
+    $post_tags = get_the_tags();
 
     $get_detail = static function ($field_name, $fallback = '') {
       $value = function_exists('get_field') ? get_field($field_name) : get_post_meta(get_the_ID(), $field_name, true);
@@ -119,14 +120,20 @@ if (have_posts()) :
           <span class="p-single-blog__eyebrow-en"><?php echo esc_html($eyebrow_en); ?></span>
           <span class="p-single-blog__eyebrow-ja"><?php echo esc_html($eyebrow_ja); ?></span>
         </p>
+        <h1 class="p-single-blog__title"><?php the_title(); ?></h1>
         <div class="p-single-blog__meta">
-          <span class="p-single-blog__category"><?php echo esc_html($category_label); ?></span>
+          <?php if ($post_tags) : ?>
+            <div class="p-single-blog__tags" aria-label="記事のタグ">
+              <?php foreach ($post_tags as $post_tag) : ?>
+                <a class="p-single-blog__tag c-hover-invert" href="<?php echo esc_url(fun_life_category_filter_url($category_slug, $post_tag->slug)); ?>"><?php echo esc_html($post_tag->name); ?></a>
+              <?php endforeach; ?>
+            </div>
+          <?php endif; ?>
           <time class="p-single-blog__date" datetime="<?php echo esc_attr(get_the_date('c')); ?>"><?php echo esc_html(get_the_date('Y.m.d')); ?></time>
         </div>
         <?php if ($is_works && $works_spec) : ?>
           <p class="p-single-blog__spec"><?php echo esc_html($works_spec); ?></p>
         <?php endif; ?>
-        <h1 class="p-single-blog__title"><?php the_title(); ?></h1>
         <nav class="p-single-blog__pages" aria-label="カテゴリーページを切り替える">
           <div class="p-single-blog__pages-heading">
             <p class="p-single-blog__pages-title">PAGES</p>
@@ -234,8 +241,8 @@ if (have_posts()) :
 
       <div class="p-single-blog__back">
         <a class="p-single-blog__back-link c-button-list c-hover-invert" href="<?php echo esc_url($blog_url); ?>">
+          <span class="c-button-list__arrow p-single-blog__back-arrow" aria-hidden="true"></span>
           <span>一覧へ戻る</span>
-          <span class="c-button-list__arrow" aria-hidden="true"></span>
         </a>
       </div>
 
