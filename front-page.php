@@ -238,6 +238,14 @@
         $works_posts->the_post();
         $project_images = array();
         $project_image_ids = array();
+        $project_spec = function_exists('get_field')
+          ? get_field('works_spec')
+          : get_post_meta(get_the_ID(), 'works_spec', true);
+        $project_spec = is_string($project_spec) ? trim($project_spec) : '';
+
+        if (!$project_spec) {
+          $project_spec = get_the_excerpt();
+        }
 
         foreach (array('works_top_slider_1', 'works_top_slider_2', 'works_top_slider_3') as $works_image_field) {
           $works_image_id = function_exists('get_field')
@@ -289,6 +297,7 @@
 
         $project_examples[] = array(
           'title' => get_the_title(),
+          'spec' => $project_spec,
           'url' => get_permalink(),
           'images' => $project_images,
         );
@@ -340,7 +349,7 @@
               <div class="p-top-project__meta">
                 <h3 class="p-top-project__text">
                   <?php if ($project_example['url']) : ?>
-                    <a href="<?php echo esc_url($project_example['url']); ?>"><?php echo esc_html($project_example['title']); ?></a>
+                    <a href="<?php echo esc_url($project_example['url']); ?>"><?php echo esc_html($project_example['spec'] ?: $project_example['title']); ?></a>
                   <?php else : ?>
                     <?php echo esc_html($project_example['title']); ?>
                   <?php endif; ?>
