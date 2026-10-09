@@ -1,5 +1,7 @@
 "use strict";
 
+const isParallaxEnabled = false;
+
 function getSectionRevealTargets(section) {
   const targets = [];
 
@@ -221,6 +223,14 @@ function initScrollAnimations() {
     const isStrongParallax = figure.classList.contains("c-parallax--strong");
 
     if (!image) return;
+
+    if (!isParallaxEnabled) {
+      gsap.set(image, {
+        height: "100%",
+        clearProps: "transform",
+      });
+      return;
+    }
 
     const getParallaxDistance = () => {
       const configuredDistance = isStrongParallax
