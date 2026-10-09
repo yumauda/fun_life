@@ -4168,9 +4168,9 @@ select::-ms-expand {
   }
 }
 
-@media screen and (min-width: 1250px) {
+@media screen and (min-width: 768px) {
   .p-home-model-house__content {
-    margin-left: -4.6875rem;
+    margin-left: clamp(-4.6875rem, 550px - 50vw, 0rem);
   }
 }
 
@@ -4216,11 +4216,6 @@ select::-ms-expand {
 }
 @media screen and (min-width: 768px) {
   .p-home-model-house__layout {
-    margin-top: 2.25rem;
-  }
-}
-@media screen and (min-width: 1250px) {
-  .p-home-model-house__layout {
     flex-direction: row;
     align-items: flex-start;
     margin-top: 0.625rem;
@@ -4230,7 +4225,7 @@ select::-ms-expand {
 .p-home-model-house__detail {
   margin-top: 2.25rem;
 }
-@media screen and (min-width: 1250px) {
+@media screen and (min-width: 768px) {
   .p-home-model-house__detail {
     flex: 0 0 22.9375rem;
     margin-top: 6.25rem;
@@ -4328,10 +4323,10 @@ select::-ms-expand {
 .p-home-model-house__visual {
   order: -1;
 }
-@media screen and (min-width: 1250px) {
+@media screen and (min-width: 768px) {
   .p-home-model-house__visual {
     order: initial;
-    flex: 0 0 calc(50vw + 11.25rem);
+    flex: 0 0 min(50vw + 11.25rem, 100vw - 26.25rem - 25px);
     margin-left: 3.3125rem;
   }
 }
@@ -4341,7 +4336,7 @@ select::-ms-expand {
   align-items: flex-start;
   justify-content: space-between;
 }
-@media screen and (min-width: 1250px) {
+@media screen and (min-width: 768px) {
   .p-home-model-house__status {
     justify-content: flex-start;
   }
@@ -4355,14 +4350,9 @@ select::-ms-expand {
 }
 @media screen and (min-width: 768px) {
   .p-home-model-house__progress {
-    margin-top: 3rem;
-    column-gap: 1.375rem;
-  }
-}
-@media screen and (min-width: 1250px) {
-  .p-home-model-house__progress {
-    flex: 0 0 31.9375rem;
+    max-width: 31.9375rem;
     margin-top: 3.9375rem;
+    column-gap: 1.375rem;
   }
 }
 
@@ -4414,11 +4404,6 @@ select::-ms-expand {
   letter-spacing: 0.1em;
 }
 @media screen and (min-width: 768px) {
-  .p-home-model-house__count {
-    margin-left: 2.5rem;
-  }
-}
-@media screen and (min-width: 1250px) {
   .p-home-model-house__count {
     margin-left: 8.9375rem;
   }
