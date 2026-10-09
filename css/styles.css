@@ -4339,6 +4339,7 @@ select::-ms-expand {
 @media screen and (min-width: 768px) {
   .p-home-model-house__status {
     justify-content: flex-start;
+    padding-right: 25px;
   }
 }
 
