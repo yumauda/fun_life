@@ -29,16 +29,13 @@
 
 .c-button-list__arrow {
   display: block;
+  flex: none;
   width: rem(24);
-  height: rem(8);
+  height: auto;
   margin-left: rem(12);
   color: inherit;
-  background-color: currentColor;
-  -webkit-mask: url("../images/common/arrow-right.svg") center / contain no-repeat;
-  mask: url("../images/common/arrow-right.svg") center / contain no-repeat;
 
   @include mq(md) {
     width: rem(29);
-    height: rem(10);
   }
 }

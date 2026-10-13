@@ -140,7 +140,7 @@ if (have_posts()) :
                 <p class="p-single-blog__pages-title">PAGES</p>
                 <a class="c-button-list c-hover-invert" href="<?php echo esc_url($archive_url); ?>">
                   <span>一覧へ</span>
-                  <span class="c-button-list__arrow p-single-blog__pages-back-arrow" aria-hidden="true"></span>
+                  <?php get_template_part('includes/button-arrow'); ?>
                 </a>
               </div>
               <div class="p-single-blog__pages-links">
@@ -242,7 +242,7 @@ if (have_posts()) :
 
           <div class="p-single-blog__back">
             <a class="p-single-blog__back-link c-button-list c-hover-invert" href="<?php echo esc_url($blog_url); ?>">
-              <span class="c-button-list__arrow p-single-blog__back-arrow" aria-hidden="true"></span>
+              <?php get_template_part('includes/button-arrow', null, array('modifier' => 'p-single-blog__back-arrow')); ?>
               <span>一覧へ戻る</span>
             </a>
           </div>
@@ -296,7 +296,7 @@ if (have_posts()) :
                 <p class="p-single-blog__other-pages-title">PAGES</p>
                 <a class="c-button-list c-hover-invert" href="<?php echo esc_url($archive_url); ?>">
                   <span>一覧へ</span>
-                  <span class="c-button-list__arrow p-single-blog__pages-back-arrow" aria-hidden="true"></span>
+                  <?php get_template_part('includes/button-arrow'); ?>
                 </a>
               </div>
               <div class="p-single-blog__other-pages-links">

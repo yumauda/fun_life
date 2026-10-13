@@ -33,7 +33,7 @@ $archive_tags = $queried_term instanceof WP_Term
               <p class="p-category__pages-title">PAGES</p>
               <a class="p-category__pages-back c-button-list c-hover-invert" href="<?php echo esc_url($blog_url); ?>">
                 <span>一覧へ</span>
-                <span class="c-button-list__arrow p-category__pages-back-arrow" aria-hidden="true"></span>
+                <?php get_template_part('includes/button-arrow'); ?>
               </a>
             </div>
             <div class="p-category__pages-links">
