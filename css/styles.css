@@ -983,7 +983,7 @@ select::-ms-expand {
 @media screen and (min-width: 768px) {
   .p-blog__archive {
     margin-top: initial;
-    padding-top: 9.375rem;
+    padding-top: 5rem;
     padding-bottom: 9.375rem;
   }
 }
@@ -995,8 +995,7 @@ select::-ms-expand {
   .p-blog__grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 2.625rem;
-    row-gap: 9.375rem;
+    gap: 4.5rem;
   }
 }
 
@@ -1110,6 +1109,7 @@ select::-ms-expand {
 .p-blog__card-meta {
   margin-top: 1.0625rem;
   font-size: 0.875rem;
+  white-space: pre-line;
   letter-spacing: 0.1em;
   line-height: 1.7142857143;
   font-weight: 700;
@@ -1430,7 +1430,7 @@ select::-ms-expand {
   flex-direction: column;
   padding-bottom: 3.625rem;
 }
-@media (min-width: 1100px) {
+@media screen and (min-width: 768px) {
   .p-category__heading {
     align-items: flex-start;
     justify-content: space-between;
@@ -1469,7 +1469,7 @@ select::-ms-expand {
   padding-left: 0.125rem;
   font-family: "Inter", sans-serif;
   font-size: 3.25rem;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.06em;
   line-height: 0.95;
 }
 @media screen and (min-width: 768px) {
@@ -1529,7 +1529,7 @@ select::-ms-expand {
 }
 @media screen and (min-width: 768px) {
   .p-category__pages-title {
-    font-size: 2.8125rem;
+    font-size: 2.5rem;
   }
 }
 
@@ -1576,6 +1576,7 @@ select::-ms-expand {
     font-size: 0.9375rem;
   }
 }
+
 .p-category__pages-link.is-current {
   --hover-invert-dark-background: #000;
 }
@@ -1623,6 +1624,7 @@ select::-ms-expand {
 }
 
 .p-category__tag {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1666,6 +1668,18 @@ select::-ms-expand {
     padding-right: 0.625rem;
     padding-left: 0.625rem;
   }
+}
+.p-category__tag.is-current::after {
+  position: absolute;
+  top: -0.3125rem;
+  right: -0.3125rem;
+  width: 0.6875rem;
+  aspect-ratio: 42/41;
+  background-image: url("../images/common/tag_icon.webp");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  content: "";
 }
 
 .p-category__tag:focus-visible {
@@ -7620,6 +7634,7 @@ select::-ms-expand {
   font-weight: 700;
   line-height: 1.7;
   letter-spacing: 0.1em;
+  white-space: pre-line;
 }
 @media screen and (min-width: 768px) {
   .p-single-blog__spec {
@@ -7728,6 +7743,7 @@ select::-ms-expand {
     font-size: 0.9375rem;
   }
 }
+
 .p-single-blog__pages-link.is-current {
   --hover-invert-dark-background: #000;
 }
@@ -8301,6 +8317,7 @@ select::-ms-expand {
   font-weight: 700;
   line-height: 1.7;
   letter-spacing: 0.1em;
+  white-space: pre-line;
 }
 @media screen and (min-width: 768px) {
   .p-single-blog__other-spec {

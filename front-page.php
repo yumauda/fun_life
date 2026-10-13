@@ -232,14 +232,7 @@
         $works_posts->the_post();
         $project_images = array();
         $project_image_ids = array();
-        $project_spec = function_exists('get_field')
-          ? get_field('works_spec')
-          : get_post_meta(get_the_ID(), 'works_spec', true);
-        $project_spec = is_string($project_spec) ? trim($project_spec) : '';
-
-        if (!$project_spec) {
-          $project_spec = get_the_excerpt();
-        }
+        $project_spec = fun_life_get_works_building_overview();
 
         foreach (array('works_top_slider_1', 'works_top_slider_2', 'works_top_slider_3') as $works_image_field) {
           $works_image_id = function_exists('get_field')

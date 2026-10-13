@@ -131,6 +131,7 @@
   font-weight: $bold;
   line-height: 1.7;
   letter-spacing: 0.1em;
+  white-space: pre-line;
 
   @include mq(md) {
     margin-top: rem(18);
@@ -767,6 +768,7 @@
   font-weight: $bold;
   line-height: 1.7;
   letter-spacing: 0.1em;
+  white-space: pre-line;
 
   @include mq(md) {
     margin-top: rem(17);

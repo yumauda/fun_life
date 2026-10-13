@@ -554,6 +554,22 @@ function fun_life_get_card_tag($post_id = 0)
 }
 
 /**
+ * 施工事例カードに表示する建物概要を取得する。
+ *
+ * @param int $post_id 投稿ID。
+ * @return string
+ */
+function fun_life_get_works_building_overview($post_id = 0)
+{
+	$post_id = $post_id ?: get_the_ID();
+	$overview = function_exists('get_field')
+		? get_field('works_building_overview', $post_id)
+		: get_post_meta($post_id, 'works_building_overview', true);
+
+	return is_string($overview) ? trim($overview) : '';
+}
+
+/**
  * 指定カテゴリーの投稿で使用されているタグを取得する。
  *
  * @param int $category_id カテゴリーID。
@@ -828,7 +844,15 @@ function fun_life_register_single_fields()
 	));
 
 	$text_fields = array(
-		array('key' => 'field_fun_life_works_spec', 'label' => '物件概要', 'name' => 'works_spec', 'type' => 'text'),
+		array(
+			'key' => 'field_fun_life_works_building_overview',
+			'label' => '建物概要',
+			'name' => 'works_building_overview',
+			'type' => 'textarea',
+			'instructions' => 'カードや詳細ページに表示する所在地・延床面積・間取り・性能などを入力します。',
+			'rows' => 2,
+			'new_lines' => '',
+		),
 		array('key' => 'field_fun_life_works_intro_heading', 'label' => 'セクション1 見出し', 'name' => 'works_intro_heading', 'type' => 'textarea', 'rows' => 2, 'new_lines' => ''),
 		array('key' => 'field_fun_life_works_intro_text', 'label' => 'セクション1 本文', 'name' => 'works_intro_text', 'type' => 'textarea', 'rows' => 5, 'new_lines' => ''),
 		array('key' => 'field_fun_life_works_second_heading', 'label' => 'セクション2 見出し', 'name' => 'works_second_heading', 'type' => 'textarea', 'rows' => 2, 'new_lines' => ''),

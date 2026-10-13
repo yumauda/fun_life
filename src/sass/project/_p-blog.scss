@@ -122,7 +122,7 @@
 
   @include mq(md) {
     margin-top: initial;
-    padding-top: rem(150);
+    padding-top: rem(80);
     padding-bottom: rem(150);
   }
 }
@@ -135,8 +135,7 @@
   @include mq(md) {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: rem(42);
-    row-gap: rem(150);
+    gap: rem(72);
   }
 }
 
@@ -244,6 +243,7 @@
 .p-blog__card-meta {
   margin-top: rem(17);
   font-size: rem(14);
+  white-space: pre-line;
   letter-spacing: 0.1em;
   line-height: calc(24 / 14);
   font-weight: $bold;

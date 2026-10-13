@@ -37,6 +37,9 @@ $category_config = fun_life_blog_category_config();
                 ? $category_config[$card_category_slug]['en']
                 : strtoupper($card_category_slug);
               $card_tag = fun_life_get_card_tag();
+              $card_overview = 'works' === $card_category_slug
+                ? fun_life_get_works_building_overview()
+                : get_the_excerpt();
               $thumbnail_id = get_post_thumbnail_id();
               $thumbnail_alt = $thumbnail_id ? get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true) : '';
               $thumbnail_alt = $thumbnail_alt ?: get_the_title();
@@ -61,8 +64,8 @@ $category_config = fun_life_blog_category_config();
                       <img src="<?php echo esc_url(get_template_directory_uri() . '/images/works/works_02.webp'); ?>" alt="" width="1200" height="1201" loading="lazy" decoding="async">
                     <?php endif; ?>
                   </figure>
-                  <?php if (has_excerpt()) : ?>
-                    <p class="p-blog__card-meta"><?php echo esc_html(get_the_excerpt()); ?></p>
+                  <?php if ($card_overview) : ?>
+                    <p class="p-blog__card-meta"><?php echo esc_html($card_overview); ?></p>
                   <?php endif; ?>
                   <h2 class="p-blog__card-title"><?php the_title(); ?></h2>
                 </a>
