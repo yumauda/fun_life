@@ -6207,6 +6207,8 @@ select::-ms-expand {
 .p-modular__slider {
   width: 100%;
   overflow: hidden;
+  touch-action: pan-y;
+  user-select: none;
 }
 @media screen and (min-width: 768px) {
   .p-modular__slider {
@@ -6247,6 +6249,7 @@ select::-ms-expand {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  -webkit-user-drag: none;
 }
 
 .p-modular__slider-note {

@@ -189,9 +189,11 @@ if (modularRoot) {
   const modularSwipers = Array.from(modularRoot.querySelectorAll(".p-modular__slider")).map((slider) => {
     const swiper = new Swiper(slider, {
       slidesPerView: 1,
-      loop: true,
+      loop: false,
       speed: 700,
       spaceBetween: 24,
+      allowTouchMove: true,
+      grabCursor: true,
       observer: true,
       observeParents: true,
       breakpoints: {
@@ -298,7 +300,7 @@ if (modularRoot) {
 
       if (activeSwiper) {
         activeSwiper.instance.update();
-        activeSwiper.instance.slideToLoop(0, 0);
+        activeSwiper.instance.slideTo(0, 0);
       }
     });
   };
