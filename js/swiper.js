@@ -187,9 +187,12 @@ const modularRoot = document.querySelector(".p-modular");
 
 if (modularRoot) {
   const modularSwipers = Array.from(modularRoot.querySelectorAll(".p-modular__slider")).map((slider) => {
+    const slideCount = slider.querySelectorAll(".swiper-slide").length;
     const swiper = new Swiper(slider, {
       slidesPerView: 1,
-      loop: false,
+      loop: slideCount > 1,
+      loopedSlides: slideCount,
+      loopAdditionalSlides: slideCount,
       speed: 700,
       spaceBetween: 24,
       allowTouchMove: true,
@@ -300,7 +303,7 @@ if (modularRoot) {
 
       if (activeSwiper) {
         activeSwiper.instance.update();
-        activeSwiper.instance.slideTo(0, 0);
+        activeSwiper.instance.slideToLoop(0, 0, false);
       }
     });
   };
