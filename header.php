@@ -5,8 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <meta name="format-detection" content="telephone=no" />
-    <link rel="icon" href="<?php echo esc_url(get_template_directory_uri() . '/images/common/favicon.png'); ?>" type="image/png" sizes="512x512">
-    <link rel="apple-touch-icon" href="<?php echo esc_url(get_template_directory_uri() . '/images/common/favicon.png'); ?>">
+    <link rel="icon" href="<?php echo esc_url(wp_make_link_relative(get_template_directory_uri() . '/images/common/favicon.png')); ?>" type="image/png" sizes="512x512">
+    <link rel="apple-touch-icon" href="<?php echo esc_url(wp_make_link_relative(get_template_directory_uri() . '/images/common/favicon.png')); ?>">
     <?php
     $site_name = 'ファンライフ株式会社';
     $default_title = 'ファンライフ株式会社｜熊本・御船町の注文住宅・リフォーム';
