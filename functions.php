@@ -304,7 +304,7 @@ function login_logo()
 		height: 70px; //ログインの高さ
 	  }
 	  body{
-		background: url(' . get_template_directory_uri() . '/images/common/mv_bg.jpg) no-repeat top center;
+		background: url(' . get_template_directory_uri() . '/images/top/mv_pc.webp) no-repeat top center;
 		background-color:rgba(255,255,255,0.5);
 		background-blend-mode:lighten;
 		background-size: cover;
