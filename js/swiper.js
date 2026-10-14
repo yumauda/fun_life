@@ -217,16 +217,27 @@ if (modularRoot) {
   const menuButtons = Array.from(modularRoot.querySelectorAll(".p-modular__menu-button"));
   const subButtons = Array.from(modularRoot.querySelectorAll(".p-modular__sub-button"));
   const panels = Array.from(modularRoot.querySelectorAll(".p-modular__panel"));
+  const modularBody = modularRoot.querySelector(".p-modular__body");
   const modularMain = modularRoot.querySelector(".p-modular__main");
+  const modularMore = modularRoot.querySelector(".p-modular__more");
   const mobileMedia = window.matchMedia("(max-width: 767px)");
   const modularMainPlaceholder = document.createComment("modular-main-position");
+  const modularMorePlaceholder = document.createComment("modular-more-position");
 
   if (modularMain?.parentNode) {
     modularMain.parentNode.insertBefore(modularMainPlaceholder, modularMain);
   }
 
+  if (modularMore?.parentNode) {
+    modularMore.parentNode.insertBefore(modularMorePlaceholder, modularMore);
+  }
+
   const moveMainIntoRow = (row) => {
     if (modularMain && row && mobileMedia.matches) {
+      if (modularBody && modularMore) {
+        modularBody.append(modularMore);
+      }
+
       row.append(modularMain);
     }
   };
@@ -234,6 +245,10 @@ if (modularRoot) {
   const restoreMainPosition = () => {
     if (modularMain && modularMainPlaceholder.parentNode) {
       modularMainPlaceholder.parentNode.insertBefore(modularMain, modularMainPlaceholder.nextSibling);
+    }
+
+    if (modularMore && modularMorePlaceholder.parentNode) {
+      modularMorePlaceholder.parentNode.insertBefore(modularMore, modularMorePlaceholder.nextSibling);
     }
   };
 

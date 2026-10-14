@@ -78,7 +78,7 @@ function initScrollAnimations() {
     )).filter((target) => {
       return target.textContent.trim() !== ""
         && !target.closest(".swiper, .p-modular__menu, .p-works-modal, .p-contact-form__privacy")
-        && !target.matches(".p-top-project__counter");
+        && !target.matches(".p-top-project__counter, .p-modular__more");
     });
 
     textTargets.forEach((target, index) => {
