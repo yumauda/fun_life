@@ -166,6 +166,7 @@
   display: block;
   width: rem(18);
   height: auto;
+  fill: currentColor;
 
   @include mq(md) {
     width: rem(24);
@@ -249,14 +250,13 @@
     font-weight: $bold;
     line-height: 1.5;
     letter-spacing: 0.08em;
-    color: #000;
+    color: inherit;
     font-family: $second-font-family;
     display: block;
   }
 }
 
 .p-header--about .p-header__menu-text {
-  color: #fff;
   transition: color 0.5s ease;
 }
 
@@ -280,15 +280,11 @@
   width: rem(18);
   height: 1px;
   margin-left: auto;
-  background: #000;
+  background: currentColor;
   transition:
     width 0.3s ease,
     transform 0.3s ease,
     background-color 0.5s ease;
-}
-
-.p-header--about .p-header__menu-bar {
-  background: #fff;
 }
 
 .p-header--about.is-after-about-mv .p-header__logo img {
@@ -300,14 +296,6 @@
   color: #000;
   background: #fff;
   border-color: #000;
-}
-
-.p-header--about.is-after-about-mv .p-header__menu-text {
-  color: #000;
-}
-
-.p-header--about.is-after-about-mv .p-header__menu-bar {
-  background: #000;
 }
 
 .p-header--about.is-after-about-mv .p-header__nav-link,
@@ -330,11 +318,14 @@
   background: transparent;
 }
 
-.p-header__menu.is-active .p-header__menu-bar {
-  background: #000;
+.p-header__icon-link:hover {
+  @media (hover: hover) and (pointer: fine) {
+    color: #fff;
+    background: #000;
+  }
 }
 
-.p-header__icon-link:hover {
+.p-header__menu:hover {
   @media (hover: hover) and (pointer: fine) {
     color: #fff;
     background: #000;
@@ -355,7 +346,21 @@
   }
 }
 
+.p-header--about .p-header__menu:hover {
+  @media (hover: hover) and (pointer: fine) {
+    color: #000;
+    background: #fff;
+  }
+}
+
 .p-header--about.is-after-about-mv .p-header__icon-link:hover {
+  @media (hover: hover) and (pointer: fine) {
+    color: #fff;
+    background: #000;
+  }
+}
+
+.p-header--about.is-after-about-mv .p-header__menu:hover {
   @media (hover: hover) and (pointer: fine) {
     color: #fff;
     background: #000;
@@ -427,10 +432,6 @@
 .p-header--about .p-header__menu.is-active {
   color: #000;
   border-color: #000;
-}
-
-.p-header--about .p-header__menu.is-active .p-header__menu-text {
-  color: #000;
 }
 
 .drawer-open .p-header--about .p-header__icon-link:focus-visible,

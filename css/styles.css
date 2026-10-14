@@ -3412,6 +3412,7 @@ select::-ms-expand {
   display: block;
   width: 1.125rem;
   height: auto;
+  fill: currentColor;
 }
 @media screen and (min-width: 768px) {
   .p-header__icon-link svg {
@@ -3496,14 +3497,13 @@ select::-ms-expand {
     font-weight: 700;
     line-height: 1.5;
     letter-spacing: 0.08em;
-    color: #000;
+    color: inherit;
     font-family: "Inter", sans-serif;
     display: block;
   }
 }
 
 .p-header--about .p-header__menu-text {
-  color: #fff;
   transition: color 0.5s ease;
 }
 
@@ -3527,12 +3527,8 @@ select::-ms-expand {
   width: 1.125rem;
   height: 1px;
   margin-left: auto;
-  background: #000;
+  background: currentColor;
   transition: width 0.3s ease, transform 0.3s ease, background-color 0.5s ease;
-}
-
-.p-header--about .p-header__menu-bar {
-  background: #fff;
 }
 
 .p-header--about.is-after-about-mv .p-header__logo img {
@@ -3544,14 +3540,6 @@ select::-ms-expand {
   color: #000;
   background: #fff;
   border-color: #000;
-}
-
-.p-header--about.is-after-about-mv .p-header__menu-text {
-  color: #000;
-}
-
-.p-header--about.is-after-about-mv .p-header__menu-bar {
-  background: #000;
 }
 
 .p-header--about.is-after-about-mv .p-header__nav-link,
@@ -3574,12 +3562,15 @@ select::-ms-expand {
   background: transparent;
 }
 
-.p-header__menu.is-active .p-header__menu-bar {
-  background: #000;
+@media (hover: hover) and (pointer: fine) {
+  .p-header__icon-link:hover {
+    color: #fff;
+    background: #000;
+  }
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .p-header__icon-link:hover {
+  .p-header__menu:hover {
     color: #fff;
     background: #000;
   }
@@ -3600,7 +3591,21 @@ select::-ms-expand {
 }
 
 @media (hover: hover) and (pointer: fine) {
+  .p-header--about .p-header__menu:hover {
+    color: #000;
+    background: #fff;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
   .p-header--about.is-after-about-mv .p-header__icon-link:hover {
+    color: #fff;
+    background: #000;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .p-header--about.is-after-about-mv .p-header__menu:hover {
     color: #fff;
     background: #000;
   }
@@ -3670,10 +3675,6 @@ select::-ms-expand {
 .p-header--about .p-header__menu.is-active {
   color: #000;
   border-color: #000;
-}
-
-.p-header--about .p-header__menu.is-active .p-header__menu-text {
-  color: #000;
 }
 
 .drawer-open .p-header--about .p-header__icon-link:focus-visible,
