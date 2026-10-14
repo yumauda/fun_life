@@ -588,6 +588,13 @@
         <div class="p-modular__body">
           <div class="p-modular__menu" role="group" aria-label="規格住宅プラン">
             <p class="p-modular__menu-title">シンプルモダン</p>
+            <div class="p-modular__mobile-intro">
+              <figure class="p-modular__mobile-intro-image">
+                <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/modular-koti-01.webp" alt="シンプルモダンの規格住宅の外観イメージ" width="1800" height="1201">
+              </figure>
+              <p class="p-modular__mobile-intro-copy">「シンプルな美しさ、<br>満たされる心地よさ。」</p>
+              <p class="p-modular__mobile-intro-text">シンプルモダンの規格住宅は、洗練されたデザインと暮らしやすさを両立した住まいです。無駄を省いたシンプルな空間だからこそ、インテリアや暮らし方が自然と映えるのも魅力。</p>
+            </div>
             <div class="p-modular__menu-row p-modular__menu-row--primary" data-modular-group="simple">
               <button class="p-modular__menu-button" type="button" aria-expanded="false" aria-controls="modular-simple-options">平屋</button>
               <div class="p-modular__sub-menu" id="modular-simple-options" role="group" aria-label="シンプルモダン 平屋">

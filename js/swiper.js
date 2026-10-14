@@ -212,7 +212,25 @@ if (modularRoot) {
   const menuButtons = Array.from(modularRoot.querySelectorAll(".p-modular__menu-button"));
   const subButtons = Array.from(modularRoot.querySelectorAll(".p-modular__sub-button"));
   const panels = Array.from(modularRoot.querySelectorAll(".p-modular__panel"));
+  const modularMain = modularRoot.querySelector(".p-modular__main");
   const mobileMedia = window.matchMedia("(max-width: 767px)");
+  const modularMainPlaceholder = document.createComment("modular-main-position");
+
+  if (modularMain?.parentNode) {
+    modularMain.parentNode.insertBefore(modularMainPlaceholder, modularMain);
+  }
+
+  const moveMainIntoRow = (row) => {
+    if (modularMain && row && mobileMedia.matches) {
+      row.append(modularMain);
+    }
+  };
+
+  const restoreMainPosition = () => {
+    if (modularMain && modularMainPlaceholder.parentNode) {
+      modularMainPlaceholder.parentNode.insertBefore(modularMain, modularMainPlaceholder.nextSibling);
+    }
+  };
 
   const updateActiveRow = (row) => {
     rows.forEach((item) => {
@@ -316,6 +334,20 @@ if (modularRoot) {
       const willOpen = Boolean(hasSubMenu && !row.classList.contains("is-active"));
 
       updateActiveRow(willOpen ? row : null);
+
+      if (willOpen && row) {
+        moveMainIntoRow(row);
+
+        const selectedButton = row.querySelector(".p-modular__sub-button.is-active");
+
+        if (selectedButton) {
+          showPanel(selectedButton.dataset.modularTarget, selectedButton);
+          modularRoot.classList.remove("is-mobile-awaiting-selection");
+          modularRoot.classList.add("is-mobile-panel-visible");
+          return;
+        }
+      }
+
       modularRoot.classList.add("is-mobile-awaiting-selection");
       modularRoot.classList.remove("is-mobile-panel-visible");
       panels.forEach((panel) => panel.setAttribute("aria-hidden", "true"));
@@ -328,6 +360,7 @@ if (modularRoot) {
 
       if (parentRow) {
         updateActiveRow(parentRow);
+        moveMainIntoRow(parentRow);
       }
 
       showPanel(button.dataset.modularTarget, button);
@@ -339,11 +372,32 @@ if (modularRoot) {
     });
   });
 
-  if (mobileMedia.matches) {
-    panels.forEach((panel) => panel.setAttribute("aria-hidden", "true"));
-  } else {
+  const syncModularLayout = () => {
+    if (mobileMedia.matches) {
+      const selectedButton = subButtons.find((button) => button.classList.contains("is-active")) || subButtons[0];
+      const selectedRow = selectedButton?.closest(".p-modular__menu-row") || rows[0];
+
+      if (selectedRow) {
+        updateActiveRow(selectedRow);
+        moveMainIntoRow(selectedRow);
+      }
+
+      if (selectedButton) {
+        showPanel(selectedButton.dataset.modularTarget, selectedButton);
+        modularRoot.classList.remove("is-mobile-awaiting-selection");
+        modularRoot.classList.add("is-mobile-panel-visible");
+      }
+
+      return;
+    }
+
+    restoreMainPosition();
+    modularRoot.classList.remove("is-mobile-awaiting-selection", "is-mobile-panel-visible");
     panels.forEach((panel) => {
       panel.setAttribute("aria-hidden", String(!panel.classList.contains("is-active")));
     });
-  }
+  };
+
+  mobileMedia.addEventListener("change", syncModularLayout);
+  syncModularLayout();
 }
