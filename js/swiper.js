@@ -329,9 +329,31 @@ if (modularRoot) {
         return;
       }
 
+      const buttonTop = button.getBoundingClientRect().top;
+      const rootStyle = document.documentElement.style;
+      const overflowAnchor = rootStyle.overflowAnchor;
       const row = button.closest(".p-modular__menu-row");
       const hasSubMenu = row && row.querySelector(".p-modular__sub-menu");
       const willOpen = Boolean(hasSubMenu && !row.classList.contains("is-active"));
+
+      rootStyle.overflowAnchor = "none";
+
+      const preserveButtonPosition = () => {
+        const adjustPosition = () => {
+          const nextButtonTop = button.getBoundingClientRect().top;
+
+          window.scrollBy({
+            top: nextButtonTop - buttonTop,
+            behavior: "instant",
+          });
+        };
+
+        adjustPosition();
+        requestAnimationFrame(() => {
+          adjustPosition();
+          rootStyle.overflowAnchor = overflowAnchor;
+        });
+      };
 
       updateActiveRow(willOpen ? row : null);
 
@@ -344,6 +366,7 @@ if (modularRoot) {
           showPanel(selectedButton.dataset.modularTarget, selectedButton);
           modularRoot.classList.remove("is-mobile-awaiting-selection");
           modularRoot.classList.add("is-mobile-panel-visible");
+          preserveButtonPosition();
           return;
         }
       }
@@ -351,6 +374,7 @@ if (modularRoot) {
       modularRoot.classList.add("is-mobile-awaiting-selection");
       modularRoot.classList.remove("is-mobile-panel-visible");
       panels.forEach((panel) => panel.setAttribute("aria-hidden", "true"));
+      preserveButtonPosition();
     });
   });
 
