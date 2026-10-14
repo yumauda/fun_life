@@ -202,10 +202,15 @@
   text-align: left;
   white-space: nowrap;
   font-size: rem(16);
+}
 
-  @media (max-width: 767px) {
-    padding-bottom: rem(8);
-    border-bottom: 1px solid #a8aeae;
+.p-modular__menu-row.is-active .p-modular__menu-button {
+  padding-bottom: rem(8);
+  border-bottom: 1px solid #a8aeae;
+
+  @include mq(md) {
+    padding-bottom: 0;
+    border-bottom: 0;
   }
 }
 

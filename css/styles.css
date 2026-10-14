@@ -6007,10 +6007,15 @@ select::-ms-expand {
   white-space: nowrap;
   font-size: 1rem;
 }
-@media (max-width: 767px) {
-  .p-modular__menu-button {
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid #a8aeae;
+
+.p-modular__menu-row.is-active .p-modular__menu-button {
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #a8aeae;
+}
+@media screen and (min-width: 768px) {
+  .p-modular__menu-row.is-active .p-modular__menu-button {
+    padding-bottom: 0;
+    border-bottom: 0;
   }
 }
 
