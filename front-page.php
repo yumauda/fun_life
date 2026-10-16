@@ -3,10 +3,28 @@
   <div class="p-mv">
     <div class="l-inner">
       <div class="p-mv__content">
+        <?php
+        $mv_video_urls = array(
+          get_template_directory_uri() . '/images/top/movie_1.mp4',
+          get_template_directory_uri() . '/images/top/movie_2.mp4',
+          get_template_directory_uri() . '/images/top/movie_3.mp4',
+        );
+        ?>
         <div class="p-mv__video">
-          <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/mv_pc.webp" alt="動画" width="900" height="480">
+          <video
+            class="js-random-mv-video"
+            data-video-sources="<?php echo esc_attr(wp_json_encode($mv_video_urls)); ?>"
+            poster="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/mv_pc.webp"
+            width="1080"
+            height="1080"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            aria-hidden="true"
+          ></video>
         </div>
-        <!-- <video src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/mv.mp4" autoplay muted loop playsinline></video> -->
       </div>
     </div>
   </div>

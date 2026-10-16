@@ -30,6 +30,7 @@ jQuery(function ($) {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
+  setUpRandomMainVisualVideo();
   setUpDrawer();
   setUpAboutHeaderColor();
   setUpAccordion();
@@ -38,6 +39,29 @@ document.addEventListener("DOMContentLoaded", () => {
   setUpStyleMobileAccordion();
   setUpStyleSelector();
 });
+
+const setUpRandomMainVisualVideo = () => {
+  const video = document.querySelector(".js-random-mv-video");
+  if (!video) return;
+
+  let videoSources = [];
+
+  try {
+    videoSources = JSON.parse(video.dataset.videoSources || "[]");
+  } catch (error) {
+    return;
+  }
+
+  if (!videoSources.length) return;
+
+  const randomIndex = Math.floor(Math.random() * videoSources.length);
+  video.muted = true;
+  video.src = videoSources[randomIndex];
+  video.load();
+
+  const playPromise = video.play();
+  if (playPromise) playPromise.catch(() => {});
+};
 
 const setUpDrawer = () => {
   const trigger = document.querySelector(".js-drawer-trigger");

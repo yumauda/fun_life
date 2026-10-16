@@ -15,6 +15,7 @@
 }
 .p-mv__video img,
 .p-mv__video video{
+    display: block;
     object-fit: cover;
     width: 100%;
     height: auto;
@@ -26,4 +27,3 @@
       }
 
 }
-
