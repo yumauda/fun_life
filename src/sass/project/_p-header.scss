@@ -75,8 +75,7 @@
 .p-header__nav {
   @include mq(lg) {
     display: flex;
-    justify-content: space-between;
-    width: rem(330);
+    column-gap: rem(24);
     margin-left: auto;
   }
 }
@@ -93,13 +92,8 @@
 
 .p-header__guide-links {
   @include mq(lg) {
-    justify-content: space-between;
-    width: rem(216.2);
-    margin-left: rem(30);
-  }
-
-  @include mq(xl) {
-    margin-left: rem(45.1);
+    column-gap: rem(24);
+    margin-left: rem(24);
   }
 }
 

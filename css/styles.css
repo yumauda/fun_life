@@ -3319,8 +3319,7 @@ select::-ms-expand {
 @media screen and (min-width: 1250px) {
   .p-header__nav {
     display: flex;
-    justify-content: space-between;
-    width: 20.625rem;
+    column-gap: 1.5rem;
     margin-left: auto;
   }
 }
@@ -3337,14 +3336,8 @@ select::-ms-expand {
 
 @media screen and (min-width: 1250px) {
   .p-header__guide-links {
-    justify-content: space-between;
-    width: 13.5125rem;
-    margin-left: 1.875rem;
-  }
-}
-@media screen and (min-width: 1440px) {
-  .p-header__guide-links {
-    margin-left: 2.81875rem;
+    column-gap: 1.5rem;
+    margin-left: 1.5rem;
   }
 }
 
