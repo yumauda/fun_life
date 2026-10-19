@@ -3318,8 +3318,8 @@ select::-ms-expand {
 
 @media screen and (min-width: 1250px) {
   .p-header__nav {
-    display: grid;
-    grid-template-columns: 5.8375rem 6.51875rem 5.2rem 1fr;
+    display: flex;
+    justify-content: space-between;
     width: 20.625rem;
     margin-left: auto;
   }
@@ -3751,6 +3751,37 @@ select::-ms-expand {
 
 .p-drawer-content__link--muted {
   color: #777;
+}
+
+.p-drawer-content__guide-links {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  column-gap: 0.75rem;
+}
+
+.p-drawer-content__guide-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(50% - 0.375rem);
+  max-width: 10.625rem;
+  min-height: 2.75rem;
+  padding-top: 0.5rem;
+  padding-right: 0.625rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.625rem;
+  color: #000;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  border: 1px solid #000;
+}
+
+.p-drawer-content__guide-link:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 0.1875rem;
 }
 
 .p-drawer-content__company {
@@ -6347,19 +6378,58 @@ select::-ms-expand {
   margin-right: auto;
 }
 
+.p-mv__video {
+  position: relative;
+}
+
 .p-mv__video img,
 .p-mv__video video {
   display: block;
-  object-fit: cover;
   width: 100%;
   height: auto;
-  aspect-ratio: 335/315;
+}
+
+.p-mv__sound {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.5rem;
+  min-height: 2.125rem;
+  padding-top: 0.4375rem;
+  padding-right: 0.625rem;
+  padding-bottom: 0.4375rem;
+  padding-left: 0.625rem;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  font-size: 0.625rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  background-color: rgba(0, 0, 0, 0.72);
+  border: 1px solid #fff;
+  border-radius: 0.1875rem;
+  cursor: pointer;
 }
 @media screen and (min-width: 768px) {
-  .p-mv__video img,
-  .p-mv__video video {
-    aspect-ratio: 1200/620;
+  .p-mv__sound {
+    top: 1.25rem;
+    right: 1.25rem;
+    width: 5.5rem;
+    min-height: 2.5rem;
+    font-size: 0.75rem;
   }
+}
+
+.p-mv__sound-state {
+  margin-left: 0.375rem;
+}
+
+.p-mv__sound:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
 }
 
 .p-no-works {

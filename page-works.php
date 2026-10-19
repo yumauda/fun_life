@@ -9,13 +9,13 @@
         </picture>
       </figure>
 
-      <h1 class="p-works-mv__title">WORKS</h1>
+      <h1 class="p-works-mv__title">PRODUCT</h1>
 
     </div>
   </section>
   <div class="p-works-mvNav">
     <div class="l-inner">
-      <nav class="p-works-mv__nav" aria-label="WORKS ページ内メニュー">
+      <nav class="p-works-mv__nav" aria-label="PRODUCT ページ内メニュー">
         <ul class="p-works-mv__list">
           <li class="p-works-mv__item">
             <a class="p-works-mv__link is-current" href="#concept">
@@ -51,7 +51,7 @@
       <div class="p-works-feature__content">
         <div class="c-section-heading c-section-heading--ja-first">
           <div class="c-section-heading__index" aria-hidden="true">
-            <span class="c-section-heading__label">WORKS</span>
+            <span class="c-section-heading__label">PRODUCT</span>
             <span class="c-section-heading__number">01</span>
           </div>
           <div class="c-section-heading__body">
@@ -88,7 +88,7 @@
       <div class="p-works-feature__content">
         <div class="c-section-heading">
           <div class="c-section-heading__index" aria-hidden="true">
-            <span class="c-section-heading__label">WORKS</span>
+            <span class="c-section-heading__label">PRODUCT</span>
             <span class="c-section-heading__number">02</span>
           </div>
           <div class="c-section-heading__body">
@@ -327,7 +327,7 @@
     <div class="l-inner">
       <div class="c-section-heading c-section-heading--ja-first">
         <div class="c-section-heading__index" aria-hidden="true">
-          <span class="c-section-heading__label">WORKS</span>
+          <span class="c-section-heading__label">PRODUCT</span>
           <span class="c-section-heading__number">03</span>
         </div>
         <div class="c-section-heading__body">
@@ -411,7 +411,7 @@
     <div class="l-inner">
       <div class="c-section-heading">
         <div class="c-section-heading__index" aria-hidden="true">
-          <span class="c-section-heading__label">WORKS</span>
+          <span class="c-section-heading__label">PRODUCT</span>
           <span class="c-section-heading__number">04</span>
         </div>
         <div class="c-section-heading__body">

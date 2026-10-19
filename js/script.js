@@ -44,6 +44,8 @@ const setUpRandomMainVisualVideo = () => {
   const video = document.querySelector(".js-random-mv-video");
   if (!video) return;
 
+  const soundButton = document.querySelector(".js-mv-sound");
+  const soundState = soundButton?.querySelector(".p-mv__sound-state");
   let videoSources = [];
 
   try {
@@ -61,6 +63,19 @@ const setUpRandomMainVisualVideo = () => {
 
   const playPromise = video.play();
   if (playPromise) playPromise.catch(() => {});
+
+  soundButton?.addEventListener("click", () => {
+    video.muted = !video.muted;
+    const isSoundOn = !video.muted;
+    soundButton.setAttribute("aria-pressed", String(isSoundOn));
+    soundButton.setAttribute("aria-label", isSoundOn ? "動画の音声をオフにする" : "動画の音声をオンにする");
+    if (soundState) soundState.textContent = isSoundOn ? "ON" : "OFF";
+
+    if (video.paused) {
+      const resumedPlay = video.play();
+      if (resumedPlay) resumedPlay.catch(() => {});
+    }
+  });
 };
 
 const setUpDrawer = () => {
@@ -74,6 +89,7 @@ const setUpDrawer = () => {
     trigger.setAttribute("aria-label", isOpen ? "メニューを閉じる" : "メニューを開く");
     drawer.classList.toggle("is-active", isOpen);
     drawer.setAttribute("aria-hidden", String(!isOpen));
+    drawer.inert = !isOpen;
     document.body.classList.toggle("drawer-open", isOpen);
 
     if (shouldReturnFocus) trigger.focus();

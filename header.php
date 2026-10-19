@@ -19,6 +19,7 @@
     $meta_image_width = 1200;
     $meta_image_height = 630;
     $show_canonical = true;
+    $contact_email = sanitize_email(get_option('admin_email'));
 
     if (is_front_page()) {
         $meta_title = $default_title;
@@ -121,16 +122,16 @@
                 </a>
                 <nav class="p-header__nav" aria-label="ヘッダーナビゲーション">
                     <a class="p-header__nav-link" href="<?php echo esc_url(home_url('/about/')); ?>">ABOUT</a>
-                    <a class="p-header__nav-link" href="<?php echo esc_url(home_url('/works/')); ?>">WORKS</a>
+                    <a class="p-header__nav-link" href="<?php echo esc_url(home_url('/works/')); ?>">PRODUCT</a>
                     <a class="p-header__nav-link" href="<?php echo esc_url(fun_life_blog_url()); ?>">BLOG</a>
                     <a class="p-header__nav-link" href="<?php echo esc_url(fun_life_category_url('event')); ?>">EVENT</a>
                 </nav>
                 <div class="p-header__guide-links">
                     <a class="p-header__guide-link" href="<?php echo esc_url(home_url('/contact/')); ?>">資料請求</a>
-                    <a class="p-header__guide-link p-header__guide-link--model" href="<?php echo esc_url(home_url('/about/#model-house')); ?>">公開中<br>モデルハウス</a>
+                    <a class="p-header__guide-link p-header__guide-link--model" href="<?php echo esc_url('https://funlife-kumamoto.jp/'); ?>">公開中<br>モデルハウス</a>
                 </div>
                 <div class="p-header__actions">
-                    <a class="p-header__icon-link" href="<?php echo esc_url(home_url('/contact/')); ?>" aria-label="メールでお問い合わせ">
+                    <a class="p-header__icon-link" href="mailto:<?php echo esc_attr(antispambot($contact_email)); ?>" aria-label="メールでお問い合わせ">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30.58 23.8">
                             <path d="M15.37,12.82L30.58.94v-.48c0-.12-.04-.24-.12-.32-.07-.08-.17-.13-.28-.13H.39c-.11,0-.2.05-.28.13s-.12.2-.12.32v.48l15.26,11.91s0-.02.02-.02c.04,0,.07,0,.08-.02" fill="currentColor" />
                             <path d="M30.58,3.66l-14.13,11.03c-.32.25-.73.39-1.12.4-.41.01-.82-.11-1.15-.36L0,3.66v19.68c0,.12.04.24.12.32.07.08.17.13.28.13h29.8c.11,0,.2-.05.28-.13.07-.08.12-.2.12-.32V3.66Z" fill="currentColor" />
@@ -180,13 +181,13 @@
                     </button>
                 </div>
             </div>
-            <div class="p-header__drawer-content p-drawer-content" id="drawer" aria-hidden="true">
+            <div class="p-header__drawer-content p-drawer-content" id="drawer" aria-hidden="true" inert>
                 <div class="p-drawer-content__items">
                     <div class="p-drawer-content__body">
                         <nav class="p-drawer-content__nav" aria-label="メインメニュー">
                             <ul class="p-drawer-content__lists">
                                 <li class="p-drawer-content__list"><a href="<?php echo esc_url(home_url('/')); ?>" class="p-drawer-content__link">TOP</a></li>
-                                <li class="p-drawer-content__list"><a href="<?php echo esc_url(home_url('/works/')); ?>" class="p-drawer-content__link">WORKS</a></li>
+                                <li class="p-drawer-content__list"><a href="<?php echo esc_url(home_url('/works/')); ?>" class="p-drawer-content__link">PRODUCT</a></li>
                                 <li class="p-drawer-content__list"><a href="<?php echo esc_url(home_url('/about/')); ?>" class="p-drawer-content__link">ABOUT</a></li>
                                 <li class="p-drawer-content__list"><a href="<?php echo esc_url(fun_life_blog_url()); ?>" class="p-drawer-content__link">BLOG</a></li>
                                 <li class="p-drawer-content__list"><a href="<?php echo esc_url(fun_life_category_url('column')); ?>" class="p-drawer-content__link p-drawer-content__link--muted">COLUMN</a></li>
@@ -194,6 +195,10 @@
                                 <li class="p-drawer-content__list"><a href="<?php echo esc_url(home_url('/contact/')); ?>" class="p-drawer-content__link">CONTACT</a></li>
                             </ul>
                         </nav>
+                        <div class="p-drawer-content__guide-links">
+                            <a class="p-drawer-content__guide-link" href="<?php echo esc_url('https://funlife-kumamoto.jp/'); ?>">公開中モデルハウス</a>
+                            <a class="p-drawer-content__guide-link" href="<?php echo esc_url(home_url('/contact/')); ?>">資料請求</a>
+                        </div>
                         <div class="p-drawer-content__company">
                             <p class="p-drawer-content__address">〒861-3204<br class="u-mobile"> 熊本県上益城郡御船町大字木倉 222</p>
                             <p class="p-drawer-content__tel">TEL：096-281-1222&nbsp;&nbsp;FAX：096-281-1223</p>

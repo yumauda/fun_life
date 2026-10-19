@@ -570,6 +570,20 @@ function fun_life_get_works_building_overview($post_id = 0)
 }
 
 /**
+ * COLUMNカードに表示する一覧用サブタイトルを取得する。
+ *
+ * @param int $post_id 投稿ID。
+ * @return string
+ */
+function fun_life_get_blog_card_subtitle($post_id = 0)
+{
+	$post_id = $post_id ?: get_the_ID();
+	$subtitle = get_post_field('post_excerpt', $post_id, 'raw');
+
+	return is_string($subtitle) ? trim($subtitle) : '';
+}
+
+/**
  * 指定カテゴリーの投稿で使用されているタグを取得する。
  *
  * @param int $category_id カテゴリーID。

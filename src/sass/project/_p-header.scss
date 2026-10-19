@@ -74,8 +74,8 @@
 
 .p-header__nav {
   @include mq(lg) {
-    display: grid;
-    grid-template-columns: rem(93.4) rem(104.3) rem(83.2) 1fr;
+    display: flex;
+    justify-content: space-between;
     width: rem(330);
     margin-left: auto;
   }
@@ -505,6 +505,37 @@
 
 .p-drawer-content__link--muted {
   color: #777;
+}
+
+.p-drawer-content__guide-links {
+  display: flex;
+  justify-content: center;
+  margin-top: rem(32);
+  column-gap: rem(12);
+}
+
+.p-drawer-content__guide-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(50% - rem(6));
+  max-width: rem(170);
+  min-height: rem(44);
+  padding-top: rem(8);
+  padding-right: rem(10);
+  padding-bottom: rem(8);
+  padding-left: rem(10);
+  color: #000;
+  font-size: rem(12);
+  font-weight: $bold;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  border: 1px solid #000;
+}
+
+.p-drawer-content__guide-link:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: rem(3);
 }
 
 .p-drawer-content__company {

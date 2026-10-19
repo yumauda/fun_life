@@ -24,6 +24,10 @@
             preload="metadata"
             aria-hidden="true"
           ></video>
+          <button class="p-mv__sound js-mv-sound" type="button" aria-label="動画の音声をオンにする" aria-pressed="false">
+            <span class="p-mv__sound-label" aria-hidden="true">SOUND</span>
+            <span class="p-mv__sound-state" aria-hidden="true">OFF</span>
+          </button>
         </div>
       </div>
     </div>
