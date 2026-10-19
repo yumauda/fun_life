@@ -578,7 +578,9 @@ function fun_life_get_works_building_overview($post_id = 0)
 function fun_life_get_blog_card_subtitle($post_id = 0)
 {
 	$post_id = $post_id ?: get_the_ID();
-	$subtitle = get_post_field('post_excerpt', $post_id, 'raw');
+	$subtitle = function_exists('get_field')
+		? get_field('blog_subtitle', $post_id)
+		: get_post_meta($post_id, 'blog_subtitle', true);
 
 	return is_string($subtitle) ? trim($subtitle) : '';
 }
@@ -818,6 +820,36 @@ function fun_life_register_single_fields()
 	if (!function_exists('acf_add_local_field_group')) {
 		return;
 	}
+
+	acf_add_local_field_group(array(
+		'key' => 'group_fun_life_blog_card_fields',
+		'title' => 'ブログ一覧表示',
+		'fields' => array(
+			array(
+				'key' => 'field_fun_life_blog_subtitle',
+				'label' => 'サブタイトル',
+				'name' => 'blog_subtitle',
+				'type' => 'text',
+				'instructions' => 'COLUMN一覧の投稿カードに表示するサブタイトルを入力します。未入力の場合は空欄になります。',
+			),
+		),
+		'location' => array(
+			array(
+				array(
+					'param' => 'post_taxonomy',
+					'operator' => '==',
+					'value' => 'category:column',
+				),
+			),
+		),
+		'menu_order' => -3,
+		'position' => 'normal',
+		'style' => 'default',
+		'label_placement' => 'top',
+		'instruction_placement' => 'label',
+		'active' => true,
+		'show_in_rest' => 0,
+	));
 
 	$top_slider_fields = array(
 		array('key' => 'field_fun_life_works_top_slider_1', 'label' => 'TOPスライダー画像1', 'name' => 'works_top_slider_1'),
