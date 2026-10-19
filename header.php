@@ -128,7 +128,7 @@
                 </nav>
                 <div class="p-header__guide-links">
                     <a class="p-header__guide-link" href="<?php echo esc_url(home_url('/contact/')); ?>">資料請求</a>
-                    <a class="p-header__guide-link p-header__guide-link--model" href="<?php echo esc_url('https://funlife-kumamoto.jp/'); ?>">公開中<br>モデルハウス</a>
+                    <a class="p-header__guide-link p-header__guide-link--model" href="<?php echo esc_url('https://funlife-kumamoto.jp/'); ?>" target="_blank" rel="noopener noreferrer">公開中<br>モデルハウス</a>
                 </div>
                 <div class="p-header__actions">
                     <a class="p-header__icon-link" href="mailto:<?php echo esc_attr(antispambot($contact_email)); ?>" aria-label="メールでお問い合わせ">
@@ -196,7 +196,7 @@
                             </ul>
                         </nav>
                         <div class="p-drawer-content__guide-links">
-                            <a class="p-drawer-content__guide-link" href="<?php echo esc_url('https://funlife-kumamoto.jp/'); ?>">公開中モデルハウス</a>
+                            <a class="p-drawer-content__guide-link" href="<?php echo esc_url('https://funlife-kumamoto.jp/'); ?>" target="_blank" rel="noopener noreferrer">公開中モデルハウス</a>
                             <a class="p-drawer-content__guide-link" href="<?php echo esc_url(home_url('/contact/')); ?>">資料請求</a>
                         </div>
                         <div class="p-drawer-content__company">
