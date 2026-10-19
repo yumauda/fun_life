@@ -65,16 +65,24 @@ const setUpRandomMainVisualVideo = () => {
   if (playPromise) playPromise.catch(() => {});
 
   soundButton?.addEventListener("click", () => {
-    video.muted = !video.muted;
-    const isSoundOn = !video.muted;
+    const isSoundOn = video.muted;
+
+    video.muted = !isSoundOn;
+    video.defaultMuted = !isSoundOn;
+
+    if (isSoundOn) {
+      video.removeAttribute("muted");
+      video.volume = 1;
+    } else {
+      video.setAttribute("muted", "");
+    }
+
     soundButton.setAttribute("aria-pressed", String(isSoundOn));
     soundButton.setAttribute("aria-label", isSoundOn ? "動画の音声をオフにする" : "動画の音声をオンにする");
     if (soundState) soundState.textContent = isSoundOn ? "ON" : "OFF";
 
-    if (video.paused) {
-      const resumedPlay = video.play();
-      if (resumedPlay) resumedPlay.catch(() => {});
-    }
+    const resumedPlay = video.play();
+    if (resumedPlay) resumedPlay.catch(() => {});
   });
 };
 
