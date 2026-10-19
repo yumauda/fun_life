@@ -34,7 +34,7 @@
         $meta_title = '私たちについて・会社概要｜' . $site_name;
         $meta_description = 'ファンライフの家づくりへの想い、代表挨拶、会社概要、本社へのアクセス、宿泊体験型モデルハウス「そのうち」をご紹介します。';
         $meta_url = get_permalink();
-    } elseif (is_page('works')) {
+    } elseif (is_page('product')) {
         $meta_title = '家づくり・住宅性能・リフォーム｜' . $site_name;
         $meta_description = 'ファンライフの注文住宅、自由設計、住宅性能、規格住宅、リフォーム・リノベーションをご紹介。土地探しから完成まで、同じ担当者が最後まで伴走します。';
         $meta_url = get_permalink();
@@ -122,7 +122,7 @@
                 </a>
                 <nav class="p-header__nav" aria-label="ヘッダーナビゲーション">
                     <a class="p-header__nav-link" href="<?php echo esc_url(home_url('/about/')); ?>">ABOUT</a>
-                    <a class="p-header__nav-link" href="<?php echo esc_url(home_url('/works/')); ?>">PRODUCT</a>
+                    <a class="p-header__nav-link" href="<?php echo esc_url(home_url('/product/')); ?>">PRODUCT</a>
                     <a class="p-header__nav-link" href="<?php echo esc_url(fun_life_blog_url()); ?>">BLOG</a>
                     <a class="p-header__nav-link" href="<?php echo esc_url(fun_life_category_url('event')); ?>">EVENT</a>
                 </nav>
@@ -187,7 +187,7 @@
                         <nav class="p-drawer-content__nav" aria-label="メインメニュー">
                             <ul class="p-drawer-content__lists">
                                 <li class="p-drawer-content__list"><a href="<?php echo esc_url(home_url('/')); ?>" class="p-drawer-content__link">TOP</a></li>
-                                <li class="p-drawer-content__list"><a href="<?php echo esc_url(home_url('/works/')); ?>" class="p-drawer-content__link">PRODUCT</a></li>
+                                <li class="p-drawer-content__list"><a href="<?php echo esc_url(home_url('/product/')); ?>" class="p-drawer-content__link">PRODUCT</a></li>
                                 <li class="p-drawer-content__list"><a href="<?php echo esc_url(home_url('/about/')); ?>" class="p-drawer-content__link">ABOUT</a></li>
                                 <li class="p-drawer-content__list"><a href="<?php echo esc_url(fun_life_blog_url()); ?>" class="p-drawer-content__link">BLOG</a></li>
                                 <li class="p-drawer-content__list"><a href="<?php echo esc_url(fun_life_category_url('column')); ?>" class="p-drawer-content__link p-drawer-content__link--muted">COLUMN</a></li>
