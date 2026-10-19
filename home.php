@@ -37,13 +37,7 @@ $category_config = fun_life_blog_category_config();
                 ? $category_config[$card_category_slug]['en']
                 : strtoupper($card_category_slug);
               $card_tag = fun_life_get_card_tag();
-              if ('works' === $card_category_slug) {
-                $card_overview = fun_life_get_works_building_overview();
-              } elseif ('column' === $card_category_slug) {
-                $card_overview = fun_life_get_blog_card_subtitle();
-              } else {
-                $card_overview = get_the_excerpt();
-              }
+              $card_overview = fun_life_get_blog_card_subtitle();
               $thumbnail_id = get_post_thumbnail_id();
               $thumbnail_alt = $thumbnail_id ? get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true) : '';
               $thumbnail_alt = $thumbnail_alt ?: get_the_title();

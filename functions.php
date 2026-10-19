@@ -830,15 +830,15 @@ function fun_life_register_single_fields()
 				'label' => 'サブタイトル',
 				'name' => 'blog_subtitle',
 				'type' => 'text',
-				'instructions' => 'COLUMN一覧の投稿カードに表示するサブタイトルを入力します。未入力の場合は空欄になります。',
+				'instructions' => 'ブログ一覧の投稿カードに表示するサブタイトルを入力します。未入力の場合は空欄になります。',
 			),
 		),
 		'location' => array(
 			array(
 				array(
-					'param' => 'post_taxonomy',
+					'param' => 'post_type',
 					'operator' => '==',
-					'value' => 'category:column',
+					'value' => 'post',
 				),
 			),
 		),
