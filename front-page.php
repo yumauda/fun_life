@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 <main>
   <div class="p-mv">
-    <div class="l-inner">
+    <div class="l-inner-mv">
       <div class="p-mv__content">
         <?php
         $mv_video_urls = array(
