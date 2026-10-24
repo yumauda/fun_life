@@ -46,3 +46,7 @@ body {
 body.fade-in {
   opacity: 1;
 }
+
+main {
+  overflow-x: clip;
+}

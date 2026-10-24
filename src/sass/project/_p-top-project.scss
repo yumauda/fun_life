@@ -97,6 +97,12 @@
   width: 100%;
   aspect-ratio: 9 / 5;
   overflow: hidden;
+  filter: brightness(50%);
+  transition: filter 0.45s ease;
+}
+
+.p-top-project__slider .swiper-slide-active .p-top-project__img {
+  filter: brightness(100%);
 }
 
 .p-top-project__img img {

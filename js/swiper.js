@@ -213,90 +213,12 @@ if (modularRoot) {
     };
   });
 
-  const rows = Array.from(modularRoot.querySelectorAll(".p-modular__menu-row"));
-  const menuButtons = Array.from(modularRoot.querySelectorAll(".p-modular__menu-button"));
-  const subButtons = Array.from(modularRoot.querySelectorAll(".p-modular__sub-button"));
+  const menuButtons = Array.from(modularRoot.querySelectorAll(".p-modular__menu-title"));
   const panels = Array.from(modularRoot.querySelectorAll(".p-modular__panel"));
-  const modularBody = modularRoot.querySelector(".p-modular__body");
-  const modularMain = modularRoot.querySelector(".p-modular__main");
-  const modularMore = modularRoot.querySelector(".p-modular__more");
-  const mobileMedia = window.matchMedia("(max-width: 767px)");
-  const modularMainPlaceholder = document.createComment("modular-main-position");
-  const modularMorePlaceholder = document.createComment("modular-more-position");
+  const showPanel = (target) => {
+    const activePanel = panels.find((panel) => panel.dataset.modularPanel === target);
 
-  if (modularMain?.parentNode) {
-    modularMain.parentNode.insertBefore(modularMainPlaceholder, modularMain);
-  }
-
-  if (modularMore?.parentNode) {
-    modularMore.parentNode.insertBefore(modularMorePlaceholder, modularMore);
-  }
-
-  const moveMainIntoRow = (row) => {
-    if (modularMain && row && mobileMedia.matches) {
-      if (modularBody && modularMore) {
-        modularBody.append(modularMore);
-      }
-
-      row.append(modularMain);
-    }
-  };
-
-  const restoreMainPosition = () => {
-    if (modularMain && modularMainPlaceholder.parentNode) {
-      modularMainPlaceholder.parentNode.insertBefore(modularMain, modularMainPlaceholder.nextSibling);
-    }
-
-    if (modularMore && modularMorePlaceholder.parentNode) {
-      modularMorePlaceholder.parentNode.insertBefore(modularMore, modularMorePlaceholder.nextSibling);
-    }
-  };
-
-  const updateActiveRow = (row) => {
-    rows.forEach((item) => {
-      item.classList.toggle("is-active", item === row);
-
-      const button = item.querySelector(".p-modular__menu-button[aria-controls]");
-
-      if (button) {
-        button.setAttribute("aria-expanded", String(item === row));
-      }
-    });
-  };
-
-  const showPanel = (target, sourceButton = null) => {
-    const matchedPanel = panels.find((panel) => panel.dataset.modularPanel === target);
-    const activePanel = matchedPanel || panels.find((panel) => panel.dataset.modularPanel === "dummy");
-
-    if (!matchedPanel && activePanel && sourceButton) {
-      const planName = sourceButton.dataset.modularName || sourceButton.textContent.trim();
-      const menuButton = sourceButton.closest(".p-modular__menu-row")?.querySelector(".p-modular__menu-button");
-      const categoryName = menuButton ? menuButton.textContent.trim() : "規格住宅";
-
-      activePanel.querySelectorAll("[data-modular-dummy-note]").forEach((note) => {
-        note.textContent = sourceButton.dataset.modularNote || `${planName}の暮らしを楽しむ、心地よい規格住宅。`;
-      });
-      activePanel.querySelectorAll("[data-modular-dummy-description]").forEach((description) => {
-        description.textContent = sourceButton.dataset.modularDescription || `${categoryName}「${planName}」の特徴を活かしたダミープランです。暮らしやすい動線と、家族が自然に集まる空間をご提案します。`;
-      });
-      activePanel.querySelectorAll("[data-modular-dummy-image]").forEach((image) => {
-        const imageNumber = image.dataset.modularDummyImage;
-        const imageSource = sourceButton.getAttribute(`data-modular-image-${imageNumber}`);
-        const imageWidth = sourceButton.getAttribute(`data-modular-image-${imageNumber}-width`);
-        const imageHeight = sourceButton.getAttribute(`data-modular-image-${imageNumber}-height`);
-
-        if (imageSource) {
-          image.src = imageSource;
-        }
-
-        if (imageWidth && imageHeight) {
-          image.width = Number(imageWidth);
-          image.height = Number(imageHeight);
-        }
-
-        image.alt = `${categoryName} ${planName}の外観イメージ`;
-      });
-    }
+    if (!activePanel) return;
 
     panels.forEach((panel) => {
       const isActive = panel === activePanel;
@@ -305,8 +227,12 @@ if (modularRoot) {
       panel.setAttribute("aria-hidden", String(!isActive));
     });
 
-    subButtons.forEach((button) => {
-      button.classList.toggle("is-active", button.dataset.modularTarget === target);
+    menuButtons.forEach((button) => {
+      const isActive = button.dataset.modularTarget === target;
+
+      button.classList.toggle("is-active", isActive);
+      button.setAttribute("aria-selected", String(isActive));
+      button.tabIndex = isActive ? 0 : -1;
     });
 
     modularSwipers.forEach((item) => {
@@ -323,125 +249,30 @@ if (modularRoot) {
     });
   };
 
-  rows.forEach((row) => {
-    row.addEventListener("mouseenter", () => {
-      if (!mobileMedia.matches) {
-        const activeElement = document.activeElement;
-
-        if (activeElement instanceof HTMLElement && modularRoot.contains(activeElement) && !row.contains(activeElement)) {
-          activeElement.blur();
-        }
-
-        updateActiveRow(row);
-      }
-    });
-
-    row.addEventListener("focusin", () => {
-      if (!mobileMedia.matches) {
-        updateActiveRow(row);
-      }
-    });
-  });
-
   menuButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      if (!mobileMedia.matches) {
+    const activate = () => showPanel(button.dataset.modularTarget);
+
+    button.addEventListener("mouseenter", activate);
+    button.addEventListener("focus", activate);
+    button.addEventListener("click", activate);
+    button.addEventListener("keydown", (event) => {
+      const currentIndex = menuButtons.indexOf(button);
+      let nextIndex = currentIndex;
+
+      if (event.key === "ArrowDown" || event.key === "ArrowRight") {
+        nextIndex = (currentIndex + 1) % menuButtons.length;
+      } else if (event.key === "ArrowUp" || event.key === "ArrowLeft") {
+        nextIndex = (currentIndex - 1 + menuButtons.length) % menuButtons.length;
+      } else if (event.key === "Home") {
+        nextIndex = 0;
+      } else if (event.key === "End") {
+        nextIndex = menuButtons.length - 1;
+      } else {
         return;
       }
 
-      const buttonTop = button.getBoundingClientRect().top;
-      const rootStyle = document.documentElement.style;
-      const overflowAnchor = rootStyle.overflowAnchor;
-      const row = button.closest(".p-modular__menu-row");
-      const hasSubMenu = row && row.querySelector(".p-modular__sub-menu");
-      const willOpen = Boolean(hasSubMenu && !row.classList.contains("is-active"));
-
-      rootStyle.overflowAnchor = "none";
-
-      const preserveButtonPosition = () => {
-        const adjustPosition = () => {
-          const nextButtonTop = button.getBoundingClientRect().top;
-
-          window.scrollBy({
-            top: nextButtonTop - buttonTop,
-            behavior: "instant",
-          });
-        };
-
-        adjustPosition();
-        requestAnimationFrame(() => {
-          adjustPosition();
-          rootStyle.overflowAnchor = overflowAnchor;
-        });
-      };
-
-      updateActiveRow(willOpen ? row : null);
-
-      if (willOpen && row) {
-        moveMainIntoRow(row);
-
-        const selectedButton = row.querySelector(".p-modular__sub-button.is-active");
-
-        if (selectedButton) {
-          showPanel(selectedButton.dataset.modularTarget, selectedButton);
-          modularRoot.classList.remove("is-mobile-awaiting-selection");
-          modularRoot.classList.add("is-mobile-panel-visible");
-          preserveButtonPosition();
-          return;
-        }
-      }
-
-      modularRoot.classList.add("is-mobile-awaiting-selection");
-      modularRoot.classList.remove("is-mobile-panel-visible");
-      panels.forEach((panel) => panel.setAttribute("aria-hidden", "true"));
-      preserveButtonPosition();
+      event.preventDefault();
+      menuButtons[nextIndex].focus();
     });
   });
-
-  subButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const parentRow = button.closest(".p-modular__menu-row");
-
-      if (parentRow) {
-        updateActiveRow(parentRow);
-        moveMainIntoRow(parentRow);
-      }
-
-      showPanel(button.dataset.modularTarget, button);
-
-      if (mobileMedia.matches) {
-        modularRoot.classList.remove("is-mobile-awaiting-selection");
-        modularRoot.classList.add("is-mobile-panel-visible");
-      }
-    });
-  });
-
-  const syncModularLayout = () => {
-    if (mobileMedia.matches) {
-      const selectedButton = subButtons.find((button) => button.classList.contains("is-active")) || subButtons[0];
-      const selectedRow = selectedButton?.closest(".p-modular__menu-row") || rows[0];
-
-      if (selectedRow) {
-        updateActiveRow(selectedRow);
-        moveMainIntoRow(selectedRow);
-      }
-
-      if (selectedButton) {
-        showPanel(selectedButton.dataset.modularTarget, selectedButton);
-        modularRoot.classList.remove("is-mobile-awaiting-selection");
-        modularRoot.classList.add("is-mobile-panel-visible");
-      }
-
-      return;
-    }
-
-    restoreMainPosition();
-    modularRoot.classList.remove("is-mobile-awaiting-selection", "is-mobile-panel-visible");
-    panels.forEach((panel) => {
-      panel.setAttribute("aria-hidden", String(!panel.classList.contains("is-active")));
-    });
-  };
-
-  mobileMedia.addEventListener("change", syncModularLayout);
-  syncModularLayout();
 }

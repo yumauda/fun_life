@@ -45,8 +45,27 @@ const setUpRandomMainVisualVideo = () => {
   if (!video) return;
 
   const soundButton = document.querySelector(".js-mv-sound");
-  const soundState = soundButton?.querySelector(".p-mv__sound-state");
   let videoSources = [];
+  let soundRequestId = 0;
+
+  const syncSoundButton = () => {
+    if (!soundButton) return;
+
+    const isSoundOn = !video.muted && video.volume > 0;
+    soundButton.setAttribute("aria-pressed", String(isSoundOn));
+    soundButton.setAttribute("aria-label", isSoundOn ? "動画の音声をオフにする" : "動画の音声をオンにする");
+  };
+
+  const setSoundState = (isSoundOn) => {
+    if (isSoundOn && video.volume === 0) video.volume = 1;
+    video.muted = !isSoundOn;
+    syncSoundButton();
+  };
+
+  const resetSound = () => {
+    soundRequestId += 1;
+    setSoundState(false);
+  };
 
   try {
     videoSources = JSON.parse(video.dataset.videoSources || "[]");
@@ -57,32 +76,42 @@ const setUpRandomMainVisualVideo = () => {
   if (!videoSources.length) return;
 
   const randomIndex = Math.floor(Math.random() * videoSources.length);
-  video.muted = true;
+  video.defaultMuted = true;
+  setSoundState(false);
   video.src = videoSources[randomIndex];
   video.load();
 
+  const initialPlayRequestId = soundRequestId;
   const playPromise = video.play();
-  if (playPromise) playPromise.catch(() => {});
+  if (playPromise) {
+    playPromise.catch(() => {
+      if (initialPlayRequestId === soundRequestId) resetSound();
+    });
+  }
 
   soundButton?.addEventListener("click", () => {
-    const isSoundOn = video.muted;
-
-    video.muted = !isSoundOn;
-    video.defaultMuted = !isSoundOn;
-
-    if (isSoundOn) {
-      video.removeAttribute("muted");
-      video.volume = 1;
-    } else {
-      video.setAttribute("muted", "");
-    }
-
-    soundButton.setAttribute("aria-pressed", String(isSoundOn));
-    soundButton.setAttribute("aria-label", isSoundOn ? "動画の音声をオフにする" : "動画の音声をオンにする");
-    if (soundState) soundState.textContent = isSoundOn ? "ON" : "OFF";
+    const requestId = ++soundRequestId;
+    const shouldEnableSound = video.muted || video.volume === 0;
+    setSoundState(shouldEnableSound);
 
     const resumedPlay = video.play();
-    if (resumedPlay) resumedPlay.catch(() => {});
+    if (resumedPlay) {
+      resumedPlay.catch(() => {
+        if (requestId === soundRequestId) resetSound();
+      });
+    }
+  });
+
+  video.addEventListener("volumechange", syncSoundButton);
+  video.addEventListener("error", resetSound);
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) resetSound();
+  });
+
+  window.addEventListener("pagehide", resetSound);
+  window.addEventListener("pageshow", (event) => {
+    if (event.persisted) resetSound();
   });
 };
 

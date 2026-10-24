@@ -1,11 +1,11 @@
 @use "../global" as *;
 
 .p-modular {
+  overflow-x: clip;
   padding-top: rem(72);
   padding-bottom: rem(72);
   color: #000;
-  overflow-x: clip;
-  background: #fff;
+  background-color: #fff;
 
   @include mq(md) {
     padding-top: rem(110);
@@ -40,21 +40,22 @@
   line-height: 1.15;
 
   @include mq(md) {
-    font-size: rem(36);
     margin-top: rem(8);
+    font-size: rem(36);
   }
 }
 
 .p-modular__lead {
+  margin-top: rem(48);
   font-size: rem(14);
   font-weight: $bold;
+  line-height: calc(25 / 14);
   letter-spacing: 0.1em;
-  margin-top: rem(48);
-  line-height: calc(25 /14);
+
   @include mq(md) {
-    max-width: rem(425);
-    line-height: 1.85;
+    max-width: rem(275);
     margin-top: rem(28);
+    line-height: 1.85;
   }
 }
 
@@ -64,318 +65,84 @@
   margin-top: rem(44);
 
   @include mq(md) {
-    display: grid;
-    grid-template-columns: rem(420) minmax(0, 1fr);
-    align-items: start;
-    column-gap: rem(70);
+    flex-direction: row;
+    align-items: flex-start;
+    margin-top: rem(38);
   }
 }
 
 .p-modular__menu {
-  display: contents;
-  font-size: rem(13);
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  width: 100%;
+  font-size: rem(15);
   font-weight: $bold;
   line-height: 1.5;
   letter-spacing: 0.04em;
 
   @include mq(md) {
-    position: relative;
-    display: block;
+    width: rem(245);
+    padding-top: rem(4);
   }
 }
 
 .p-modular__menu-title {
-  order: 1;
-  padding-bottom: rem(8);
-  border-bottom: 1px solid #000;
-  margin-top: rem(24);
-  font-size: rem(16);
-
-  @include mq(md) {
-    padding-bottom: 0;
-    border-bottom: 0;
-  }
-}
-
-.p-modular__menu-title:first-child {
-  margin-top: 0;
-}
-
-.p-modular__mobile-intro {
-  order: 2;
-  margin-top: rem(32);
-
-  @include mq(md) {
-    display: none;
-  }
-}
-
-.p-modular__mobile-intro-image {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  overflow: hidden;
-}
-
-.p-modular__mobile-intro-image img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.p-modular__mobile-intro-copy {
-  margin-top: rem(36);
-  font-size: rem(21);
-  font-weight: $bold;
-  letter-spacing: 0.1em;
-  line-height: calc(37 / 21);
-}
-
-.p-modular__mobile-intro-text {
-  margin-top: rem(20);
-  font-size: rem(14);
-  font-weight: $bold;
-  letter-spacing: 0.1em;
-  line-height: calc(25 / 14);
-}
-
-.p-modular__menu-title--mt {
-  order: 4;
-  margin-top: rem(26);
-}
-
-.p-modular__additional-menu {
-  display: contents;
-
-  @include mq(md) {
-    display: block;
-  }
-}
-
-.p-modular__additional-menu .p-modular__menu-button,
-.p-modular__additional-menu .p-modular__menu-title {
-  @media (max-width: 767px) {
-    padding-bottom: 0;
-    border-bottom: 0;
-  }
-}
-
-.p-modular__menu-row {
-  position: relative;
-  order: 4;
-  margin-top: rem(24);
-
-  @include mq(md) {
-    display: grid;
-    grid-template-columns: rem(142) rem(96);
-    align-items: center;
-    margin-top: rem(26);
-  }
-}
-
-.p-modular__menu-row--primary {
-  order: 3;
-  margin-top: rem(30);
-
-  @include mq(md) {
-    margin-top: rem(20);
-  }
-}
-
-.p-modular__menu-button,
-.p-modular__sub-button {
-  padding: 0;
-  font: inherit;
-  color: inherit;
-  letter-spacing: inherit;
-  cursor: pointer;
-  background: transparent;
-  border: 0;
-}
-
-.p-modular__menu-button {
-  position: relative;
   display: flex;
   align-items: center;
   width: 100%;
-  min-height: rem(28);
+  padding-top: rem(11);
+  padding-right: 0;
+  padding-bottom: rem(11);
+  padding-left: 0;
+  color: inherit;
+  font: inherit;
   text-align: left;
-  white-space: nowrap;
-  font-size: rem(16);
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
 }
 
-.p-modular__menu-row.is-active .p-modular__menu-button {
-  padding-bottom: rem(8);
-  border-bottom: 1px solid #a8aeae;
-
-  @include mq(md) {
-    padding-bottom: 0;
-    border-bottom: 0;
-  }
-}
-
-.p-modular__menu-row.is-active .p-modular__menu-button::after {
-  @include mq(md) {
-    content: "";
-    flex-shrink: 1;
-    width: rem(78);
-    min-width: rem(24);
-    height: 1px;
-    margin-left: rem(12);
-    background: #000;
-  }
-}
-
-.p-modular__menu-row:focus-within .p-modular__menu-button::after,
-.p-modular__menu-row:hover .p-modular__menu-button::after {
-  @include mq(md) {
-    content: "";
-    flex-shrink: 1;
-    width: rem(78);
-    min-width: rem(24);
-    height: 1px;
-    margin-left: rem(12);
-    background: #000;
-  }
-}
-
-.p-modular__sub-menu {
-  display: none;
-  grid-template-columns: repeat(2, minmax(0, rem(131)));
-  justify-content: center;
-  gap: rem(13);
-  margin-top: rem(14);
+.p-modular__menu-title::after {
+  flex: 1;
+  height: 1px;
+  margin-left: rem(12);
+  background-color: #000;
+  content: "";
   opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transform: translateY(rem(-8));
-  transition:
-    opacity 0.25s ease,
-    transform 0.35s ease,
-    visibility 0s linear 0.35s;
-
-  @include mq(md) {
-    position: absolute;
-    top: 0;
-    left: rem(160);
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0;
-    justify-content: flex-start;
-    min-width: rem(76);
-    margin-top: 0;
-    transform: none;
-  }
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: opacity 0.25s ease, transform 0.35s ease;
 }
 
-.p-modular__menu-row.is-active .p-modular__sub-menu {
-  display: grid;
+.p-modular__menu-title.is-active::after,
+.p-modular__menu-title:hover::after,
+.p-modular__menu-title:focus-visible::after {
   opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-  transform: translateY(0);
-  transition:
-    opacity 0.25s ease,
-    transform 0.35s ease,
-    visibility 0s;
-
-  @media (max-width: 767px) {
-    animation: modular-options-reveal 0.35s ease both;
-  }
-
-  @include mq(md) {
-    display: flex;
-  }
+  transform: scaleX(1);
 }
 
-.p-modular__menu-row:focus-within .p-modular__sub-menu,
-.p-modular__menu-row:hover .p-modular__sub-menu {
-  @include mq(md) {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transform: translateY(0);
-    transition:
-      opacity 0.25s ease,
-      transform 0.35s ease,
-      visibility 0s;
-  }
-}
-
-.p-modular__sub-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: rem(131);
-  min-height: rem(52);
-  padding-right: rem(12);
-  padding-left: rem(12);
-  border: 1px solid #a8aeae;
-  font-size: rem(18);
-  white-space: nowrap;
-
-  @include mq(md) {
-    min-width: rem(60);
-    min-height: rem(28);
-    font-size: rem(16);
-  }
-}
-
-.p-modular__sub-button + .p-modular__sub-button {
-  @include mq(md) {
-    margin-top: rem(13);
-  }
-}
-
-.p-modular__sub-button.is-active {
-  border-color: #000;
-}
-
-.p-modular.is-mobile-awaiting-selection .p-modular__sub-button.is-active {
-  @media (max-width: 767px) {
-    border-color: #a8aeae;
-  }
+.p-modular__menu-title:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 3px;
 }
 
 .p-modular__main {
-  display: contents;
-  margin-top: rem(40);
+  width: 100%;
+  min-width: 0;
+  margin-top: rem(30);
 
   @include mq(md) {
-    display: block;
+    flex: 1;
+    width: auto;
     margin-top: rem(-168);
+    margin-left: rem(140);
     margin-right: calc(50% - 50vw);
   }
 }
 
 .p-modular__panels {
-  order: 5;
-  margin-top: rem(30);
   display: grid;
-
-  @include mq(md) {
-    margin-top: 0;
-  }
-}
-
-.p-modular.is-mobile-awaiting-selection .p-modular__panels {
-  @media (max-width: 767px) {
-    display: none;
-  }
-}
-
-.p-modular.is-mobile-awaiting-selection .p-modular__main {
-  @media (max-width: 767px) {
-    display: none;
-  }
-}
-
-.p-modular.is-mobile-panel-visible .p-modular__panels {
-  @media (max-width: 767px) {
-    animation: modular-panel-reveal 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
-  }
 }
 
 .p-modular__panel {
@@ -385,10 +152,7 @@
   visibility: hidden;
   pointer-events: none;
   transform: translateY(rem(24));
-  transition:
-    opacity 0.45s ease,
-    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
-    visibility 0s linear 0.65s;
+  transition: opacity 0.45s ease, transform 0.65s cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0.65s;
 
   @include mq(md) {
     transform: translateX(rem(36));
@@ -399,11 +163,8 @@
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
-  transform: translateX(0);
-  transition:
-    opacity 0.45s ease,
-    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
-    visibility 0s;
+  transform: translate(0);
+  transition: opacity 0.45s ease, transform 0.65s cubic-bezier(0.22, 1, 0.36, 1), visibility 0s;
 }
 
 .p-modular__slider {
@@ -428,18 +189,19 @@
 .p-modular__card-visual {
   @include mq(md) {
     display: flex;
-    align-items: stretch;
+    align-items: flex-start;
   }
 }
 
 .p-modular__image {
   width: 100%;
-  aspect-ratio: 700 / 700;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
 
   @include mq(md) {
     flex: 1;
     min-width: 0;
+    aspect-ratio: 3 / 4;
   }
 }
 
@@ -455,14 +217,13 @@
   margin-top: rem(24);
 
   @include mq(md) {
-    position: relative;
     flex: 0 0 rem(20);
     margin-top: 0;
     margin-left: rem(18);
   }
 }
 
-// PCのみ横書きの一文を90度回転し、カード内の専用領域に限定して絶対配置する。
+// PCでは通常フローの縦書きにし、文字量に応じてカード上段の高さを確保する。
 .p-modular__slider-note span {
   display: block;
   font-size: rem(16);
@@ -471,67 +232,38 @@
   letter-spacing: 0.04em;
 
   @include mq(md) {
-    position: absolute;
-    top: 0;
-    left: 100%;
     font-size: min(rem(24), calc(24 / 1440) * 100vw);
     line-height: 1.35;
     white-space: nowrap;
-    transform: rotate(90deg);
-    transform-origin: top left;
+    writing-mode: vertical-rl;
   }
 }
 
 .p-modular__description {
+  max-width: rem(470);
+  margin-top: rem(24);
   font-size: rem(14);
   font-weight: $bold;
   line-height: calc(25 / 14);
   letter-spacing: 0.1em;
-  margin-top: rem(24);
 
   @include mq(md) {
     margin-top: rem(28);
-    max-width: rem(470);
-    font-size: rem(14);
   }
 }
 
 .p-modular__more {
-  order: 6;
+  margin-top: rem(95);
   font-family: $second-font-family;
+  font-size: rem(25);
   font-weight: $bold;
   line-height: 1.4;
-  margin-top: rem(95);
-  text-align: center;
-  font-size: rem(25);
   letter-spacing: 0.075em;
-  @include mq(md){
+  text-align: center;
+
+  @include mq(md) {
     margin-top: rem(16);
     font-size: rem(12);
     text-align: right;
-  }
-}
-
-@keyframes modular-panel-reveal {
-  from {
-    opacity: 0;
-    transform: translateY(rem(24));
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes modular-options-reveal {
-  from {
-    opacity: 0;
-    transform: translateY(rem(-8));
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }

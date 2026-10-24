@@ -3,6 +3,7 @@
   <div class="p-mv">
     <div class="l-inner-mv">
       <div class="p-mv__content">
+        <h1 class="p-mv__title">ファンライフ株式会社</h1>
         <?php
         $mv_video_urls = array(
           get_template_directory_uri() . '/images/top/movie_1.mp4',
@@ -25,8 +26,8 @@
             aria-hidden="true"
           ></video>
           <button class="p-mv__sound js-mv-sound" type="button" aria-label="動画の音声をオンにする" aria-pressed="false">
-            <span class="p-mv__sound-label" aria-hidden="true">SOUND</span>
-            <span class="p-mv__sound-state" aria-hidden="true">OFF</span>
+            <img class="p-mv__sound-icon p-mv__sound-icon--off" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/sound_off.svg" alt="" width="470" height="439" decoding="async">
+            <img class="p-mv__sound-icon p-mv__sound-icon--on" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/sound_on.svg" alt="" width="472" height="392" decoding="async">
           </button>
         </div>
       </div>
@@ -130,7 +131,7 @@
                         <?php if ($event_thumbnail_id) : ?>
                           <?php echo wp_get_attachment_image($event_thumbnail_id, 'large', false, array('alt' => $event_thumbnail_alt ?: get_the_title(), 'loading' => 'lazy', 'decoding' => 'async')); ?>
                         <?php else : ?>
-                          <img src="<?php echo esc_url(get_template_directory_uri() . '/images/top/no_new.webp'); ?>" alt="<?php echo esc_attr(get_the_title()); ?>" width="1600" height="1401" loading="lazy" decoding="async">
+                          <img src="<?php echo esc_url(get_template_directory_uri() . '/images/top/no_new.webp'); ?>" alt="<?php echo esc_attr(get_the_title()); ?>" width="5653" height="3768" loading="lazy" decoding="async">
                         <?php endif; ?>
                       </figure>
                       <h3 class="p-home-event__card-title"><?php the_title(); ?></h3>
@@ -397,7 +398,7 @@
           </div>
         </div>
         <figure class="p-no-works__image c-parallax js-parallax">
-          <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/no_new.webp" alt="新築住宅" width="500" height="500">
+          <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/no_new.webp" alt="夕景に浮かぶガレージ付き住宅" width="5653" height="3768">
 
         </figure>
       </div>
@@ -436,168 +437,7 @@
     </div>
   </section>
 
-  <?php
-  $modular_additional_groups = array(
-    array(
-      'slug' => 'courtyard',
-      'label' => '中庭の家',
-      'plans' => array(
-        array(
-          'slug' => 'courtyard-court',
-          'name' => 'コート',
-          'images' => array(
-            array('path' => '/images/top/project-example-1-1.webp', 'width' => 1620, 'height' => 1080),
-            array('path' => '/images/top/project-example-1-2.webp', 'width' => 1080, 'height' => 1620),
-          ),
-          'note' => '中庭の光と風を、暮らしの中心に取り込む家。',
-          'description' => '中庭を囲むように居室を配置した、開放感とプライバシーを両立するダミープランです。',
-        ),
-        array(
-          'slug' => 'courtyard-patio',
-          'name' => 'パティオ',
-          'images' => array(
-            array('path' => '/images/top/project-example-1-3.webp', 'width' => 1080, 'height' => 1620),
-            array('path' => '/images/top/project-example-2-1.webp', 'width' => 1620, 'height' => 1080),
-          ),
-          'note' => '家族だけの空を楽しめる、プライベートな中庭。',
-          'description' => '室内と庭が自然につながり、家族の時間をゆったり楽しめる中庭住宅のダミープランです。',
-        ),
-      ),
-    ),
-    array(
-      'slug' => 'second',
-      'label' => '2階リビング',
-      'plans' => array(
-        array(
-          'slug' => 'second-sora',
-          'name' => 'ソラ',
-          'images' => array(
-            array('path' => '/images/top/project-example-2-2.webp', 'width' => 1080, 'height' => 1620),
-            array('path' => '/images/top/project-example-2-3.webp', 'width' => 1080, 'height' => 1620),
-          ),
-          'note' => '空に近いリビングで、明るくのびやかに暮らす。',
-          'description' => '光と眺めを取り込みやすい2階に家族の居場所を設けた、明るい住まいのダミープランです。',
-        ),
-        array(
-          'slug' => 'second-view',
-          'name' => 'ビュー',
-          'images' => array(
-            array('path' => '/images/top/project-example-3-1.webp', 'width' => 1170, 'height' => 878),
-            array('path' => '/images/top/project-example-3-2.webp', 'width' => 1600, 'height' => 2400),
-          ),
-          'note' => '景色を切り取る窓が、毎日の特等席になる家。',
-          'description' => '周囲の視線をかわしながら、眺望を楽しむ2階リビングを中心にしたダミープランです。',
-        ),
-      ),
-    ),
-    array(
-      'slug' => 'skiphous',
-      'label' => 'スキップフロア',
-      'plans' => array(
-        array(
-          'slug' => 'skip-step',
-          'name' => 'ステップ',
-          'images' => array(
-            array('path' => '/images/top/project-example-3-3.webp', 'width' => 1600, 'height' => 2400),
-            array('path' => '/images/blog-single/blog_1.jpg', 'width' => 1000, 'height' => 1500),
-          ),
-          'note' => '段差が生み出す、つながりと居場所のある暮らし。',
-          'description' => '床の高さを緩やかに変え、ひとつの空間に多彩な居場所をつくるダミープランです。',
-        ),
-        array(
-          'slug' => 'skip-link',
-          'name' => 'リンク',
-          'images' => array(
-            array('path' => '/images/blog-single/blog_2.jpg', 'width' => 1000, 'height' => 1500),
-            array('path' => '/images/blog-single/blog_4.jpg', 'width' => 1000, 'height' => 1500),
-          ),
-          'note' => '目線がつながり、家族の気配を感じられる家。',
-          'description' => 'フロアごとの居場所が立体的につながる、家族の距離感を大切にしたダミープランです。',
-        ),
-      ),
-    ),
-    array(
-      'slug' => 'earth',
-      'label' => '土間の家',
-      'plans' => array(
-        array(
-          'slug' => 'earth-doma',
-          'name' => 'ドマ',
-          'images' => array(
-            array('path' => '/images/blog-single/blog_5.jpg', 'width' => 1000, 'height' => 1500),
-            array('path' => '/images/blog-single/blog_6.jpg', 'width' => 2000, 'height' => 3000),
-          ),
-          'note' => '外の楽しみを、そのまま室内へつなぐ土間空間。',
-          'description' => '趣味や家事に自由に使える広い土間を、暮らしの中心に取り入れたダミープランです。',
-        ),
-        array(
-          'slug' => 'earth-en',
-          'name' => 'エン',
-          'images' => array(
-            array('path' => '/images/blog-single/blog_7.jpg', 'width' => 1000, 'height' => 1500),
-            array('path' => '/images/blog-single/blog_8.jpg', 'width' => 2000, 'height' => 3000),
-          ),
-          'note' => '土間と縁側が、人と暮らしをやさしく結ぶ家。',
-          'description' => '内と外の中間領域をゆったり設け、自然と触れ合う時間を楽しめるダミープランです。',
-        ),
-      ),
-    ),
-    array(
-      'slug' => 'one-room',
-      'label' => 'ワンルーム',
-      'plans' => array(
-        array(
-          'slug' => 'one-room-one',
-          'name' => 'ワン',
-          'images' => array(
-            array('path' => '/images/works/reform_img.webp', 'width' => 1396, 'height' => 1105),
-            array('path' => '/images/works/reform_link1.webp', 'width' => 1594, 'height' => 1160),
-          ),
-          'note' => 'ひとつながりの空間を、自分らしく使いこなす。',
-          'description' => '間仕切りを抑えた大きな空間で、暮らしに合わせて居場所を変えられるダミープランです。',
-        ),
-        array(
-          'slug' => 'one-room-minima',
-          'name' => 'ミニマ',
-          'images' => array(
-            array('path' => '/images/works/reform_link2.webp', 'width' => 1215, 'height' => 884),
-            array('path' => '/images/works/performance_img.webp', 'width' => 1100, 'height' => 1401),
-          ),
-          'note' => '小さく整えて、心地よく豊かに暮らす家。',
-          'description' => '必要な機能をコンパクトにまとめ、余白を楽しむミニマルな暮らしのダミープランです。',
-        ),
-      ),
-    ),
-    array(
-      'slug' => 'garage',
-      'label' => 'ガレージハウス',
-      'plans' => array(
-        array(
-          'slug' => 'garage-gare',
-          'name' => 'ガレ',
-          'images' => array(
-            array('path' => '/images/blog-single/blog2.jpg', 'width' => 1620, 'height' => 1080),
-            array('path' => '/images/blog-single/blog3.jpg', 'width' => 1620, 'height' => 1080),
-          ),
-          'note' => '愛車を眺める時間まで、暮らしの一部になる家。',
-          'description' => 'ガレージと居住空間を近づけ、車やバイクのある日常を楽しむためのダミープランです。',
-        ),
-        array(
-          'slug' => 'garage-pit',
-          'name' => 'ピット',
-          'images' => array(
-            array('path' => '/images/blog-single/blog6.jpg', 'width' => 1000, 'height' => 1500),
-            array('path' => '/images/top/no_new.webp', 'width' => 1000, 'height' => 1000),
-          ),
-          'note' => '趣味に没頭できるピットが、毎日をもっと楽しくする。',
-          'description' => 'メンテナンスや収納にも使える作業スペースを備えた、趣味を楽しむダミープランです。',
-        ),
-      ),
-    ),
-  );
-  ?>
-  <section class="p-modular is-mobile-awaiting-selection" id="modular">
-    <!-- ダミー外観写真: Pexels / Max Vakhtbovych（photo IDs 7587854–7587884） -->
+  <section class="p-modular" id="modular">
     <div class="l-inner">
       <div class="p-modular__content">
         <div class="p-modular__heading">
@@ -608,60 +448,22 @@
           規格住宅とは、プロが厳選した間取りやデザイン(型)を<br class="u-desktop">ベースに建てるお家です。
         </p>
         <div class="p-modular__body">
-          <div class="p-modular__menu" role="group" aria-label="規格住宅プラン">
-            <p class="p-modular__menu-title">シンプルモダン</p>
-            <div class="p-modular__mobile-intro">
-              <figure class="p-modular__mobile-intro-image">
-                <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/modular-koti-01.webp" alt="シンプルモダンの規格住宅の外観イメージ" width="1800" height="1201">
-              </figure>
-              <p class="p-modular__mobile-intro-copy">「シンプルな美しさ、<br>満たされる心地よさ。」</p>
-              <p class="p-modular__mobile-intro-text">シンプルモダンの規格住宅は、洗練されたデザインと暮らしやすさを両立した住まいです。無駄を省いたシンプルな空間だからこそ、インテリアや暮らし方が自然と映えるのも魅力。</p>
-            </div>
-            <div class="p-modular__menu-row p-modular__menu-row--primary" data-modular-group="simple">
-              <button class="p-modular__menu-button" type="button" aria-expanded="false" aria-controls="modular-simple-options">平屋</button>
-              <div class="p-modular__sub-menu" id="modular-simple-options" role="group" aria-label="シンプルモダン 平屋">
-                <button class="p-modular__sub-button is-active" type="button" data-modular-target="koti">コティ</button>
-                <button class="p-modular__sub-button" type="button" data-modular-target="root">ルートゥ</button>
-                <button class="p-modular__sub-button" type="button" data-modular-target="polku">ポルク</button>
-                <button class="p-modular__sub-button" type="button" data-modular-target="perhe">ペルヘ</button>
-              </div>
-            </div>
-            <div class="p-modular__additional-menu">
-              <?php foreach ($modular_additional_groups as $modular_group) : ?>
-                <div class="p-modular__menu-row" data-modular-group="<?php echo esc_attr($modular_group['slug']); ?>">
-                  <button class="p-modular__menu-button" type="button" aria-expanded="false" aria-controls="modular-<?php echo esc_attr($modular_group['slug']); ?>-options"><?php echo esc_html($modular_group['label']); ?></button>
-                  <div class="p-modular__sub-menu" id="modular-<?php echo esc_attr($modular_group['slug']); ?>-options" role="group" aria-label="<?php echo esc_attr($modular_group['label']); ?>">
-                    <?php foreach ($modular_group['plans'] as $modular_plan) : ?>
-                      <button
-                        class="p-modular__sub-button"
-                        type="button"
-                        data-modular-target="<?php echo esc_attr($modular_plan['slug']); ?>"
-                        data-modular-name="<?php echo esc_attr($modular_plan['name']); ?>"
-                        data-modular-image-1="<?php echo esc_url(get_template_directory_uri() . $modular_plan['images'][0]['path']); ?>"
-                        data-modular-image-1-width="<?php echo esc_attr($modular_plan['images'][0]['width']); ?>"
-                        data-modular-image-1-height="<?php echo esc_attr($modular_plan['images'][0]['height']); ?>"
-                        data-modular-image-2="<?php echo esc_url(get_template_directory_uri() . $modular_plan['images'][1]['path']); ?>"
-                        data-modular-image-2-width="<?php echo esc_attr($modular_plan['images'][1]['width']); ?>"
-                        data-modular-image-2-height="<?php echo esc_attr($modular_plan['images'][1]['height']); ?>"
-                        data-modular-note="<?php echo esc_attr($modular_plan['note']); ?>"
-                        data-modular-description="<?php echo esc_attr($modular_plan['description']); ?>"
-                      ><?php echo esc_html($modular_plan['name']); ?></button>
-                    <?php endforeach; ?>
-                  </div>
-                </div>
-              <?php endforeach; ?>
-            </div>
+          <div class="p-modular__menu" role="tablist" aria-label="規格住宅プラン">
+            <button class="p-modular__menu-title is-active" id="modular-tab-koti" type="button" role="tab" aria-selected="true" aria-controls="modular-panel-koti" tabindex="0" data-modular-target="koti">コティ</button>
+            <button class="p-modular__menu-title" id="modular-tab-root" type="button" role="tab" aria-selected="false" aria-controls="modular-panel-root" tabindex="-1" data-modular-target="root">ルートゥ</button>
+            <button class="p-modular__menu-title" id="modular-tab-polku" type="button" role="tab" aria-selected="false" aria-controls="modular-panel-polku" tabindex="-1" data-modular-target="polku">ポルク</button>
+            <button class="p-modular__menu-title" id="modular-tab-perhe" type="button" role="tab" aria-selected="false" aria-controls="modular-panel-perhe" tabindex="-1" data-modular-target="perhe">ペルへ</button>
           </div>
           <div class="p-modular__main">
             <div class="p-modular__panels" aria-live="polite">
-              <div class="p-modular__panel is-active" data-modular-panel="koti">
+              <div class="p-modular__panel is-active" id="modular-panel-koti" role="tabpanel" aria-labelledby="modular-tab-koti" aria-hidden="false" data-modular-panel="koti">
                 <div class="swiper p-modular__slider">
                   <div class="swiper-wrapper">
                     <div class="swiper-slide">
                       <div class="p-modular__card">
                         <div class="p-modular__card-visual">
                           <figure class="p-modular__image">
-                            <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/modular-koti-01.webp" alt="平屋の規格住宅 コティの外観イメージ" width="1800" height="1201">
+                            <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/modular-koti-01.webp" alt="規格住宅 コティの外観" width="1798" height="1200">
                           </figure>
                           <p class="p-modular__slider-note"><span>「住むという空間を、<br class="u-mobile">とことん追求した家。」</span></p>
                         </div>
@@ -682,14 +484,14 @@
                   </div>
                 </div>
               </div>
-              <div class="p-modular__panel" data-modular-panel="root">
+              <div class="p-modular__panel" id="modular-panel-root" role="tabpanel" aria-labelledby="modular-tab-root" aria-hidden="true" data-modular-panel="root">
                 <div class="swiper p-modular__slider">
                   <div class="swiper-wrapper">
                     <div class="swiper-slide">
                       <div class="p-modular__card">
                         <div class="p-modular__card-visual">
                           <figure class="p-modular__image">
-                            <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/modular-root-01.webp" alt="平屋の規格住宅 ルートゥの外観イメージ" width="1800" height="1201">
+                            <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/modular-root-01.webp" alt="規格住宅 ルートゥの外観" width="1798" height="1200">
                           </figure>
                           <p class="p-modular__slider-note"><span>中庭を中心に、外と内がゆるやかにつながる住まい。</span></p>
                         </div>
@@ -710,14 +512,14 @@
                   </div>
                 </div>
               </div>
-              <div class="p-modular__panel" data-modular-panel="polku">
+              <div class="p-modular__panel" id="modular-panel-polku" role="tabpanel" aria-labelledby="modular-tab-polku" aria-hidden="true" data-modular-panel="polku">
                 <div class="swiper p-modular__slider">
                   <div class="swiper-wrapper">
                     <div class="swiper-slide">
                       <div class="p-modular__card">
                         <div class="p-modular__card-visual">
                           <figure class="p-modular__image">
-                            <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/modular-polku-01.webp" alt="平屋の規格住宅 ポルクの外観イメージ" width="1800" height="1201">
+                            <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/modular-polku-01.webp" alt="規格住宅 ポルクの外観" width="1798" height="1200">
                           </figure>
                           <p class="p-modular__slider-note"><span>光と眺めを取り込む、2階リビングの暮らし。</span></p>
                         </div>
@@ -738,14 +540,14 @@
                   </div>
                 </div>
               </div>
-              <div class="p-modular__panel" data-modular-panel="perhe">
+              <div class="p-modular__panel" id="modular-panel-perhe" role="tabpanel" aria-labelledby="modular-tab-perhe" aria-hidden="true" data-modular-panel="perhe">
                 <div class="swiper p-modular__slider">
                   <div class="swiper-wrapper">
                     <div class="swiper-slide">
                       <div class="p-modular__card">
                         <div class="p-modular__card-visual">
                           <figure class="p-modular__image">
-                            <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/modular-perhe-01.webp" alt="平屋の規格住宅 ペルヘの外観イメージ" width="1800" height="1201">
+                            <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/modular-perhe-01.webp" alt="規格住宅 ペルヘの外観" width="1536" height="1024">
                           </figure>
                           <p class="p-modular__slider-note"><span>段差で空間を分け、家族の距離が近くなる住まい。</span></p>
                         </div>
@@ -766,34 +568,6 @@
                   </div>
                 </div>
               </div>
-              <div class="p-modular__panel" data-modular-panel="dummy">
-                <div class="swiper p-modular__slider">
-                  <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                      <div class="p-modular__card">
-                        <div class="p-modular__card-visual">
-                          <figure class="p-modular__image">
-                            <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/modular-root-01.webp" alt="規格住宅の外観イメージ" width="1800" height="1201" data-modular-dummy-image="1">
-                          </figure>
-                          <p class="p-modular__slider-note"><span data-modular-dummy-note>プランの暮らしを楽しむ、心地よい規格住宅。</span></p>
-                        </div>
-                        <p class="p-modular__description" data-modular-dummy-description>プランの特徴を活かしたダミープランです。暮らしやすい動線と、家族が自然に集まる空間をご提案します。</p>
-                      </div>
-                    </div>
-                    <div class="swiper-slide">
-                      <div class="p-modular__card">
-                        <div class="p-modular__card-visual">
-                          <figure class="p-modular__image">
-                            <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/modular-perhe-01.webp" alt="規格住宅の外観イメージ" width="1800" height="1201" data-modular-dummy-image="2">
-                          </figure>
-                          <p class="p-modular__slider-note"><span data-modular-dummy-note>プランの暮らしを楽しむ、心地よい規格住宅。</span></p>
-                        </div>
-                        <p class="p-modular__description" data-modular-dummy-description>プランの特徴を活かしたダミープランです。暮らしやすい動線と、家族が自然に集まる空間をご提案します。</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
             <p class="p-modular__more">and more...</p>
           </div>
@@ -805,7 +579,7 @@
     <div class="l-inner">
       <div class="p-top-gallery__content">
         <figure class="p-top-gallery__top-img c-parallax c-parallax--strong js-parallax">
-          <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/top_gallery1.webp" alt="猫ちゃん" width="360" height="360">
+          <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/top_gallery1.webp" alt="階段に集まる3匹の猫" width="3024" height="3024">
         </figure>
         <figure class="p-top-gallery__top-img2 c-parallax c-parallax--strong js-parallax">
           <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/top_gallery2.webp" alt="カップルの写真" width="1080" height="529">
@@ -828,7 +602,7 @@
             <figure class="p-reform__image c-parallax js-parallax">
               <picture>
                 <source srcset="<?php echo get_template_directory_uri(); ?>/images/top/reform_1.webp" media="(min-width: 768px)" width="500" height="500" />
-                <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/reform_1_sp.webp" alt="リフォーム前の暮らしのイメージ" width="375" height="227">
+                <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/reform_1_sp.webp" alt="リフォーム前の室内" width="3971" height="5956">
               </picture>
             </figure>
             <p class="p-reform__text">
@@ -839,7 +613,7 @@
             <figure class="p-reform__image c-parallax js-parallax">
               <picture>
                 <source srcset="<?php echo get_template_directory_uri(); ?>/images/top/reform_2.webp" media="(min-width: 768px)" width="500" height="500" />
-                <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/reform_2_sp.webp" alt="リフォーム後の住まいのイメージ" width="375" height="227">
+                <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/reform_2_sp.webp" alt="リフォーム後の室内" width="3965" height="5947">
               </picture>
             </figure>
             <p class="p-reform__text">
@@ -892,7 +666,7 @@
               <div class="p-home-model-house__slides">
                 <div class="p-home-model-house__slide is-active" aria-hidden="false">
                   <figure class="p-home-model-house__image">
-                    <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/home_model_house.webp" alt="宿泊体験型モデルハウス「そのうち」の外観" width="2400" height="1600">
+                    <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/home_model_house.webp" alt="宿泊体験型モデルハウス「そのうち」の外観" width="5932" height="3955">
                   </figure>
                 </div>
                 <div class="p-home-model-house__slide" aria-hidden="true">

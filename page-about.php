@@ -1,35 +1,39 @@
 <?php get_header(); ?>
 <main>
-  <section class="p-about-mv">
-    <div class="l-inner">
-      <div class="p-about-mv__content">
-        <h1 class="p-about-mv__title">about</h1>
-        <div class="p-about-mv__detail">
-          <div class="p-about-mv__text-img">
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/about/about_mv_text.webp" alt="no fun, no life" width="1000" height="240">
+  <section class="p-about-mv p-about-section">
+    <div class="p-about-mv__content">
+      <figure class="p-about-mv__img">
+        <picture>
+          <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/images/about/about_mv.webp" media="(min-width: 768px)" width="1920" height="2877" />
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/about/about_mv_sp.webp" alt="熊本の街並み" width="787" height="2517" decoding="async">
+        </picture>
+      </figure>
+      <div class="p-about-mv__overlay">
+        <div class="l-inner">
+          <div class="p-about-mv__body">
+            <h1 class="p-about-mv__title">about</h1>
+            <div class="p-about-mv__detail">
+              <figure class="p-about-mv__text-img">
+                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/about/about_mv_text.webp" alt="no fun, no life" width="2714" height="631" decoding="async">
+              </figure>
+              <p class="p-about-mv__text">家は、ただ住むための場所では<br class="u-mobile">ありません。<br>
+                家族と笑い合い、好きなことを楽しみ、<br class="u-mobile">人生を重ねていく場所です。<br><br>
+
+                私たちは、性能やデザインだけでなく、<br>
+                その先にある「楽しい暮らし」を<br class="u-mobile">大切にしています。<br><br>
+
+                一人ひとりの理想に寄り添いながら、<br>
+                帰るのが楽しみになる住まいをつくる。<br><br>
+
+                NO Fun No Life<br>
+                人生を楽しむための家づくりを、<br class="u-mobile">これからも。</p>
+            </div>
           </div>
-          <p class="p-about-mv__text">家は、ただ住むための場所では<br class="u-mobile">ありません。<br>
-            家族と笑い合い、好きなことを楽しみ、<br class="u-mobile">人生を重ねていく場所です。<br><br>
-
-            私たちは、性能やデザインだけでなく、<br>
-            その先にある「楽しい暮らし」を<br class="u-mobile">大切にしています。<br><br>
-
-            一人ひとりの理想に寄り添いながら、<br>
-            帰るのが楽しみになる住まいをつくる。<br><br>
-
-            NO Fun No Life<br>
-            人生を楽しむための家づくりを、<br class="u-mobile">これからも。</p>
         </div>
-        <figure class="p-about-mv__img">
-          <picture>
-            <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/images/about/about_mv.webp" media="(min-width: 768px)" width="1920" height="2877" />
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/about/about_mv_sp.webp" alt="no fun, no life" width="1920" height="2877">
-          </picture>
-        </figure>
       </div>
     </div>
   </section>
-  <section class="p-message">
+  <section class="p-message p-about-section">
     <div class="l-inner">
       <div class="p-message__content">
         <div class="p-message__block">
@@ -49,7 +53,7 @@
               <p class="p-message__text">ある時、ふと頭に浮かんだ「自分は人生を楽しんでいるか？」という問い。それが、ファンライフ創業のきっかけでした。<br class="u-mobile">私たちは、家づくりを通してお客様はもちろん、関わる職人や協力業者、そして自分たち自身も楽しみながら仕事ができる会社でありたいと考えています。<br class="u-mobile">だからこそ、数を追う家づくりはしません。一人ひとりのお客様と真剣に向き合い、信頼関係を築きながら、その人にとって本当に良い住まいを一緒につくっていきます。<br class="u-mobile">人と人との信頼の上に家を建てる。それが、ファンライフの家づくりです。</p>
             </div>
             <figure class="p-message__image">
-              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/about/message_01.webp" alt="ファンライフ代表" width="450" height="450" loading="lazy" decoding="async">
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/about/message_01.webp" alt="ファンライフ代表" width="1023" height="1537" loading="lazy" decoding="async">
             </figure>
           </div>
         </div>
@@ -69,7 +73,7 @@
               <p class="p-message__text">私たちは、家を建てる前に信頼関係を築きたいと考えています。<br class="u-mobile">なぜなら、住まいづくりは図面や金額だけではなく、お客さまの人生や価値観に深く関わるものだからです。<br class="u-mobile">たくさんの棟数をこなすのではなく、一人ひとりと真剣に向き合う。その積み重ねが、本当に満足できる家づくりにつながると信じています。人と人との信頼の上に家を建てる。それが、ファンライフの変わらない想いです。</p>
             </div>
             <figure class="p-message__image">
-              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/about/message_02.jpg" alt="人と人との信頼の上に家を建てる。" width="450" height="450" loading="lazy" decoding="async">
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/about/message_02.webp" alt="モデルハウス前に立つファンライフのスタッフ" width="5622" height="3748" loading="lazy" decoding="async">
             </figure>
           </div>
         </div>
@@ -77,7 +81,7 @@
       </div>
     </div>
   </section>
-  <section class="p-company">
+  <section class="p-company p-about-section">
     <div class="l-inner">
       <div class="p-company__content">
         <div class="c-section-heading">
@@ -138,7 +142,7 @@
       </div>
     </div>
   </section>
-  <section class="p-map">
+  <section class="p-map p-about-section">
     <div class="l-inner">
       <div class="p-map__content">
         <div class="p-map__top">
@@ -153,7 +157,7 @@
             </div>
           </div>
           <figure class="p-map__img u-desktop">
-            <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/about/message_03.webp" alt="アクセス" width="431" height="384">
+            <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/about/message_03.webp" alt="住宅前に立つファンライフのスタッフ" width="5743" height="3829">
           </figure>
           <figure class="p-map__img u-mobile">
             <img decoding="async" loading="lazy" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/about/map_img_sp.webp" alt="アクセス" width="431" height="384">
@@ -187,7 +191,7 @@
       </div>
     </div>
   </section>
-  <section class="p-model-house" id="model-house">
+  <section class="p-model-house p-about-section" id="model-house">
     <div class="l-inner">
       <div class="p-model-house__content">
         <div class="p-model-house__heading">
@@ -197,7 +201,7 @@
         </div>
         <div class="p-model-house__body">
           <figure class="p-model-house__image">
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/about/message_04.webp" alt="宿泊体験型モデルハウス そのうち" width="735" height="545" loading="lazy" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/about/message_04.webp" alt="宿泊体験型モデルハウス そのうち" width="5932" height="3955" loading="lazy" decoding="async">
           </figure>
           <div class="p-model-house__detail">
             <h3 class="p-model-house__title">そのうち、住みたくなる家。</h3>

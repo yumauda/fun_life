@@ -37,8 +37,33 @@ function initScrollAnimations() {
 
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
+  const aboutMv = document.querySelector(".p-about-mv");
+  const aboutMvImage = aboutMv?.querySelector(".p-about-mv__img img");
+
+  if (aboutMv && aboutMvImage) {
+    gsap.fromTo(
+      aboutMvImage,
+      {
+        objectPosition: "50% 0%",
+      },
+      {
+        objectPosition: "50% 100%",
+        ease: "none",
+        scrollTrigger: {
+          trigger: aboutMv,
+          start: "top top",
+          end: "bottom bottom",
+          scrub: true,
+          invalidateOnRefresh: true,
+        },
+      }
+    );
+  }
+
   const sections = Array.from(document.querySelectorAll("main section")).filter((section) => {
-    return !section.parentElement.closest("section") && !section.closest(".p-works-modal");
+    return !section.parentElement.closest("section")
+      && !section.closest(".p-works-modal")
+      && !section.classList.contains("p-about-mv");
   });
 
   sections.forEach((section) => {
@@ -114,7 +139,8 @@ function initScrollAnimations() {
 
     return bounds.width >= 240
       && bounds.height >= 140
-      && !figure.closest(".swiper, .p-works-modal, .p-top-contact");
+      && !figure.closest(".swiper, .p-works-modal, .p-top-contact")
+      && !figure.closest(".p-about-mv");
   });
 
   imageFigures.forEach((figure) => {

@@ -61,7 +61,7 @@
         </div>
         <div class="p-works-feature__body">
           <figure class="p-works-feature__image">
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/works_01.webp" alt="家づくりに伴走するファンライフの担当者" width="1401" height="1401" loading="lazy" decoding="async">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/works_01.webp" alt="ファンライフのスタッフ" width="3886" height="5829" loading="lazy" decoding="async">
           </figure>
           <div class="p-works-feature__detail">
             <h2 class="p-works-feature__title">土地探しから完成まで。<br>同じ担当者が最後まで伴走します。</h2>
@@ -99,7 +99,7 @@
         <div class="p-works-feature__body-wrapper">
           <div class="p-works-feature__body">
             <figure class="p-works-feature__image">
-              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/works_02.webp" alt="ゆとりを愉しむ平屋の外観" width="1200" height="1201" loading="lazy" decoding="async">
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/works_02.webp" alt="ゆとりを愉しむ平屋の外観" width="5915" height="3943" loading="lazy" decoding="async">
             </figure>
             <div class="p-works-feature__detail">
               <h3 class="p-works-feature__title">ゆとりを愉しむ平屋</h3>
@@ -109,7 +109,7 @@
           </div>
           <div class="p-works-feature__body">
             <figure class="p-works-feature__image">
-              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/works_03.webp" alt="ゆとりを愉しむ平屋の外観" width="1200" height="1201" loading="lazy" decoding="async">
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/works_03.webp" alt="愛車と暮らす二階建て住宅の外観" width="3884" height="5826" loading="lazy" decoding="async">
             </figure>
             <div class="p-works-feature__detail">
               <h3 class="p-works-feature__title">暮らしが広がる二階建て</h3>
@@ -119,7 +119,7 @@
           </div>
           <div class="p-works-feature__body">
             <figure class="p-works-feature__image">
-              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/works_04.webp" alt="ゆとりを愉しむ平屋の外観" width="1200" height="1201" loading="lazy" decoding="async">
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/works_04.webp" alt="黒を基調とした店舗の内装" width="4000" height="6000" loading="lazy" decoding="async">
             </figure>
             <div class="p-works-feature__detail">
               <h3 class="p-works-feature__title">想いを届ける店舗づくり</h3>
@@ -140,6 +140,8 @@
         'title' => '二階建て',
         'en' => 'TWO STORY',
         'image' => 'works_slider1.webp',
+        'width' => 3648,
+        'height' => 3472,
         'alt' => '二階建て住宅の施工事例',
         'lead' => '家族の時間も、一人の時間も心地よく。',
         'text' => '限られた敷地を立体的に活かし、家族が自然に集まる場所と、それぞれが落ち着いて過ごせる場所を両立します。暮らし方や将来の変化まで見据え、動線と光の入り方を丁寧に整えた住まいをご提案します。',
@@ -149,6 +151,8 @@
         'title' => '平屋',
         'en' => 'HIRAYA',
         'image' => 'works_slider2.webp',
+        'width' => 6000,
+        'height' => 4000,
         'alt' => '平屋住宅の施工事例',
         'lead' => 'ひとつながりの空間で、ゆとりを愉しむ。',
         'text' => '生活がワンフロアで完結する平屋は、移動がスムーズで家族の気配を感じやすいことが魅力です。庭やウッドデッキとのつながり、高い天井や大きな窓による開放感を取り入れ、のびやかな暮らしを形にします。',
@@ -158,6 +162,8 @@
         'title' => 'アパート',
         'en' => 'APARTMENT',
         'image' => 'works_slider3.webp',
+        'width' => 5474,
+        'height' => 3649,
         'alt' => 'アパートの施工事例',
         'lead' => '住む人にも、街にも選ばれる建物へ。',
         'text' => '入居者の心地よさと、オーナーさまにとっての価値を両立する集合住宅を考えます。周辺環境や土地の特性を読み取り、外観の印象から各住戸の動線まで、長く愛されるための工夫を積み重ねます。',
@@ -177,7 +183,7 @@
                 <article class="swiper-slide p-free__card">
                   <button class="p-free__card-button js-works-modal-open" type="button" data-modal-target="works-modal-<?php echo esc_attr($item['slug']); ?>" aria-haspopup="dialog">
                     <figure class="p-free__image">
-                      <img src="<?php echo esc_url(get_template_directory_uri() . '/images/works/' . $item['image']); ?>" alt="<?php echo esc_attr($item['alt']); ?>" width="1000" height="834" loading="lazy" decoding="async">
+                      <img src="<?php echo esc_url(get_template_directory_uri() . '/images/works/' . $item['image']); ?>" alt="<?php echo esc_attr($item['alt']); ?>" width="<?php echo esc_attr($item['width']); ?>" height="<?php echo esc_attr($item['height']); ?>" loading="lazy" decoding="async">
                     </figure>
                     <span class="p-free__card-bottom">
                       <span>
@@ -201,7 +207,7 @@
           <button class="p-works-modal__close js-works-modal-close" type="button" aria-label="モーダルを閉じる"><span></span><span></span></button>
           <div class="p-works-modal__inner">
             <figure class="p-works-modal__image">
-              <img src="<?php echo esc_url(get_template_directory_uri() . '/images/works/' . $item['image']); ?>" alt="" width="1000" height="834" loading="lazy" decoding="async">
+              <img src="<?php echo esc_url(get_template_directory_uri() . '/images/works/' . $item['image']); ?>" alt="" width="<?php echo esc_attr($item['width']); ?>" height="<?php echo esc_attr($item['height']); ?>" loading="lazy" decoding="async">
             </figure>
             <div class="p-works-modal__body">
               <p class="p-works-modal__en"><?php echo esc_html($item['en']); ?></p>
@@ -218,7 +224,7 @@
     <div class="l-inner">
       <div class="p-balance__content">
         <figure class="p-balance__image">
-          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/balance_img.webp" alt="縁側でくつろぐ家族" width="858" height="606" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/balance_img.webp" alt="バイクのあるリビング" width="3899" height="5849" loading="lazy" decoding="async">
         </figure>
         <div class="p-balance__detail">
           <div class="p-balance__diagram" aria-label="断熱、気密、換気、耐震の4つのバランス">
@@ -286,7 +292,7 @@
           </details>
         </div>
         <figure class="p-performance__image">
-          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/performance_img.webp" alt="明るい木目のキッチン" width="648" height="824" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/performance_img.webp" alt="吹き抜けと小上がりのある室内" width="3957" height="5935" loading="lazy" decoding="async">
         </figure>
       </div>
     </div>
@@ -296,7 +302,7 @@
       <div class="p-all__content">
         <p class="p-all__text">全て最高クラスの設備が<br>必要ではありません。</p>
         <figure class="p-all__image">
-          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/all_img.webp" alt="バイクを整備するスタッフの手元" width="1000" height="1000" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/all_img.webp" alt="複数のバイクを収めたガレージ" width="3916" height="5874" loading="lazy" decoding="async">
         </figure>
       </div>
     </div>
@@ -341,7 +347,7 @@
           <p class="p-renovation__text">新築時の良さやライフスタイルの変化によって、住まいに求めるものも少しずつ変わっていきます。リフォームやリノベーションは、住み慣れた家の良さを残しながら、今の暮らしに合わせて住まいを見直す選択肢のひとつです。<br class="u-mobile">水まわりの更新や間取りの見直しはもちろん、断熱向上や耐震性の改善など、これからも長く快適に暮らしていくための住まいづくりをお手伝いします。</p>
         </div>
         <figure class="p-renovation__image">
-          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/reform_img.webp" alt="夕日の中に停められたバイク" width="1396" height="1137" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/reform_img.webp" alt="テーブルセットを備えた屋上テラス" width="4000" height="6000" loading="lazy" decoding="async">
         </figure>
       </div>
       <div class="p-renovation__bottom">
@@ -357,10 +363,10 @@
         <article class="p-before-after__item">
           <div class="p-before-after__images">
             <figure class="p-before-after__image">
-              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/before_after01.webp" alt="リフォーム前の住まい" width="1398" height="1398" loading="lazy" decoding="async">
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/before_after01.webp" alt="リフォーム前の住まい" width="3916" height="5874" loading="lazy" decoding="async">
             </figure>
             <figure class="p-before-after__image">
-              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/before_after02.webp" alt="リフォーム後の明るい住まい" width="1398" height="1398" loading="lazy" decoding="async">
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/before_after02.webp" alt="リフォーム後の明るい住まい" width="4000" height="6000" loading="lazy" decoding="async">
             </figure>
           </div>
           <div class="p-before-after__body">
@@ -372,10 +378,10 @@
         <article class="p-before-after__item">
           <div class="p-before-after__images">
             <figure class="p-before-after__image">
-              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/before_after03.webp" alt="改装前の店舗外観" width="1401" height="1401" loading="lazy" decoding="async">
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/before_after03.webp" alt="改装前の店舗外観" width="1477" height="1108" loading="lazy" decoding="async">
             </figure>
             <figure class="p-before-after__image">
-              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/before_after04.webp" alt="改装後の店舗外観" width="1401" height="1401" loading="lazy" decoding="async">
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/before_after04.webp" alt="改装後の店舗外観" width="3903" height="5855" loading="lazy" decoding="async">
             </figure>
           </div>
           <div class="p-before-after__body">
