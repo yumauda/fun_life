@@ -116,6 +116,7 @@
 }
 
 .p-style__mobile-image {
+  display: block;
   width: 100%;
   max-width: rem(300);
   aspect-ratio: 900 / 811;
@@ -217,6 +218,7 @@
 }
 
 .p-style__image {
+  display: block;
   width: 100%;
   aspect-ratio: 900 / 811;
   overflow: hidden;

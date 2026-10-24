@@ -3093,6 +3093,7 @@ select::-ms-expand {
 }
 
 .p-free__image {
+  display: block;
   aspect-ratio: 330/270;
   overflow: hidden;
 }
@@ -4965,6 +4966,7 @@ select::-ms-expand {
 }
 
 .p-lineup__visual {
+  display: block;
   position: relative;
   width: 100%;
   max-width: 18.75rem;
@@ -4980,6 +4982,7 @@ select::-ms-expand {
 }
 
 .p-lineup__image {
+  display: block;
   width: 100%;
   aspect-ratio: 1/1;
   overflow: hidden;
@@ -8759,6 +8762,7 @@ select::-ms-expand {
 }
 
 .p-style__mobile-image {
+  display: block;
   width: 100%;
   max-width: 18.75rem;
   aspect-ratio: 900/811;
@@ -8862,6 +8866,7 @@ select::-ms-expand {
 }
 
 .p-style__image {
+  display: block;
   width: 100%;
   aspect-ratio: 900/811;
   overflow: hidden;

@@ -163,6 +163,7 @@
 }
 
 .p-lineup__visual {
+  display: block;
   position: relative;
   width: 100%;
   max-width: rem(300);
@@ -177,6 +178,7 @@
 }
 
 .p-lineup__image {
+  display: block;
   width: 100%;
   aspect-ratio: 1 / 1;
   overflow: hidden;

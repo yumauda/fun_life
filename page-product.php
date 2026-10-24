@@ -182,9 +182,9 @@
               <?php foreach ($works_modal_items as $item) : ?>
                 <article class="swiper-slide p-free__card">
                   <button class="p-free__card-button js-works-modal-open" type="button" data-modal-target="works-modal-<?php echo esc_attr($item['slug']); ?>" aria-haspopup="dialog">
-                    <figure class="p-free__image">
+                    <span class="p-free__image">
                       <img src="<?php echo esc_url(get_template_directory_uri() . '/images/works/' . $item['image']); ?>" alt="<?php echo esc_attr($item['alt']); ?>" width="<?php echo esc_attr($item['width']); ?>" height="<?php echo esc_attr($item['height']); ?>" loading="lazy" decoding="async">
-                    </figure>
+                    </span>
                     <span class="p-free__card-bottom">
                       <span>
                         <span class="p-free__card-title"><?php echo esc_html($item['title']); ?></span>
@@ -227,7 +227,7 @@
           <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/balance_img.webp" alt="バイクのあるリビング" width="3899" height="5849" loading="lazy" decoding="async">
         </figure>
         <div class="p-balance__detail">
-          <div class="p-balance__diagram" aria-label="断熱、気密、換気、耐震の4つのバランス">
+          <div class="p-balance__diagram" role="img" aria-label="断熱、気密、換気、耐震の4つのバランス">
             <span class="p-balance__item">断 熱</span>
             <span class="p-balance__item">気 密</span>
             <span class="p-balance__item">換 気</span>
@@ -428,7 +428,7 @@
       <div class="p-modular-home__content">
         <div class="p-modular-home__copy">
           <h3 class="p-modular-home__lead">デザイン・性能・価格の<br>バランスを考えた規格住宅。</h3>
-          <p class="p-modular-home__text">格住宅は、これまでの家づくりで培った経験やノウハウをもとに、暮らしやすさを追求した住まいです。<br class="u-mobile">間取りやデザインを一から考える負担を減らしながらも、快適な暮らしに必要な性能や使いやすさはしっかりと確保。<br class="u-mobile">理想とコストのバランスを大切にしたい方におすすめの住まいです。</p>
+          <p class="p-modular-home__text">規格住宅は、これまでの家づくりで培った経験やノウハウをもとに、暮らしやすさを追求した住まいです。<br class="u-mobile">間取りやデザインを一から考える負担を減らしながらも、快適な暮らしに必要な性能や使いやすさはしっかりと確保。<br class="u-mobile">理想とコストのバランスを大切にしたい方におすすめの住まいです。</p>
         </div>
         <figure class="p-modular-home__image">
           <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/works/modular_img.webp" alt="夕暮れの海辺で会話を楽しむ仲間たち" width="1401" height="1401" loading="lazy" decoding="async">
@@ -495,12 +495,12 @@
             <article class="p-lineup__item<?php echo 0 === $index ? ' is-opened' : ''; ?>">
               <button class="p-lineup__trigger js-style-item js-lineup-trigger<?php echo 0 === $index ? ' is-active' : ''; ?>" type="button" data-style-title="<?php echo esc_attr($item['title']); ?>" data-style-text="<?php echo esc_attr($item['text']); ?>" aria-pressed="<?php echo 0 === $index ? 'true' : 'false'; ?>" aria-expanded="<?php echo 0 === $index ? 'true' : 'false'; ?>" aria-controls="lineup-panel-<?php echo esc_attr($index); ?>">
 
-                <div class="p-lineup__visual">
-                  <figure class="p-lineup__image">
+                <span class="p-lineup__visual">
+                  <span class="p-lineup__image">
                     <img src="<?php echo esc_url(get_template_directory_uri() . '/images/works/' . $item['image']); ?>" alt="<?php echo esc_attr($item['alt']); ?>" width="<?php echo esc_attr($item['width']); ?>" height="<?php echo esc_attr($item['height']); ?>" loading="lazy" decoding="async">
-                  </figure>
+                  </span>
                   <span class="p-lineup__toggle" aria-hidden="true"><?php echo 0 === $index ? 'CLOSE' : 'MORE'; ?></span>
-                </div>
+                </span>
               </button>
               <div class="p-lineup__panel js-lineup-panel" id="lineup-panel-<?php echo esc_attr($index); ?>" <?php echo 0 === $index ? '' : ' hidden'; ?>>
                 <div class="p-lineup__panel-inner">
@@ -597,9 +597,9 @@
             <?php foreach ($style_mobile_items as $index => $item) : ?>
               <article class="p-style__mobile-item<?php echo 0 === $index ? ' is-opened' : ''; ?>">
                 <button class="p-style__mobile-trigger js-style-mobile-trigger" type="button" aria-expanded="<?php echo 0 === $index ? 'true' : 'false'; ?>" aria-controls="style-mobile-panel-<?php echo esc_attr($index); ?>">
-                  <figure class="p-style__mobile-image">
+                  <span class="p-style__mobile-image">
                     <img src="<?php echo esc_url(get_template_directory_uri() . '/images/works/' . $item['image']['image']); ?>" alt="<?php echo esc_attr($item['image']['alt']); ?>" width="<?php echo esc_attr($item['image']['width']); ?>" height="<?php echo esc_attr($item['image']['height']); ?>" loading="lazy" decoding="async">
-                  </figure>
+                  </span>
                   <span class="p-style__mobile-label"><?php echo esc_html($item['label']); ?></span>
                 </button>
                 <div class="p-style__mobile-panel js-style-mobile-panel" id="style-mobile-panel-<?php echo esc_attr($index); ?>" <?php echo 0 === $index ? '' : ' hidden'; ?>>
@@ -613,9 +613,9 @@
           <div class="p-style__gallery js-style-gallery">
             <?php foreach ($style_items as $index => $item) : ?>
               <button class="p-style__item js-style-item<?php echo 0 === $index ? ' is-active' : ''; ?>" type="button" data-style-title="<?php echo esc_attr($item['title']); ?>" data-style-text="<?php echo esc_attr($item['text']); ?>" aria-pressed="<?php echo 0 === $index ? 'true' : 'false'; ?>">
-                <figure class="p-style__image">
+                <span class="p-style__image">
                   <img src="<?php echo esc_url(get_template_directory_uri() . '/images/works/' . $item['image']); ?>" alt="<?php echo esc_attr($item['alt']); ?>" width="<?php echo esc_attr($item['width']); ?>" height="<?php echo esc_attr($item['height']); ?>" loading="lazy" decoding="async">
-                </figure>
+                </span>
               </button>
             <?php endforeach; ?>
           </div>
