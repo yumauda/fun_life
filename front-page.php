@@ -25,11 +25,11 @@
             preload="metadata"
             aria-hidden="true"
           ></video>
-          <button class="p-mv__sound js-mv-sound" type="button" aria-label="動画の音声をオンにする" aria-pressed="false">
-            <img class="p-mv__sound-icon p-mv__sound-icon--off" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/sound_off.svg" alt="" width="470" height="439" decoding="async">
-            <img class="p-mv__sound-icon p-mv__sound-icon--on" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/sound_on.svg" alt="" width="472" height="392" decoding="async">
-          </button>
         </div>
+        <button class="p-mv__sound js-mv-sound" type="button" aria-label="動画の音声をオンにする" aria-pressed="false">
+          <img class="p-mv__sound-icon p-mv__sound-icon--off" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/sound_off.svg" alt="" width="470" height="439" decoding="async">
+          <img class="p-mv__sound-icon p-mv__sound-icon--on" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/top/sound_on.svg" alt="" width="472" height="392" decoding="async">
+        </button>
       </div>
     </div>
   </div>

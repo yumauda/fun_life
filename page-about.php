@@ -102,7 +102,7 @@
             </div>
             <div class="p-company__item">
               <dt class="p-company__term">住所</dt>
-              <dd class="p-company__description">〒861-3204 <br class="u-mobile">熊本県上益城郡御船町大字木倉</dd>
+              <dd class="p-company__description">〒861-8043熊本県上益城郡御船町大字木倉222</dd>
             </div>
             <div class="p-company__item">
               <dt class="p-company__term">TEL/FAX</dt>
@@ -122,15 +122,15 @@
             </div>
             <div class="p-company__item">
               <dt class="p-company__term">代表者</dt>
-              <dd class="p-company__description">三浦　浩平</dd>
+              <dd class="p-company__description">福場　涼平</dd>
             </div>
             <div class="p-company__item">
               <dt class="p-company__term">事業内容</dt>
-              <dd class="p-company__description">注文住宅・新築・工事、企画設計 リフォーム・リノベーション<br>店舗設計施工及び管理・公共工事 各種住宅コーディネイターとして活動中</dd>
+              <dd class="p-company__description">注文住宅・設計・工事・店舗設計<br>リフォーム・リノベーション<br>外構工事　土地探し・ご提案<br>住宅ローンアドバイザーとして資金計画</dd>
             </div>
             <div class="p-company__item">
               <dt class="p-company__term">工法</dt>
-              <dd class="p-company__description">熊本地震耐震性能強化構造工法</dd>
+              <dd class="p-company__description">木造金物工法　　在来木造工法</dd>
             </div>
             <div class="p-company__item">
               <dt class="p-company__term">登録</dt>

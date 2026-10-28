@@ -19,7 +19,7 @@ if (have_posts()) :
     $eyebrow_ja = $current_category_config['ja'];
     $works_url = fun_life_category_url('works');
     $event_url = fun_life_category_url('event');
-    $column_url = fun_life_category_url('column');
+    $column_url = fun_life_category_url('columns');
     $blog_url = fun_life_blog_url();
     $archive_url = $primary_category instanceof WP_Term ? get_category_link($primary_category) : $blog_url;
     $post_tags = get_the_tags();
@@ -146,7 +146,7 @@ if (have_posts()) :
               <div class="p-single-blog__pages-links">
                 <a class="p-single-blog__pages-link c-hover-invert c-hover-invert--dark<?php echo 'works' === $category_slug ? ' is-current' : ''; ?>" href="<?php echo esc_url($works_url); ?>" <?php echo 'works' === $category_slug ? ' aria-current="page"' : ''; ?>>WORKS</a>
                 <a class="p-single-blog__pages-link c-hover-invert c-hover-invert--dark<?php echo 'event' === $category_slug ? ' is-current' : ''; ?>" href="<?php echo esc_url($event_url); ?>" <?php echo 'event' === $category_slug ? ' aria-current="page"' : ''; ?>>EVENT</a>
-                <a class="p-single-blog__pages-link c-hover-invert c-hover-invert--dark<?php echo 'column' === $category_slug ? ' is-current' : ''; ?>" href="<?php echo esc_url($column_url); ?>" <?php echo 'column' === $category_slug ? ' aria-current="page"' : ''; ?>>COLUMN</a>
+                <a class="p-single-blog__pages-link c-hover-invert c-hover-invert--dark<?php echo 'columns' === $category_slug ? ' is-current' : ''; ?>" href="<?php echo esc_url($column_url); ?>" <?php echo 'columns' === $category_slug ? ' aria-current="page"' : ''; ?>>COLUMN</a>
               </div>
             </nav>
           </div>

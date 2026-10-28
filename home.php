@@ -3,7 +3,7 @@ get_header();
 
 $works_url = fun_life_category_url('works');
 $event_url = fun_life_category_url('event');
-$column_url = fun_life_category_url('column');
+$column_url = fun_life_category_url('columns');
 $category_config = fun_life_blog_category_config();
 ?>
 

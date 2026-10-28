@@ -1,13 +1,11 @@
 @use "../global" as *;
 
 .p-mv {
+  // ヘッダーと動画が重ならないよう、画面上下に各120px分の余白を確保する。
+  --mv-total-vertical-space: #{rem(240)};
+
   height: 100vh;
   height: 100svh;
-  padding-top: rem(100);
-
-  @include mq(lg) {
-    padding-top: rem(173);
-  }
 }
 
 .p-mv .l-inner-mv {
@@ -15,11 +13,9 @@
 }
 
 .p-mv__content {
-  position: relative;
+  // 正方形動画と動画外の音量ボタンを同じMV領域へ重ねるためのレイヤーGrid。
+  display: grid;
   height: 100%;
-  max-width: rem(1200);
-  margin-right: auto;
-  margin-left: auto;
 }
 
 .p-mv__title {
@@ -37,9 +33,21 @@
 }
 
 .p-mv__video {
-  position: relative;
-  height: 100%;
+  grid-area: 1 / 1;
+  place-self: center;
+  width: min(100%, calc(100vh - var(--mv-total-vertical-space)));
+  width: min(100%, calc(100svh - var(--mv-total-vertical-space)));
+  max-width: rem(1200);
+  aspect-ratio: 1;
   overflow: hidden;
+
+  @include mq(lg) {
+    // ナビ下の余白を維持しつつ、画面下付近まで動画を広げる。
+    place-self: start center;
+    width: min(100%, calc(100vh - #{rem(160)}));
+    width: min(100%, calc(100svh - #{rem(160)}));
+    margin-top: rem(140);
+  }
 }
 
 .p-mv__video > img,
@@ -51,9 +59,8 @@
 }
 
 .p-mv__sound {
-  position: absolute;
-  right: rem(12);
-  bottom: rem(12);
+  grid-area: 1 / 1;
+  place-self: end;
   display: grid;
   place-items: center;
   width: rem(44);
@@ -64,22 +71,20 @@
   padding-right: 0;
   padding-bottom: 0;
   padding-left: 0;
-  color: #fff;
-  background-color: rgba(0, 0, 0, 0.56);
+  margin-bottom: rem(12);
+  color: #000;
+  background-color: transparent;
   border: 0;
-  border-radius: 9999px;
-  box-shadow: 0 rem(4) rem(16) rgba(0, 0, 0, 0.2);
   cursor: pointer;
-  transition: background-color 0.25s ease, transform 0.25s ease;
+  transition: opacity 0.25s ease, transform 0.25s ease;
 
   @include mq(md) {
-    right: rem(20);
-    bottom: rem(20);
     width: rem(46);
     height: rem(46);
+    margin-bottom: rem(20);
 
     &:hover {
-      background-color: rgba(0, 0, 0, 0.72);
+      opacity: 0.6;
       transform: scale(1.05);
     }
   }
@@ -93,7 +98,6 @@
   min-width: 18px;
   min-height: 18px;
   object-fit: contain;
-  filter: invert(1);
   transition: opacity 0.2s ease;
 }
 
@@ -110,6 +114,6 @@
 }
 
 .p-mv__sound:focus-visible {
-  outline: 2px solid #fff;
+  outline: 2px solid #000;
   outline-offset: 3px;
 }

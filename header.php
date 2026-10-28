@@ -191,7 +191,7 @@
                                 <li class="p-drawer-content__list"><a href="<?php echo esc_url(home_url('/about/')); ?>" class="p-drawer-content__link">ABOUT</a></li>
                                 <li class="p-drawer-content__list"><a href="<?php echo esc_url(fun_life_blog_url()); ?>" class="p-drawer-content__link">BLOG</a></li>
                                 <li class="p-drawer-content__list"><a href="<?php echo esc_url(fun_life_category_url('works')); ?>" class="p-drawer-content__link p-drawer-content__link--muted">WORKS</a></li>
-                                <li class="p-drawer-content__list"><a href="<?php echo esc_url(fun_life_category_url('column')); ?>" class="p-drawer-content__link p-drawer-content__link--muted">COLUMN</a></li>
+                                <li class="p-drawer-content__list"><a href="<?php echo esc_url(fun_life_category_url('columns')); ?>" class="p-drawer-content__link p-drawer-content__link--muted">COLUMN</a></li>
                                 <li class="p-drawer-content__list"><a href="<?php echo esc_url(fun_life_category_url('event')); ?>" class="p-drawer-content__link p-drawer-content__link--muted">EVENT</a></li>
                                 <li class="p-drawer-content__list"><a href="<?php echo esc_url(home_url('/contact/')); ?>" class="p-drawer-content__link">CONTACT</a></li>
                             </ul>

@@ -414,7 +414,7 @@ function fun_life_blog_category_config()
 	return array(
 		'works' => array('en' => 'WORKS', 'ja' => '施工事例'),
 		'event' => array('en' => 'EVENT', 'ja' => 'イベント / お知らせ'),
-		'column' => array('en' => 'COLUMN', 'ja' => 'コラム'),
+		'columns' => array('en' => 'COLUMN', 'ja' => 'コラム'),
 	);
 }
 
@@ -497,6 +497,24 @@ function fun_life_redirect_legacy_news_category()
 	exit;
 }
 add_action('template_redirect', 'fun_life_redirect_legacy_news_category');
+
+/**
+ * 旧COLUMNカテゴリーURLを新しいカテゴリーURLへ転送する。
+ */
+function fun_life_redirect_legacy_column_category()
+{
+	$request_uri = isset($_SERVER['REQUEST_URI']) ? wp_unslash($_SERVER['REQUEST_URI']) : '';
+	$request_path = trim((string) wp_parse_url($request_uri, PHP_URL_PATH), '/');
+	$category_base = trim((string) get_option('category_base'), '/') ?: 'category';
+
+	if (!in_array($request_path, array('column', $category_base . '/column'), true)) {
+		return;
+	}
+
+	wp_safe_redirect(fun_life_category_url('columns'), 301);
+	exit;
+}
+add_action('template_redirect', 'fun_life_redirect_legacy_column_category');
 
 /**
  * BLOGトップのURLを取得する。
