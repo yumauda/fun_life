@@ -53,7 +53,7 @@
               <p class="p-message__text">ある時、ふと頭に浮かんだ「自分は人生を楽しんでいるか？」という問い。それが、ファンライフ創業のきっかけでした。<br class="u-mobile">私たちは、家づくりを通してお客様はもちろん、関わる職人や協力業者、そして自分たち自身も楽しみながら仕事ができる会社でありたいと考えています。<br class="u-mobile">だからこそ、数を追う家づくりはしません。一人ひとりのお客様と真剣に向き合い、信頼関係を築きながら、その人にとって本当に良い住まいを一緒につくっていきます。<br class="u-mobile">人と人との信頼の上に家を建てる。それが、ファンライフの家づくりです。</p>
             </div>
             <figure class="p-message__image">
-              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/about/message_01.webp" alt="ファンライフ代表" width="1023" height="1537" loading="lazy" decoding="async">
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/about/message_01.webp" alt="ファンライフ代表" width="1000" height="1000" loading="lazy" decoding="async">
             </figure>
           </div>
         </div>
